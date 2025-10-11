@@ -64,8 +64,8 @@ const Experiences = () => {
           {experiences.map((experience, index) => (
             <motion.div
               key={experience.id}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              
               transition={{
                 duration: 0.8,
                 delay: 0.4 + index * 0.15,
@@ -75,22 +75,19 @@ const Experiences = () => {
             >
               {/* Image Container with Hover Effect */}
               <div className="relative mb-6 h-[400px] overflow-hidden md:h-[450px] lg:h-[500px]">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-                  className="h-full w-full"
-                >
+                <div className="h-full w-full overflow-hidden">
                   <Image
                     src={experience.image}
                     alt={experience.title}
                     fill
-                    className="object-cover transition-all duration-800"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                     style={{
                       filter: 'grayscale(10%)',
                     }}
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={index < 2}
                   />
-                </motion.div>
+                </div>
 
                 {/* Gradient Overlay - Appears on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-charcoal)]/80 via-[var(--color-charcoal)]/40 to-transparent opacity-0 transition-opacity duration-600 group-hover:opacity-100" />
@@ -99,19 +96,13 @@ const Experiences = () => {
                 <div className="absolute inset-0 flex items-end p-10 opacity-0 transition-opacity duration-600 group-hover:opacity-100">
                   <div className="space-y-4">
                     {experience.activities.map((activity, idx) => (
-                      <motion.div
+                      <div
                         key={idx}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: idx * 0.1,
-                          ease: [0.215, 0.61, 0.355, 1],
-                        }}
                         className="flex items-center gap-3"
                       >
                         <div className="h-2 w-2 rounded-full bg-[var(--color-champagne)]" />
                         <span className="text-base font-medium text-white">{activity}</span>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
