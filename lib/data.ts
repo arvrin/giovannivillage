@@ -126,7 +126,7 @@ export const experiences = [
     title: 'Nature & Wildlife',
     description:
       'Explore the wilderness through guided nature walks, bird watching, and wildlife spotting',
-    image: '/images/experiences/nature-wildlife.jpg',
+    image: '/n1.jpg',
     activities: ['Nature walks', 'Bird watching', 'Wildlife spotting', 'Photography tours'],
   },
   {
@@ -134,7 +134,7 @@ export const experiences = [
     title: 'Restaurant and Dining',
     description:
       'Your smile, our happiness. Indulge in culinary excellence at our signature restaurant with farm-to-table dining, candlelight dinners, and authentic flavors.',
-    image: '/images/experiences/dining.jpg',
+    image: '/d1.jpg',
     activities: ['Fine dining', 'Candlelight dinners', 'Farm breakfast', 'BBQ nights'],
   },
   {
