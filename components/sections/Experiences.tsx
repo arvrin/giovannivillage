@@ -86,6 +86,7 @@ const Experiences = () => {
                     }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority={index < 2}
+                    unoptimized
                   />
                 </div>
 

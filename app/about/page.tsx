@@ -34,9 +34,11 @@ export default function AboutPage() {
           <div className="absolute bottom-0 left-0 right-0 pb-24 md:pb-32">
             <Container>
               <div className="text-center max-w-5xl mx-auto">
-                <p className="text-sm font-semibold uppercase tracking-widest text-white/80 mb-8" style={{ letterSpacing: '2.5px' }}>
-                  Discover Our Story
-                </p>
+                <div className="flex justify-center mb-8">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-white/80" style={{ letterSpacing: '2.5px' }}>
+                    Discover Our Story
+                  </p>
+                </div>
                 <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-10" style={{ lineHeight: '1.1', letterSpacing: '-0.025em' }}>
                   {about.title}
                 </h1>

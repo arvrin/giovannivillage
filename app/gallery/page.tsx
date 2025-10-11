@@ -42,9 +42,11 @@ export default function GalleryPage() {
         <Container>
           {/* Header - LUXURY EDITION */}
           <div className="text-center mb-20 md:mb-24 lg:mb-32">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)] mb-8" style={{ letterSpacing: '2.5px' }}>
-              Visual Journey
-            </p>
+            <div className="flex justify-center mb-8">
+              <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]" style={{ letterSpacing: '2.5px' }}>
+                Visual Journey
+              </p>
+            </div>
             <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-[var(--color-text-primary)] mb-10" style={{ lineHeight: '1.1', letterSpacing: '-0.025em' }}>
               Gallery
             </h1>
