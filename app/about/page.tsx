@@ -21,21 +21,31 @@ export default function AboutPage() {
       <Header />
 
       <main className="min-h-screen bg-[var(--color-background)] pt-24 pb-16">
-        {/* Hero Section - LUXURY TYPOGRAPHY */}
-        <div className="bg-[var(--color-background-secondary)] py-24 md:py-32 lg:py-40 mb-32 md:mb-40 lg:mb-48">
-          <Container>
-            <div className="text-center max-w-5xl mx-auto">
-              <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)] mb-8" style={{ letterSpacing: '2.5px' }}>
-                Discover Our Story
-              </p>
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-[var(--color-text-primary)] mb-10" style={{ lineHeight: '1.1', letterSpacing: '-0.025em' }}>
-                {about.title}
-              </h1>
-              <p className="text-2xl md:text-3xl text-[var(--color-text-secondary)] font-light" style={{ lineHeight: '1.6' }}>
-                {about.subtitle}
-              </p>
-            </div>
-          </Container>
+        {/* Hero Section - LUXURY IMAGE HERO */}
+        <div className="relative h-[70vh] md:h-[80vh] lg:h-[85vh] mb-32 md:mb-40 lg:mb-48">
+          <Image
+            src="/a1.jpg"
+            alt="About Giovanni Village Resort"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 pb-24 md:pb-32">
+            <Container>
+              <div className="text-center max-w-5xl mx-auto">
+                <p className="text-sm font-semibold uppercase tracking-widest text-white/80 mb-8" style={{ letterSpacing: '2.5px' }}>
+                  Discover Our Story
+                </p>
+                <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-10" style={{ lineHeight: '1.1', letterSpacing: '-0.025em' }}>
+                  {about.title}
+                </h1>
+                <p className="text-2xl md:text-3xl text-white/90 font-light" style={{ lineHeight: '1.6' }}>
+                  {about.subtitle}
+                </p>
+              </div>
+            </Container>
+          </div>
         </div>
 
         <Container>
