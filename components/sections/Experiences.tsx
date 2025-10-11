@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import Section from '../ui/Section';
 import Container from '../ui/Container';
 import { experiences } from '@/lib/data';
@@ -79,12 +80,15 @@ const Experiences = () => {
                   transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
                   className="h-full w-full"
                 >
-                  <div
-                    className="h-full w-full bg-cover bg-center transition-all duration-800"
+                  <Image
+                    src={experience.image}
+                    alt={experience.title}
+                    fill
+                    className="object-cover transition-all duration-800"
                     style={{
-                      backgroundImage: `url(${experience.image})`,
                       filter: 'grayscale(10%)',
                     }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </motion.div>
 
