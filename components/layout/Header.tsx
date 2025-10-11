@@ -66,22 +66,22 @@ const Header = () => {
             : 'bg-transparent backdrop-blur-sm'
         }`}
       >
-        <div className="mx-auto max-w-screen-2xl px-6 md:px-12 lg:px-24">
-          <div className="relative flex h-20 items-center justify-between md:h-24">
+        <div className="mx-auto max-w-screen-2xl px-4 md:px-12 lg:px-24">
+          <div className="relative flex h-16 items-center justify-between md:h-24">
 
             {/* LEFT: Hamburger Button - Gold brand color */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsSidebarOpen(true)}
-              className={`relative z-50 flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 ${
+              className={`relative z-50 flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full transition-all duration-300 ${
                 isScrolled
                   ? 'bg-[var(--color-gold)]/10 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20'
                   : 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/30 backdrop-blur-md'
               }`}
               aria-label="Open menu"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5 md:h-6 md:w-6" />
             </motion.button>
 
             {/* CENTER: Logo - Connected to PageLoader - EXPERT OPTIMIZED */}
@@ -91,7 +91,7 @@ const Header = () => {
                   layoutId="main-logo"
                   src="/images/logo/gvr-final-logo.png"
                   alt={siteConfig.name}
-                  className="h-12 w-auto md:h-14"
+                  className="h-10 w-auto md:h-14"
                   whileHover={{ scale: 1.02 }}
                   transition={{
                     scale: { duration: 0.3 },
