@@ -101,8 +101,8 @@ const Header = () => {
               </a>
             </div>
 
-            {/* RIGHT: Book Now Button - Matching Hero CTA */}
-            <div className="relative z-50">
+            {/* RIGHT: Book Now Button - Matching Hero CTA (Hidden on mobile) */}
+            <div className="relative z-50 hidden md:block">
               <Button
                 size="sm"
                 variant="primary"
