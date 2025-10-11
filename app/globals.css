@@ -1,26 +1,358 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
+  /* CSS Variables - LUXURY EDITION */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Primary Palette - Earthy Luxury */
+  --color-champagne: #E8DCC4;
+  --color-ivory: #FDFBF7;
+  --color-bronze: #8B7355;
+  --color-charcoal: #2A2826;
+
+  /* Accent Palette - Use Sparingly */
+  --color-gold: #C9A961;
+  --color-clay: #A67C52;
+  --color-forest-green: #3A4F41;
+
+  /* Backgrounds */
+  --color-background-primary: #FDFBF7;
+  --color-background-secondary: #E8DCC4;
+  --color-overlay: rgba(42, 40, 38, 0.6);
+
+  /* Text Hierarchy */
+  --color-text-primary: #2A2826;
+  --color-text-secondary: #8B7355;
+  --color-text-tertiary: #A67C52;
+  --color-text-inverse: #FDFBF7;
+
+  /* Functional Colors */
+  --color-success: #6B8E6B;
+  --color-error: #A64B4B;
+  --color-whatsapp: #25d366;
+
+  /* Legacy/Alias Variables for Components */
+  --color-brand-green: #25d366;
+  --color-accent: #C9A961;
+  --color-accent-900: #8B7355;
+  --color-primary: #E8DCC4;
+  --color-primary-400: #FDFBF7;
+  --color-primary-50: #FDFBF7;
+  --color-text-light: #FDFBF7;
+
+
+  /* Luxury Spacing Scale */
+  --spacing-xs: 0.75rem;    /* 12px */
+  --spacing-sm: 1.5rem;     /* 24px */
+  --spacing-md: 3rem;       /* 48px */
+  --spacing-lg: 4.5rem;     /* 72px */
+  --spacing-xl: 7.5rem;     /* 120px */
+  --spacing-2xl: 11.25rem;  /* 180px */
+  --spacing-3xl: 15rem;     /* 240px */
+
+  /* Border Radius - Minimal */
+  --radius-sm: 0.125rem;    /* 2px - barely perceptible */
+  --radius-md: 0.25rem;     /* 4px - subtle */
+  --radius-lg: 0.5rem;      /* 8px - cards only */
+
+  /* Shadows - Soft & Subtle */
+  --shadow-sm: 0 2px 8px rgba(42, 40, 38, 0.04);
+  --shadow-md: 0 4px 20px rgba(42, 40, 38, 0.08);
+  --shadow-lg: 0 8px 32px rgba(42, 40, 38, 0.12);
+
+  /* Transitions - Slow & Sophisticated */
+  --transition-base: 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  --transition-slow: 800ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  --transition-slowest: 1200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  /* Container - Luxury Padding */
+  --container-max-width: 1440px;
+  --container-padding-mobile: 1.5rem;   /* 24px */
+  --container-padding-tablet: 3rem;     /* 48px */
+  --container-padding-desktop: 4rem;    /* 64px */
   }
+
+  /* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.125rem;  /* 18px - Luxury standard */
+  line-height: 1.7;     /* Generous line height */
+  overflow-x: hidden;
+}
+
+/* Typography - Luxury Editorial Excellence */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), serif;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+/* Mobile-first typography */
+h1 {
+  font-size: 3rem;      /* 48px mobile */
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: 2.5rem;    /* 40px mobile */
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 2rem;      /* 32px mobile */
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.5rem;    /* 24px */
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.25rem;   /* 20px */
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 1.125rem;  /* 18px */
+  font-weight: 500;
+}
+
+/* Desktop typography - LUXURY SCALE */
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 6rem;      /* 96px - HERO IMPACT */
+  }
+
+  h2 {
+    font-size: 4rem;      /* 64px - Section headings */
+  }
+
+  h3 {
+    font-size: 2.625rem;  /* 42px - Subsections */
+  }
+
+  h4 {
+    font-size: 1.875rem;  /* 30px */
+  }
+
+  h5 {
+    font-size: 1.5rem;    /* 24px */
+  }
+}
+
+p {
+  margin-bottom: 1.5rem;
+  max-width: 60ch;  /* Luxury standard: max 60 characters per line */
+  line-height: 1.7;
+}
+
+p.large {
+  font-size: 1.375rem;  /* 22px - Intro paragraphs */
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-bronze);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all var(--transition-base);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-champagne);
+  color: var(--color-charcoal);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bronze);
+  border-radius: var(--radius-lg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+  }
+}
+
+/* Utility Classes - Container handled by Component */
+/* Removed .container class to avoid conflicts with Tailwind utilities */
+
+.section-padding {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Loading States */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-background-secondary) 0%,
+    var(--color-primary-50) 50%,
+    var(--color-background-secondary) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid var(--color-bronze);
+  outline-offset: 2px;
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

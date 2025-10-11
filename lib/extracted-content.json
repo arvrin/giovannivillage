@@ -1,0 +1,58 @@
+{
+  "site_info": {
+    "title": "Giovanni Village Resort \u2013 Best Luxury Wildlife Resort in Bhopal",
+    "description": "Resort. Spa. Banquet.",
+    "link": "https://giovannivillage.com"
+  },
+  "contact": {
+    "concierge": "+91 90390 37300",
+    "fnb": "+91 90390 37302",
+    "email": "reservations@giovannivillage.com",
+    "hr_email": "hr@giovannivillage.com",
+    "address": "Giovanni Village, 410, Village Kalapani, Kolar Road, Bhopal",
+    "whatsapp": "+919039037300"
+  },
+  "home": {
+    "title": "Giovanni Village Resort \u2013 Best Luxury Wildlife Resort in Bhopal",
+    "tagline": "Resort. Spa. Banquet.",
+    "description": "Experience luxury at Giovanni Village, Best Luxury Wildlife Resort in Bhopal with spa, banquet halls, restaurants & forest views."
+  },
+  "about": {
+    "title": "About Us",
+    "heading": "Welcome to happiness",
+    "subheading": "The finest hotel at the best price",
+    "highlight": "The best people to take care of our most valuable asset: you.",
+    "description": "Experience unparalleled luxury at Giovanni Village Resort, where nature meets sophistication. Our boutique resort offers an exclusive retreat combining wildlife experiences, world-class amenities, and personalized service."
+  },
+  "rooms": {
+    "title": "Our Rooms",
+    "heading": "Stay with us feel like home",
+    "subheading": "Accommodations",
+    "featured_room": {
+      "name": "King Room - Pool and Garden View",
+      "guests": "2 adults 1 child",
+      "area": "430 sqft",
+      "features": [
+        "Pool View",
+        "Garden View",
+        "King Bed",
+        "Premium Amenities"
+      ]
+    }
+  },
+  "restaurant": {
+    "title": "Restaurant and Dining",
+    "tagline": "Your smile, our happiness",
+    "description": "Indulge in culinary excellence at our signature restaurant. Experience farm-to-table dining, candlelight dinners, and authentic flavors in an elegant setting."
+  },
+  "images": {
+    "hero": [
+      "https://giovannivillage.com/wp-content/uploads/2024/03/Giovanni-Landscape-Pics.jpg",
+      "https://giovannivillage.com/wp-content/uploads/2024/03/Giovanni-Landscape-Pics-2.jpg",
+      "https://giovannivillage.com/wp-content/uploads/2023/07/9_Contact_Hotel-Footer-Slider_1.jpg"
+    ],
+    "logo": "https://giovannivillage.com/wp-content/uploads/2021/08/GVR-Final-logo.png",
+    "total_rooms": 631,
+    "total_images": 705
+  }
+}
