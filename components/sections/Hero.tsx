@@ -160,19 +160,20 @@ const Hero = () => {
           transition={{ duration: 1.2, delay: 0.3 }}
           className="max-w-5xl px-6"
         >
-          {/* Tagline - ULTRA LARGE, BOLD, Editorial Impact with Luxury Display Font */}
+          {/* Tagline - Refined sizing for mobile and desktop */}
           <motion.h1
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.8,
               delay: 0.5,
               ease: [0.215, 0.61, 0.355, 1],
             }}
-            className="mb-8 text-5xl font-bold leading-tight text-[var(--color-text-inverse)] md:text-7xl lg:text-8xl xl:text-9xl"
+            className="mb-6 text-4xl font-bold leading-tight text-[var(--color-text-inverse)] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
             style={{
               fontFamily: 'var(--font-display)',
-              letterSpacing: '-0.01em',
-              textShadow: '0 4px 24px rgba(0, 0, 0, 0.5)',
+              letterSpacing: '-0.02em',
+              textShadow: '0 4px 24px rgba(0, 0, 0, 0.6)',
               lineHeight: '1.1',
               fontWeight: 600,
             }}
@@ -180,22 +181,23 @@ const Hero = () => {
             {hero.tagline}
           </motion.h1>
 
-          {/* Subtitle - Generous size, refined, Two Lines */}
+          {/* Subtitle - Refined sizing and spacing */}
           <motion.div
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.8,
               delay: 0.7,
               ease: [0.215, 0.61, 0.355, 1],
             }}
-            className="mb-16 font-body text-xl font-light text-[var(--color-text-inverse)]/90 md:text-2xl lg:text-3xl"
+            className="mb-10 font-body text-lg font-light text-[var(--color-text-inverse)]/90 sm:text-xl md:mb-12 md:text-2xl lg:text-3xl"
             style={{
-              letterSpacing: '0.5px',
-              textShadow: '0 2px 16px rgba(0, 0, 0, 0.4)',
+              letterSpacing: '0.3px',
+              textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)',
               lineHeight: '1.6',
             }}
           >
-            <p className="mb-2">Resort. Spa. Banquet.</p>
+            <p className="mb-1.5">Resort. Spa. Banquet.</p>
             <p>Experience luxury in the lap of nature.</p>
           </motion.div>
 
