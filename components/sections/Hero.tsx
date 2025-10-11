@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import Image from 'next/image';
 import Button from '../ui/Button';
 import { hero } from '@/lib/data';
 import { scrollToElement } from '@/lib/utils';
@@ -16,6 +17,7 @@ const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [fallbackLoaded, setFallbackLoaded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -111,19 +113,24 @@ const Hero = () => {
           />
         </motion.div>
 
-        {/* Fallback images while video loads - f0 and f1 with crossfade */}
-        {!videoLoaded && (
+        {/* Fallback images while video loads - f0 and f1 with crossfade - LAZY LOADED */}
+        {!videoLoaded && fallbackLoaded && (
           <>
             <motion.div
               initial={{ opacity: 1 }}
               animate={{ opacity: 0 }}
               transition={{ duration: 2, delay: 2 }}
-              className="absolute inset-0 bg-cover bg-center z-[5]"
-              style={{
-                backgroundImage: 'url(/f0.png)',
-                filter: 'grayscale(5%) brightness(0.85)',
-              }}
+              className="absolute inset-0 z-[5]"
             >
+              <Image
+                src="/f0.png"
+                alt="Hero fallback"
+                fill
+                className="object-cover"
+                style={{ filter: 'grayscale(5%) brightness(0.85)' }}
+                priority
+                onLoad={() => setFallbackLoaded(true)}
+              />
               <div
                 className="absolute inset-0"
                 style={{
@@ -135,12 +142,16 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 2, delay: 2 }}
-              className="absolute inset-0 bg-cover bg-center z-[5]"
-              style={{
-                backgroundImage: 'url(/f1.jpg)',
-                filter: 'grayscale(5%) brightness(0.85)',
-              }}
+              className="absolute inset-0 z-[5]"
             >
+              <Image
+                src="/f1.jpg"
+                alt="Hero fallback"
+                fill
+                className="object-cover"
+                style={{ filter: 'grayscale(5%) brightness(0.85)' }}
+                priority
+              />
               <div
                 className="absolute inset-0"
                 style={{
