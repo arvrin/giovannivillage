@@ -77,12 +77,12 @@ const Hero = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Video - Cinematic Loop */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-black">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: videoLoaded ? 1 : 0 }}
           transition={{ duration: 1.5, ease: [0.215, 0.61, 0.355, 1] }}
-          className="absolute inset-0"
+          className="absolute inset-0 z-10"
         >
           <video
             ref={videoRef}
@@ -118,7 +118,7 @@ const Hero = () => {
               initial={{ opacity: 1 }}
               animate={{ opacity: 0 }}
               transition={{ duration: 2, delay: 2 }}
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center z-[5]"
               style={{
                 backgroundImage: 'url(/f0.png)',
                 filter: 'grayscale(5%) brightness(0.85)',
@@ -135,7 +135,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 2, delay: 2 }}
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center z-[5]"
               style={{
                 backgroundImage: 'url(/f1.jpg)',
                 filter: 'grayscale(5%) brightness(0.85)',
@@ -153,7 +153,7 @@ const Hero = () => {
       </div>
 
       {/* Content - Centered, Minimal */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+      <div className="relative z-20 flex h-full flex-col items-center justify-center px-6 text-center">
         {/* Main Content - Centered, wider for impact */}
         <motion.div
           animate={{ opacity: 1 }}
