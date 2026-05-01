@@ -284,7 +284,7 @@ export const experiences = [
     title: 'Elysium Spa & Wellness',
     description:
       'Rejuvenate at Elysium Spa with holistic treatments, yoga and meditation amidst nature.',
-    image: '/images/experiences/landscapes/spa-landscape.jpg',
+    image: '/n1.jpg',
     activities: ['Massage therapy', 'Yoga sessions', 'Meditation', 'Wellness retreats'],
   },
   {

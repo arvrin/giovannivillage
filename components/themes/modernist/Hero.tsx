@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
@@ -10,40 +11,74 @@ import { hero, siteConfig } from '@/lib/data';
 /**
  * Modernist Hero — asymmetric architectural layout.
  * Inspiration: Belmond, Bulgari, Mandarin Oriental.
- * Full-screen split: image (60%) on the left, content panel (40%) on the right.
+ * Image column hosts the cinematic loop; on mobile it becomes a static
+ * landscape (no video) for performance.
  */
 const ModernistHero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (typeof window === 'undefined' || window.matchMedia('(max-width: 767px)').matches) return;
+    const start = () => {
+      v.load();
+      v.play().catch(() => {});
+    };
+    const idle = (window as unknown as { requestIdleCallback?: (cb: () => void) => void }).requestIdleCallback;
+    if (idle) idle(start);
+    else setTimeout(start, 250);
+  }, []);
+
   return (
     <section className="relative w-full bg-[var(--color-bg)]">
       <div className="grid grid-rows-[55vh_auto] lg:h-screen lg:min-h-[640px] lg:grid-cols-[60%_40%] lg:grid-rows-1">
-        {/* Image column */}
-        <div className="relative overflow-hidden">
-          <motion.div
-            initial={{ scale: 1.05, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.4, ease: [0.215, 0.61, 0.355, 1] }}
-            className="absolute inset-0"
-          >
-            <Image
-              src="/images/hero/landscape-2.jpg"
-              alt="Giovanni Village"
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 1024px) 100vw, 60vw"
-            />
-          </motion.div>
+        {/* Media column */}
+        <div className="relative overflow-hidden bg-black">
+          {/* Static poster — instant render */}
+          <Image
+            src="/images/hero/landscape-2.jpg"
+            alt="Giovanni Village"
+            fill
+            className="object-cover"
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            style={{ filter: 'saturate(0.95)' }}
+          />
+          {/* Video — desktop only, fades over the poster */}
+          <motion.video
+            ref={videoRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: videoLoaded ? 1 : 0 }}
+            transition={{ duration: 1.0, ease: [0.215, 0.61, 0.355, 1] }}
+            className="absolute inset-0 h-full w-full object-cover hidden md:block"
+            src="/Giovanni-Video-Presentation.mp4"
+            poster="/images/hero/landscape-2.jpg"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            onLoadedData={() => setVideoLoaded(true)}
+            style={{ filter: 'saturate(0.92)' }}
+          />
           {/* Sticky destination strip */}
-          <div className="absolute left-4 top-1/2 hidden -translate-y-1/2 -rotate-90 origin-center md:block">
+          <div className="absolute left-4 top-1/2 hidden -translate-y-1/2 -rotate-90 origin-center md:block z-10">
             <p
               className="text-[10px] font-medium uppercase tracking-[0.4em] text-white/85 whitespace-nowrap"
+              style={{ textShadow: '0 1px 6px rgba(0,0,0,0.55)' }}
             >
               Bhopal · Madhya Pradesh · India
             </p>
           </div>
           {/* Bottom-left number */}
-          <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10">
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-white/80">
+          <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10">
+            <p
+              className="text-xs font-medium uppercase tracking-[0.3em] text-white/85"
+              style={{ textShadow: '0 1px 6px rgba(0,0,0,0.55)' }}
+            >
               01 / Resort
             </p>
           </div>
