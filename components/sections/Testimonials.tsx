@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import Section from '../ui/Section';
 import Container from '../ui/Container';
+import Eyebrow from '../ui/Eyebrow';
 import { testimonials } from '@/lib/data';
 
 /**
@@ -26,33 +27,28 @@ const Testimonials = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <Section className="bg-[var(--color-ivory)] py-32 md:py-40 lg:py-48">
+    <Section className="bg-[var(--color-ivory)] py-24 md:py-32 lg:py-36">
       <Container>
         <div className="mx-auto max-w-6xl">
-          {/* Section Eyebrow - generous spacing */}
-          <div className="flex justify-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-              className="mb-16 text-sm font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]"
-              style={{ letterSpacing: '0.15em' }}
-            >
-              Guest Stories
-            </motion.p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease: [0.215, 0.61, 0.355, 1] }}
+            className="mb-16 text-center"
+          >
+            <Eyebrow color="muted">Guest Stories</Eyebrow>
+          </motion.div>
 
           {/* Testimonial Carousel */}
           <div className="relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{
-                  duration: 0.8,
-                  ease: [0.215, 0.61, 0.355, 1],
-                }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
                 className="text-center"
               >
                 {/* Quote Icon - larger, more elegant */}
@@ -133,16 +129,13 @@ const Testimonials = () => {
             </div>
           </div>
 
-          {/* Section Divider */}
+          {/* Divider */}
           <motion.div
-            animate={{ opacity: 1, scaleX: 1 }}
-            
-            transition={{
-              duration: 1,
-              delay: 0.5,
-              ease: [0.215, 0.61, 0.355, 1],
-            }}
-            className="mx-auto mt-20 h-px w-24 bg-[var(--color-champagne)] md:mt-24"
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.215, 0.61, 0.355, 1] }}
+            className="mx-auto mt-16 h-px w-24 bg-[var(--color-champagne)]"
           />
         </div>
       </Container>

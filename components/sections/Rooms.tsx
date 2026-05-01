@@ -1,160 +1,84 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Users, Maximize } from 'lucide-react';
+import Link from 'next/link';
 import Section from '../ui/Section';
 import Container from '../ui/Container';
 import Button from '../ui/Button';
-import { rooms } from '@/lib/data';
+import SectionHeader from '../ui/SectionHeader';
+import ImageCard from '../ui/ImageCard';
+import { rooms, siteConfig } from '@/lib/data';
 
-/**
- * Rooms Section - REDESIGNED LUXURY EDITION
- * Full-width image showcase with elegant overlays
- * Horizontal scroll cards with premium imagery
- */
 const Rooms = () => {
+  const featured = rooms.slice(0, 3);
+
   return (
-    <Section id="rooms" className="bg-[var(--color-background-secondary)] py-20 md:py-28 lg:py-32">
+    <Section id="rooms" className="bg-[var(--color-background-primary)] py-20 md:py-28 lg:py-32">
       <Container maxWidth="wide">
-        {/* Section Header - Compact */}
-        <div className="mb-16 md:mb-20">
-          <div className="flex justify-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-6 text-sm font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]"
-              style={{ letterSpacing: '0.15em' }}
-            >
-              Accommodations
-            </motion.p>
-          </div>
+        <SectionHeader title="Luxury Rooms & Suites" eyebrow="Accommodations" />
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.2,
-              ease: [0.215, 0.61, 0.355, 1],
-            }}
-            className="text-center font-heading text-4xl font-bold text-[var(--color-text-primary)] md:text-5xl lg:text-6xl xl:text-7xl"
-            style={{ letterSpacing: '-0.025em', lineHeight: '1.1' }}
-          >
-            Luxury Rooms & Suites
-          </motion.h2>
-        </div>
-
-        {/* Rooms Grid - 3 Equal Cards */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-          {rooms.map((room, index) => (
+        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 items-stretch">
+          {featured.map((room, index) => (
             <motion.div
               key={room.id}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.3 + index * 0.15,
-                ease: [0.215, 0.61, 0.355, 1],
-              }}
-              className="group relative overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, delay: index * 0.1, ease: [0.215, 0.61, 0.355, 1] }}
             >
-              {/* Image Container - Compact */}
-              <div className="relative mb-5 h-[400px] overflow-hidden">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-                  className="h-full w-full"
-                >
-                  <div
-                    className="h-full w-full bg-cover bg-center"
-                    style={{
-                      backgroundImage: `url(${room.image})`,
-                      filter: 'grayscale(5%) brightness(0.95)',
-                    }}
-                  />
-                </motion.div>
-
-                {/* Subtle Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-
-                {/* Room Title Overlay - Top */}
-                <div className="absolute top-0 left-0 right-0 p-5">
-                  <h3 className="font-heading text-2xl font-bold text-white md:text-3xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
-                    {room.name}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Content Below Image - Compact */}
-              <div className="space-y-4">
-                {/* Description */}
-                <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] md:text-base" style={{ lineHeight: 1.6 }}>
-                  {room.description}
-                </p>
-
-                {/* Capacity & Area */}
-                <div className="flex gap-3 text-xs text-[var(--color-text-tertiary)] md:text-sm">
-                  {'capacity' in room && <span>{room.capacity}</span>}
-                  {'area' in room && <span>• {room.area}</span>}
-                </div>
-
-                {/* Features Pills - Compact */}
-                <div className="flex flex-wrap gap-2">
-                  {room.features.slice(0, 3).map((feature, idx) => (
-                    <span
-                      key={idx}
-                      className="rounded-full border border-[var(--color-bronze)]/20 bg-[var(--color-champagne)]/30 px-3 py-1 text-xs text-[var(--color-text-secondary)]"
-                    >
-                      {feature}
+              <ImageCard
+                image={room.image}
+                alt={room.name}
+                aspect="4/3"
+                title={room.name}
+                meta={
+                  <div className="flex flex-wrap gap-x-5 gap-y-1.5">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Users className="h-4 w-4 text-[var(--color-bronze)]" />
+                      {room.capacity}
                     </span>
-                  ))}
-                </div>
-
-                {/* Bottom Row - View Details + Price */}
-                <div className="flex items-center justify-between gap-4 border-t border-[var(--color-champagne)]/50 pt-5">
-                  {/* View Details Button */}
-                  <button className="group/btn inline-flex items-center text-sm font-semibold uppercase tracking-wider text-[var(--color-bronze)] transition-all duration-300 hover:text-[var(--color-gold)]">
-                    View Details
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                  </button>
-
-                  {/* Price Badge - Minimal */}
-                  <div className="inline-flex items-center rounded-full border border-[var(--color-bronze)] bg-transparent px-3 py-1 transition-all duration-300 hover:bg-[var(--color-bronze)] group-hover:border-[var(--color-gold)]">
-                    <p className="whitespace-nowrap text-sm font-medium text-[var(--color-bronze)] transition-colors duration-300 group-hover:text-white">
-                      ₹{room.price.toLocaleString()}
-                    </p>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Maximize className="h-4 w-4 text-[var(--color-bronze)]" />
+                      {room.area}
+                    </span>
                   </div>
-                </div>
-              </div>
+                }
+                description={room.description}
+                tags={room.features.slice(0, 3)}
+                footer={
+                  <div className="flex items-center justify-between gap-4 border-t border-[var(--color-bronze)]/15 pt-5">
+                    <Link
+                      href={`/rooms/${room.id}`}
+                      className="inline-flex items-center text-sm font-semibold uppercase tracking-wider text-[var(--color-bronze)] transition-colors hover:text-[var(--color-gold)]"
+                      style={{ letterSpacing: '0.1em' }}
+                    >
+                      View Details
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                    <div className="rounded-full border border-[var(--color-bronze)] px-3 py-1">
+                      <p className="whitespace-nowrap text-sm font-medium text-[var(--color-bronze)]">
+                        ₹{room.price.toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+                }
+              />
             </motion.div>
           ))}
         </div>
 
-        {/* View All CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.8,
-            ease: [0.215, 0.61, 0.355, 1],
-          }}
-          className="mt-16 text-center"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.7, delay: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
+          className="mt-16 flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button
-            variant="primary"
-            size="lg"
-            className="shadow-lg transition-transform duration-600 hover:scale-105"
-            style={{
-              backgroundColor: 'var(--color-gold)',
-              color: 'var(--color-charcoal)',
-              fontWeight: 500,
-              letterSpacing: '1.5px',
-              textTransform: 'uppercase',
-              fontSize: '0.875rem',
-            }}
-          >
+          <Button variant="cta" size="lg" href="/rooms">
+            View All Rooms
+          </Button>
+          <Button variant="cta-outline" size="lg" href={siteConfig.booking.resort}>
             Book Your Stay
           </Button>
         </motion.div>

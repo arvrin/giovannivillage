@@ -1,10 +1,13 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Hotel, Leaf, Utensils, Sparkles } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
+import PageHero from '@/components/ui/PageHero';
+import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { about } from '@/lib/data';
 
@@ -15,62 +18,45 @@ const iconMap = {
   spa: Sparkles,
 };
 
+const stats = [
+  { value: '10', label: 'Acres of Lush Estate' },
+  { value: '20', label: 'Minutes from City Center' },
+  { value: '24/7', label: 'Concierge Service' },
+  { value: '5,000', label: 'Event Capacity' },
+];
+
 export default function AboutPage() {
   return (
     <>
       <Header />
 
-      <main className="min-h-screen bg-[var(--color-background)] pt-24 pb-16">
-        {/* Hero Section - LUXURY IMAGE HERO */}
-        <div className="relative h-[70vh] md:h-[80vh] lg:h-[85vh] mb-32 md:mb-40 lg:mb-48">
-          <Image
-            src="/a1.jpg"
-            alt="About Giovanni Village Resort"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 pb-24 md:pb-32">
-            <Container>
-              <div className="text-center max-w-5xl mx-auto">
-                <div className="flex justify-center mb-8">
-                  <p className="text-sm font-semibold uppercase tracking-widest text-white/80" style={{ letterSpacing: '2.5px' }}>
-                    Discover Our Story
-                  </p>
-                </div>
-                <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-10" style={{ lineHeight: '1.1', letterSpacing: '-0.025em' }}>
-                  {about.title}
-                </h1>
-                <p className="text-2xl md:text-3xl text-white/90 font-light" style={{ lineHeight: '1.6' }}>
-                  {about.subtitle}
-                </p>
-              </div>
-            </Container>
-          </div>
-        </div>
+      <main className="min-h-screen bg-[var(--color-background)]">
+        <PageHero
+          image="/a1.jpg"
+          alt="About Giovanni Village Resort"
+          eyebrow="Discover Our Story"
+          title={about.title}
+          description={about.subtitle}
+        />
 
         <Container>
-          {/* Main Content - GENEROUS SPACING */}
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 mb-32 md:mb-40">
-            {/* Left Column - Image */}
-            <div className="relative h-[500px] lg:h-[700px] rounded-lg overflow-hidden">
+          {/* Editorial: image + content */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-24 md:mb-32">
+            <div className="relative h-[500px] lg:h-[680px] rounded-lg overflow-hidden">
               <Image
-                src="https://giovannivillage.com/wp-content/uploads/2023/07/3.jpg"
+                src="/images/about/landscape-1.jpg"
                 alt="Giovanni Village Resort"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-1000"
                 priority
               />
             </div>
-
-            {/* Right Column - Content - ENHANCED TYPOGRAPHY */}
-            <div className="flex flex-col justify-center space-y-8">
+            <div className="flex flex-col justify-center space-y-6">
               {about.content.map((paragraph, index) => (
                 <p
                   key={index}
-                  className="text-xl md:text-2xl leading-relaxed text-[var(--color-text-secondary)]"
-                  style={{ lineHeight: '1.8' }}
+                  className="text-lg md:text-xl text-[var(--color-text-secondary)]"
+                  style={{ lineHeight: 1.8 }}
                 >
                   {paragraph}
                 </p>
@@ -78,108 +64,77 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Highlights Grid - LUXURY TREATMENT */}
-          <div className="mb-32 md:mb-40">
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-16 md:mb-20" style={{ lineHeight: '1.1' }}>
-              What Makes Us Special
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
-              {about.highlights.map((highlight, index) => {
-                const Icon = iconMap[highlight.icon as keyof typeof iconMap];
-                return (
-                  <div
-                    key={index}
-                    className="text-center p-8 bg-[var(--color-background-secondary)] rounded-lg transition-transform duration-500 hover:scale-105"
-                  >
-                    <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[var(--color-bronze)]/10 flex items-center justify-center">
-                      <Icon className="h-10 w-10 text-[var(--color-bronze)]" />
+          {/* Highlights */}
+          <SectionHeader title="What Makes Us Special" eyebrow="Signature Pillars" />
+          <div className="mt-16 mb-24 md:mb-32 grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+            {about.highlights.map((highlight, index) => {
+              const Icon = iconMap[highlight.icon as keyof typeof iconMap];
+              return (
+                <motion.div
+                  key={highlight.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.6, delay: index * 0.08, ease: [0.215, 0.61, 0.355, 1] }}
+                  className="text-center"
+                >
+                  <div className="mb-6 flex justify-center">
+                    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-champagne)] text-[var(--color-bronze)] transition-transform duration-500 hover:scale-110">
+                      <Icon className="h-9 w-9" strokeWidth={1.5} />
                     </div>
-                    <h3 className="font-heading text-2xl font-bold mb-4" style={{ lineHeight: '1.2' }}>
-                      {highlight.title}
-                    </h3>
-                    <p className="text-lg leading-relaxed text-[var(--color-text-secondary)]" style={{ lineHeight: '1.7' }}>
-                      {highlight.description}
-                    </p>
                   </div>
-                );
-              })}
-            </div>
+                  <h3 className="font-heading text-2xl font-bold mb-3">{highlight.title}</h3>
+                  <p className="text-base text-[var(--color-text-secondary)]" style={{ lineHeight: 1.7 }}>
+                    {highlight.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
 
-          {/* Stats Section */}
-          <div className="bg-[var(--color-background-secondary)] rounded-lg p-16 md:p-20 mb-32 md:mb-40">
+          {/* Stats */}
+          <div className="bg-[var(--color-background-secondary)] rounded-lg p-12 md:p-16 mb-24 md:mb-32">
             <div className="grid md:grid-cols-4 gap-12 text-center">
-              <div>
-                <p className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-bronze)] mb-4" style={{ lineHeight: '1.1' }}>
-                  10
-                </p>
-                <p className="text-lg text-[var(--color-text-secondary)]">Acres of Lush Estate</p>
-              </div>
-              <div>
-                <p className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-bronze)] mb-4" style={{ lineHeight: '1.1' }}>
-                  20
-                </p>
-                <p className="text-lg text-[var(--color-text-secondary)]">Minutes from City Center</p>
-              </div>
-              <div>
-                <p className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-bronze)] mb-4" style={{ lineHeight: '1.1' }}>
-                  24/7
-                </p>
-                <p className="text-lg text-[var(--color-text-secondary)]">Concierge Service</p>
-              </div>
-              <div>
-                <p className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-bronze)] mb-4" style={{ lineHeight: '1.1' }}>
-                  500
-                </p>
-                <p className="text-lg text-[var(--color-text-secondary)]">Event Capacity</p>
-              </div>
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <p
+                    className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-bronze)] mb-3"
+                    style={{ lineHeight: 1.05 }}
+                  >
+                    {s.value}
+                  </p>
+                  <p className="text-base md:text-lg text-[var(--color-text-secondary)]">{s.label}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Image Gallery Grid */}
-          <div className="mb-32 md:mb-40">
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 md:mb-20" style={{ lineHeight: '1.1' }}>
-              Experience Giovanni Village
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
-              <div className="relative h-[350px] md:h-[400px] rounded-lg overflow-hidden">
+          {/* Image gallery */}
+          <SectionHeader title="Experience Giovanni Village" eyebrow="A Glimpse" />
+          <div className="mt-16 mb-24 md:mb-32 grid md:grid-cols-3 gap-8">
+            {[
+              { src: '/images/about/landscape-1.jpg', alt: 'Nature Views' },
+              { src: '/images/about/landscape-2.jpg', alt: 'Garden Landscape' },
+              { src: '/images/about/landscape-3.jpg', alt: 'Resort Grounds' },
+            ].map((img) => (
+              <div key={img.src} className="relative aspect-[4/3] rounded-lg overflow-hidden group">
                 <Image
-                  src="https://giovannivillage.com/wp-content/uploads/2023/07/4.jpg"
-                  alt="Nature Views"
+                  src={img.src}
+                  alt={img.alt}
                   fill
-                  className="object-cover hover:scale-110 transition-transform duration-700"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <div className="relative h-[350px] md:h-[400px] rounded-lg overflow-hidden">
-                <Image
-                  src="https://giovannivillage.com/wp-content/uploads/2023/07/5.jpg"
-                  alt="Garden Landscape"
-                  fill
-                  className="object-cover hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-              <div className="relative h-[350px] md:h-[400px] rounded-lg overflow-hidden">
-                <Image
-                  src="https://giovannivillage.com/wp-content/uploads/2023/07/2.jpg"
-                  alt="Resort Grounds"
-                  fill
-                  className="object-cover hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Our Promise */}
-          <div className="text-center max-w-4xl mx-auto">
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-10" style={{ lineHeight: '1.1' }}>
-              Our Promise to You
-            </h2>
-            <p className="text-xl md:text-2xl leading-relaxed text-[var(--color-text-secondary)]" style={{ lineHeight: '1.8' }}>
-              At Giovanni Village, we believe in creating memories that last a lifetime.
-              Every detail is thoughtfully curated to ensure your stay is nothing short of extraordinary.
-              From our attentive staff to our pristine natural surroundings, we promise an experience
-              that rejuvenates your mind, body, and soul.
-            </p>
+          {/* Promise */}
+          <div className="text-center max-w-3xl mx-auto pb-16">
+            <SectionHeader
+              title="Our Promise to You"
+              eyebrow="Hospitality"
+              description="At Giovanni Village, we believe in creating memories that last a lifetime. Every detail is thoughtfully curated — from our attentive staff to our pristine natural surroundings — to rejuvenate your mind, body and soul."
+            />
           </div>
         </Container>
       </main>

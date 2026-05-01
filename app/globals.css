@@ -1,231 +1,334 @@
 @import "tailwindcss";
 
 @layer base {
-  /* CSS Variables - LUXURY EDITION */
+  /* ============================================================
+     SHARED ROOT — variables that don't change between themes.
+     Each theme class below overrides the visual tokens.
+     ============================================================ */
   :root {
-  /* Primary Palette - Earthy Luxury */
-  --color-champagne: #E8DCC4;
-  --color-ivory: #FDFBF7;
-  --color-bronze: #8B7355;
-  --color-charcoal: #2A2826;
+    /* Spacing scale */
+    --spacing-xs: 0.75rem;
+    --spacing-sm: 1.5rem;
+    --spacing-md: 3rem;
+    --spacing-lg: 4.5rem;
+    --spacing-xl: 7.5rem;
+    --spacing-2xl: 11.25rem;
+    --spacing-3xl: 15rem;
 
-  /* Accent Palette - Use Sparingly */
-  --color-gold: #C9A961;
-  --color-clay: #A67C52;
-  --color-forest-green: #3A4F41;
+    /* Functional colors (theme-agnostic) */
+    --color-success: #6B8E6B;
+    --color-error: #A64B4B;
+    --color-whatsapp: #25d366;
+    --color-brand-green: #25d366;
 
-  /* Backgrounds */
-  --color-background-primary: #FDFBF7;
-  --color-background-secondary: #E8DCC4;
-  --color-overlay: rgba(42, 40, 38, 0.6);
-
-  /* Text Hierarchy */
-  --color-text-primary: #2A2826;
-  --color-text-secondary: #8B7355;
-  --color-text-tertiary: #A67C52;
-  --color-text-inverse: #FDFBF7;
-
-  /* Functional Colors */
-  --color-success: #6B8E6B;
-  --color-error: #A64B4B;
-  --color-whatsapp: #25d366;
-
-  /* Legacy/Alias Variables for Components */
-  --color-brand-green: #25d366;
-  --color-accent: #C9A961;
-  --color-accent-900: #8B7355;
-  --color-primary: #E8DCC4;
-  --color-primary-400: #FDFBF7;
-  --color-primary-50: #FDFBF7;
-  --color-text-light: #FDFBF7;
-
-
-  /* Luxury Spacing Scale */
-  --spacing-xs: 0.75rem;    /* 12px */
-  --spacing-sm: 1.5rem;     /* 24px */
-  --spacing-md: 3rem;       /* 48px */
-  --spacing-lg: 4.5rem;     /* 72px */
-  --spacing-xl: 7.5rem;     /* 120px */
-  --spacing-2xl: 11.25rem;  /* 180px */
-  --spacing-3xl: 15rem;     /* 240px */
-
-  /* Border Radius - Minimal */
-  --radius-sm: 0.125rem;    /* 2px - barely perceptible */
-  --radius-md: 0.25rem;     /* 4px - subtle */
-  --radius-lg: 0.5rem;      /* 8px - cards only */
-
-  /* Shadows - Soft & Subtle */
-  --shadow-sm: 0 2px 8px rgba(42, 40, 38, 0.04);
-  --shadow-md: 0 4px 20px rgba(42, 40, 38, 0.08);
-  --shadow-lg: 0 8px 32px rgba(42, 40, 38, 0.12);
-
-  /* Transitions - Slow & Sophisticated */
-  --transition-base: 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  --transition-slow: 800ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  --transition-slowest: 1200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-
-  /* Container - Luxury Padding */
-  --container-max-width: 1440px;
-  --container-padding-mobile: 1.5rem;   /* 24px */
-  --container-padding-tablet: 3rem;     /* 48px */
-  --container-padding-desktop: 4rem;    /* 64px */
+    /* Container */
+    --container-max-width: 1440px;
   }
 
-  /* Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  /* ============================================================
+     EDITORIAL — Refined sanctuary · Aman, Capella, Rosewood
+     Warm cream + bronze accents, mixed-case serif headings.
+     ============================================================ */
+  html.editorial {
+    --color-bg: #FDFBF7;
+    --color-bg-alt: #E8DCC4;
+    --color-bg-deep: #2A2826;
+    --color-bg-deep-text: #FDFBF7;
+    --color-bg-inverse: #2A2826;
+    --color-text: #2A2826;
+    --color-text-secondary: #8B7355;
+    --color-text-tertiary: #A67C52;
+    --color-text-inverse: #FDFBF7;
+    --color-accent: #C9A961;
+    --color-accent-hover: #8B7355;
+    --color-accent-contrast: #2A2826;
+    --color-border: rgba(139, 115, 85, 0.18);
+    --color-border-strong: rgba(139, 115, 85, 0.4);
+    --color-overlay: rgba(42, 40, 38, 0.6);
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    --font-heading: var(--font-editorial-heading), Georgia, serif;
+    --font-body: var(--font-editorial-body), system-ui, sans-serif;
+    --font-eyebrow: var(--font-editorial-body), system-ui, sans-serif;
 
-body {
-  background-color: var(--color-background-primary);
-  color: var(--color-text-primary);
-  font-family: var(--font-body), sans-serif;
-  font-size: 1.125rem;  /* 18px - Luxury standard */
-  line-height: 1.7;     /* Generous line height */
-  overflow-x: hidden;
-}
+    --weight-heading: 600;
+    --weight-eyebrow: 600;
+    --tracking-heading: -0.025em;
+    --tracking-eyebrow: 0.15em;
+    --transform-heading: none;
+    --transform-eyebrow: uppercase;
 
-/* Typography - Luxury Editorial Excellence */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), serif;
-  line-height: 1.2;
-  color: var(--color-text-primary);
-  margin-bottom: 1rem;
-}
+    --radius-sm: 0.125rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
 
-/* Mobile-first typography */
-h1 {
-  font-size: 3rem;      /* 48px mobile */
-  font-weight: 700;
-  letter-spacing: -0.025em;
-}
+    --shadow-sm: 0 2px 8px rgba(42, 40, 38, 0.04);
+    --shadow-md: 0 4px 20px rgba(42, 40, 38, 0.08);
+    --shadow-lg: 0 8px 32px rgba(42, 40, 38, 0.12);
 
-h2 {
-  font-size: 2.5rem;    /* 40px mobile */
-  font-weight: 600;
-}
+    --transition: 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
-h3 {
-  font-size: 2rem;      /* 32px mobile */
-  font-weight: 600;
-}
-
-h4 {
-  font-size: 1.5rem;    /* 24px */
-  font-weight: 600;
-}
-
-h5 {
-  font-size: 1.25rem;   /* 20px */
-  font-weight: 500;
-}
-
-h6 {
-  font-size: 1.125rem;  /* 18px */
-  font-weight: 500;
-}
-
-/* Desktop typography - LUXURY SCALE */
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 6rem;      /* 96px - HERO IMPACT */
+    /* Aliases — preserve compatibility with existing components. */
+    --color-background: var(--color-bg);
+    --color-background-primary: var(--color-bg);
+    --color-background-secondary: var(--color-bg-alt);
+    --color-text-primary: var(--color-text);
+    --color-text-light: var(--color-text-inverse);
+    --color-champagne: #E8DCC4;
+    --color-ivory: #FDFBF7;
+    --color-bronze: #8B7355;
+    --color-charcoal: #2A2826;
+    --color-gold: #C9A961;
+    --color-clay: #A67C52;
+    --color-forest-green: #3A4F41;
   }
 
-  h2 {
-    font-size: 4rem;      /* 64px - Section headings */
+  /* ============================================================
+     MODERNIST — Geometric architectural · Belmond, Bulgari, MO
+     Pure ivory + forest green, ALL CAPS sans, sharp corners.
+     ============================================================ */
+  html.modernist {
+    --color-bg: #F8F6F1;
+    --color-bg-alt: #ECE7DC;
+    --color-bg-deep: #1F2A24;
+    --color-bg-deep-text: #F8F6F1;
+    --color-bg-inverse: #1F2A24;
+    --color-text: #1F2A24;
+    --color-text-secondary: #4A5550;
+    --color-text-tertiary: #6E7670;
+    --color-text-inverse: #F8F6F1;
+    --color-accent: #1F2A24;
+    --color-accent-hover: #0F1A14;
+    --color-accent-contrast: #F8F6F1;
+    --color-border: rgba(31, 42, 36, 0.15);
+    --color-border-strong: rgba(31, 42, 36, 0.5);
+    --color-overlay: rgba(15, 26, 20, 0.65);
+
+    --font-heading: var(--font-modernist-heading), system-ui, sans-serif;
+    --font-body: var(--font-modernist-body), system-ui, sans-serif;
+    --font-eyebrow: var(--font-modernist-body), system-ui, sans-serif;
+
+    --weight-heading: 500;
+    --weight-eyebrow: 600;
+    --tracking-heading: 0.04em;
+    --tracking-eyebrow: 0.2em;
+    --transform-heading: uppercase;
+    --transform-eyebrow: uppercase;
+
+    --radius-sm: 0;
+    --radius-md: 0;
+    --radius-lg: 0;
+
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: 0 8px 24px rgba(31, 42, 36, 0.10);
+
+    --transition: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Aliases */
+    --color-background: var(--color-bg);
+    --color-background-primary: var(--color-bg);
+    --color-background-secondary: var(--color-bg-alt);
+    --color-text-primary: var(--color-text);
+    --color-text-light: var(--color-text-inverse);
+    --color-champagne: #ECE7DC;
+    --color-ivory: #F8F6F1;
+    --color-bronze: #4A5550;
+    --color-charcoal: #1F2A24;
+    --color-gold: #1F2A24;        /* gold mapped to deep green in modernist */
+    --color-clay: #6E7670;
+    --color-forest-green: #1F2A24;
   }
 
-  h3 {
-    font-size: 2.625rem;  /* 42px - Subsections */
+  /* ============================================================
+     CINEMATIC — Fashion-editorial dark · EDITION, Faena
+     Near-black + warm gold + cream, dramatic uppercase serif.
+     ============================================================ */
+  html.cinematic {
+    --color-bg: #0F0F0E;
+    --color-bg-alt: #1A1818;
+    --color-bg-deep: #050505;
+    --color-bg-deep-text: #F0E6D2;
+    --color-bg-inverse: #F0E6D2;
+    --color-text: #F0E6D2;
+    --color-text-secondary: #C9A961;
+    --color-text-tertiary: #8A7A52;
+    --color-text-inverse: #0F0F0E;
+    --color-accent: #C9A961;
+    --color-accent-hover: #E8C977;
+    --color-accent-contrast: #0F0F0E;
+    --color-border: rgba(201, 169, 97, 0.2);
+    --color-border-strong: rgba(201, 169, 97, 0.6);
+    --color-overlay: rgba(0, 0, 0, 0.72);
+
+    --font-heading: var(--font-cinematic-heading), Georgia, serif;
+    --font-body: var(--font-cinematic-body), system-ui, sans-serif;
+    --font-eyebrow: var(--font-cinematic-body), system-ui, sans-serif;
+
+    --weight-heading: 300;
+    --weight-eyebrow: 500;
+    --tracking-heading: 0.06em;
+    --tracking-eyebrow: 0.25em;
+    --transform-heading: uppercase;
+    --transform-eyebrow: uppercase;
+
+    --radius-sm: 0.125rem;
+    --radius-md: 0.25rem;
+    --radius-lg: 0.5rem;
+
+    --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.7);
+
+    --transition: 700ms cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    /* Aliases */
+    --color-background: var(--color-bg);
+    --color-background-primary: var(--color-bg);
+    --color-background-secondary: var(--color-bg-alt);
+    --color-text-primary: var(--color-text);
+    --color-text-light: var(--color-text-inverse);
+    --color-champagne: #1A1818;
+    --color-ivory: #0F0F0E;
+    --color-bronze: #C9A961;
+    --color-charcoal: #F0E6D2;
+    --color-gold: #C9A961;
+    --color-clay: #8A7A52;
+    --color-forest-green: #C9A961;
   }
 
-  h4 {
-    font-size: 1.875rem;  /* 30px */
+  /* ============================================================
+     Fallback for the very first paint before next-themes adds the
+     theme class — assume editorial.
+     ============================================================ */
+  html:not(.editorial):not(.modernist):not(.cinematic) {
+    --color-bg: #FDFBF7;
+    --color-text: #2A2826;
+    --font-heading: var(--font-editorial-heading), serif;
+    --font-body: var(--font-editorial-body), sans-serif;
   }
 
-  h5 {
-    font-size: 1.5rem;    /* 24px */
+  /* Base resets */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    overflow-x: hidden;
+    transition: background-color 400ms ease, color 400ms ease;
+  }
+
+  /* Themed typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-heading);
+    letter-spacing: var(--tracking-heading);
+    text-transform: var(--transform-heading);
+    line-height: 1.15;
+    color: var(--color-text);
+    margin: 0;
+  }
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.625rem; }
+  h4 { font-size: 1.25rem; }
+  h5 { font-size: 1.125rem; }
+  h6 { font-size: 1rem; }
+
+  @media (min-width: 768px) {
+    h1 { font-size: 4.5rem; }
+    h2 { font-size: 3rem; }
+    h3 { font-size: 2rem; }
+    h4 { font-size: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    h1 { font-size: 5.5rem; }
+    h2 { font-size: 3.5rem; }
+    h3 { font-size: 2.25rem; }
+  }
+
+  p {
+    line-height: 1.7;
+  }
+  .prose p {
+    margin-bottom: 1.5rem;
+    max-width: 65ch;
+  }
+  p.large {
+    font-size: 1.25rem;
+    line-height: 1.8;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  button {
+    font-family: var(--font-body);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all var(--transition);
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-contrast);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-alt);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-text-secondary);
+    border-radius: var(--radius-md);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
   }
 }
 
-p {
-  margin-bottom: 1.5rem;
-  max-width: 60ch;  /* Luxury standard: max 60 characters per line */
-  line-height: 1.7;
-}
+/* ============================================================
+   Theme-aware font utilities — these resolve to the active
+   theme's font via CSS variable cascade.
+   ============================================================ */
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+.font-eyebrow { font-family: var(--font-eyebrow); }
 
-p.large {
-  font-size: 1.375rem;  /* 22px - Intro paragraphs */
-  line-height: 1.8;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color var(--transition-base);
-}
-
-a:hover {
-  color: var(--color-bronze);
-}
-
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Buttons */
-button {
-  font-family: var(--font-body);
-  cursor: pointer;
-  border: none;
-  outline: none;
-  transition: all var(--transition-base);
-}
-
-/* Selection */
-::selection {
-  background-color: var(--color-champagne);
-  color: var(--color-charcoal);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-background-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-bronze);
-  border-radius: var(--radius-lg);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold);
-  }
-}
-
-/* Utility Classes - Container handled by Component */
-/* Removed .container class to avoid conflicts with Tailwind utilities */
-
+/* ============================================================
+   Section padding utility
+   ============================================================ */
 .section-padding {
   padding-top: var(--spacing-3xl);
   padding-bottom: var(--spacing-3xl);
 }
-
 @media (max-width: 768px) {
   .section-padding {
     padding-top: var(--spacing-xl);
@@ -233,100 +336,50 @@ button {
   }
 }
 
-/* Animations */
+/* ============================================================
+   Animations (theme-agnostic)
+   ============================================================ */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
+.animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+.animate-slideUp { animation: slideUp 0.6s ease-out; }
+.animate-slideInLeft { animation: slideInLeft 0.6s ease-out; }
+.animate-slideInRight { animation: slideInRight 0.6s ease-out; }
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
-.animate-fadeIn {
-  animation: fadeIn 0.6s ease-out;
-}
-
-.animate-slideUp {
-  animation: slideUp 0.6s ease-out;
-}
-
-.animate-slideInLeft {
-  animation: slideInLeft 0.6s ease-out;
-}
-
-.animate-slideInRight {
-  animation: slideInRight 0.6s ease-out;
-}
-
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Loading States */
 .skeleton {
   background: linear-gradient(
     90deg,
-    var(--color-background-secondary) 0%,
-    var(--color-primary-50) 50%,
-    var(--color-background-secondary) 100%
+    var(--color-bg-alt) 0%,
+    var(--color-bg) 50%,
+    var(--color-bg-alt) 100%
   );
   background-size: 200% 100%;
   animation: loading 1.5s ease-in-out infinite;
 }
-
 @keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
-/* Accessibility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -339,17 +392,13 @@ button {
   border-width: 0;
 }
 
-/* Focus States */
 :focus-visible {
-  outline: 2px solid var(--color-bronze);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-/* Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
