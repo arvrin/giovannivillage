@@ -19,13 +19,11 @@ const CinematicHero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
-  // Defer video fetch until browser is idle. Skip on mobile to avoid the ~10MB
-  // download on cellular. The poster image (landscape-3) renders instantly.
+  // Defer the video fetch until the browser is idle so the page paints
+  // instantly via the poster image, then the video crossfades in.
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
-    if (typeof window === 'undefined' || window.matchMedia('(max-width: 767px)').matches) return;
-
+    if (!v || typeof window === 'undefined') return;
     const start = () => {
       v.load();
       v.muted = true;
@@ -57,7 +55,7 @@ const CinematicHero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: videoLoaded ? 1 : 0 }}
           transition={{ duration: 1.4 }}
-          className="absolute inset-0 h-full w-full object-cover hidden md:block"
+          className="absolute inset-0 h-full w-full object-cover"
           src="/Giovanni-Video-Presentation.mp4"
           poster="/images/hero/landscape-3.jpg"
           autoPlay

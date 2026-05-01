@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface LoaderProps {
   progress: number;
@@ -34,23 +35,21 @@ const CinematicLoader = ({ progress }: LoaderProps) => {
           A Wildlife Sanctuary
         </motion.p>
 
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.0, delay: 0.4 }}
-          className="mt-8 text-white"
-          style={{
-            fontFamily: 'var(--font-heading)',
-            fontWeight: 300,
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
-            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-            lineHeight: 1,
-          }}
+          transition={{ duration: 1.0, delay: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
+          className="mt-8"
         >
-          Giovanni
-          <span className="block italic font-extralight mt-1">Village</span>
-        </motion.h1>
+          <Image
+            src="/images/logo/gvr-final-logo.png"
+            alt="Giovanni Village Resort"
+            width={220}
+            height={76}
+            priority
+            className="h-16 md:h-20 w-auto brightness-0 invert"
+          />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}

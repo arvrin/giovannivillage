@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface LoaderProps {
   progress: number;
@@ -34,33 +35,31 @@ const ModernistLoader = ({ progress }: LoaderProps) => {
         </span>
       </div>
 
-      {/* Wordmark */}
-      <div className="text-center">
+      {/* Logo + tagline */}
+      <div className="flex flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.215, 0.61, 0.355, 1] }}
+        >
+          <Image
+            src="/images/logo/gvr-final-logo.png"
+            alt="Giovanni Village Resort"
+            width={200}
+            height={68}
+            priority
+            className="h-16 md:h-20 w-auto"
+          />
+        </motion.div>
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-[10px] font-medium uppercase text-[var(--color-text-tertiary)]"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-6 text-[10px] font-medium uppercase text-[var(--color-text-tertiary)]"
           style={{ letterSpacing: '0.4em' }}
         >
           Resort & Spa
         </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15 }}
-          className="mt-4 text-[var(--color-text)]"
-          style={{
-            fontFamily: 'var(--font-heading)',
-            fontWeight: 500,
-            letterSpacing: '0.04em',
-            textTransform: 'uppercase',
-            fontSize: 'clamp(1.75rem, 4.5vw, 3rem)',
-            lineHeight: 1,
-          }}
-        >
-          Giovanni Village
-        </motion.h1>
       </div>
 
       {/* Progress line */}

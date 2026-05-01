@@ -21,11 +21,11 @@ const Hero = () => {
   // The poster image is shown immediately; video crossfades in once ready.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
-    if (typeof window === 'undefined' || window.matchMedia('(max-width: 767px)').matches) return;
+    if (!video || typeof window === 'undefined') return;
 
     const start = () => {
       video.load();
+      video.muted = true;
       video.play().catch(() => {});
     };
 
@@ -56,7 +56,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: videoLoaded ? 1 : 0 }}
           transition={{ duration: 1.0, ease: [0.215, 0.61, 0.355, 1] }}
-          className="absolute inset-0 z-10 hidden md:block"
+          className="absolute inset-0 z-10"
         >
           <video
             ref={videoRef}
