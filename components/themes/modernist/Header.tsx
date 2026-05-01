@@ -42,25 +42,19 @@ const ModernistHeader = () => {
 
   return (
     <>
-      {/* Top thin meta strip */}
+      {/* Top thin meta strip — always solid so it reads on any hero layout */}
       <div className="fixed top-0 left-0 right-0 z-[55] hidden md:block">
-        <div
-          className={`border-b transition-colors duration-300 ${
-            scrolled ? 'bg-[var(--color-bg)] border-[var(--color-border)]' : 'bg-transparent border-white/15'
-          }`}
-        >
+        <div className="border-b bg-[var(--color-bg)] border-[var(--color-border)]">
           <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-8 py-2.5 lg:px-12">
             <p
-              className={`text-[10px] font-medium uppercase ${scrolled ? 'text-[var(--color-text-tertiary)]' : 'text-white/75'}`}
+              className="text-[10px] font-medium uppercase text-[var(--color-text-tertiary)]"
               style={{ letterSpacing: '0.3em' }}
             >
               Resort & Spa · Bhopal · Madhya Pradesh
             </p>
             <a
               href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
-              className={`text-[10px] font-medium uppercase transition-colors hover:text-[var(--color-accent)] ${
-                scrolled ? 'text-[var(--color-text-secondary)]' : 'text-white/85'
-              }`}
+              className="text-[10px] font-medium uppercase text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-accent)]"
               style={{ letterSpacing: '0.3em' }}
             >
               Reservations · {siteConfig.contact.phone}
@@ -69,17 +63,19 @@ const ModernistHeader = () => {
         </div>
       </div>
 
-      {/* Main bar */}
+      {/* Main bar — always solid in Modernist (asymmetric hero exposes the
+          header to both image and ivory content panels, so a transparent
+          state would render text invisibly over the right column) */}
       <motion.header
         initial={{ y: -40 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
-        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'top-0 bg-[var(--color-bg)] border-b border-[var(--color-border)]' : 'top-0 md:top-9 bg-transparent'
+        className={`fixed left-0 right-0 z-50 top-0 md:top-9 bg-[var(--color-bg)] transition-shadow duration-300 ${
+          scrolled ? 'shadow-sm border-b border-[var(--color-border)]' : 'border-b border-[var(--color-border)]/0'
         }`}
       >
         <div className="mx-auto flex h-16 md:h-[72px] max-w-screen-2xl items-center justify-between px-6 md:px-8 lg:px-12">
-          {/* Logo (real GVR logo) */}
+          {/* Logo */}
           <Link href="/" className="shrink-0 inline-flex items-center">
             <Image
               src="/images/logo/gvr-final-logo.png"
@@ -87,9 +83,7 @@ const ModernistHeader = () => {
               width={140}
               height={48}
               priority
-              className={`h-9 md:h-11 w-auto transition-all duration-300 ${
-                scrolled ? '' : 'brightness-0 invert md:brightness-100 md:invert-0'
-              }`}
+              className="h-9 md:h-11 w-auto"
             />
           </Link>
 
@@ -99,9 +93,7 @@ const ModernistHeader = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-[11px] font-medium uppercase transition-colors hover:text-[var(--color-accent)] ${
-                  scrolled ? 'text-[var(--color-text-secondary)]' : 'text-white/85'
-                }`}
+                className="text-[11px] font-medium uppercase text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-accent)]"
                 style={{ letterSpacing: '0.22em' }}
               >
                 {item.label}
@@ -122,11 +114,7 @@ const ModernistHeader = () => {
             <button
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
-              className={`lg:hidden flex h-10 w-10 items-center justify-center transition-colors ${
-                scrolled
-                  ? 'text-[var(--color-text)] hover:bg-[var(--color-bg-alt)]'
-                  : 'text-white/90 hover:bg-white/10'
-              }`}
+              className="lg:hidden flex h-10 w-10 items-center justify-center text-[var(--color-text)] transition-colors hover:bg-[var(--color-bg-alt)]"
             >
               <Menu className="h-5 w-5" />
             </button>

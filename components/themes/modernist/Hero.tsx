@@ -32,8 +32,8 @@ const ModernistHero = () => {
   }, []);
 
   return (
-    <section className="relative w-full bg-[var(--color-bg)]">
-      <div className="grid grid-rows-[55vh_auto] lg:h-screen lg:min-h-[640px] lg:grid-cols-[60%_40%] lg:grid-rows-1">
+    <section className="relative w-full bg-[var(--color-bg)] pt-16 md:pt-[109px]">
+      <div className="grid grid-rows-[55vh_auto] lg:h-[calc(100vh-109px)] lg:min-h-[560px] lg:grid-cols-[60%_40%] lg:grid-rows-1">
         {/* Media column */}
         <div className="relative overflow-hidden bg-black">
           {/* Static poster — instant render */}
