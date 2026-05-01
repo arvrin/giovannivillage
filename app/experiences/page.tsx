@@ -5,7 +5,6 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeader from '@/components/ui/SectionHeader';
-import ImageCard from '@/components/ui/ImageCard';
 import Eyebrow from '@/components/ui/Eyebrow';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { activities, siteConfig } from '@/lib/data';
@@ -16,8 +15,14 @@ export const metadata = {
     'Ratapani safaris, telescope dinners, lakeside fishing, organic farm breakfast, open-air theatre and more — twenty-plus curated experiences at Giovanni Village Resort.',
 };
 
-const featured = activities.slice(0, 3);
-const rest = activities.slice(3);
+const safariActivity = activities.find((a) => a.id === 'ratapani-safari')!;
+const featured = [
+  safariActivity,
+  activities.find((a) => a.id === 'telescope-dinner')!,
+  activities.find((a) => a.id === 'farm-breakfast')!,
+];
+const featuredIds = new Set(featured.map((a) => a.id));
+const rest = activities.filter((a) => !featuredIds.has(a.id));
 
 export default function ExperiencesPage() {
   return (
@@ -26,51 +31,108 @@ export default function ExperiencesPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/n1.jpg"
-          alt="Resort Experiences at Giovanni Village"
+          image="/images/experiences/wildlife/safari-elephants.jpg"
+          alt="Ratapani Sanctuary safari"
           eyebrow="Countryside Chronicles"
           title="Resort Experiences"
           description="From tiger safaris in Ratapani to telescope dinners under the stars — Giovanni isn't just a resort, it's a world of immersive moments."
         />
 
         <Container>
-          {/* Featured experiences */}
+          {/* Wildlife showcase — three landscape photos in a row */}
           <SectionHeader
-            title="Signature Experiences"
-            eyebrow="Don't Miss"
-            description="The three things every Giovanni guest should make time for."
+            title="Into the Wild, Just Minutes Away"
+            eyebrow="Ratapani Sanctuary"
+            description="Spot tigers, leopards and rare birds 1–5 km from the resort, then return to luxury before sundown."
           />
-          <div className="mt-16 mb-24 grid gap-8 md:grid-cols-3">
-            {featured.map((a) => (
-              <ImageCard
-                key={a.id}
-                image={a.image}
-                alt={a.title}
-                aspect="4/3"
-                eyebrow={a.category}
-                title={a.title}
-                description={a.description}
-              />
+          <div className="mt-12 mb-20 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+            {[
+              { src: '/images/experiences/wildlife/tiger-log.jpg', alt: 'Tiger resting on log' },
+              { src: '/images/experiences/wildlife/safari-elephants.jpg', alt: 'Safari elephants' },
+              { src: '/images/experiences/wildlife/tiger-face.jpg', alt: 'Tiger face' },
+            ].map((p) => (
+              <div key={p.src} className="relative aspect-[3/4] overflow-hidden rounded-[var(--radius-md)]">
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                />
+              </div>
             ))}
           </div>
 
-          {/* Full activity list */}
-          <SectionHeader title="Every Way to Spend Your Day" eyebrow="More to Do" />
-          <div className="mt-16 mb-24 grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
-            {rest.map((a) => (
-              <div key={a.id} className="group flex gap-5 items-start">
-                <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg bg-[var(--color-champagne)]/30">
+          {/* Featured experiences (icon cards) */}
+          <SectionHeader
+            title="Signature Experiences"
+            eyebrow="Don't Miss"
+            description="Three rituals every Giovanni guest should make time for."
+          />
+          <div className="mt-12 mb-20 grid gap-6 md:grid-cols-3">
+            {featured.map((a) => (
+              <div
+                key={a.id}
+                className="group bg-[var(--color-bg-alt)] rounded-[var(--radius-md)] overflow-hidden border border-[var(--color-border)] transition-transform duration-300 hover:-translate-y-1"
+              >
+                {/* Icon container with neutral bg so transparent PNG icon is visible */}
+                <div className="relative h-44 md:h-52 flex items-center justify-center bg-[var(--color-bg)]">
                   <Image
                     src={a.image}
                     alt={a.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="96px"
+                    width={140}
+                    height={140}
+                    className="object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-7 md:p-8">
+                  <Eyebrow color="bronze" className="mb-3">{a.category}</Eyebrow>
+                  <h3
+                    className="text-lg md:text-xl text-[var(--color-text)] mb-3"
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontWeight: 'var(--weight-heading)' as unknown as number,
+                      letterSpacing: 'var(--tracking-heading)',
+                      textTransform: 'var(--transform-heading)' as React.CSSProperties['textTransform'],
+                      lineHeight: 1.25,
+                    }}
+                  >
+                    {a.title}
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]" style={{ lineHeight: 1.7 }}>
+                    {a.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Full activity list — icon next to text, two/three column responsive */}
+          <SectionHeader title="Every Way to Spend Your Day" eyebrow="More to Do" />
+          <div className="mt-12 mb-20 grid gap-x-8 gap-y-7 md:grid-cols-2 lg:grid-cols-3">
+            {rest.map((a) => (
+              <div key={a.id} className="flex gap-5 items-start">
+                <div className="relative h-20 w-20 shrink-0 flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-bg-alt)] border border-[var(--color-border)]">
+                  <Image
+                    src={a.image}
+                    alt={a.title}
+                    width={56}
+                    height={56}
+                    className="object-contain"
                   />
                 </div>
                 <div className="flex-1 min-w-0">
                   <Eyebrow color="bronze" className="mb-1.5">{a.category}</Eyebrow>
-                  <h3 className="font-heading text-lg font-semibold mb-1.5" style={{ lineHeight: 1.3 }}>
+                  <h3
+                    className="text-base md:text-lg text-[var(--color-text)] mb-1.5"
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontWeight: 'var(--weight-heading)' as unknown as number,
+                      letterSpacing: 'var(--tracking-heading)',
+                      textTransform: 'var(--transform-heading)' as React.CSSProperties['textTransform'],
+                      lineHeight: 1.3,
+                    }}
+                  >
                     {a.title}
                   </h3>
                   <p className="text-sm text-[var(--color-text-secondary)]" style={{ lineHeight: 1.6 }}>
@@ -82,11 +144,20 @@ export default function ExperiencesPage() {
           </div>
 
           {/* CTA */}
-          <div className="bg-[var(--color-charcoal)] rounded-lg p-12 md:p-16 mb-16 text-center text-white">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4" style={{ letterSpacing: '-0.025em', lineHeight: 1.1 }}>
+          <div className="bg-[var(--color-bg-deep)] rounded-[var(--radius-md)] p-10 md:p-14 mb-16 text-center text-[var(--color-bg-deep-text)]">
+            <h2
+              className="text-2xl md:text-3xl mb-4"
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontWeight: 'var(--weight-heading)' as unknown as number,
+                letterSpacing: 'var(--tracking-heading)',
+                textTransform: 'var(--transform-heading)' as React.CSSProperties['textTransform'],
+                lineHeight: 1.1,
+              }}
+            >
               Plan your stay
             </h2>
-            <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto" style={{ lineHeight: 1.7 }}>
+            <p className="text-base md:text-lg opacity-80 mb-8 max-w-2xl mx-auto" style={{ lineHeight: 1.7 }}>
               Some experiences require pre-booking — reach out to our concierge to put together your itinerary.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

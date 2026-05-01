@@ -268,7 +268,7 @@ export const experiences = [
     title: 'Nature & Wildlife',
     description:
       'Safaris at Ratapani Sanctuary (just 1–5 km away) — home to the highest count of naturally-breeding tigers in India.',
-    image: '/images/experiences/hero.jpg',
+    image: '/images/experiences/wildlife/safari-elephants.jpg',
     activities: ['Ratapani safari', 'Bird watching', 'Forest trails', 'Photography tours'],
   },
   {
@@ -284,7 +284,7 @@ export const experiences = [
     title: 'Elysium Spa & Wellness',
     description:
       'Rejuvenate at Elysium Spa with holistic treatments, yoga and meditation amidst nature.',
-    image: '/images/experiences/spa.jpg',
+    image: '/images/experiences/landscapes/spa-landscape.jpg',
     activities: ['Massage therapy', 'Yoga sessions', 'Meditation', 'Wellness retreats'],
   },
   {
@@ -399,6 +399,8 @@ export const weddings = {
   image: '/images/weddings/hero.jpg',
 };
 
+// Activity icons sourced from giovannivillage.com/media/icon-N.png — same
+// numerical order as the live /resort-experiences/ page.
 export const activities = [
   {
     id: 'ratapani-safari',
@@ -406,119 +408,28 @@ export const activities = [
     description:
       'Visit Ratapani Sanctuary for a safari experience like no other — home to the most naturally breeding tigers in India. Pre-booking required. Morning slot 6:00 – 8:00 AM, afternoon slot 1:00 – 3:00 PM.',
     category: 'Wildlife',
-    image: '/images/experiences/ratapani-safari.png',
+    image: '/images/experiences/icons/icon-1.png',
   },
   {
-    id: 'telescope-dinner',
-    title: 'Dining with the Stars: Telescope Dinner at Pihu',
-    description:
-      'Indulge in fine dining as you stargaze through telescopes at our rooftop restaurant.',
-    category: 'Dining',
-    image: '/images/experiences/telescope-dinner.png',
-  },
-  {
-    id: 'farm-breakfast',
-    title: 'Farm Fresh Feast: Breakfast at Royalton Farms',
-    description:
-      'An authentic farm-to-table meal, served right at our organic farm within the resort premises.',
-    category: 'Dining',
-    image: '/images/experiences/farm-breakfast.png',
-  },
-  {
-    id: 'lakeside-fishing',
-    title: 'Lake-Side Leisure: Fishing',
-    description:
-      'Sit back, relax — and maybe even catch your next meal at our lake. Our chefs will cook the fish to your liking.',
+    id: 'croquet',
+    title: 'Old School Cool: Croquet',
+    description: 'Engage in a game of Croquet — a classic pastime with a Giovanni twist.',
     category: 'Outdoor',
-    image: '/images/experiences/fishing-tile.png',
+    image: '/images/experiences/icons/icon-2.png',
   },
   {
-    id: 'open-air-theatre',
-    title: 'Starry Nights: Open-Air Theatre',
-    description:
-      'Enjoy your favourite films under the stars — with comfy love seats and freshly-popped popcorn.',
-    category: 'Entertainment',
-    image: '/images/experiences/open-air-theatre.png',
-  },
-  {
-    id: 'self-bbq',
-    title: 'Grill & Chill: Self-Service Barbecue',
-    description:
-      'Show off your grilling skills or simply enjoy the experience at our self-barbecue stations.',
-    category: 'Dining',
-    image: '/images/experiences/self-barbecue.png',
-  },
-  {
-    id: 'farm-tour',
-    title: 'Fields of Gold: Royalton Farm Tour',
-    description:
-      'Walk through our fertile Royalton farms and learn about sustainable farming practices.',
-    category: 'Nature',
-    image: '/images/experiences/farm-tour.png',
-  },
-  {
-    id: 'fresh-milking',
-    title: 'Morning Glory: Fresh Milking Process',
-    description:
-      'Witness and participate in the fresh milking of cows at 4:30 AM — a truly unique experience.',
-    category: 'Nature',
-    image: '/images/experiences/fresh-milking.png',
-  },
-  {
-    id: 'factory-visit',
-    title: 'Behind the Magic: Giovanni Factory Visit',
-    description:
-      'Take a guided tour of our factory and get a sneak-peek into how Giovanni luxury is crafted.',
-    category: 'Heritage',
-    image: '/images/experiences/factory-visit.png',
-  },
-  {
-    id: 'soft-touch-pool',
-    title: 'Soft-Touch Swimming Pool',
-    description:
-      'A tranquil oasis amidst the resort — perfect for an unhurried dip or sunset float.',
-    category: 'Wellness',
-    image: '/images/experiences/soft-touch-pool.png',
-  },
-  {
-    id: 'cycling',
-    title: 'Ride & Glide: Cycling',
-    description:
-      'Explore the resort on two wheels — perfect for a romantic ride or a family adventure.',
+    id: 'manual-scooters',
+    title: 'Retro Rides: Manual Scooters',
+    description: 'Kick, push, coast — the simple pleasure of a manual scooter ride around the resort.',
     category: 'Outdoor',
-    image: '/images/experiences/cycling-tile.png',
+    image: '/images/experiences/icons/icon-3.png',
   },
   {
-    id: 'badminton-tennikoit',
-    title: 'Badminton & Tennikoit',
-    description:
-      'Rackets swish and Tennikoit rings soar — echo the village’s spirited athleticism.',
-    category: 'Sport',
-    image: '/images/experiences/badminton.png',
-  },
-  {
-    id: 'frisbee',
-    title: 'Flying High: Frisbee',
-    description:
-      'Get your adrenaline pumping with a good old game of Frisbee on the lawns.',
-    category: 'Sport',
-    image: '/images/experiences/frisbee.png',
-  },
-  {
-    id: 'jhoolas',
-    title: 'Swing High: Jhoolas',
-    description:
-      'Multiple swings dotted around the resort — travel down memory lane.',
-    category: 'Outdoor',
-    image: '/images/experiences/jhoolas.png',
-  },
-  {
-    id: 'sunbathing',
-    title: 'Soak Up the Sun: Sunbathing',
-    description:
-      'Experience the joy of a perfect tan as you lounge in our sunbathing area.',
-    category: 'Wellness',
-    image: '/images/experiences/sunbathing.png',
+    id: 'modern-kanche',
+    title: 'Next-Gen Marbles: Modern Kanche',
+    description: 'Experience the timeless game of Kanche, modernised for today’s generation.',
+    category: 'Indoor',
+    image: '/images/experiences/icons/icon-4.png',
   },
   {
     id: 'board-games',
@@ -526,47 +437,57 @@ export const activities = [
     description:
       'Ludo, Snakes and Ladders, Tambola, Scrabble, Jenga, Tic-Tac-Toe, Carrom, Uno, Modern Kanche, Foosball.',
     category: 'Indoor',
-    image: '/images/experiences/board-games.png',
+    image: '/images/experiences/icons/icon-5.png',
   },
   {
-    id: 'croquet',
-    title: 'Old School Cool: Croquet',
-    description:
-      'Engage in a game of Croquet — a classic pastime with a Giovanni twist.',
+    id: 'badminton-tennikoit',
+    title: 'Badminton & Tennikoit',
+    description: 'Rackets swish and Tennikoit rings soar — echo the village’s spirited athleticism.',
+    category: 'Sport',
+    image: '/images/experiences/icons/icon-6.png',
+  },
+  {
+    id: 'cycling',
+    title: 'Ride & Glide: Cycling',
+    description: 'Explore the resort on two wheels — perfect for a romantic ride or a family adventure.',
     category: 'Outdoor',
-    image: '/images/experiences/croquet.png',
+    image: '/images/experiences/icons/icon-7.png',
   },
   {
-    id: 'manual-scooters',
-    title: 'Retro Rides: Manual Scooters',
-    description:
-      'Kick, push, coast — the simple pleasure of a manual scooter ride around the resort.',
-    category: 'Outdoor',
-    image: '/images/experiences/manual-scooters.png',
+    id: 'soft-touch-pool',
+    title: 'Soft-Touch Swimming Pool',
+    description: 'A tranquil oasis amidst the resort — perfect for an unhurried dip or sunset float.',
+    category: 'Wellness',
+    image: '/images/experiences/icons/icon-8.png',
   },
   {
-    id: 'modern-kanche',
-    title: 'Next-Gen Marbles: Modern Kanche',
-    description:
-      'Experience the timeless game of Kanche, modernised for today’s generation.',
-    category: 'Indoor',
-    image: '/images/experiences/modern-kanche.png',
+    id: 'frisbee',
+    title: 'Flying High: Frisbee',
+    description: 'Get your adrenaline pumping with a good old game of Frisbee on the lawns.',
+    category: 'Sport',
+    image: '/images/experiences/icons/icon-9.png',
   },
   {
-    id: 'junior-chef',
-    title: 'Junior Chef Academy',
-    description:
-      'Let children unleash their culinary skills in an exclusive setting under expert supervision.',
-    category: 'Family',
-    image: '/images/experiences/junior-chef.jpg',
+    id: 'telescope-dinner',
+    title: 'Dining with the Stars: Telescope Dinner at Pihu',
+    description: 'Indulge in fine dining as you stargaze through telescopes at our rooftop restaurant.',
+    category: 'Dining',
+    image: '/images/experiences/icons/icon-10.png',
   },
   {
     id: 'lake-side-leisure',
-    title: 'Lake-Side Leisure',
+    title: 'Lake-Side Leisure: Catch Your Meal',
     description:
-      'Beautiful lake setting for sunset moments and quiet afternoons by the water.',
-    category: 'Outdoor',
-    image: '/images/experiences/lake-side-leisure.png',
+      'Sit back, relax — and maybe even catch your next meal at our lake. Our chefs will cook the fish to your liking.',
+    category: 'Dining',
+    image: '/images/experiences/icons/icon-11.png',
+  },
+  {
+    id: 'farm-breakfast',
+    title: 'Farm Fresh Feast: Breakfast at Royalton Farms',
+    description: 'An authentic farm-to-table meal, served right at our organic farm within the resort premises.',
+    category: 'Dining',
+    image: '/images/experiences/icons/icon-12.png',
   },
   {
     id: 'elysium-spa',
@@ -574,7 +495,70 @@ export const activities = [
     description:
       'Holistic treatments, yoga, meditation and wellness retreats in a sanctuary set among landscaped gardens.',
     category: 'Wellness',
-    image: '/images/experiences/elysium-spa.png',
+    image: '/images/experiences/icons/icon-13.png',
+  },
+  {
+    id: 'open-air-theatre',
+    title: 'Starry Nights: Open-Air Theatre',
+    description: 'Enjoy your favourite films under the stars — with comfy love seats and freshly-popped popcorn.',
+    category: 'Entertainment',
+    image: '/images/experiences/icons/icon-14.png',
+  },
+  {
+    id: 'factory-visit',
+    title: 'Behind the Magic: Giovanni Factory Visit',
+    description: 'Take a guided tour of our factory and get a sneak-peek into how Giovanni luxury is crafted.',
+    category: 'Heritage',
+    image: '/images/experiences/icons/icon-15.png',
+  },
+  {
+    id: 'self-bbq',
+    title: 'Grill & Chill: Self-Service Barbecue',
+    description: 'Show off your grilling skills or simply enjoy the experience at our self-barbecue stations.',
+    category: 'Dining',
+    image: '/images/experiences/icons/icon-16.png',
+  },
+  {
+    id: 'farm-tour',
+    title: 'Fields of Gold: Royalton Farm Tour',
+    description: 'Walk through our fertile Royalton farms and learn about sustainable farming practices.',
+    category: 'Nature',
+    image: '/images/experiences/icons/icon-17.png',
+  },
+  {
+    id: 'jhoolas',
+    title: 'Swing High: Jhoolas',
+    description: 'Multiple swings dotted around the resort — travel down memory lane.',
+    category: 'Outdoor',
+    image: '/images/experiences/icons/icon-18.png',
+  },
+  {
+    id: 'lakeside-fishing',
+    title: 'Lake-Side Leisure: Fishing',
+    description: 'Sit back, relax, and maybe even catch your next meal at our beautiful lake.',
+    category: 'Outdoor',
+    image: '/images/experiences/icons/icon-19.png',
+  },
+  {
+    id: 'fresh-milking',
+    title: 'Morning Glory: Fresh Milking Process',
+    description: 'Witness and participate in the fresh milking of cows at 4:30 AM — a truly unique experience.',
+    category: 'Nature',
+    image: '/images/experiences/icons/icon-20.png',
+  },
+  {
+    id: 'sunbathing',
+    title: 'Soak Up the Sun: Sunbathing',
+    description: 'Experience the joy of a perfect tan as you lounge in our sunbathing area.',
+    category: 'Wellness',
+    image: '/images/experiences/icons/icon-sunbathing.png',
+  },
+  {
+    id: 'junior-chef',
+    title: 'Junior Chef Academy',
+    description: 'Let children unleash their culinary skills in an exclusive setting under expert supervision.',
+    category: 'Family',
+    image: '/images/experiences/icons/junior-chef.jpg',
   },
 ];
 
