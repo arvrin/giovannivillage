@@ -30,9 +30,9 @@ const CinematicAbout = () => {
           fill
           className="object-cover"
           sizes="100vw"
-          style={{ filter: 'brightness(0.4) saturate(0.85)' }}
+          style={{ filter: 'brightness(0.6) saturate(0.95)' }}
         />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.4)_0%,_rgba(0,0,0,0.85)_70%,_rgba(0,0,0,0.95)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.25)_0%,_rgba(0,0,0,0.65)_70%,_rgba(0,0,0,0.85)_100%)]" />
       </div>
 
       <Container className="relative z-10 py-24 md:py-32 lg:py-36">

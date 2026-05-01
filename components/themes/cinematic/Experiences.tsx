@@ -66,9 +66,9 @@ const CinematicExperiences = () => {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    style={{ filter: 'brightness(0.7) saturate(0.85)' }}
+                    style={{ filter: 'brightness(0.85) saturate(0.95)' }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   <div className="absolute top-4 left-4 flex items-center gap-3">
                     <span className="h-px w-6 bg-[var(--color-accent)]" />
                     <span className="text-[10px] font-medium uppercase text-[var(--color-accent)]" style={{ letterSpacing: '0.4em' }}>

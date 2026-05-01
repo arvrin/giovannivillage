@@ -56,10 +56,10 @@ const CinematicPageHero = ({
         className="object-cover"
         priority
         sizes="100vw"
-        style={{ filter: 'brightness(0.55) saturate(0.9)' }}
+        style={{ filter: 'brightness(0.78) saturate(0.95)' }}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.25)_0%,_rgba(0,0,0,0.6)_60%,_rgba(0,0,0,0.9)_100%)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.15)_0%,_rgba(0,0,0,0.4)_70%,_rgba(0,0,0,0.7)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
 
       <div className="absolute inset-0 flex items-center justify-center">
         <Container>

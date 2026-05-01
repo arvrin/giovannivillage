@@ -20,10 +20,10 @@ const ModernistHero = () => {
 
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
-    if (typeof window === 'undefined' || window.matchMedia('(max-width: 767px)').matches) return;
+    if (!v || typeof window === 'undefined') return;
     const start = () => {
       v.load();
+      v.muted = true;
       v.play().catch(() => {});
     };
     const idle = (window as unknown as { requestIdleCallback?: (cb: () => void) => void }).requestIdleCallback;
@@ -47,13 +47,13 @@ const ModernistHero = () => {
             sizes="(max-width: 1024px) 100vw, 60vw"
             style={{ filter: 'saturate(0.95)' }}
           />
-          {/* Video — desktop only, fades over the poster */}
+          {/* Video — fades over the poster on every device */}
           <motion.video
             ref={videoRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: videoLoaded ? 1 : 0 }}
             transition={{ duration: 1.0, ease: [0.215, 0.61, 0.355, 1] }}
-            className="absolute inset-0 h-full w-full object-cover hidden md:block"
+            className="absolute inset-0 h-full w-full object-cover"
             src="/Giovanni-Video-Presentation.mp4"
             poster="/images/hero/landscape-2.jpg"
             autoPlay

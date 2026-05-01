@@ -49,7 +49,7 @@ const CinematicHero = () => {
           priority
           fetchPriority="high"
           sizes="100vw"
-          style={{ filter: 'brightness(0.7) saturate(0.95)' }}
+          style={{ filter: 'brightness(0.88) saturate(1)' }}
         />
         {/* Video — mobile users skip it (saves ~10MB), desktop streams in after first paint */}
         <motion.video
@@ -66,25 +66,13 @@ const CinematicHero = () => {
           playsInline
           preload="none"
           onLoadedData={() => setVideoLoaded(true)}
-          style={{ filter: 'brightness(0.7) saturate(0.9)' }}
+          style={{ filter: 'brightness(0.88) saturate(0.95)' }}
         />
-        {/* Lighter cinematic vignette + bottom legibility wash */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.25)_60%,_rgba(0,0,0,0.6)_100%)]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
+        {/* Soft vignette + a hint of bottom wash for legibility */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.12)_65%,_rgba(0,0,0,0.35)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/0" />
       </div>
 
-      {/* Top-left gold rule + label */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.0, delay: 0.4 }}
-        className="absolute top-28 md:top-32 left-6 md:left-12 hidden sm:flex items-center gap-3"
-      >
-        <span className="h-px w-10 bg-[var(--color-accent)]" />
-        <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-[var(--color-accent)]">
-          Bhopal · Estd
-        </span>
-      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
@@ -111,9 +99,6 @@ const CinematicHero = () => {
           >
             <span className="block">Best Luxury</span>
             <span className="block italic font-extralight">Wildlife Resort</span>
-            <span className="block text-[0.4em] tracking-[0.4em] mt-5 text-[var(--color-accent)]">
-              · in Bhopal ·
-            </span>
           </h1>
           <motion.p
             initial={{ opacity: 0 }}

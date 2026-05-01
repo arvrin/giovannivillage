@@ -25,12 +25,6 @@ const CinematicFooter = () => {
           transition={{ duration: 0.9 }}
           className="text-center"
         >
-          <span
-            className="block text-[10px] font-medium uppercase text-[var(--color-accent)]"
-            style={{ letterSpacing: '0.5em' }}
-          >
-            · Estd · Bhopal ·
-          </span>
           <h3
             className="mt-4 text-white"
             style={{

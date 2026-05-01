@@ -80,10 +80,10 @@ const CinematicRooms = () => {
                   fill
                   className="object-cover transition-all duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  style={{ filter: 'brightness(0.7) saturate(0.85)' }}
+                  style={{ filter: 'brightness(0.85) saturate(0.95)' }}
                 />
-                {/* Permanent dark gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/20" />
+                {/* Soft dark gradient — keeps title legible without going pitch */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5" />
                 {/* Hover gold sheen */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black via-[rgba(201,169,97,0.05)] to-transparent" />
 

@@ -31,7 +31,7 @@ const CinematicLoader = ({ progress }: LoaderProps) => {
           className="text-[10px] font-medium uppercase text-[var(--color-accent)]/90"
           style={{ letterSpacing: '0.5em' }}
         >
-          Established · Bhopal
+          A Wildlife Sanctuary
         </motion.p>
 
         <motion.h1
