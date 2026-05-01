@@ -92,14 +92,14 @@ const CinematicHero = () => {
               fontWeight: 'var(--weight-heading)' as unknown as number,
               letterSpacing: 'var(--tracking-heading)',
               textTransform: 'var(--transform-heading)' as React.CSSProperties['textTransform'],
-              fontSize: 'clamp(3rem, 8vw, 8rem)',
-              lineHeight: 1,
-              textShadow: '0 4px 28px rgba(0,0,0,0.6)',
+              fontSize: 'clamp(2.25rem, 5vw, 4.5rem)',
+              lineHeight: 1.05,
+              textShadow: '0 4px 24px rgba(0,0,0,0.55)',
             }}
           >
             <span className="block">Best Luxury</span>
             <span className="block italic font-extralight">Wildlife Resort</span>
-            <span className="block text-[0.55em] tracking-[0.3em] mt-4 text-[var(--color-accent)]">
+            <span className="block text-[0.4em] tracking-[0.4em] mt-5 text-[var(--color-accent)]">
               · in Bhopal ·
             </span>
           </h1>

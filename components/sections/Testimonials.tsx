@@ -27,7 +27,7 @@ const Testimonials = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <Section className="bg-[var(--color-ivory)] py-24 md:py-32 lg:py-36">
+    <Section className="bg-[var(--color-bg)] py-16 md:py-20 lg:py-24">
       <Container>
         <div className="mx-auto max-w-6xl">
           <motion.div
@@ -51,28 +51,36 @@ const Testimonials = () => {
                 transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
                 className="text-center"
               >
-                {/* Quote Icon - larger, more elegant */}
-                <div className="mb-12 flex justify-center">
+                {/* Quote Icon */}
+                <div className="mb-8 flex justify-center">
                   <Quote
-                    className="h-16 w-16 text-[var(--color-champagne)] md:h-20 md:w-20 lg:h-24 lg:w-24"
-                    strokeWidth={1}
+                    className="h-9 w-9 md:h-11 md:w-11 text-[var(--color-accent)]"
+                    strokeWidth={1.25}
                   />
                 </div>
 
-                {/* Quote Text - PULLQUOTE STYLE: 32px minimum, italic, generous line-height */}
+                {/* Quote Text */}
                 <blockquote
-                  className="mb-16 font-heading text-3xl italic leading-relaxed text-[var(--color-text-primary)] md:text-4xl lg:text-5xl xl:text-6xl"
-                  style={{ lineHeight: 1.6, letterSpacing: '-0.01em' }}
+                  className="mb-10 mx-auto max-w-3xl text-lg md:text-xl lg:text-2xl italic text-[var(--color-text-primary)]"
+                  style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontWeight: 400,
+                    lineHeight: 1.55,
+                    letterSpacing: '-0.005em',
+                  }}
                 >
                   &ldquo;{currentTestimonial.quote}&rdquo;
                 </blockquote>
 
-                {/* Guest Info - enhanced */}
-                <div className="space-y-3">
-                  <p className="font-heading text-2xl font-bold text-[var(--color-text-primary)] md:text-3xl">
+                {/* Guest Info */}
+                <div className="space-y-2">
+                  <p className="font-heading text-base md:text-lg font-semibold text-[var(--color-text-primary)]">
                     {currentTestimonial.name}
                   </p>
-                  <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]" style={{ letterSpacing: '2px' }}>
+                  <p
+                    className="text-[10px] sm:text-xs font-semibold uppercase text-[var(--color-text-tertiary)]"
+                    style={{ letterSpacing: '0.2em' }}
+                  >
                     {currentTestimonial.location}
                   </p>
 
@@ -81,7 +89,7 @@ const Testimonials = () => {
                     {Array.from({ length: currentTestimonial.rating }).map((_, i) => (
                       <svg
                         key={i}
-                        className="h-5 w-5 text-[var(--color-gold)]"
+                        className="h-3.5 w-3.5 text-[var(--color-accent)]"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >

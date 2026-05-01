@@ -180,36 +180,29 @@ const Hero = () => {
               delay: 0.5,
               ease: [0.215, 0.61, 0.355, 1],
             }}
-            className="mb-6 text-4xl font-bold leading-tight text-[var(--color-text-inverse)] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+            className="mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white"
             style={{
-              fontFamily: 'var(--font-display)',
+              fontFamily: 'var(--font-heading)',
               letterSpacing: '-0.02em',
-              textShadow: '0 4px 24px rgba(0, 0, 0, 0.6)',
-              lineHeight: '1.1',
+              textShadow: '0 4px 24px rgba(0, 0, 0, 0.55)',
+              lineHeight: 1.1,
               fontWeight: 600,
+              maxWidth: '18ch',
+              marginInline: 'auto',
             }}
           >
             {hero.tagline}
           </motion.h1>
 
-          {/* Subtitle - Refined sizing and spacing */}
+          {/* Subtitle */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.7,
-              ease: [0.215, 0.61, 0.355, 1],
-            }}
-            className="mb-10 font-body text-lg font-light text-[var(--color-text-inverse)]/90 sm:text-xl md:mb-12 md:text-2xl lg:text-3xl"
-            style={{
-              letterSpacing: '0.3px',
-              textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)',
-              lineHeight: '1.6',
-            }}
+            transition={{ duration: 0.8, delay: 0.7, ease: [0.215, 0.61, 0.355, 1] }}
+            className="mb-10 font-body text-base sm:text-lg md:text-xl text-white/90"
+            style={{ textShadow: '0 2px 16px rgba(0,0,0,0.5)', lineHeight: 1.6 }}
           >
-            <p className="mb-1.5">Resort. Spa. Banquet.</p>
-            <p>Experience luxury in the lap of nature.</p>
+            <p>Resort · Spa · Banquet — luxury in the lap of nature.</p>
           </motion.div>
 
           {/* Single Prominent CTA - 65% from top */}

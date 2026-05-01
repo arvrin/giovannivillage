@@ -74,14 +74,13 @@ const ModernistHero = () => {
                 fontWeight: 'var(--weight-heading)' as unknown as number,
                 letterSpacing: 'var(--tracking-heading)',
                 textTransform: 'var(--transform-heading)' as React.CSSProperties['textTransform'],
-                fontSize: 'clamp(2.5rem, 6vw, 5.25rem)',
-                lineHeight: 0.98,
+                fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+                lineHeight: 1,
               }}
             >
-              <span className="block">Best</span>
-              <span className="block">Luxury</span>
-              <span className="block">Wildlife</span>
-              <span className="block">Resort</span>
+              <span className="block">A wildlife</span>
+              <span className="block">retreat in</span>
+              <span className="block">Bhopal.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 12 }}

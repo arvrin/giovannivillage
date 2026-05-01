@@ -139,10 +139,10 @@ const Header = () => {
                 duration: 0.6,
                 ease: [0.215, 0.61, 0.355, 1],
               }}
-              className="fixed left-0 top-0 bottom-0 z-[70] w-80 md:w-[400px] bg-[var(--color-bg)] shadow-2xl overflow-y-auto"
+              className="fixed left-0 top-0 bottom-0 z-[70] flex w-80 md:w-[400px] flex-col bg-[var(--color-bg)] shadow-2xl"
             >
               {/* Sidebar Header */}
-              <div className="flex items-center justify-between p-8 border-b border-[var(--color-text-tertiary)]/10">
+              <div className="flex shrink-0 items-center justify-between p-8 border-b border-[var(--color-text-tertiary)]/10">
                 <motion.img
                   src="/images/logo/gvr-final-logo.png"
                   alt={siteConfig.name}
@@ -165,8 +165,8 @@ const Header = () => {
               </div>
 
               {/* Navigation Links */}
-              <nav className="px-8 py-12">
-                <ul className="space-y-2">
+              <nav className="flex-1 overflow-y-auto px-8 py-10">
+                <ul className="space-y-1">
                   {navItems.map((item, index) => (
                     <motion.li
                       key={item.href}
@@ -180,10 +180,10 @@ const Header = () => {
                     >
                       <button
                         onClick={() => handleNavClick(item.href)}
-                        className="group relative block w-full text-left py-4 font-heading text-3xl font-semibold text-[var(--color-text-primary)] transition-colors duration-300 hover:text-[var(--color-text-secondary)]"
+                        className="group relative block w-full text-left py-3 font-heading text-2xl font-semibold text-[var(--color-text-primary)] transition-colors duration-300 hover:text-[var(--color-text-secondary)]"
                       >
                         {item.label}
-                        <span className="absolute bottom-2 left-0 h-0.5 w-0 bg-[var(--color-text-secondary)] transition-all duration-300 group-hover:w-12" />
+                        <span className="absolute bottom-1.5 left-0 h-0.5 w-0 bg-[var(--color-text-secondary)] transition-all duration-300 group-hover:w-10" />
                       </button>
                     </motion.li>
                   ))}
@@ -195,7 +195,7 @@ const Header = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="absolute bottom-0 left-0 right-0 p-8 border-t border-[var(--color-text-tertiary)]/10 bg-[var(--color-background-secondary)]"
+                className="shrink-0 p-7 border-t border-[var(--color-text-tertiary)]/10 bg-[var(--color-bg-alt)]"
               >
                 <Button
                   size="lg"
