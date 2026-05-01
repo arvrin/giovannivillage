@@ -15,7 +15,7 @@ import { hero, siteConfig } from '@/lib/data';
 const ModernistHero = () => {
   return (
     <section className="relative w-full bg-[var(--color-bg)]">
-      <div className="grid h-screen min-h-[640px] grid-rows-[60vh_1fr] lg:grid-cols-[60%_40%] lg:grid-rows-1">
+      <div className="grid grid-rows-[55vh_auto] lg:h-screen lg:min-h-[640px] lg:grid-cols-[60%_40%] lg:grid-rows-1">
         {/* Image column */}
         <div className="relative overflow-hidden">
           <motion.div

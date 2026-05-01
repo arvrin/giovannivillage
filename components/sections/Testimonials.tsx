@@ -111,19 +111,23 @@ const Testimonials = () => {
                 <ChevronLeft className="h-5 w-5" />
               </button>
 
-              {/* Progress Indicators */}
-              <div className="flex gap-2">
+              {/* Progress Indicators (with adequate touch target via padding) */}
+              <div className="flex gap-1">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`h-2 w-2 rounded-full transition-all duration-600 ${
-                      index === currentIndex
-                        ? 'w-8 bg-[var(--color-bronze)]'
-                        : 'bg-[var(--color-champagne)] hover:bg-[var(--color-bronze)]/50'
-                    }`}
                     aria-label={`Go to testimonial ${index + 1}`}
-                  />
+                    className="group flex h-10 w-10 items-center justify-center"
+                  >
+                    <span
+                      className={`block h-1.5 rounded-full transition-all duration-500 ${
+                        index === currentIndex
+                          ? 'w-7 bg-[var(--color-accent)]'
+                          : 'w-1.5 bg-[var(--color-text-tertiary)]/40 group-hover:bg-[var(--color-accent)]/60'
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
 
