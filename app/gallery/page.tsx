@@ -31,8 +31,9 @@ const galleryImages = [
   { id: 18, category: 'Dining', url: '/images/dining/the-den.jpg', title: 'The Den' },
   { id: 19, category: 'Events', url: '/images/weddings/hero.jpg', title: 'Wedding Venue' },
   { id: 20, category: 'Events', url: '/images/weddings/event.jpg', title: 'Celebrations' },
-  { id: 21, category: 'Spa', url: '/images/experiences/spa.jpg', title: 'Elysium Spa' },
-  { id: 22, category: 'Spa', url: '/images/experiences/farm.jpg', title: 'Wellness Surroundings' },
+  { id: 21, category: 'Spa', url: '/images/experiences/landscapes/spa-landscape.jpg', title: 'Elysium Spa' },
+  { id: 22, category: 'Landscape', url: '/images/experiences/wildlife/safari-elephants.jpg', title: 'Safari Elephants' },
+  { id: 23, category: 'Landscape', url: '/images/experiences/wildlife/tiger-log.jpg', title: 'Ratapani Tiger' },
 ];
 
 export default function GalleryPage() {

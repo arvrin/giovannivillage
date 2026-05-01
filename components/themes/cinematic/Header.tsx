@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { siteConfig } from '@/lib/data';
@@ -79,22 +80,16 @@ const CinematicHeader = () => {
             </button>
           </div>
 
-          {/* Centered wordmark */}
-          <Link href="/" className="text-center">
-            <p
-              className="text-white"
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontWeight: 300,
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                fontSize: 'clamp(0.95rem, 1.6vw, 1.35rem)',
-                lineHeight: 1,
-              }}
-            >
-              Giovanni
-              <span className="hidden sm:inline italic font-extralight"> · Village</span>
-            </p>
+          {/* Centered logo */}
+          <Link href="/" className="flex items-center justify-center">
+            <Image
+              src="/images/logo/gvr-final-logo.png"
+              alt={siteConfig.name}
+              width={140}
+              height={48}
+              priority
+              className="h-9 md:h-11 w-auto brightness-0 invert"
+            />
           </Link>
 
           {/* Right reservations */}
@@ -133,18 +128,13 @@ const CinematicHeader = () => {
               className="fixed left-0 top-0 bottom-0 z-[90] flex w-80 md:w-[420px] flex-col bg-[var(--color-bg)] shadow-2xl border-r border-[var(--color-accent)]/20"
             >
               <div className="flex shrink-0 items-center justify-between px-8 py-6 border-b border-[var(--color-accent)]/20">
-                <p
-                  className="text-white"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: 300,
-                    letterSpacing: '0.18em',
-                    textTransform: 'uppercase',
-                    fontSize: '1.1rem',
-                  }}
-                >
-                  Giovanni
-                </p>
+                <Image
+                  src="/images/logo/gvr-final-logo.png"
+                  alt={siteConfig.name}
+                  width={120}
+                  height={40}
+                  className="h-9 w-auto brightness-0 invert"
+                />
                 <button
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"

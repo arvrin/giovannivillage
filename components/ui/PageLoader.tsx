@@ -116,14 +116,14 @@ const PageLoader = () => {
   const which = (theme || resolvedTheme || 'editorial') as ThemeName;
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       {active && (
         <motion.div
-          key={which}
+          key="page-loader"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
+          transition={{ duration: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
           className="fixed inset-0 z-[100] pointer-events-auto"
         >
           {which === 'modernist' && <ModernistLoader progress={progress} />}

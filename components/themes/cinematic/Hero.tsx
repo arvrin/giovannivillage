@@ -19,46 +19,58 @@ const CinematicHero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
+  // Defer video fetch until browser is idle. Skip on mobile to avoid the ~10MB
+  // download on cellular. The poster image (landscape-3) renders instantly.
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    v.muted = true;
-    v.play().catch(() => {});
+    if (typeof window === 'undefined' || window.matchMedia('(max-width: 767px)').matches) return;
+
+    const start = () => {
+      v.load();
+      v.muted = true;
+      v.play().catch(() => {});
+    };
+    const idle = (window as unknown as { requestIdleCallback?: (cb: () => void) => void }).requestIdleCallback;
+    if (idle) idle(start);
+    else setTimeout(start, 250);
   }, []);
 
   return (
     <section className="relative h-screen min-h-[640px] w-full overflow-hidden bg-black">
       {/* Background media */}
       <div className="absolute inset-0">
-        {/* Image fallback (always present) */}
+        {/* Lightweight poster shows instantly while video loads */}
         <Image
           src="/images/hero/landscape-3.jpg"
           alt="Giovanni Village"
           fill
           className="object-cover"
           priority
+          fetchPriority="high"
           sizes="100vw"
-          style={{ filter: 'brightness(0.55) saturate(0.9)' }}
+          style={{ filter: 'brightness(0.7) saturate(0.95)' }}
         />
-        {/* Video overlay */}
+        {/* Video — mobile users skip it (saves ~10MB), desktop streams in after first paint */}
         <motion.video
           ref={videoRef}
           initial={{ opacity: 0 }}
           animate={{ opacity: videoLoaded ? 1 : 0 }}
-          transition={{ duration: 1.6 }}
-          className="absolute inset-0 h-full w-full object-cover"
+          transition={{ duration: 1.4 }}
+          className="absolute inset-0 h-full w-full object-cover hidden md:block"
           src="/Giovanni-Video-Presentation.mp4"
+          poster="/images/hero/landscape-3.jpg"
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="none"
           onLoadedData={() => setVideoLoaded(true)}
-          style={{ filter: 'brightness(0.55) saturate(0.85)' }}
+          style={{ filter: 'brightness(0.7) saturate(0.9)' }}
         />
-        {/* Gradient overlay for legibility + cinematic vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.2)_0%,_rgba(0,0,0,0.55)_60%,_rgba(0,0,0,0.85)_100%)]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+        {/* Lighter cinematic vignette + bottom legibility wash */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.25)_60%,_rgba(0,0,0,0.6)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
       </div>
 
       {/* Top-left gold rule + label */}

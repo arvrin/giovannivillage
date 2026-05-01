@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { siteConfig } from '@/lib/data';
@@ -78,25 +79,18 @@ const ModernistHeader = () => {
         }`}
       >
         <div className="mx-auto flex h-16 md:h-[72px] max-w-screen-2xl items-center justify-between px-6 md:px-8 lg:px-12">
-          {/* Logo */}
-          <Link href="/" className="shrink-0 inline-flex items-baseline gap-3">
-            <span
-              className={`text-base md:text-lg font-medium ${scrolled ? 'text-[var(--color-text)]' : 'text-white md:text-[var(--color-text)]'}`}
-              style={{
-                fontFamily: 'var(--font-heading)',
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                fontWeight: 600,
-              }}
-            >
-              Giovanni
-            </span>
-            <span
-              className={`hidden sm:inline text-[10px] font-medium ${scrolled ? 'text-[var(--color-text-tertiary)]' : 'text-white/70 md:text-[var(--color-text-tertiary)]'}`}
-              style={{ letterSpacing: '0.3em', textTransform: 'uppercase' }}
-            >
-              Village
-            </span>
+          {/* Logo (real GVR logo) */}
+          <Link href="/" className="shrink-0 inline-flex items-center">
+            <Image
+              src="/images/logo/gvr-final-logo.png"
+              alt={siteConfig.name}
+              width={140}
+              height={48}
+              priority
+              className={`h-9 md:h-11 w-auto transition-all duration-300 ${
+                scrolled ? '' : 'brightness-0 invert md:brightness-100 md:invert-0'
+              }`}
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -160,12 +154,13 @@ const ModernistHeader = () => {
               className="fixed left-0 right-0 top-0 z-[90] flex max-h-screen flex-col bg-[var(--color-bg)] shadow-xl"
             >
               <div className="flex shrink-0 items-center justify-between px-6 py-5 border-b border-[var(--color-border)]">
-                <span
-                  className="text-base font-medium uppercase text-[var(--color-text)]"
-                  style={{ fontFamily: 'var(--font-heading)', letterSpacing: '0.04em', fontWeight: 600 }}
-                >
-                  Giovanni Village
-                </span>
+                <Image
+                  src="/images/logo/gvr-final-logo.png"
+                  alt={siteConfig.name}
+                  width={120}
+                  height={40}
+                  className="h-9 w-auto"
+                />
                 <button
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close menu"

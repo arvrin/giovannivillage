@@ -338,28 +338,28 @@ export const restaurants = [
 
 export const weddingVenues = [
   {
-    id: 'the-aria',
-    name: 'The Aria',
+    id: 'the-aria-grand',
+    name: 'The Aria Grand',
     description:
-      'A state-of-the-art banquet hall designed to accommodate an array of functions, with a vast attached lawn for indoor-outdoor flow.',
-    specs: '10,000 sqft hall + 50,000 sqft attached lawn',
+      'A state-of-the-art 10,000 sqft pillarless banquet hall with a soaring 25-foot ceiling, complemented by a 50,000 sqft attached lawn and a dedicated 1,500 sqft Aria Deck. Designed to host majestic celebrations from intimate gatherings to grand productions.',
+    specs: '10,000 sqft hall · 50,000 sqft lawn · 1,500 sqft Aria Deck',
     capacity: 'Up to 5,000 guests',
-    image: '/images/weddings/the-aria.jpg',
+    image: '/images/weddings/hero.jpg',
   },
   {
     id: 'sudesh-lawns',
     name: 'Sudesh Lawns',
     description:
-      'Two outdoor lawns nestled between dense trees — perfect for dreamy outdoor gatherings, mandaps and sangeet evenings.',
-    specs: '14,000 sqft + 51,000 sqft (two lawns)',
-    capacity: 'Grand outdoor events',
-    image: '/images/weddings/sudesh-lawns.png',
+      'Two outdoor lawns nestled between dense trees — Sudesh-1 spans 14,000 sqft and seats 1,500 pax; Sudesh-2 sprawls over 51,000 sqft and seats 350. Perfect for dreamy outdoor weddings, mandaps and sangeet evenings.',
+    specs: '14,000 sqft + 51,000 sqft · two lawns',
+    capacity: 'Sudesh-1: 1,500 pax · Sudesh-2: 350 pax',
+    image: '/images/weddings/poolside-lawn.jpg',
   },
   {
     id: 'the-forum',
     name: 'The Forum',
     description:
-      'A multi-purpose space overlooking the pool — ideal for meetings, conferences, brand activations and intimate functions.',
+      'A 1,000 sqft multi-purpose space overlooking the pool — ideal for board meetings, conferences, brand activations and intimate functions.',
     specs: '1,000 sqft',
     capacity: 'Conferences & meetings',
     image: '/images/weddings/the-forum.jpeg',
@@ -368,9 +368,18 @@ export const weddingVenues = [
     id: 'cocktail-lawn',
     name: 'Cocktail Lawn',
     description:
-      'A dedicated lawn for lively cocktail parties and casual receptions where the beauty of nature complements every toast.',
+      'A 9,000 sqft lawn dedicated to lively cocktail parties — stylish receptions where the beauty of nature complements every toast.',
     specs: '9,000 sqft',
     capacity: '200 pax seated',
+    image: '/images/weddings/cocktail-lawn.jpg',
+  },
+  {
+    id: 'gourmet-lawn',
+    name: 'Gourmet Lawn',
+    description:
+      'Adjacent to Gourmet By The Woods, this curated space offers breathtaking lake views and sophisticated charm — an ideal setting for fine-dining-led celebrations.',
+    specs: 'Lakeside · adjacent to Gourmet By The Woods',
+    capacity: 'Boutique celebrations',
     image: '/images/weddings/cocktail-lawn.jpg',
   },
   {

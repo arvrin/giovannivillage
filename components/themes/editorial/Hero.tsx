@@ -16,75 +16,47 @@ import { scrollToElement } from '@/lib/utils';
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [fallbackLoaded, setFallbackLoaded] = useState(false);
 
+  // Defer the video fetch until the browser is idle — keeps initial paint fast.
+  // The poster image is shown immediately; video crossfades in once ready.
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    if (typeof window === 'undefined' || window.matchMedia('(max-width: 767px)').matches) return;
 
-    // Force load the video
-    video.load();
-
-    // Function to play video with aggressive retry
-    const playVideo = async () => {
-      try {
-        video.muted = true; // Ensure muted for autoplay
-        await video.play();
-        setIsPlaying(true);
-      } catch (error) {
-        console.log('Video play attempt failed, retrying...', error);
-        // Aggressive retry
-        setTimeout(async () => {
-          try {
-            await video.play();
-            setIsPlaying(true);
-          } catch (err) {
-            console.log('Video play retry failed:', err);
-          }
-        }, 300);
-      }
+    const start = () => {
+      video.load();
+      video.play().catch(() => {});
     };
 
-    // Play when video can start
-    const handleCanPlay = () => {
-      playVideo();
-    };
-
-    // Play when metadata is loaded
-    const handleLoadedMetadata = () => {
-      playVideo();
-    };
-
-    // Play when data is loaded
-    const handleLoadedData = () => {
-      setVideoLoaded(true);
-      playVideo();
-    };
-
-    video.addEventListener('canplay', handleCanPlay);
-    video.addEventListener('loadedmetadata', handleLoadedMetadata);
-    video.addEventListener('loadeddata', handleLoadedData);
-
-    // Initial play attempt
-    playVideo();
-
-    return () => {
-      video.removeEventListener('canplay', handleCanPlay);
-      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      video.removeEventListener('loadeddata', handleLoadedData);
-    };
+    const idle = (window as unknown as { requestIdleCallback?: (cb: () => void) => void }).requestIdleCallback;
+    if (idle) idle(start);
+    else setTimeout(start, 250);
   }, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Video - Cinematic Loop */}
       <div className="absolute inset-0 bg-black">
+        {/* Lightweight poster — shows instantly so the page renders without blocking. */}
+        <Image
+          src="/f1.jpg"
+          alt="Giovanni Village Resort"
+          fill
+          className="object-cover z-[5]"
+          style={{ filter: 'grayscale(5%) brightness(0.85)' }}
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+        />
+
+        {/* Video — only on desktop (saves ~10MB on mobile). preload="none" defers
+            fetch until first paint, then video plays and crossfades over the poster. */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: videoLoaded ? 1 : 0 }}
-          transition={{ duration: 1.5, ease: [0.215, 0.61, 0.355, 1] }}
-          className="absolute inset-0 z-10"
+          transition={{ duration: 1.0, ease: [0.215, 0.61, 0.355, 1] }}
+          className="absolute inset-0 z-10 hidden md:block"
         >
           <video
             ref={videoRef}
@@ -94,73 +66,22 @@ const Hero = () => {
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="none"
+            poster="/f1.jpg"
             onLoadedData={() => setVideoLoaded(true)}
-            style={{
-              filter: 'grayscale(5%) brightness(0.85)',
-            }}
+            style={{ filter: 'grayscale(5%) brightness(0.85)' }}
           >
             <source src="/Giovanni-Video-Presentation.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
           </video>
-
-          {/* Luxury overlay - subtle gradient for text readability */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'linear-gradient(to bottom, rgba(42, 40, 38, 0.25), rgba(42, 40, 38, 0.5))',
-            }}
-          />
         </motion.div>
 
-        {/* Fallback images while video loads - f0 and f1 with crossfade - LAZY LOADED */}
-        {!videoLoaded && fallbackLoaded && (
-          <>
-            <motion.div
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 0 }}
-              transition={{ duration: 2, delay: 2 }}
-              className="absolute inset-0 z-[5]"
-            >
-              <Image
-                src="/f0.png"
-                alt="Hero fallback"
-                fill
-                className="object-cover"
-                style={{ filter: 'grayscale(5%) brightness(0.85)' }}
-                priority
-                onLoad={() => setFallbackLoaded(true)}
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(to bottom, rgba(42, 40, 38, 0.25), rgba(42, 40, 38, 0.5))',
-                }}
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 2, delay: 2 }}
-              className="absolute inset-0 z-[5]"
-            >
-              <Image
-                src="/f1.jpg"
-                alt="Hero fallback"
-                fill
-                className="object-cover"
-                style={{ filter: 'grayscale(5%) brightness(0.85)' }}
-                priority
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(to bottom, rgba(42, 40, 38, 0.25), rgba(42, 40, 38, 0.5))',
-                }}
-              />
-            </motion.div>
-          </>
-        )}
+        {/* Subtle dark gradient for text legibility — applied above both poster and video */}
+        <div
+          className="absolute inset-0 z-[15] pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(42, 40, 38, 0.25), rgba(42, 40, 38, 0.5))',
+          }}
+        />
       </div>
 
       {/* Content - Centered, Minimal */}
