@@ -9,6 +9,7 @@ const SignatureMoments = dynamic(() => import('@/components/themes/monograph/hom
 const TheStay = dynamic(() => import('@/components/themes/monograph/home/TheStay'));
 const Elysium = dynamic(() => import('@/components/themes/monograph/home/Elysium'));
 const Celebrations = dynamic(() => import('@/components/themes/monograph/home/Celebrations'));
+const StaysByGiovanni = dynamic(() => import('@/components/themes/monograph/home/StaysByGiovanni'));
 const PlanYourStay = dynamic(() => import('@/components/themes/monograph/home/PlanYourStay'));
 
 /**
@@ -28,6 +29,7 @@ const MonographHome = () => {
       <TheStay />
       <Elysium />
       <Celebrations />
+      <StaysByGiovanni />
       <PlanYourStay />
     </>
   );
