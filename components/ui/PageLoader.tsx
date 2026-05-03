@@ -22,7 +22,7 @@ const FIRST_VISIT_HOLD_MS = 250;
 const THEME_SWITCH_MS = 900;
 const THEME_SWITCH_HOLD_MS = 180;
 
-type ThemeName = 'editorial' | 'modernist' | 'cinematic';
+type ThemeName = 'editorial' | 'modernist' | 'cinematic' | 'monograph';
 
 const PageLoader = () => {
   const { theme, resolvedTheme } = useTheme();
@@ -128,7 +128,7 @@ const PageLoader = () => {
         >
           {which === 'modernist' && <ModernistLoader progress={progress} />}
           {which === 'cinematic' && <CinematicLoader progress={progress} />}
-          {(which === 'editorial' || (which !== 'modernist' && which !== 'cinematic')) && (
+          {which !== 'modernist' && which !== 'cinematic' && (
             <EditorialLoader progress={progress} />
           )}
         </motion.div>

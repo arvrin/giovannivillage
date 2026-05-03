@@ -197,10 +197,72 @@
   }
 
   /* ============================================================
+     MONOGRAPH — Editorial layout · Modernist palette
+     Ivory + forest green palette of Modernist, but with the
+     mixed-case serif headings and softer rhythm of Editorial.
+     ============================================================ */
+  html.monograph {
+    --color-bg: #F8F6F1;
+    --color-bg-alt: #ECE7DC;
+    --color-bg-deep: #1F2A24;
+    --color-bg-deep-text: #F8F6F1;
+    --color-bg-inverse: #1F2A24;
+    --color-text: #1F2A24;
+    --color-text-secondary: #4A5550;
+    --color-text-tertiary: #6E7670;
+    --color-text-inverse: #F8F6F1;
+    --color-accent: #1F2A24;
+    --color-accent-hover: #0F1A14;
+    --color-accent-contrast: #F8F6F1;
+    --color-border: rgba(31, 42, 36, 0.18);
+    --color-border-strong: rgba(31, 42, 36, 0.5);
+    --color-overlay: rgba(15, 26, 20, 0.6);
+
+    /* Editorial typography */
+    --font-heading: var(--font-editorial-heading), Georgia, serif;
+    --font-body: var(--font-editorial-body), system-ui, sans-serif;
+    --font-eyebrow: var(--font-editorial-body), system-ui, sans-serif;
+
+    --weight-heading: 600;
+    --weight-eyebrow: 600;
+    --tracking-heading: -0.025em;
+    --tracking-eyebrow: 0.15em;
+    --transform-heading: none;
+    --transform-eyebrow: uppercase;
+
+    --radius-sm: 0.125rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+
+    --shadow-sm: 0 2px 8px rgba(31, 42, 36, 0.05);
+    --shadow-md: 0 4px 20px rgba(31, 42, 36, 0.09);
+    --shadow-lg: 0 8px 32px rgba(31, 42, 36, 0.13);
+
+    --transition: 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    /* Aliases — mapped so editorial components render cleanly under the
+       modernist palette. Both --color-gold and --color-charcoal are set
+       to the deep-green accent; the Hero CTA gets a dedicated monograph
+       variant so its contrast survives the remap. */
+    --color-background: var(--color-bg);
+    --color-background-primary: var(--color-bg);
+    --color-background-secondary: var(--color-bg-alt);
+    --color-text-primary: var(--color-text);
+    --color-text-light: var(--color-text-inverse);
+    --color-champagne: #ECE7DC;
+    --color-ivory: #F8F6F1;
+    --color-bronze: #4A5550;
+    --color-charcoal: #1F2A24;
+    --color-gold: #1F2A24;
+    --color-clay: #6E7670;
+    --color-forest-green: #1F2A24;
+  }
+
+  /* ============================================================
      Fallback for the very first paint before next-themes adds the
      theme class — assume editorial.
      ============================================================ */
-  html:not(.editorial):not(.modernist):not(.cinematic) {
+  html:not(.editorial):not(.modernist):not(.cinematic):not(.monograph) {
     --color-bg: #FDFBF7;
     --color-text: #2A2826;
     --font-heading: var(--font-editorial-heading), serif;

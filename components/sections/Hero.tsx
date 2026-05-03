@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes';
 import EditorialHero from '@/components/themes/editorial/Hero';
 import ModernistHero from '@/components/themes/modernist/Hero';
 import CinematicHero from '@/components/themes/cinematic/Hero';
+import MonographHero from '@/components/themes/monograph/Hero';
 
 /**
  * Theme dispatcher for the homepage Hero. Picks the correct visual variant
@@ -19,6 +20,7 @@ const Hero = () => {
   if (!mounted) return <EditorialHero />;
   if (theme === 'modernist') return <ModernistHero />;
   if (theme === 'cinematic') return <CinematicHero />;
+  if (theme === 'monograph') return <MonographHero />;
   return <EditorialHero />;
 };
 

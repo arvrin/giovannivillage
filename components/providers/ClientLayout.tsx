@@ -14,7 +14,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <ThemeProvider
       attribute="class"
-      themes={['editorial', 'modernist', 'cinematic']}
+      themes={['editorial', 'modernist', 'cinematic', 'monograph']}
       defaultTheme="editorial"
       enableSystem={false}
       storageKey="giovanni-theme"
