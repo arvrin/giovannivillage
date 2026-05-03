@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
-import { hero, siteConfig } from '@/lib/data';
+import { siteConfig } from '@/lib/data';
 import { scrollToElement } from '@/lib/utils';
 
 /**
@@ -98,23 +98,29 @@ const MonographHero = () => {
               fontFamily: 'var(--font-heading)',
               letterSpacing: '-0.02em',
               textShadow: '0 4px 24px rgba(0, 0, 0, 0.55)',
-              lineHeight: 1.1,
-              fontWeight: 600,
-              maxWidth: '18ch',
+              lineHeight: 1.15,
+              fontWeight: 500,
+              maxWidth: '22ch',
               marginInline: 'auto',
+              fontStyle: 'italic',
             }}
           >
-            {hero.tagline}
+            An evening of reverie, in the lap of nature.
           </motion.h1>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7, ease: [0.215, 0.61, 0.355, 1] }}
-            className="mb-10 font-body text-base sm:text-lg md:text-xl text-white/90"
-            style={{ textShadow: '0 2px 16px rgba(0,0,0,0.5)', lineHeight: 1.6 }}
+            className="mb-10 font-body text-sm sm:text-base md:text-lg text-white/85"
+            style={{
+              textShadow: '0 2px 16px rgba(0,0,0,0.5)',
+              lineHeight: 1.7,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+            }}
           >
-            <p>Resort · Spa · Banquet — luxury in the lap of nature.</p>
+            <p>A wildlife sanctuary · twenty minutes from Bhopal</p>
           </motion.div>
 
           <motion.div
@@ -141,7 +147,7 @@ const MonographHero = () => {
                   fontSize: '0.875rem',
                 }}
               >
-                {hero.ctaPrimary}
+                Book Your Stay
               </Button>
               <Button
                 size="lg"
