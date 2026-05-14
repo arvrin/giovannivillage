@@ -172,10 +172,12 @@ const BackgroundMusic = () => {
       onClick={toggle}
       aria-label={muted ? 'Turn on ambient sound' : 'Mute ambient sound'}
       title={muted ? 'Sound on' : 'Sound off'}
-      className="fixed bottom-5 left-5 z-[70] flex h-10 w-10 items-center justify-center rounded-full backdrop-blur-md transition-colors"
+      /* Bottom-right, stacked above the WhatsApp button (bottom-6 right-6,
+         ~64px tall). Kept off bottom-left to avoid the Next.js dev indicator. */
+      className="fixed bottom-[104px] right-6 z-[60] flex h-11 w-11 items-center justify-center rounded-full backdrop-blur-md transition-colors hover:bg-[rgba(31,42,36,0.75)]"
       style={{
-        background: 'rgba(31, 42, 36, 0.55)',
-        border: '1px solid rgba(255,255,255,0.18)',
+        background: 'rgba(31, 42, 36, 0.6)',
+        border: '1px solid rgba(255,255,255,0.2)',
         color: '#FDFBF7',
       }}
     >
