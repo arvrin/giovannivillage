@@ -8,24 +8,27 @@ import { Volume2, VolumeX } from 'lucide-react';
  *
  * Behaviour:
  *  - Waits for the `gv-loader-done` event (fired by PageLoader as the splash
- *    leaves) before doing anything.
- *  - Attempts autoplay. Browsers block audio-with-sound autoplay unless the
- *    user has already interacted with the page, so if play() rejects we arm
- *    one-time gesture listeners (pointer / key / touch / scroll) and start on
- *    the first interaction instead.
+ *    leaves), then *attempts* autoplay.
+ *  - Browsers block audio-with-sound until the user grants "user activation".
+ *    Only real interactions count — click / tap / keydown. Scroll and
+ *    mousemove explicitly DO NOT. So the gesture fallback listens for
+ *    pointerdown / keydown / touchend only, and keeps the listeners armed
+ *    until a play() call actually succeeds (a failed attempt must not burn
+ *    the listeners).
  *  - Fades volume in over ~3s so it never "pops" in.
- *  - A small mute toggle, bottom-left. The choice persists in localStorage —
- *    if a returning visitor muted it, we don't auto-start.
+ *  - A small mute toggle, bottom-left, persisted in localStorage — a
+ *    returning visitor who muted it is not auto-started.
  */
 
 const SRC = '/audio/ambient-rain.mp3';
-const TARGET_VOLUME = 0.32;          // background level — present, not intrusive
+const TARGET_VOLUME = 0.32;
 const FADE_MS = 3000;
-const STORAGE_KEY = 'gv-music';      // 'on' | 'off'
+const STORAGE_KEY = 'gv-music'; // 'on' | 'off'
 
 const BackgroundMusic = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const fadeRafRef = useRef<number | null>(null);
+  const startedRef = useRef(false);
   const [mounted, setMounted] = useState(false);
   const [muted, setMuted] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -38,14 +41,15 @@ const BackgroundMusic = () => {
     const from = audio.volume;
     const start = performance.now();
     const step = (now: number) => {
+      const a = audioRef.current;
+      if (!a) return;
       const t = Math.min(1, (now - start) / ms);
-      // ease-in-out
       const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-      audio.volume = from + (target - from) * eased;
+      a.volume = from + (target - from) * eased;
       if (t < 1) {
         fadeRafRef.current = requestAnimationFrame(step);
       } else {
-        audio.volume = target;
+        a.volume = target;
         onDone?.();
       }
     };
@@ -65,52 +69,53 @@ const BackgroundMusic = () => {
     audio.volume = 0;
     audioRef.current = audio;
 
-    let started = false;
     let gestureCleanup: (() => void) | null = null;
 
-    const beginPlayback = () => {
-      if (started) return;
+    // Try to start playback. On success: fade in, clear gesture listeners.
+    // On failure: leave gesture listeners armed for the next real interaction.
+    const tryPlay = () => {
       const a = audioRef.current;
-      if (!a) return;
-      started = true;
+      if (!a || startedRef.current) return;
       a.volume = 0;
       a.play()
         .then(() => {
+          startedRef.current = true;
           setPlaying(true);
           fadeTo(TARGET_VOLUME, FADE_MS);
+          gestureCleanup?.();
+          gestureCleanup = null;
         })
         .catch(() => {
-          // Shouldn't happen here (we only call this post-gesture), but be safe.
-          started = false;
+          // Still blocked — keep the gesture listeners armed.
         });
-      gestureCleanup?.();
     };
 
+    // Listen ONLY for events that grant user activation. Crucially NOT
+    // scroll/mousemove — those never unlock audio and would just waste
+    // the attempt. No { once } either — we keep listening until a play()
+    // actually succeeds.
     const armGestureFallback = () => {
-      const onGesture = () => beginPlayback();
-      const opts: AddEventListenerOptions = { once: true, passive: true, capture: true };
-      window.addEventListener('pointerdown', onGesture, opts);
-      window.addEventListener('keydown', onGesture, opts);
-      window.addEventListener('touchstart', onGesture, opts);
-      window.addEventListener('scroll', onGesture, opts);
+      if (gestureCleanup) return; // already armed
+      const opts: AddEventListenerOptions = { passive: true, capture: true };
+      window.addEventListener('pointerdown', tryPlay, opts);
+      window.addEventListener('keydown', tryPlay, opts);
+      window.addEventListener('touchend', tryPlay, opts);
       gestureCleanup = () => {
-        window.removeEventListener('pointerdown', onGesture, opts);
-        window.removeEventListener('keydown', onGesture, opts);
-        window.removeEventListener('touchstart', onGesture, opts);
-        window.removeEventListener('scroll', onGesture, opts);
+        window.removeEventListener('pointerdown', tryPlay, opts);
+        window.removeEventListener('keydown', tryPlay, opts);
+        window.removeEventListener('touchend', tryPlay, opts);
       };
     };
 
     const onLoaderDone = () => {
-      // Respect a prior "off" choice — don't auto-start.
-      if (startMuted) return;
+      if (startMuted || startedRef.current) return;
+      // Attempt straight autoplay; if blocked, arm the gesture fallback.
       const a = audioRef.current;
       if (!a) return;
-      // Try straight autoplay; if blocked, wait for the first user gesture.
       a.volume = 0;
       a.play()
         .then(() => {
-          started = true;
+          startedRef.current = true;
           setPlaying(true);
           fadeTo(TARGET_VOLUME, FADE_MS);
         })
@@ -120,7 +125,7 @@ const BackgroundMusic = () => {
     };
 
     window.addEventListener('gv-loader-done', onLoaderDone, { once: true });
-    // Fallback — if the event never fires (edge case), proceed after 2.6s.
+    // Fallback if the event never fires (edge case).
     const fallbackTimer = window.setTimeout(onLoaderDone, 2600);
 
     return () => {
@@ -130,6 +135,7 @@ const BackgroundMusic = () => {
       if (fadeRafRef.current) cancelAnimationFrame(fadeRafRef.current);
       audio.pause();
       audioRef.current = null;
+      startedRef.current = false;
     };
   }, []);
 
@@ -138,16 +144,18 @@ const BackgroundMusic = () => {
     const audio = audioRef.current;
     if (!audio) return;
     if (muted) {
-      // Unmute → play + fade in
       setMuted(false);
       localStorage.setItem(STORAGE_KEY, 'on');
       audio.volume = 0;
-      audio.play().then(() => {
-        setPlaying(true);
-        fadeTo(TARGET_VOLUME, 1600);
-      }).catch(() => {});
+      audio
+        .play()
+        .then(() => {
+          startedRef.current = true;
+          setPlaying(true);
+          fadeTo(TARGET_VOLUME, 1600);
+        })
+        .catch(() => {});
     } else {
-      // Mute → fade out + pause
       setMuted(true);
       localStorage.setItem(STORAGE_KEY, 'off');
       fadeTo(0, 900, () => {
@@ -164,7 +172,7 @@ const BackgroundMusic = () => {
       onClick={toggle}
       aria-label={muted ? 'Turn on ambient sound' : 'Mute ambient sound'}
       title={muted ? 'Sound on' : 'Sound off'}
-      className="group fixed bottom-5 left-5 z-[70] flex h-10 w-10 items-center justify-center rounded-full backdrop-blur-md transition-colors"
+      className="fixed bottom-5 left-5 z-[70] flex h-10 w-10 items-center justify-center rounded-full backdrop-blur-md transition-colors"
       style={{
         background: 'rgba(31, 42, 36, 0.55)',
         border: '1px solid rgba(255,255,255,0.18)',
