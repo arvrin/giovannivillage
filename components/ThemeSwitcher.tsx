@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Palette, X } from 'lucide-react';
 
-type ThemeName = 'editorial' | 'modernist' | 'cinematic' | 'monograph';
+type ThemeName = 'editorial' | 'modernist' | 'cinematic' | 'monograph' | 'retreat';
 
 interface ThemeOption {
   id: ThemeName;
@@ -38,6 +38,12 @@ const OPTIONS: ThemeOption[] = [
     label: 'Monograph',
     blurb: 'Editorial layout · Modernist palette',
     swatches: ['#F8F6F1', '#ECE7DC', '#1F2A24'],
+  },
+  {
+    id: 'retreat',
+    label: 'Retreat',
+    blurb: 'Editorial × Modernist · Onest + Hurricane',
+    swatches: ['#FDFBF7', '#C9A961', '#1F2A24'],
   },
 ];
 

@@ -6,6 +6,10 @@ import {
   Inter_Tight,
   Cormorant_Garamond,
   Inter,
+  Tenor_Sans,
+  Fraunces,
+  Onest,
+  Hurricane,
 } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/lib/data';
@@ -53,6 +57,36 @@ const inter = Inter({
   display: 'swap',
 });
 
+/* Retreat theme — Onest (clean modern sans, variable) for body/headings;
+   Hurricane (handwritten script) for signature accent words. */
+const onest = Onest({
+  subsets: ['latin'],
+  variable: '--font-retreat-sans',
+  display: 'swap',
+});
+const hurricane = Hurricane({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-retreat-script',
+  display: 'swap',
+});
+
+/* Kept for backwards-compat with any retreat components still pointing at
+   the older Fraunces/Tenor variables. Both resolve to Onest now. */
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-retreat-display',
+  display: 'swap',
+  axes: ['SOFT', 'opsz'],
+});
+const tenor = Tenor_Sans({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-retreat-label',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
@@ -70,6 +104,10 @@ const fontVars = [
   interTight.variable,
   cormorant.variable,
   inter.variable,
+  tenor.variable,
+  fraunces.variable,
+  onest.variable,
+  hurricane.variable,
 ].join(' ');
 
 export default function RootLayout({

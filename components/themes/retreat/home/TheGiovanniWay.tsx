@@ -1,0 +1,104 @@
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight, Heart, Leaf, Sparkles, Utensils, Trees } from 'lucide-react';
+
+const FEATURES = [
+  { icon: Heart, label: 'Personalised Hospitality', body: 'Butler-led service that learns your day before you do.' },
+  { icon: Trees, label: 'Forest at the Doorstep', body: 'Ten acres folded into the edge of Ratapani Tiger Reserve.' },
+  { icon: Sparkles, label: 'Affordable Luxury', body: 'Suites with private plunge pools — without the metropolitan markup.' },
+  { icon: Utensils, label: 'Slow, Regional Cuisine', body: 'Four kitchens, one philosophy: cook from the land around us.' },
+  { icon: Leaf, label: 'Pet-Friendly Estate', body: 'Open lawns, mango groves, and quiet trails — for the whole family.' },
+];
+
+const TheGiovanniWay = () => {
+  return (
+    <section className="bg-[color:var(--color-bg)] py-24 md:py-36">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-12 px-4 md:grid-cols-12 md:gap-16 md:px-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.8 }}
+          className="md:col-span-5"
+        >
+          <div className="relative aspect-[4/5] overflow-hidden rounded-md">
+            <Image
+              src="/images/about/landscape-2.jpg"
+              alt="Forest morning"
+              fill
+              sizes="(max-width:768px) 100vw, 480px"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="mt-10 rounded-lg bg-[color:var(--color-bg-card)] p-8">
+            <p
+              className="mb-3 text-[10px] tracking-[0.36em] uppercase text-[color:var(--color-text-tertiary)]"
+              style={{ fontFamily: 'var(--font-eyebrow)' }}
+            >
+              Key Features
+            </p>
+            <h2 className="font-heading text-3xl italic leading-[1.05]" style={{ fontWeight: 400 }}>
+              Take the planning
+              <br />
+              out of your getaway.
+            </h2>
+            <Link
+              href="/contact"
+              className="mt-6 inline-flex items-center gap-3 rounded-full bg-[color:var(--color-accent)] px-5 py-3 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-accent-contrast)] transition hover:bg-[color:var(--color-accent-hover)]"
+              style={{ fontFamily: 'var(--font-eyebrow)' }}
+            >
+              Get in touch <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+        </motion.div>
+
+        <ul className="relative md:col-span-7 md:pl-6">
+          <span
+            aria-hidden
+            className="absolute left-0 top-2 hidden h-[calc(100%-1rem)] w-px bg-[color:var(--color-border-strong)] md:block"
+          />
+          {FEATURES.map((F, i) => (
+            <motion.li
+              key={F.label}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: i * 0.08 }}
+              className="relative mb-3 last:mb-0"
+            >
+              <span
+                aria-hidden
+                className="absolute -left-7 top-7 hidden h-2.5 w-2.5 rounded-full bg-[color:var(--color-forest)] ring-4 ring-[color:var(--color-bg)] md:block"
+              />
+              <div className="flex items-center gap-5 rounded-full bg-[color:var(--color-bg-card)] py-5 pl-5 pr-7 transition hover:bg-[color:var(--color-bg-alt)]">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-bg)] text-[color:var(--color-forest)]">
+                  <F.icon className="h-5 w-5" />
+                </span>
+                <div className="flex-1">
+                  <p
+                    className="font-heading text-xl italic leading-tight"
+                    style={{ fontWeight: 500 }}
+                  >
+                    {F.label}
+                  </p>
+                  <p
+                    className="mt-1 text-sm text-[color:var(--color-text-secondary)]"
+                    style={{ fontFamily: 'var(--font-body)' }}
+                  >
+                    {F.body}
+                  </p>
+                </div>
+              </div>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+};
+
+export default TheGiovanniWay;

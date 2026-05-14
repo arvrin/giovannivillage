@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes';
 import EditorialPageHero from '@/components/themes/editorial/PageHero';
 import ModernistPageHero from '@/components/themes/modernist/PageHero';
 import CinematicPageHero from '@/components/themes/cinematic/PageHero';
+import RetreatPageHero from '@/components/themes/retreat/PageHero';
 
 interface PageHeroProps {
   image: string;
@@ -30,10 +31,11 @@ const PageHero = (props: PageHeroProps) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return <EditorialPageHero {...props} />;
+  if (!mounted) return <RetreatPageHero {...props} />;
+  if (theme === 'editorial') return <EditorialPageHero {...props} />;
   if (theme === 'modernist') return <ModernistPageHero {...props} />;
   if (theme === 'cinematic') return <CinematicPageHero {...props} />;
-  return <EditorialPageHero {...props} />;
+  return <RetreatPageHero {...props} />;
 };
 
 export default PageHero;

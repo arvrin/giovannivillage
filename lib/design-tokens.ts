@@ -1,218 +1,203 @@
 /**
- * Giovanni Village Design System - LUXURY EDITION
- * Ultra-Premium design tokens for five-star luxury resort
- * Benchmark: Aman Resorts, Six Senses, Four Seasons, Taj Hotels
+ * Giovanni Village Design System — RETREAT (5th & final design)
+ *
+ * Token architecture (mirrors `app/globals.css` and `DESIGN-SYSTEM.md`):
+ *
+ *   Layer 1 — PRIMITIVES   raw hex values, Tailwind-style scale.
+ *                          Reference these ONLY in the semantic layer below.
+ *   Layer 2 — SEMANTIC     role-based intent. Components use ONLY these.
+ *
+ * Pairings (which text token sits on which surface) are documented in
+ * DESIGN-SYSTEM.md §5 with WCAG contrast ratios.
  */
 
-export const colors = {
-  // Primary Palette - Earthy Luxury (refined, warmer neutrals)
-  primary: {
-    champagne: '#E8DCC4',    // Lighter, warmer champagne
-    ivory: '#FDFBF7',        // Warmer white (never pure #FFFFFF)
-    bronze: '#8B7355',       // Deeper bronze
-    charcoal: '#2A2826',     // Warmer black (never pure #000000)
-  },
+// ─────────────────────────────────────────────────────────────────────────
+// Layer 1: PRIMITIVES
+// ─────────────────────────────────────────────────────────────────────────
 
-  // Accent Palette - Use SPARINGLY (2% of design for CTAs only)
-  accent: {
-    gold: '#C9A961',         // Muted, elegant gold
-    clay: '#A67C52',         // Terracotta accent
-    forestGreen: '#3A4F41',  // Deep, sophisticated green
+export const primitives = {
+  ivory: {
+    50:  '#FDFBF7',
   },
-
-  // Background Layers (90% neutral tones)
-  background: {
-    primary: '#FDFBF7',      // Ivory - main background
-    secondary: '#E8DCC4',    // Champagne - sections
-    overlay: 'rgba(42, 40, 38, 0.6)', // Charcoal 60% - image overlays
+  champagne: {
+    100: '#ECE3CB',
+    200: '#DDCFAE',
+    300: '#C4B492',
   },
-
-  // Text Hierarchy
-  text: {
-    primary: '#2A2826',      // Charcoal - main body text
-    secondary: '#8B7355',    // Bronze - supporting text
-    tertiary: '#A67C52',     // Clay - captions, small text
-    inverse: '#FDFBF7',      // Ivory - text on dark backgrounds
+  forest: {
+    100: '#4A5550',
+    500: '#2E3B2A',
+    900: '#1F2A24',
+    950: '#0F1A14',
   },
-
-  // Functional Colors (refined, muted)
+  brass: {
+    300: '#E0C98C',
+    500: '#C9A961',
+    700: '#B08754',
+    900: '#8B7355',
+  },
   functional: {
-    success: '#6B8E6B',      // Muted green
-    error: '#A64B4B',        // Muted red
-    whatsapp: '#25d366',     // WhatsApp green (brand color)
+    success: '#6B8E6B',
+    error: '#A64B4B',
+    whatsapp: '#25D366',
   },
-};
+} as const;
+
+// ─────────────────────────────────────────────────────────────────────────
+// Layer 2: SEMANTIC TOKENS
+// ─────────────────────────────────────────────────────────────────────────
+
+export const colors = {
+  /** Surface tokens — backgrounds & large containers */
+  surface: {
+    default: primitives.ivory[50],          // page background
+    alt: primitives.champagne[100],         // alternating section
+    card: primitives.champagne[200],        // overlap card on cream
+    inverse: primitives.forest[900],        // dark section
+  },
+
+  /** Text tokens — pair with surfaces (see DESIGN-SYSTEM §5) */
+  text: {
+    onSurface: primitives.forest[900],      // body on light
+    onSurfaceMuted: primitives.forest[100], // long-form copy
+    onSurfaceFaint: primitives.brass[900],  // eyebrows/captions
+    onSurfaceInverse: primitives.ivory[50], // text on dark
+  },
+
+  /** Accent tokens — the CTA system */
+  accent: {
+    primary: primitives.brass[500],           // every primary pill
+    primaryHover: primitives.brass[700],
+    onPrimary: primitives.forest[900],        // text on primary
+    secondary: primitives.forest[900],        // secondary CTA / dark fill
+    onSecondary: primitives.ivory[50],
+    scriptAccent: primitives.brass[500],      // Hurricane brass
+  },
+
+  /** Border & overlay tokens */
+  border: {
+    subtle: 'rgba(31, 42, 36, 0.18)',
+    strong: 'rgba(31, 42, 36, 0.45)',
+    overlay: 'rgba(15, 26, 20, 0.55)',
+  },
+
+  functional: primitives.functional,
+} as const;
+
+// ─────────────────────────────────────────────────────────────────────────
+// Typography
+// ─────────────────────────────────────────────────────────────────────────
 
 export const typography = {
   fonts: {
-    heading: "'Playfair Display', serif",   // Editorial, elegant serif
-    body: "'Manrope', sans-serif",          // Modern, clean sans-serif
+    display: 'var(--font-retreat-sans)',
+    body:    'var(--font-retreat-sans)',
+    script:  'var(--font-retreat-script)',
+    eyebrow: 'var(--font-retreat-sans)',
   },
-
-  // Luxury Typography Scale - Editorial Excellence
-  sizes: {
-    // Headings - Playfair Display (Larger, more impactful)
-    h1: {
-      mobile: '3rem',      // 48px (mobile)
-      desktop: '6rem',     // 96px (desktop) - HERO IMPACT
-    },
-    h2: {
-      mobile: '2.5rem',    // 40px
-      desktop: '4rem',     // 64px - Section headings
-    },
-    h3: {
-      mobile: '2rem',      // 32px
-      desktop: '2.625rem', // 42px - Subsection headings
-    },
-    h4: {
-      mobile: '1.5rem',    // 24px
-      desktop: '1.875rem', // 30px
-    },
-    h5: {
-      mobile: '1.25rem',   // 20px
-      desktop: '1.5rem',   // 24px
-    },
-
-    // Body Text - Manrope (Generous, readable)
-    body: {
-      large: '1.375rem',   // 22px - Intro paragraphs
-      base: '1.125rem',    // 18px - Standard body
-      small: '0.875rem',   // 14px - Small text, uppercase labels
-      caption: '0.75rem',  // 12px - Captions, letter-spacing: 2px
-    },
-
-    // Special Typography
-    pullQuote: '2rem',     // 32px italic - Testimonials, quotes
-  },
-
   weights: {
-    light: 300,
-    regular: 400,
-    medium: 500,
+    light: 300,      // display headings
+    regular: 400,    // body
+    medium: 500,     // labels, eyebrows
     semibold: 600,
-    bold: 700,
   },
-
-  // Generous Line Heights (1.7-1.8 for body)
+  scale: {
+    displayHero: '5.5rem',
+    displayLg:   '3.5rem',
+    displayMd:   '2.5rem',
+    displaySm:   '2rem',
+    titleLg:     '1.75rem',
+    titleMd:     '1.25rem',
+    bodyLg:      '1.125rem',
+    bodyBase:    '1rem',
+    bodySm:      '0.875rem',
+    eyebrow:     '0.6875rem',
+  },
   lineHeights: {
-    tight: 1.2,          // Headings
-    snug: 1.4,           // Subheadings
-    normal: 1.7,         // Body text (luxury standard)
-    relaxed: 1.8,        // Large body text
-    loose: 2,            // Special cases
+    tight: 1.05,
+    snug:  1.15,
+    normal: 1.7,
+    relaxed: 1.85,
   },
-
-  // Letter Spacing (uppercase elements)
   letterSpacing: {
-    tight: '-0.025em',   // Large headings
-    normal: '0',         // Body text
-    wide: '0.5px',       // Small text
-    wider: '1.5px',      // Button text
-    widest: '2px',       // Uppercase captions
+    display: '-0.03em',
+    body:    '0',
+    eyebrow: '0.22em',
+    label:   '0.36em',
   },
-};
+} as const;
 
-// Luxury Spacing Scale - GENEROUS white space
+// ─────────────────────────────────────────────────────────────────────────
+// Spacing, radii, shadows, motion
+// ─────────────────────────────────────────────────────────────────────────
+
 export const spacing = {
-  xs: '0.75rem',     // 12px
-  sm: '1.5rem',      // 24px
-  md: '3rem',        // 48px - Standard section spacing
-  lg: '4.5rem',      // 72px
-  xl: '7.5rem',      // 120px - Between major sections
-  '2xl': '11.25rem', // 180px
-  '3xl': '15rem',    // 240px - Hero sections
-};
+  xs:    '0.75rem',
+  sm:    '1.5rem',
+  md:    '3rem',
+  lg:    '4.5rem',
+  xl:    '7.5rem',
+  '2xl': '11.25rem',
+  '3xl': '15rem',
+} as const;
 
-// Border Radius - Minimal (luxury is subtle)
-export const borderRadius = {
-  none: '0',
-  sm: '0.125rem',  // 2px - Barely perceptible
-  md: '0.25rem',   // 4px - Subtle
-  lg: '0.5rem',    // 8px - Cards only
-  full: '9999px',  // Circular elements
-};
+export const radii = {
+  sm:   '0.25rem',
+  md:   '0.625rem',
+  lg:   '1rem',
+  pill: '9999px',
+} as const;
 
-// Shadows - Soft & Subtle (using charcoal color)
 export const shadows = {
-  sm: '0 2px 8px rgba(42, 40, 38, 0.04)',
-  md: '0 4px 20px rgba(42, 40, 38, 0.08)',
-  lg: '0 8px 32px rgba(42, 40, 38, 0.12)',
-  none: 'none',
-};
+  sm: '0 2px 10px rgba(46, 59, 42, 0.06)',
+  md: '0 8px 28px rgba(46, 59, 42, 0.10)',
+  lg: '0 16px 48px rgba(46, 59, 42, 0.16)',
+} as const;
 
-// Transitions - Slow & Sophisticated (luxury easing)
 export const transitions = {
-  base: '600ms cubic-bezier(0.215, 0.61, 0.355, 1)',     // Hover states
-  slow: '800ms cubic-bezier(0.215, 0.61, 0.355, 1)',     // Standard animations
-  slowest: '1200ms cubic-bezier(0.215, 0.61, 0.355, 1)', // Page transitions, images
-};
+  base:    '600ms cubic-bezier(0.215, 0.61, 0.355, 1)',
+  slow:    '900ms cubic-bezier(0.215, 0.61, 0.355, 1)',
+  slowest: '1400ms cubic-bezier(0.215, 0.61, 0.355, 1)',
+} as const;
 
 export const breakpoints = {
-  sm: '640px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1280px',
+  sm:    '640px',
+  md:    '768px',
+  lg:    '1024px',
+  xl:    '1280px',
   '2xl': '1536px',
-};
+} as const;
 
 export const zIndex = {
-  base: 1,
-  dropdown: 1000,
-  sticky: 1100,
-  fixed: 1200,
-  overlay: 1300,
-  modal: 1400,
-  popover: 1500,
-  tooltip: 1600,
-};
+  base:   1,
+  rail:   30,
+  header: 50,
+  drawer: 70,
+  modal:  80,
+  toast:  90,
+} as const;
 
-// Luxury Animation Configurations - Subtle & Sophisticated
-export const animations = {
-  // Page transition (1.2s slow fade)
-  page: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition: { duration: 1.2, ease: [0.215, 0.61, 0.355, 1] },
-  },
-
-  // Element reveal (fade + move up)
+export const motion = {
   reveal: {
-    initial: { opacity: 0, y: 40 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] },
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-60px' },
+    transition: { duration: 0.7, ease: [0.215, 0.61, 0.355, 1] },
   },
-
-  // Image reveal (fade + subtle scale)
-  image: {
-    initial: { opacity: 0, scale: 1.05 },
-    animate: { opacity: 1, scale: 1 },
-    transition: { duration: 1.4, ease: [0.215, 0.61, 0.355, 1] },
+  imageReveal: {
+    initial: { scale: 1.08 },
+    animate: { scale: 1 },
+    transition: { duration: 14, ease: 'easeOut' },
   },
+  cardHover: { scale: 1.04 },
+  stagger: { staggerChildren: 0.08, delayChildren: 0.05 },
+} as const;
 
-  // Hover state (subtle scale)
-  hover: {
-    scale: 1.02,
-    transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] },
-  },
-
-  // Stagger children (100-150ms delays)
-  stagger: {
-    animate: {
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
-  },
-};
-
-// Content Constraints - Luxury Grid System
 export const container = {
-  maxWidth: '1440px',    // Maximum content width
+  maxWidth: '1440px',
   padding: {
-    mobile: '1.5rem',    // 24px side padding (mobile)
-    tablet: '5rem',      // 80px side padding (tablet)
-    desktop: '7.5rem',   // 120px side padding (desktop)
+    mobile:  '1.25rem',
+    tablet:  '2rem',
+    desktop: '4rem',
   },
-};
+} as const;

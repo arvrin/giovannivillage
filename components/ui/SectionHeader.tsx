@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import Eyebrow from './Eyebrow';
@@ -20,6 +21,23 @@ const titleSize = {
   lg: 'text-4xl md:text-5xl lg:text-6xl xl:text-7xl',
 };
 
+/** When the title is a string under the retreat theme, render the last word
+ *  in Hurricane brass-script to match the homepage signature. */
+const renderRetreatTitle = (title: ReactNode) => {
+  if (typeof title !== 'string') return title;
+  const trimmed = title.trim();
+  const lastSpace = trimmed.lastIndexOf(' ');
+  if (lastSpace <= 0) {
+    return <span className="font-script">{trimmed}</span>;
+  }
+  return (
+    <>
+      {trimmed.slice(0, lastSpace)}{' '}
+      <span className="font-script">{trimmed.slice(lastSpace + 1)}</span>
+    </>
+  );
+};
+
 const SectionHeader = ({
   eyebrow,
   title,
@@ -30,6 +48,8 @@ const SectionHeader = ({
   eyebrowColor = 'muted',
 }: SectionHeaderProps) => {
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left';
+  const { theme } = useTheme();
+  const isRetreat = theme === 'retreat';
 
   return (
     <motion.div
@@ -45,16 +65,23 @@ const SectionHeader = ({
         </Eyebrow>
       )}
       <h2
-        className={cn('text-[var(--color-text-primary)]', titleSize[size])}
-        style={{
-          fontFamily: 'var(--font-heading)',
-          fontWeight: 'var(--weight-heading)' as unknown as number,
-          letterSpacing: 'var(--tracking-heading)',
-          textTransform: 'var(--transform-heading)' as React.CSSProperties['textTransform'],
-          lineHeight: 1.1,
-        }}
+        className={cn(
+          isRetreat ? 'display-italic text-[var(--color-text)]' : 'text-[var(--color-text-primary)]',
+          titleSize[size],
+        )}
+        style={
+          isRetreat
+            ? { lineHeight: 1.05 }
+            : {
+                fontFamily: 'var(--font-heading)',
+                fontWeight: 'var(--weight-heading)' as unknown as number,
+                letterSpacing: 'var(--tracking-heading)',
+                textTransform: 'var(--transform-heading)' as React.CSSProperties['textTransform'],
+                lineHeight: 1.1,
+              }
+        }
       >
-        {title}
+        {isRetreat ? renderRetreatTitle(title) : title}
       </h2>
       {description && (
         <p

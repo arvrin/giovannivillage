@@ -2,26 +2,24 @@
 
 import { ThemeProvider } from 'next-themes';
 import PageLoader from '../ui/PageLoader';
-import ThemeSwitcher from '../ThemeSwitcher';
 
 /**
- * Wraps the app in client-only providers:
- * - next-themes: persistent design-toggle between Editorial / Modernist / Cinematic
- * - PageLoader: initial splash
- * - ThemeSwitcher: floating preview widget (auto-hides for non-preview deploys)
+ * Wraps the app in client-only providers.
+ * Retreat is the production design. The other four themes (editorial,
+ * modernist, cinematic, monograph) remain in the codebase but are no longer
+ * reachable from the UI — the switcher widget is no longer mounted.
  */
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
       attribute="class"
-      themes={['editorial', 'modernist', 'cinematic', 'monograph']}
-      defaultTheme="editorial"
+      themes={['editorial', 'modernist', 'cinematic', 'monograph', 'retreat']}
+      defaultTheme="retreat"
       enableSystem={false}
       storageKey="giovanni-theme"
     >
       <PageLoader />
       {children}
-      <ThemeSwitcher />
     </ThemeProvider>
   );
 }

@@ -259,14 +259,111 @@
   }
 
   /* ============================================================
-     Fallback for the very first paint before next-themes adds the
-     theme class — assume editorial.
+     RETREAT — Editorial × Modernist blend.
+     Token architecture follows IBM Carbon × Material 3 conventions:
+       Layer 1: primitives  — raw hex values (--brass-500 etc.)
+       Layer 2: semantic    — role-based aliases (--color-bg, etc.)
+                              components ONLY reference these.
+     See DESIGN-SYSTEM.md §2-5 for the full spec.
      ============================================================ */
-  html:not(.editorial):not(.modernist):not(.cinematic):not(.monograph) {
+  html.retreat {
+    /* ── Layer 1: Primitives (Tailwind-style scale) ───────────── */
+    /* Ivory / Champagne — warm neutrals */
+    --ivory-50: #FDFBF7;
+    --champagne-100: #ECE3CB;
+    --champagne-200: #DDCFAE;
+    --champagne-300: #C4B492;
+
+    /* Forest — dark / contrast */
+    --forest-100: #4A5550;
+    --forest-500: #2E3B2A;
+    --forest-900: #1F2A24;
+    --forest-950: #0F1A14;
+
+    /* Brass — the brand accent */
+    --brass-300: #E0C98C;
+    --brass-500: #C9A961;
+    --brass-700: #B08754;
+    --brass-900: #8B7355;
+
+    /* ── Layer 2: Semantic tokens (Material 3 roles) ──────────── */
+    /* Surfaces */
+    --color-bg:           var(--ivory-50);         /* surface */
+    --color-bg-alt:       var(--champagne-100);    /* surface-alt */
+    --color-bg-card:      var(--champagne-200);    /* surface-card */
+    --color-bg-deep:      var(--forest-900);       /* surface-inverse */
+    --color-bg-deep-text: var(--ivory-50);
+    --color-bg-inverse:   var(--forest-900);
+
+    /* Text — paired with surfaces per DESIGN-SYSTEM §5 */
+    --color-text:           var(--forest-900);     /* on-surface */
+    --color-text-secondary: var(--forest-100);     /* on-surface-muted */
+    --color-text-tertiary:  var(--brass-900);      /* on-surface-faint */
+    --color-text-inverse:   var(--ivory-50);       /* on-surface-inverse */
+
+    /* Accent / action — primary CTA system */
+    --color-accent:          var(--brass-500);     /* primary */
+    --color-accent-hover:    var(--brass-700);     /* primary-hover */
+    --color-accent-contrast: var(--forest-900);    /* on-primary */
+    --color-brass:           var(--brass-500);     /* script-accent */
+    --color-forest:          var(--forest-900);    /* secondary */
+
+    /* Borders / overlays */
+    --color-border:        rgba(31, 42, 36, 0.18);
+    --color-border-strong: rgba(31, 42, 36, 0.45);
+    --color-overlay:       rgba(15, 26, 20, 0.55);
+
+    --font-heading: var(--font-retreat-sans), system-ui, sans-serif;
+    --font-body: var(--font-retreat-sans), system-ui, sans-serif;
+    --font-eyebrow: var(--font-retreat-sans), system-ui, sans-serif;
+    --font-script: var(--font-retreat-script), "Snell Roundhand", cursive;
+
+    --weight-heading: 300;
+    --weight-eyebrow: 500;
+    --tracking-heading: -0.03em;
+    --tracking-eyebrow: 0.22em;
+    --transform-heading: none;
+    --transform-eyebrow: uppercase;
+
+    --radius-sm: 0.25rem;
+    --radius-md: 0.625rem;
+    --radius-lg: 1rem;
+
+    --shadow-sm: 0 2px 10px rgba(46, 59, 42, 0.06);
+    --shadow-md: 0 8px 28px rgba(46, 59, 42, 0.10);
+    --shadow-lg: 0 16px 48px rgba(46, 59, 42, 0.16);
+
+    --transition: 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    /* ── Legacy aliases — shared components built for the editorial
+       theme use these names. We point them at the appropriate primitives
+       so a future re-skin only needs Layer-1 changes. ─────────── */
+    --color-background: var(--color-bg);
+    --color-background-primary: var(--color-bg);
+    --color-background-secondary: var(--color-bg-alt);
+    --color-text-primary: var(--color-text);
+    --color-text-light: var(--color-text-inverse);
+    --color-champagne: var(--champagne-100);
+    --color-ivory: var(--ivory-50);
+    --color-bronze: var(--brass-900);
+    --color-charcoal: var(--forest-900);
+    --color-gold: var(--brass-500);
+    --color-clay: var(--brass-900);
+    --color-forest-green: var(--forest-900);
+  }
+
+  /* ============================================================
+     Fallback for the very first paint before next-themes adds the
+     theme class — assume retreat (the production default).
+     ============================================================ */
+  html:not(.editorial):not(.modernist):not(.cinematic):not(.monograph):not(.retreat) {
     --color-bg: #FDFBF7;
-    --color-text: #2A2826;
-    --font-heading: var(--font-editorial-heading), serif;
-    --font-body: var(--font-editorial-body), sans-serif;
+    --color-text: #1F2A24;
+    --color-accent: #C9A961;
+    --color-accent-contrast: #1F2A24;
+    --font-heading: var(--font-retreat-sans), system-ui, sans-serif;
+    --font-body: var(--font-retreat-sans), system-ui, sans-serif;
+    --font-script: var(--font-retreat-script), cursive;
   }
 
   /* Base resets */
@@ -383,6 +480,64 @@
 .font-heading { font-family: var(--font-heading); }
 .font-body { font-family: var(--font-body); }
 .font-eyebrow { font-family: var(--font-eyebrow); }
+
+/* Retreat-only typography.
+   - Headings: Onest very-light (300) with tight tracking — Aman/Bvlgari minimalism.
+   - .display-italic resolves to Hurricane (handwritten script) for the signature
+     accent words inside an otherwise-clean Onest headline. */
+/* Retreat headings — split into two layers:
+   1. Font + weight + tracking with full specificity so they beat Tailwind's
+      `font-bold` / `font-semibold` utilities sprinkled on inner-page headings.
+   2. Color in a separate :where() rule with 0 specificity so `text-white`,
+      `text-[var(--color-bg)]` etc. on a heading still win cleanly. */
+html.retreat h1, html.retreat h2, html.retreat h3,
+html.retreat h4, html.retreat h5, html.retreat h6,
+html.retreat .display-italic {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+
+/* All Button-component instances render as pills under retreat, matching the
+   homepage CTA shape. Targets the shared Button via its .gv-button marker. */
+html.retreat .gv-button {
+  border-radius: 9999px;
+  letter-spacing: 0.22em;
+}
+/* Outlined buttons under retreat use brass border + brass text so they're
+   readable on both ivory and forest-dark sections. */
+html.retreat .gv-button.border-2 {
+  border-color: var(--color-brass);
+  color: var(--color-brass);
+}
+html.retreat .gv-button.border-2:hover {
+  background-color: var(--color-brass);
+  color: var(--color-forest);
+}
+:where(html.retreat h1, html.retreat h2, html.retreat h3,
+       html.retreat h4, html.retreat h5, html.retreat h6),
+:where(html.retreat .display-italic) {
+  color: inherit;
+}
+/* The signature retreat headline — Onest Light (300), tight tracking. */
+html.retreat .display-italic {
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+/* Hurricane handwritten script — used inside spans for one or two accent
+   words per headline. Always brass-toned to read as a signature flourish. */
+html.retreat .font-script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.9;
+  font-size: 1.25em; /* compensate for Hurricane's smaller x-height */
+  color: var(--color-brass);
+  font-style: normal;
+}
 
 /* ============================================================
    Section padding utility
