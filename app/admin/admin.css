@@ -1,0 +1,54 @@
+/* ============================================================
+   Admin portal styling — utilitarian, dense, fast.
+   Deliberately the opposite of the public Retreat design:
+   sans-serif headings, no script accents, no Hurricane.
+   Light surfaces only; tabular and information-dense.
+   ============================================================ */
+
+.admin-root {
+  --admin-bg:       #F8F6F1;
+  --admin-surface:  #FFFFFF;
+  --admin-alt:      #F0EDE5;
+  --admin-text:     #1F2A24;
+  --admin-text-muted:#6E7670;
+  --admin-text-faint:#9CA39E;
+  --admin-border:   #E4DFD3;
+  --admin-accent:   #1F2A24;
+  --admin-brass:    #C9A961;
+  --admin-success:  #6B8E6B;
+  --admin-error:    #A64B4B;
+  --admin-warning:  #C9A961;
+
+  background: var(--admin-bg);
+  color: var(--admin-text);
+  font-family: var(--font-retreat-sans), system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.admin-root * {
+  /* Reset retreat heading rule for the admin context */
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+.admin-root h1, .admin-root h2, .admin-root h3,
+.admin-root h4, .admin-root h5, .admin-root h6 {
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--admin-text);
+}
+
+.admin-root .display-italic { font-family: inherit; font-weight: 600; letter-spacing: -0.01em; }
+.admin-root .font-script    { font-family: inherit; font-size: 1em; color: inherit; }
+
+.admin-root a {
+  color: var(--admin-accent);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.admin-root a:hover { color: var(--admin-brass); }
+
+.admin-root .gv-button { letter-spacing: normal; }

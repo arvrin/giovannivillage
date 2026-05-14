@@ -56,14 +56,36 @@ export default function ContactPage() {
     phone: '',
     message: '',
   });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'sent' | 'error'>('idle');
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Enquiry from ${formData.name || 'Website'}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\n${formData.message}`,
-    );
-    window.location.href = `mailto:${siteConfig.contact.email}?subject=${subject}&body=${body}`;
+    setStatus('submitting');
+    setError(null);
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          interest: 'other',
+          source: 'website',
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || 'Could not send your message — please call us instead.');
+      }
+      setStatus('sent');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+      setStatus('error');
+    }
   };
 
   const contactItems: ContactItem[] = [
@@ -138,9 +160,26 @@ export default function ContactPage() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
                 </div>
-                <Button type="submit" variant="cta" size="lg" fullWidth>
-                  Send Message
+                <Button
+                  type="submit"
+                  variant="cta"
+                  size="lg"
+                  fullWidth
+                  loading={status === 'submitting'}
+                  disabled={status === 'submitting' || status === 'sent'}
+                >
+                  {status === 'sent' ? 'Thank you — we’ll be in touch' : 'Send Message'}
                 </Button>
+                {status === 'sent' && (
+                  <p className="text-sm text-[var(--color-text-secondary)] mt-3">
+                    Our concierge team has received your message and will respond within one working day.
+                  </p>
+                )}
+                {error && (
+                  <p className="text-sm mt-3" style={{ color: 'var(--color-error, #A64B4B)' }}>
+                    {error}
+                  </p>
+                )}
               </form>
             </div>
 
