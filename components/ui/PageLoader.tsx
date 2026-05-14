@@ -58,7 +58,13 @@ const PageLoader = () => {
   // First-visit splash
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (sessionStorage.getItem('gv-loaded') === '1') return;
+
+    // Returning visitor — no splash this session. Signal "loader done"
+    // immediately so dependent UI (e.g. background music) can proceed.
+    if (sessionStorage.getItem('gv-loaded') === '1') {
+      window.dispatchEvent(new Event('gv-loader-done'));
+      return;
+    }
 
     sessionStorage.setItem('gv-loaded', '1');
     setActive(true);
@@ -79,7 +85,11 @@ const PageLoader = () => {
       const remaining = Math.max(0, FIRST_VISIT_MIN_MS - elapsed);
       animTimerRef.current = window.setTimeout(() => {
         setProgress(100);
-        animTimerRef.current = window.setTimeout(() => setActive(false), FIRST_VISIT_HOLD_MS);
+        animTimerRef.current = window.setTimeout(() => {
+          setActive(false);
+          // Loader is on its way out — let dependent UI (background music) start.
+          window.dispatchEvent(new Event('gv-loader-done'));
+        }, FIRST_VISIT_HOLD_MS);
       }, remaining);
     };
 

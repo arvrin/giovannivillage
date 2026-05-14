@@ -1,7 +1,9 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { ThemeProvider } from 'next-themes';
 import PageLoader from '../ui/PageLoader';
+import BackgroundMusic from '../ui/BackgroundMusic';
 
 /**
  * Wraps the app in client-only providers.
@@ -10,6 +12,10 @@ import PageLoader from '../ui/PageLoader';
  * reachable from the UI — the switcher widget is no longer mounted.
  */
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname() || '/';
+  // No ambient music inside the admin portal — it's a work tool.
+  const isAdmin = pathname.startsWith('/admin');
+
   return (
     <ThemeProvider
       attribute="class"
@@ -20,6 +26,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     >
       <PageLoader />
       {children}
+      {!isAdmin && <BackgroundMusic />}
     </ThemeProvider>
   );
 }
