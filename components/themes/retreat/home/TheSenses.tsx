@@ -65,7 +65,7 @@ const PILLARS = [
     accent: 'clearings',
     tail: '',
     body: 'Corporate offsites, intimate launches, milestone birthdays. Pillarless halls with daylight, lakeside cocktail lawns, and a kitchen that quietly handles a thousand plates.',
-    img: '/images/weddings/the-aria.jpg',
+    img: '/images/weddings/the-forum.jpeg',
     href: '/weddings',
     meta: 'Indoor + Outdoor',
   },

@@ -62,40 +62,48 @@ const BackgroundMusic = () => {
     const stored = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null;
     const startMuted = stored === 'off';
     setMuted(startMuted);
+    const log = (...a: unknown[]) => console.info('[BGMusic]', ...a);
+    log('mount', { startMuted });
 
     const audio = new Audio(SRC);
     audio.loop = true;
     audio.preload = 'auto';
     audio.volume = 0;
+    audio.addEventListener('error', () => log('audio element ERROR', audio.error));
+    audio.addEventListener('stalled', () => log('audio stalled'));
+    audio.addEventListener('canplay', () => log('audio canplay'));
+    audio.addEventListener('pause', () => log('audio paused (currentTime)', audio.currentTime));
+    audio.addEventListener('play', () => log('audio play event fired'));
+    audio.addEventListener('playing', () => log('audio actually playing'));
     audioRef.current = audio;
 
     let gestureCleanup: (() => void) | null = null;
 
-    // Try to start playback. On success: fade in, clear gesture listeners.
-    // On failure: leave gesture listeners armed for the next real interaction.
-    const tryPlay = () => {
+    const tryPlay = (ev?: Event) => {
       const a = audioRef.current;
+      log('tryPlay called', { evType: ev?.type, started: startedRef.current, audioPresent: !!a });
       if (!a || startedRef.current) return;
       a.volume = 0;
       a.play()
         .then(() => {
+          log('tryPlay() resolved — playing');
           startedRef.current = true;
           setPlaying(true);
           fadeTo(TARGET_VOLUME, FADE_MS);
           gestureCleanup?.();
           gestureCleanup = null;
         })
-        .catch(() => {
-          // Still blocked — keep the gesture listeners armed.
+        .catch((err) => {
+          log('tryPlay() REJECTED', err?.name, err?.message);
         });
     };
 
-    // Listen ONLY for events that grant user activation. Crucially NOT
-    // scroll/mousemove — those never unlock audio and would just waste
-    // the attempt. No { once } either — we keep listening until a play()
-    // actually succeeds.
     const armGestureFallback = () => {
-      if (gestureCleanup) return; // already armed
+      if (gestureCleanup) {
+        log('armGestureFallback: already armed');
+        return;
+      }
+      log('armGestureFallback: arming pointerdown/keydown/touchend on window');
       const opts: AddEventListenerOptions = { passive: true, capture: true };
       window.addEventListener('pointerdown', tryPlay, opts);
       window.addEventListener('keydown', tryPlay, opts);
@@ -108,25 +116,29 @@ const BackgroundMusic = () => {
     };
 
     const onLoaderDone = () => {
+      log('onLoaderDone fired', { startMuted, started: startedRef.current });
       if (startMuted || startedRef.current) return;
-      // Attempt straight autoplay; if blocked, arm the gesture fallback.
       const a = audioRef.current;
       if (!a) return;
       a.volume = 0;
       a.play()
         .then(() => {
+          log('onLoaderDone: autoplay SUCCESS');
           startedRef.current = true;
           setPlaying(true);
           fadeTo(TARGET_VOLUME, FADE_MS);
         })
-        .catch(() => {
+        .catch((err) => {
+          log('onLoaderDone: autoplay rejected', err?.name, '— arming gesture fallback');
           armGestureFallback();
         });
     };
 
     window.addEventListener('gv-loader-done', onLoaderDone, { once: true });
-    // Fallback if the event never fires (edge case).
-    const fallbackTimer = window.setTimeout(onLoaderDone, 2600);
+    const fallbackTimer = window.setTimeout(() => {
+      log('fallbackTimer 2600ms fired');
+      onLoaderDone();
+    }, 2600);
 
     return () => {
       window.removeEventListener('gv-loader-done', onLoaderDone);
