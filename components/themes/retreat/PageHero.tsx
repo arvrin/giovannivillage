@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import Container from '@/components/ui/Container';
+import VideoBlock from '@/components/themes/retreat/VideoBlock';
 
 interface PageHeroProps {
   image: string;
@@ -14,6 +15,8 @@ interface PageHeroProps {
   children?: ReactNode;
   spacing?: 'none' | 'standard';
   className?: string;
+  /** Optional cinematic loop. Crossfades in over the poster image. */
+  video?: string;
 }
 
 const heightClass = {
@@ -55,6 +58,7 @@ const RetreatPageHero = ({
   children,
   spacing = 'standard',
   className,
+  video,
 }: PageHeroProps) => {
   const isCenter = align === 'center';
 
@@ -67,14 +71,20 @@ const RetreatPageHero = ({
         className,
       )}
     >
-      <Image
-        src={image}
-        alt={alt}
-        fill
-        className="object-cover"
-        priority
-        style={{ filter: 'brightness(0.62) contrast(1.05) saturate(1.1)' }}
-      />
+      {video ? (
+        <div className="absolute inset-0" style={{ filter: 'brightness(0.62) contrast(1.05) saturate(1.1)' }}>
+          <VideoBlock src={video} poster={image} alt={alt} />
+        </div>
+      ) : (
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          className="object-cover"
+          priority
+          style={{ filter: 'brightness(0.62) contrast(1.05) saturate(1.1)' }}
+        />
+      )}
       {/* Strong base gradient — guarantees readability over any image brightness. */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/35" />
       {/* Localised scrim where the title sits (bottom band, both sides). */}

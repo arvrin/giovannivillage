@@ -19,10 +19,10 @@ const iconMap = {
 };
 
 const stats = [
-  { value: '10', label: 'Acres of Lush Estate' },
-  { value: '20', label: 'Minutes from City Center' },
-  { value: '24/7', label: 'Concierge Service' },
-  { value: '5,000', label: 'Event Capacity' },
+  { value: '10', label: 'Acres of estate' },
+  { value: '20', label: 'Minutes from the city' },
+  { value: '5 km', label: 'To Ratapani' },
+  { value: '5,000', label: 'For the wedding' },
 ];
 
 export default function AboutPage() {
@@ -34,7 +34,7 @@ export default function AboutPage() {
         <PageHero
           image="/a1.jpg"
           alt="About Giovanni Village Resort"
-          eyebrow="Discover Our Story"
+          eyebrow="The estate"
           title={about.title}
           description={about.subtitle}
         />
@@ -65,7 +65,7 @@ export default function AboutPage() {
           </div>
 
           {/* Highlights */}
-          <SectionHeader title="What Makes Us Special" eyebrow="Signature Pillars" />
+          <SectionHeader title="Four hours of the estate" eyebrow="A day, told four ways" />
           <div className="mt-16 mb-24 md:mb-32 grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
             {about.highlights.map((highlight, index) => {
               const Icon = iconMap[highlight.icon as keyof typeof iconMap];
@@ -110,7 +110,7 @@ export default function AboutPage() {
           </div>
 
           {/* Image gallery */}
-          <SectionHeader title="Experience Giovanni Village" eyebrow="A Glimpse" />
+          <SectionHeader title="Frames from the estate" eyebrow="A glimpse" />
           <div className="mt-16 mb-24 md:mb-32 grid md:grid-cols-3 gap-8">
             {[
               { src: '/images/about/landscape-1.jpg', alt: 'Nature Views' },
@@ -131,9 +131,9 @@ export default function AboutPage() {
           {/* Promise */}
           <div className="text-center max-w-3xl mx-auto pb-16">
             <SectionHeader
-              title="Our Promise to You"
-              eyebrow="Hospitality"
-              description="At Giovanni Village, we believe in creating memories that last a lifetime. Every detail is thoughtfully curated — from our attentive staff to our pristine natural surroundings — to rejuvenate your mind, body and soul."
+              title="The reason people return"
+              eyebrow="What it actually feels like"
+              description="The food on the lawn at breakfast. The night-jar at the plunge pool. A planner who remembers your aunt’s name. Slow days, soft evenings, and the small hospitality that hides the work behind it."
             />
           </div>
         </Container>

@@ -13,16 +13,16 @@ import { restaurants, siteConfig } from '@/lib/data';
 
 const highlights = [
   {
-    title: 'Farm-to-Table',
-    description: 'Ingredients sourced from our own organic Royalton Farms within the resort.',
+    title: 'Farm to table',
+    description: 'The vegetables walk in from Royalton Farms inside the estate. Same morning, same hands.',
   },
   {
-    title: 'Telescopic Nights',
-    description: 'Stargaze through telescopes at Pihu while dining under an open sky.',
+    title: 'Telescope nights',
+    description: 'A telescope rolls onto the rooftop at Pihu. Saturn at the soup course; the Pleiades by dessert.',
   },
   {
-    title: 'Self-Service BBQ',
-    description: 'Grill your own — or relax while we do — at our self-barbecue stations.',
+    title: 'Open coals',
+    description: 'Self-service grills under the trees — for the nights you want to cook your own dinner.',
   },
 ];
 
@@ -35,16 +35,16 @@ export default function DiningPage() {
         <PageHero
           image="/Gourmet-By-The-Woods.jpg"
           alt="Gourmet By The Woods"
-          eyebrow="Culinary Excellence"
-          title="Restaurants & Dining"
-          description="Indulge in gourmet dining without stepping out of the resort. Four signature venues — fine dining to casual cafés, rooftop romance to bistro nights."
+          eyebrow="The kitchens"
+          title="Four kitchens, one philosophy"
+          description="Cook from the land. Plate it under the trees. Slow Malwa cooking at Gourmet By The Woods; rooftop telescope dinners at Pihu; warm pastry mornings at Berry & Beans; lanterns and bistro nights at The Den."
+          video="/videos/dining-arrival.mp4"
         />
 
         <Container>
-          <IntroBlock title="A Gastronomic Journey">
+          <IntroBlock title="Each kitchen keeps its own hour">
             <p>
-              From world-renowned chefs at Gourmet By The Woods to telescope dinners under the stars at Pihu —
-              every meal at Giovanni Village is an experience worth lingering over.
+              Breakfast on the lawn. Long lunch under the canopy. Coffee at four. Telescopes after eight. Four restaurants, one wandering meal that lasts the whole stay.
             </p>
           </IntroBlock>
 
@@ -78,16 +78,7 @@ export default function DiningPage() {
                   <p className="text-base md:text-lg text-[var(--color-text-secondary)] mb-6" style={{ lineHeight: 1.7 }}>
                     {r.description}
                   </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {r.tags.map((t) => (
-                      <li
-                        key={t}
-                        className="rounded-full border border-[var(--color-bronze)]/30 bg-[var(--color-champagne)]/30 px-4 py-1.5 text-sm text-[var(--color-text-secondary)]"
-                      >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Tag pills removed — description carries the room. */}
                 </div>
               </div>
             ))}
@@ -95,7 +86,7 @@ export default function DiningPage() {
 
           {/* Highlights */}
           <div className="bg-[var(--color-background-secondary)] rounded-lg p-12 md:p-16 mb-24">
-            <SectionHeader title="Dining Highlights" eyebrow="At a Glance" />
+            <SectionHeader title="Quiet pleasures at the table" eyebrow="Three you’ll remember" />
             <div className="mt-12 grid md:grid-cols-3 gap-10">
               {highlights.map((h) => (
                 <div key={h.title} className="text-center">
@@ -111,9 +102,9 @@ export default function DiningPage() {
           {/* Reservations */}
           <div className="text-center max-w-3xl mx-auto pb-16">
             <SectionHeader
-              title="Reserve Your Table"
-              eyebrow="Bookings"
-              description="For reservations and special dining arrangements, please contact our F&B team."
+              title="Save us a seat"
+              eyebrow="Reservations"
+              description="Phone the F&B team or drop us a line. Special menus, anniversaries, allergies — we take care of it ahead of you arriving."
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button

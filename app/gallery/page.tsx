@@ -52,9 +52,9 @@ export default function GalleryPage() {
       <main className="min-h-screen bg-[var(--color-background)] pt-32 md:pt-36 pb-16">
         <Container>
           <SectionHeader
-            eyebrow="Visual Journey"
-            title="Gallery"
-            description="Explore the beauty and luxury of Giovanni Village through our curated collection of moments."
+            eyebrow="The estate in pictures"
+            title="Frames from the estate"
+            description="Pictures from across the property — rooms, kitchens, the lake, the lawns, the spa, the safari days. Hover for a closer look."
           />
 
           {/* Category filter */}

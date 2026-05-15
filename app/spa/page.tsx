@@ -34,23 +34,24 @@ export default function SpaPage() {
         <PageHero
           image="/n1.jpg"
           alt="Elysium Spa at Giovanni Village"
-          eyebrow="Wellness & Rejuvenation"
-          title="Elysium Spa & Wellness"
-          description="Rejuvenate your body and mind with signature treatments in a serene natural setting."
+          eyebrow="Elysium"
+          title="A long way home"
+          description="Forest oils, warm stone, and the unhurried hands. The spa built for the part of the day where the world ends."
+          video="/videos/golden-lawn.mp4"
         />
 
         <Container>
-          <IntroBlock title="Your Wellness Sanctuary">
+          <IntroBlock title="The slow hour">
             <p>
-              Elysium Spa at Giovanni Village is a haven of tranquillity where ancient healing traditions meet modern wellness practices. Surrounded by lush greenery and the soothing sounds of nature, our spa offers a transformative experience.
+              Ancient practice meets the body that needs it now. Ayurveda, deep tissue, breath work — each ritual designed to land you somewhere lower, quieter than where you began.
             </p>
             <p>
-              Our expert therapists use premium organic products and time-honoured techniques to restore balance, relieve stress and enhance your overall well-being.
+              Our therapists know the difference between a treatment and a tonic. You sleep like a child afterward.
             </p>
           </IntroBlock>
 
           {/* Treatments */}
-          <SectionHeader title="Signature Treatments" eyebrow="What We Offer" className="mt-24" />
+          <SectionHeader title="Four rituals we know by heart" eyebrow="The treatments" className="mt-24" />
           <div className="mt-16 mb-24 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {treatments.map((t) => {
               const Icon = t.icon;
@@ -75,7 +76,7 @@ export default function SpaPage() {
           </div>
 
           {/* Spa menu */}
-          <SectionHeader title="Our Spa Menu" eyebrow="Treatments" />
+          <SectionHeader title="The full menu" eyebrow="Browse the whole list" />
           <div className="mt-16 mb-24 grid md:grid-cols-2 gap-8">
             {spaServices.map((service) => (
               <div key={service.category} className="bg-[var(--color-background-secondary)] p-10 rounded-lg">
@@ -97,11 +98,11 @@ export default function SpaPage() {
           {/* Booking CTA */}
           <div className="bg-[var(--color-charcoal)] rounded-lg p-12 md:p-16 mb-24 text-white">
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6" style={{ letterSpacing: '-0.025em', lineHeight: 1.1 }}>
-                Book Your Spa Experience
+              <h2 className="display-italic font-heading text-3xl md:text-4xl lg:text-5xl mb-6" style={{ letterSpacing: '-0.025em', lineHeight: 1.1 }}>
+                Block an hour for yourself
               </h2>
               <p className="text-lg text-white/80 mb-10" style={{ lineHeight: 1.7 }}>
-                Reserve your treatment with our wellness team. Our therapists will help you choose the right ritual for your stay.
+                A short conversation with the wellness team and we’ll choose the right ritual — and the right hour of the day — for you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button

@@ -2,9 +2,28 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Instagram, Facebook, MapPin, Phone, Mail } from 'lucide-react';
 import { siteConfig } from '@/lib/data';
+
+/** A different closing line by route, so the footer doesn't feel boilerplate. */
+function getFooterCopy(pathname: string): { eyebrow: string; line: React.ReactNode } {
+  const map: Record<string, { eyebrow: string; line: React.ReactNode }> = {
+    '/': { eyebrow: 'Giovanni Village', line: <>Slow stays, <span className="font-script">wild</span> mornings.</> },
+    '/about': { eyebrow: 'The estate', line: <>A house that learned to <span className="font-script">listen</span>.</> },
+    '/rooms': { eyebrow: 'The stays', line: <>Eight rooms, each opening to <span className="font-script">green</span>.</> },
+    '/dining': { eyebrow: 'The kitchens', line: <>Four kitchens, <span className="font-script">one</span> long meal.</> },
+    '/spa': { eyebrow: 'Elysium', line: <>A long way <span className="font-script">home</span>.</> },
+    '/experiences': { eyebrow: 'The doings', line: <>Ways to <span className="font-script">lose</span> the day.</> },
+    '/weddings': { eyebrow: 'Celebrations', line: <>The wedding that <span className="font-script">found</span> its setting.</> },
+    '/gallery': { eyebrow: 'In pictures', line: <>Frames from the <span className="font-script">estate</span>.</> },
+    '/contact': { eyebrow: 'A note', line: <>A line to your <span className="font-script">corner</span> of the estate.</> },
+  };
+  if (map[pathname]) return map[pathname];
+  if (pathname.startsWith('/rooms/')) return map['/rooms'];
+  return map['/'];
+}
 
 const COL_A = [
   { label: 'Stays', href: '/rooms' },
@@ -26,6 +45,8 @@ const COL_C = [
 ];
 
 const RetreatFooter = () => {
+  const pathname = usePathname() || '/';
+  const { eyebrow, line } = getFooterCopy(pathname);
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
 
@@ -44,10 +65,10 @@ const RetreatFooter = () => {
               className="mb-4 text-[11px] tracking-[0.36em] uppercase text-[color:var(--color-text-tertiary)]"
               style={{ fontFamily: 'var(--font-eyebrow)' }}
             >
-              Giovanni Village
+              {eyebrow}
             </p>
             <h2 className="display-italic text-3xl leading-[1.15]">
-              Slow stays, <span className="font-script">wild</span> mornings.
+              {line}
             </h2>
 
             <ul
@@ -144,7 +165,7 @@ const RetreatFooter = () => {
                 className="mt-2 text-sm text-[color:var(--color-text-secondary)]"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
-                Seasonal stories, recipes, and reservations before they open.
+                A few times a year, when the air changes or a new menu lands — a quiet note from the estate. Nothing more.
               </p>
 
               <form

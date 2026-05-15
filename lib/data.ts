@@ -58,34 +58,34 @@ export const hero = {
 };
 
 export const about = {
-  title: 'Welcome to happiness',
-  subtitle: 'The finest hotel at the best price',
+  title: 'A house that learned to listen',
+  subtitle: 'Ten acres, eight suites, one long pause in the day.',
   content: [
-    'Giovanni Village is an uber-luxury wildlife resort in the city of lakes, Bhopal. Nestled in a lush 10-acre estate, only ~20 minutes from the city center, the resort offers a perfect blend of nature, elegance and warm hospitality.',
-    'Whether you are planning a staycation near Bhopal, a family outing in Madhya Pradesh, or a grand wedding or celebration, Giovanni Village promises an unforgettable experience.',
-    'Forest views, luxurious accommodations, spa indulgences and adventure activities await you – all curated to make Giovanni Village the best luxury resort in Bhopal for leisure and events.',
-    'Embark on thrilling safaris at Ratapani Jungle, located just 1–5 km away. Spot tigers, leopards and rare birds — and return to the comfort of luxury after your wild encounter.',
+    'Giovanni Village sits on the edge of Ratapani Tiger Reserve, twenty minutes outside Bhopal. Ten acres of mango groves, lily ponds, and lakeside paths — built to be lived in slowly.',
+    'Brides, naturalists, weekending families, second-honeymooners, conference delegates, the dog you brought. The estate holds them all without raising its voice.',
+    'Eight forest-view suites. Four kitchens, each with its own hour of the day. Five event spaces that disappear into the trees. A spa built for the long way home.',
+    'And five kilometres up the road, the reserve waits — five hundred square kilometres of teak forest, leopard, sloth bear, and one of India’s healthiest tiger populations.',
   ],
   highlights: [
     {
       icon: 'hotel',
-      title: 'Luxury Accommodations',
-      description: 'Elegant rooms and suites with forest views and private plunge pools',
+      title: 'Forest-view suites',
+      description: 'Eight rooms, each opening to green — with plunge pools and open-to-sky baths.',
     },
     {
       icon: 'leaf',
-      title: 'Wildlife & Nature',
-      description: 'Ratapani tiger sanctuary safaris, organic farms and forest trails',
+      title: 'The reserve at the gate',
+      description: 'Ratapani is five minutes away. Naturalist-led safaris before breakfast.',
     },
     {
       icon: 'utensils',
-      title: 'Four Restaurants',
-      description: 'Gourmet By The Woods, Pihu, Berry & Beans and The Den',
+      title: 'Four kitchens',
+      description: 'Gourmet By The Woods, Pihu, Berry & Beans, The Den — one hour each.',
     },
     {
       icon: 'spa',
-      title: 'Elysium Spa & Wellness',
-      description: 'Holistic therapies, yoga and meditation in tranquil surrounds',
+      title: 'Slow hours at Elysium',
+      description: 'Forest oils, warm stone, the unhurried hands. You sleep like a child.',
     },
   ],
 };
@@ -394,16 +394,16 @@ export const weddingVenues = [
 ];
 
 export const weddings = {
-  title: 'Host Your Dream Wedding',
+  title: 'The wedding that found its setting',
   description:
-    'Say "I do" in the lap of nature. Pillarless banquet halls, lakeside pheras at sunset, cocktail parties under the stars — Giovanni Village is Bhopal’s most sought-after wedding resort.',
+    'Pillarless halls, lakeside lawns, and forest clearings. From a twenty-person ceremony to a five-thousand-guest reception — one planner, one estate, every hour accounted for.',
   features: [
-    'Five distinct venues',
-    'Capacity up to 5,000 guests',
-    'Dedicated wedding planner',
-    'Custom catering menus',
-    'On-site accommodation for guests',
-    'Decoration & photography support',
+    'Six distinct venues, indoors and out',
+    'Capacity from twenty to five thousand',
+    'A planner who only does your wedding',
+    'Catering shaped to your family menu',
+    'On-site rooms for every guest',
+    'Decor and photography taken care of',
   ],
   image: '/images/weddings/hero.jpg',
 };

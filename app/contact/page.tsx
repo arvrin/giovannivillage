@@ -104,9 +104,9 @@ export default function ContactPage() {
         <PageHero
           image="/c1.jpg"
           alt="Contact Giovanni Village"
-          eyebrow="Get in Touch"
-          title="Your Exclusive Retreat Awaits"
-          description="Tell us about your stay, event or celebration — our concierge team will be in touch within a working day."
+          eyebrow="A note"
+          title="A line to your corner of the estate"
+          description="Stay, wedding, dinner, or just a question about the safari. Drop us a line — the concierge replies within a working day."
         />
 
         <Container>

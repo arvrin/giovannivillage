@@ -1,6 +1,5 @@
 'use client';
 
-import { Heart, Users, Calendar, Sparkles } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
@@ -12,11 +11,13 @@ import ImageCard from '@/components/ui/ImageCard';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { weddings, weddingVenues, siteConfig } from '@/lib/data';
 
+/** Editorial one-liner row replacing the icon-tile grid.
+ *  Each event type is a single italicised noun + a short hand-written line. */
 const eventTypes = [
-  { title: 'Weddings', description: 'Lakeside pheras, sunset cocktails, big-fat-Indian celebrations.', icon: Heart },
-  { title: 'Conferences', description: 'Pillarless halls and pool-side meeting spaces with full AV.', icon: Users },
-  { title: 'Concerts', description: 'Outdoor venues for live music and large-format productions.', icon: Sparkles },
-  { title: 'Private Parties', description: 'Anniversaries, birthdays, milestone celebrations.', icon: Calendar },
+  { title: 'Weddings', line: 'Lakeside pheras at sunset; sangeet in a thousand-bulb hall.' },
+  { title: 'Conferences', line: 'Pillarless halls and poolside boardrooms with the lake outside.' },
+  { title: 'Concerts', line: 'Outdoor stages, big sound, and forest acoustics.' },
+  { title: 'Private gatherings', line: 'Anniversaries, birthdays, milestone dinners under marigolds.' },
 ];
 
 export default function WeddingsPage() {
@@ -28,38 +29,46 @@ export default function WeddingsPage() {
         <PageHero
           image="/w1.jpg"
           alt="Weddings & Events at Giovanni Village"
-          eyebrow="Conferences · Concerts · Weddings · Events"
-          title={weddings.title}
-          description={weddings.description}
+          eyebrow="Celebrations"
+          title="The wedding that found its setting"
+          description="Pillarless halls, lakeside lawns, forest clearings. Held under marigold canopies, with a dedicated planner shaping every hour."
+          video="/videos/evening-lounge.mp4"
         />
 
         <Container>
-          <IntroBlock title="Where Nature Hosts Your Event">
+          <IntroBlock title="The estate has many rooms">
             <p>
-              Manicured lawns that host up to 5,000 guests for grand receptions. A pillarless indoor hall for uninterrupted celebrations. Lakeside pheras with the sunset reflecting on the water. Cocktail parties under the stars with fairy lights in the trees — the possibilities are magical.
+              Mehndi by the lily pond. Haldi under marigold archways. Pheras at the lake at sunset. Sangeet in a thousand-bulb hall. The estate stages each function in the venue it deserves, and the planner makes the day disappear into yours.
             </p>
           </IntroBlock>
 
-          {/* Event types */}
-          <div className="mt-24 mb-24 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {eventTypes.map(({ title, description, icon: Icon }) => (
-              <div
-                key={title}
-                className="text-center p-8 bg-[var(--color-background-secondary)] rounded-lg transition-transform duration-300 hover:-translate-y-1"
-              >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--color-bronze)]/10 flex items-center justify-center">
-                  <Icon className="h-8 w-8 text-[var(--color-bronze)]" />
-                </div>
-                <h3 className="font-heading text-xl font-bold mb-3">{title}</h3>
-                <p className="text-base text-[var(--color-text-secondary)]" style={{ lineHeight: 1.7 }}>
-                  {description}
-                </p>
-              </div>
-            ))}
+          {/* Event types — editorial row, no icon tiles */}
+          <div className="mt-20 mb-24">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 max-w-5xl">
+              {eventTypes.map(({ title, line }) => (
+                <li key={title} className="flex gap-6 items-baseline">
+                  <span
+                    aria-hidden
+                    className="h-px w-8 flex-shrink-0 bg-[var(--color-border-strong)] translate-y-3"
+                  />
+                  <div>
+                    <h3 className="display-italic text-2xl md:text-3xl mb-2 text-[var(--color-text)]">
+                      {title}
+                    </h3>
+                    <p
+                      className="text-[15px] leading-[1.75] text-[var(--color-text-secondary)]"
+                      style={{ fontFamily: 'var(--font-body)' }}
+                    >
+                      {line}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Venues */}
-          <SectionHeader title="Our Venues" eyebrow="Spaces" />
+          <SectionHeader title="Six venues, twenty ceremonies" eyebrow="The spaces" />
           <div className="mt-16 mb-24 grid md:grid-cols-2 gap-8">
             {weddingVenues.map((v) => (
               <ImageCard
@@ -81,7 +90,7 @@ export default function WeddingsPage() {
 
           {/* What we offer */}
           <div className="bg-[var(--color-background-secondary)] rounded-lg p-12 md:p-16 mb-24">
-            <SectionHeader title="What We Offer" eyebrow="Inclusions" />
+            <SectionHeader title="What's in your hands when you arrive" eyebrow="Included" />
             <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {weddings.features.map((f) => (
                 <div key={f} className="flex items-start gap-3">
@@ -95,9 +104,9 @@ export default function WeddingsPage() {
           {/* CTA */}
           <div className="text-center max-w-3xl mx-auto pb-16">
             <SectionHeader
-              title="Let's Plan Your Event"
-              eyebrow="Get in Touch"
-              description="Our events team is ready to bring your vision to life. Schedule a venue visit or share your brief — we will get back within a working day."
+              title="Let's talk through your date"
+              eyebrow="Tell the planner"
+              description="A short call, a few dates, the vibe you're after. We send a proposal in 48 hours and a free one-night stay if you'd like to walk the venues yourself."
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="cta" size="lg" href="/contact">

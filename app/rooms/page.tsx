@@ -25,9 +25,10 @@ export default function RoomsIndexPage() {
         <PageHero
           image="/r1.jpg"
           alt="Giovanni Village Rooms & Suites"
-          eyebrow="Accommodations"
-          title="Rooms & Suites"
-          description="Wake up to the melodies of nature and panoramic forest vistas. Distinct rooms and suites — each with a private balcony or sit-out, select with plunge pools and open-to-sky bath tubs."
+          eyebrow="The stays"
+          title="Eight ways to fall asleep here"
+          description="Each suite opens to green. Some keep secrets of their own — a plunge pool open to the sky, a bath under the stars, a deck with the forest at its rail."
+          video="/videos/suite-reveal.mp4"
         />
 
         <Container>
@@ -72,16 +73,9 @@ export default function RoomsIndexPage() {
                   >
                     {room.description}
                   </p>
-                  <ul className="flex flex-wrap gap-2 mb-8">
-                    {room.features.map((f) => (
-                      <li
-                        key={f}
-                        className="rounded-full border border-[var(--color-bronze)]/30 bg-[var(--color-champagne)]/30 px-3 py-1 text-xs text-[var(--color-text-secondary)]"
-                      >
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Feature list removed — one well-written description is enough.
+                     Specifics live on the room detail page. */}
+                  <div className="mb-8" />
                   <div className="flex flex-wrap gap-4 items-center">
                     <Link
                       href={`/rooms/${room.id}`}
@@ -103,9 +97,9 @@ export default function RoomsIndexPage() {
           {/* Footer CTA */}
           <div className="bg-[var(--color-background-secondary)] rounded-lg p-12 md:p-16 text-center mb-16">
             <SectionHeader
-              title="Need help choosing?"
-              eyebrow="Concierge"
-              description="Our reservations team will help match you with the right room for your trip — talk to a real human."
+              title="Not sure which one is yours?"
+              eyebrow="Talk to a human"
+              description="Tell our concierge a little about your trip — anniversaries, allergies, the dog you’re bringing. We’ll match you to the room that fits."
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button

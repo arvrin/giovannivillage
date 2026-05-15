@@ -20,6 +20,8 @@ interface PageHeroProps {
   className?: string;
   /** Optional ordinal shown by Modernist (e.g. "01"). Other themes ignore. */
   index?: string;
+  /** Optional autoplay video that fades in over the poster image (Retreat only). */
+  video?: string;
 }
 
 /**

@@ -33,17 +33,18 @@ export default function ExperiencesPage() {
         <PageHero
           image="/images/experiences/wildlife/safari-elephants.jpg"
           alt="Ratapani Sanctuary safari"
-          eyebrow="Countryside Chronicles"
-          title="Resort Experiences"
-          description="From tiger safaris in Ratapani to telescope dinners under the stars — Giovanni isn't just a resort, it's a world of immersive moments."
+          eyebrow="The doings"
+          title="Ways to lose the day"
+          description="A safari before breakfast. A telescope before bed. Twenty quiet things between."
+          video="/videos/twilight-path.mp4"
         />
 
         <Container>
           {/* Wildlife showcase — three landscape photos in a row */}
           <SectionHeader
-            title="Into the Wild, Just Minutes Away"
-            eyebrow="Ratapani Sanctuary"
-            description="Spot tigers, leopards and rare birds 1–5 km from the resort, then return to luxury before sundown."
+            title="The reserve at the gate"
+            eyebrow="Ratapani · five minutes away"
+            description="Five hundred square kilometres of teak forest. One of India's healthiest tiger populations. A naturalist who knows where the leopards drink."
           />
           <div className="mt-12 mb-20 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
             {[
@@ -65,9 +66,9 @@ export default function ExperiencesPage() {
 
           {/* Featured experiences (icon cards) */}
           <SectionHeader
-            title="Signature Experiences"
-            eyebrow="Don't Miss"
-            description="Three rituals every Giovanni guest should make time for."
+            title="Three rituals worth a morning"
+            eyebrow="Don't leave without"
+            description="The three things repeat guests come back for. Each takes about ninety minutes and changes how the rest of the day feels."
           />
           <div className="mt-12 mb-20 grid gap-6 md:grid-cols-3">
             {featured.map((a) => (
@@ -108,7 +109,7 @@ export default function ExperiencesPage() {
           </div>
 
           {/* Full activity list — icon next to text, two/three column responsive */}
-          <SectionHeader title="Every Way to Spend Your Day" eyebrow="More to Do" />
+          <SectionHeader title="Twenty quiet things to do" eyebrow="The full list" />
           <div className="mt-12 mb-20 grid gap-x-8 gap-y-7 md:grid-cols-2 lg:grid-cols-3">
             {rest.map((a) => (
               <div key={a.id} className="flex gap-5 items-start">
