@@ -62,48 +62,34 @@ const BackgroundMusic = () => {
     const stored = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null;
     const startMuted = stored === 'off';
     setMuted(startMuted);
-    const log = (...a: unknown[]) => console.info('[BGMusic]', ...a);
-    log('mount', { startMuted });
 
     const audio = new Audio(SRC);
     audio.loop = true;
     audio.preload = 'auto';
     audio.volume = 0;
-    audio.addEventListener('error', () => log('audio element ERROR', audio.error));
-    audio.addEventListener('stalled', () => log('audio stalled'));
-    audio.addEventListener('canplay', () => log('audio canplay'));
-    audio.addEventListener('pause', () => log('audio paused (currentTime)', audio.currentTime));
-    audio.addEventListener('play', () => log('audio play event fired'));
-    audio.addEventListener('playing', () => log('audio actually playing'));
     audioRef.current = audio;
 
     let gestureCleanup: (() => void) | null = null;
 
-    const tryPlay = (ev?: Event) => {
+    const tryPlay = () => {
       const a = audioRef.current;
-      log('tryPlay called', { evType: ev?.type, started: startedRef.current, audioPresent: !!a });
       if (!a || startedRef.current) return;
       a.volume = 0;
       a.play()
         .then(() => {
-          log('tryPlay() resolved — playing');
           startedRef.current = true;
           setPlaying(true);
           fadeTo(TARGET_VOLUME, FADE_MS);
           gestureCleanup?.();
           gestureCleanup = null;
         })
-        .catch((err) => {
-          log('tryPlay() REJECTED', err?.name, err?.message);
+        .catch(() => {
+          // Still blocked — keep listeners armed for the next real interaction.
         });
     };
 
     const armGestureFallback = () => {
-      if (gestureCleanup) {
-        log('armGestureFallback: already armed');
-        return;
-      }
-      log('armGestureFallback: arming pointerdown/keydown/touchend on window');
+      if (gestureCleanup) return;
       const opts: AddEventListenerOptions = { passive: true, capture: true };
       window.addEventListener('pointerdown', tryPlay, opts);
       window.addEventListener('keydown', tryPlay, opts);
@@ -116,29 +102,23 @@ const BackgroundMusic = () => {
     };
 
     const onLoaderDone = () => {
-      log('onLoaderDone fired', { startMuted, started: startedRef.current });
       if (startMuted || startedRef.current) return;
       const a = audioRef.current;
       if (!a) return;
       a.volume = 0;
       a.play()
         .then(() => {
-          log('onLoaderDone: autoplay SUCCESS');
           startedRef.current = true;
           setPlaying(true);
           fadeTo(TARGET_VOLUME, FADE_MS);
         })
-        .catch((err) => {
-          log('onLoaderDone: autoplay rejected', err?.name, '— arming gesture fallback');
+        .catch(() => {
           armGestureFallback();
         });
     };
 
     window.addEventListener('gv-loader-done', onLoaderDone, { once: true });
-    const fallbackTimer = window.setTimeout(() => {
-      log('fallbackTimer 2600ms fired');
-      onLoaderDone();
-    }, 2600);
+    const fallbackTimer = window.setTimeout(onLoaderDone, 2600);
 
     return () => {
       window.removeEventListener('gv-loader-done', onLoaderDone);

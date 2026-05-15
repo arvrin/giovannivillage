@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, MapPin } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { hero } from '@/lib/data';
 
 const RetreatHero = () => {
@@ -59,20 +59,7 @@ const RetreatHero = () => {
       </motion.div>
 
       <div className="relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-between px-5 pb-12 pt-28 md:px-16 md:pb-20 md:pt-32">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex items-center gap-3 self-start text-white"
-        >
-          <MapPin className="h-3.5 w-3.5" />
-          <span
-            className="text-[10px] tracking-[0.4em] uppercase md:text-[11px]"
-            style={{ fontFamily: 'var(--font-eyebrow)', textShadow: '0 1px 12px rgba(0,0,0,0.6)' }}
-          >
-            Bhopal · Madhya Pradesh
-          </span>
-        </motion.div>
+        <div />{/* spacer — no location stamp; the imagery and headline carry the room */}
 
         <div className="flex flex-col items-start gap-10">
           <motion.div
@@ -82,12 +69,6 @@ const RetreatHero = () => {
             className="max-w-3xl text-white"
             style={{ textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}
           >
-            <p
-              className="mb-4 text-[10px] tracking-[0.4em] uppercase opacity-90 md:text-[11px]"
-              style={{ fontFamily: 'var(--font-eyebrow)' }}
-            >
-              Wildlife Retreat · Wedding Estate · Quiet Staycation
-            </p>
             <h1 className="display-italic text-[clamp(2.5rem,6.5vw,5.5rem)] leading-[1.08] text-white">
               A place to <span className="font-script">remember</span> what slow feels like.
             </h1>
