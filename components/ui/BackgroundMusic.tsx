@@ -166,8 +166,10 @@ const BackgroundMusic = () => {
       title={muted ? 'Sound on' : 'Sound off'}
       /* Bottom-right, stacked above the WhatsApp button (bottom-6 right-6,
          ~64px tall). Kept off bottom-left to avoid the Next.js dev indicator. */
-      className="fixed bottom-[104px] right-6 z-[60] flex h-11 w-11 items-center justify-center rounded-full backdrop-blur-md transition-colors hover:bg-[rgba(31,42,36,0.75)]"
+      className="fixed z-[60] flex h-11 w-11 items-center justify-center rounded-full backdrop-blur-md transition-colors hover:bg-[rgba(31,42,36,0.75)]"
       style={{
+        bottom: 'calc(104px + env(safe-area-inset-bottom))',
+        right: 'max(1.5rem, env(safe-area-inset-right))',
         background: 'rgba(31, 42, 36, 0.6)',
         border: '1px solid rgba(255,255,255,0.2)',
         color: '#FDFBF7',

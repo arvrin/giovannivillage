@@ -14,7 +14,7 @@ const Celebrations = () => {
     <section className="relative w-full overflow-hidden bg-[var(--color-bg-deep)]">
       <div className="relative h-[80vh] min-h-[560px] w-full">
         <Image
-          src="/images/weddings/hero.jpg"
+          src="/images/weddings/gourmet-lawn.png"
           alt="A wedding celebration at Giovanni Village"
           fill
           sizes="100vw"

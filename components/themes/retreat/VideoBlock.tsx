@@ -18,11 +18,13 @@ interface VideoBlockProps {
  */
 const VideoBlock = ({ src, poster, alt = '', className = '', defer = true }: VideoBlockProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
+    const c = containerRef.current;
+    if (!v || !c) return;
     const start = () => {
       v.load();
       v.muted = true;
@@ -32,15 +34,26 @@ const VideoBlock = ({ src, poster, alt = '', className = '', defer = true }: Vid
       start();
       return;
     }
-    if ('requestIdleCallback' in window) {
-      (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(start);
-    } else {
+    // Only load the video once it scrolls near the viewport — saves cellular bandwidth.
+    if (typeof IntersectionObserver === 'undefined') {
       setTimeout(start, 250);
+      return;
     }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          start();
+          io.disconnect();
+        }
+      },
+      { rootMargin: '300px 0px' },
+    );
+    io.observe(c);
+    return () => io.disconnect();
   }, [defer]);
 
   return (
-    <div className={`relative h-full w-full overflow-hidden ${className}`}>
+    <div ref={containerRef} className={`relative h-full w-full overflow-hidden ${className}`}>
       <Image
         src={poster}
         alt={alt}

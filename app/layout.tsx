@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import {
   Playfair_Display,
   Manrope,
@@ -95,6 +95,17 @@ export const metadata: Metadata = {
     icon: '/icon.png',
     apple: '/icon.png',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#F8F6F1' },
+    { media: '(prefers-color-scheme: dark)', color: '#1F2A24' },
+  ],
 };
 
 const fontVars = [

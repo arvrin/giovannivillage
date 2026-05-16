@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { siteConfig } from '@/lib/data';
+import { getWhatsAppLink } from '@/lib/utils';
 
 const NAV = [
   { label: 'Stays', href: '/rooms' },
@@ -75,7 +76,7 @@ const RetreatHeader = () => {
           </Link>
 
           <Link
-            href={siteConfig.booking.resort}
+            href={getWhatsAppLink(siteConfig.contact.whatsapp, 'Hello Giovanni Village, I would like to enquire about a stay or event.')}
             target="_blank"
             rel="noreferrer"
             className={`hidden md:inline-flex items-center rounded-full px-5 py-2.5 text-[11px] tracking-[0.22em] uppercase transition ${
@@ -85,11 +86,11 @@ const RetreatHeader = () => {
             }`}
             style={{ fontFamily: 'var(--font-eyebrow)' }}
           >
-            Reserve
+            Enquire
           </Link>
 
           <Link
-            href={siteConfig.booking.resort}
+            href={getWhatsAppLink(siteConfig.contact.whatsapp, 'Hello Giovanni Village, I would like to enquire about a stay or event.')}
             target="_blank"
             rel="noreferrer"
             className={`inline-flex items-center rounded-full px-4 py-2 text-[10px] tracking-[0.2em] uppercase transition md:hidden ${
@@ -99,7 +100,7 @@ const RetreatHeader = () => {
             }`}
             style={{ fontFamily: 'var(--font-eyebrow)' }}
           >
-            Reserve
+            Enquire
           </Link>
         </div>
       </header>

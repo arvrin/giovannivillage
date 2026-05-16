@@ -18,9 +18,9 @@ const WhereYouAre = () => {
         alt=""
         fill
         sizes="100vw"
-        className="absolute inset-0 object-cover opacity-25"
+        className="absolute inset-0 object-cover opacity-55"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--color-forest)]/90 via-[color:var(--color-forest)]/65 to-[color:var(--color-forest)]/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--color-forest)]/70 via-[color:var(--color-forest)]/45 to-[color:var(--color-forest)]/70 backdrop-blur-[2px]" />
 
       <div className="relative mx-auto max-w-[1280px] px-5 md:px-16">
         <motion.div

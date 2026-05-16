@@ -292,7 +292,7 @@ export const experiences = [
     title: 'Weddings & Events',
     description:
       'From intimate ceremonies to grand celebrations for up to 5,000 guests — pillarless banquet halls and lakeside lawns.',
-    image: '/images/weddings/hero.jpg',
+    image: '/images/weddings/gourmet-lawn.png',
     activities: ['Weddings', 'Conferences', 'Concerts', 'Private parties'],
   },
 ];
@@ -344,7 +344,7 @@ export const weddingVenues = [
       'A state-of-the-art 10,000 sqft pillarless banquet hall with a soaring 25-foot ceiling, complemented by a 50,000 sqft attached lawn and a dedicated 1,500 sqft Aria Deck. Designed to host majestic celebrations from intimate gatherings to grand productions.',
     specs: '10,000 sqft hall · 50,000 sqft lawn · 1,500 sqft Aria Deck',
     capacity: 'Up to 5,000 guests',
-    image: '/images/weddings/hero.jpg',
+    image: '/images/weddings/aria-grand-hall.jpg',
   },
   {
     id: 'sudesh-lawns',
@@ -353,7 +353,7 @@ export const weddingVenues = [
       'Two outdoor lawns nestled between dense trees — Sudesh-1 spans 14,000 sqft and seats 1,500 pax; Sudesh-2 sprawls over 51,000 sqft and seats 350. Perfect for dreamy outdoor weddings, mandaps and sangeet evenings.',
     specs: '14,000 sqft + 51,000 sqft · two lawns',
     capacity: 'Sudesh-1: 1,500 pax · Sudesh-2: 350 pax',
-    image: '/images/weddings/poolside-lawn.jpg',
+    image: '/images/weddings/sudesh-lawns.jpg',
   },
   {
     id: 'the-forum',
@@ -371,7 +371,7 @@ export const weddingVenues = [
       'A 9,000 sqft lawn dedicated to lively cocktail parties — stylish receptions where the beauty of nature complements every toast.',
     specs: '9,000 sqft',
     capacity: '200 pax seated',
-    image: '/images/weddings/cocktail-lawn.jpg',
+    image: '/images/weddings/cocktail-lawn.png',
   },
   {
     id: 'gourmet-lawn',
@@ -380,7 +380,7 @@ export const weddingVenues = [
       'Adjacent to Gourmet By The Woods, this curated space offers breathtaking lake views and sophisticated charm — an ideal setting for fine-dining-led celebrations.',
     specs: 'Lakeside · adjacent to Gourmet By The Woods',
     capacity: 'Boutique celebrations',
-    image: '/images/weddings/cocktail-lawn.jpg',
+    image: '/images/weddings/gourmet-lawn.png',
   },
   {
     id: 'poolside-lawn',
@@ -389,7 +389,7 @@ export const weddingVenues = [
       'Set against the backdrop of lush greenery and our shimmering pool — a tranquil oasis for celebrations of every scale.',
     specs: 'Poolside',
     capacity: '100 pax',
-    image: '/images/weddings/poolside-lawn.jpg',
+    image: '/images/weddings/poolside-pool.jpg',
   },
 ];
 
@@ -405,7 +405,7 @@ export const weddings = {
     'On-site rooms for every guest',
     'Decor and photography taken care of',
   ],
-  image: '/images/weddings/hero.jpg',
+  image: '/images/weddings/gourmet-lawn.png',
 };
 
 // Activity icons sourced from giovannivillage.com/media/icon-N.png — same

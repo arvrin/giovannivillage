@@ -514,10 +514,12 @@ html.retreat .gv-button.border-2:hover {
   background-color: var(--color-brass);
   color: var(--color-forest);
 }
-:where(html.retreat h1, html.retreat h2, html.retreat h3,
-       html.retreat h4, html.retreat h5, html.retreat h6),
-:where(html.retreat .display-italic) {
-  color: inherit;
+@layer base {
+  html.retreat h1, html.retreat h2, html.retreat h3,
+  html.retreat h4, html.retreat h5, html.retreat h6,
+  html.retreat .display-italic {
+    color: inherit;
+  }
 }
 /* The signature retreat headline — Onest Light (300), tight tracking. */
 html.retreat .display-italic {

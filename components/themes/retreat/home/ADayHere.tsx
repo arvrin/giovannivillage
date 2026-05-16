@@ -11,7 +11,7 @@ const FRAMES = [
     titleAccent: 'quiet',
     titleTail: 'deck',
     body: 'First light through the teaks. Mist on the lawn. The kettle whistles before the world wakes.',
-    img: '/images/about/landscape-2.jpg',
+    img: '/images/rooms/junior-deck-garden.jpg',
   },
   {
     time: '10:30',
@@ -20,7 +20,7 @@ const FRAMES = [
     titleAccent: 'walk',
     titleTail: 'through the estate',
     body: 'Mango plantations, lily ponds, lawns set for tea. The naturalist points out a hornbill on the way.',
-    img: '/images/about/landscape-1.jpg',
+    img: '/images/weddings/cocktail-lawn.png',
   },
   {
     time: '13:30',
@@ -38,7 +38,7 @@ const FRAMES = [
     titleAccent: 'ceremony',
     titleTail: 'on the lawn',
     body: 'Pheras at sunset by the lake. Marigold runners, lit aisles, vows beneath an old tamarind tree.',
-    img: '/images/weddings/cocktail-lawn.jpg',
+    img: '/images/weddings/gourmet-lawn.png',
   },
   {
     time: '20:30',

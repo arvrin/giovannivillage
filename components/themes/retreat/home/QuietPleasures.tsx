@@ -10,7 +10,7 @@ const ITEMS = [
     accent: 'to the sky',
     tail: '',
     body: 'Sink in after a long day. Look up. The night-jar will call back through the leaves.',
-    img: '/images/rooms/junior-plunge-pool.jpg',
+    img: '/images/rooms/_galleries/junior-plunge-pool/02.jpeg',
   },
   {
     n: '02',
@@ -18,7 +18,7 @@ const ITEMS = [
     accent: 'lake',
     tail: 'at sunset',
     body: 'Marigold runners, a tamarind tree for an aisle, vows set against the slow gold of evening.',
-    img: '/images/weddings/cocktail-lawn.jpg',
+    img: '/images/weddings/gourmet-lawn.png',
   },
   {
     n: '03',
@@ -26,7 +26,7 @@ const ITEMS = [
     accent: 'lawn',
     tail: '',
     body: 'Slow eggs, hand-pulled coffee, the smell of warm cardamom drifting from the kitchen.',
-    img: '/images/dining/berry-and-beans.jpg',
+    img: '/images/rooms/_galleries/royal-suite/04.jpeg',
   },
   {
     n: '04',

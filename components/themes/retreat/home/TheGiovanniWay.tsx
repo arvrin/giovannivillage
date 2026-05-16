@@ -26,7 +26,7 @@ const TheGiovanniWay = () => {
         >
           <div className="relative aspect-[4/5] overflow-hidden rounded-md">
             <Image
-              src="/images/about/landscape-2.jpg"
+              src="/images/weddings/cocktail-lawn.png"
               alt="Forest morning"
               fill
               sizes="(max-width:768px) 100vw, 480px"

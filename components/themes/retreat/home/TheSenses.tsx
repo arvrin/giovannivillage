@@ -13,7 +13,7 @@ const PILLARS = [
     accent: 'canopy',
     tail: 'remembers',
     body: 'Pillarless banquet halls, lakeside lawns, and forest clearings — held under marigold archways with five distinct venues and capacity from twenty to five thousand. A dedicated planner curates every detail.',
-    img: '/images/weddings/cocktail-lawn.jpg',
+    img: '/images/weddings/gourmet-lawn.png',
     href: '/weddings',
     meta: '05 Venues · Up to 5,000 guests',
   },
