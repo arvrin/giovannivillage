@@ -95,9 +95,17 @@ export default async function LeadsPage({
             </thead>
             <tbody>
               {leads.map((l) => (
-                <tr key={l.id} style={{ borderTop: '1px solid var(--admin-border)' }}>
+                <tr
+                  key={l.id}
+                  className="lead-row"
+                  style={{ borderTop: '1px solid var(--admin-border)', position: 'relative', cursor: 'pointer' }}
+                >
                   <Td>
-                    <Link href={`/admin/leads/${l.id}`} style={{ fontWeight: 500 }}>
+                    <Link
+                      href={`/admin/leads/${l.id}`}
+                      style={{ fontWeight: 500, position: 'static' }}
+                      className="lead-row-link"
+                    >
                       {l.name}
                     </Link>
                   </Td>
