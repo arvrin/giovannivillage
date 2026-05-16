@@ -93,7 +93,7 @@ const RetreatHeader = () => {
             href={getWhatsAppLink(siteConfig.contact.whatsapp, 'Hello Giovanni Village, I would like to enquire about a stay or event.')}
             target="_blank"
             rel="noreferrer"
-            className={`inline-flex items-center rounded-full px-4 py-2 text-[10px] tracking-[0.2em] uppercase transition md:hidden ${
+            className={`inline-flex h-11 items-center rounded-full px-5 text-[10px] tracking-[0.2em] uppercase transition md:hidden ${
               scrolled
                 ? 'bg-[color:var(--color-accent)] text-[color:var(--color-accent-contrast)]'
                 : 'bg-white text-[color:var(--color-forest)]'

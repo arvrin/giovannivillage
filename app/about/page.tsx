@@ -47,6 +47,7 @@ export default function AboutPage() {
                 src="/images/about/landscape-1.jpg"
                 alt="Giovanni Village Resort"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover hover:scale-105 transition-transform duration-1000"
                 priority
               />
@@ -122,6 +123,7 @@ export default function AboutPage() {
                   src={img.src}
                   alt={img.alt}
                   fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>

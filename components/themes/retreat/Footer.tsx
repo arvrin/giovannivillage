@@ -98,7 +98,7 @@ const RetreatFooter = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-forest)] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-brass)]"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-[color:var(--color-forest)] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-brass)]"
               >
                 <Instagram className="h-4 w-4" />
               </a>
@@ -107,7 +107,7 @@ const RetreatFooter = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-forest)] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-brass)]"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-[color:var(--color-forest)] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-brass)]"
               >
                 <Facebook className="h-4 w-4" />
               </a>
