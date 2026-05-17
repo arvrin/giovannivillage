@@ -37,15 +37,6 @@ const BRANDS: BrandCard[] = [
     external: true,
     image: '/images/sister-properties/giovanni-suites.jpg',
   },
-  {
-    name: 'Giovanni Boutique',
-    tagline: 'Furniture Studio',
-    description:
-      'Handcrafted heritage furniture, sculpted lighting, and curated objects — the same eye that designed the village, now in your home.',
-    href: '/contact',
-    image: '/images/sister-properties/giovanni-boutique.png',
-    isLogo: true,
-  },
 ];
 
 const GiovanniFamily = () => {
@@ -69,14 +60,14 @@ const GiovanniFamily = () => {
             </span>
           </div>
           <h2 className="display-italic text-3xl leading-[1.1] md:text-5xl md:leading-[1.05]">
-            One name, <span className="font-script">three</span> ways to live with it.
+            One name, <span className="font-script">two</span> stays in the city.
           </h2>
           <p
             className="mt-5 max-w-xl text-[15px] leading-[1.85] text-[color:var(--color-text-secondary)] md:text-base"
             style={{ fontFamily: 'var(--font-body)' }}
           >
-            Beyond the village, Giovanni runs two boutique stays in the city and a
-            furniture studio shaping interiors with the same hand-crafted spirit.
+            Beyond the village, Giovanni runs two boutique stays in central Bhopal —
+            the same hand-crafted hospitality, closer to the airport and the city.
           </p>
         </motion.div>
 
