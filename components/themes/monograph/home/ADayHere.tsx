@@ -32,7 +32,7 @@ const moments: Moment[] = [
     id: 'afternoon',
     hour: 'Afternoon',
     caption: 'Lakeside lunch at Pihu. Forest in every direction.',
-    image: '/images/dining/pihu.jpg',
+    image: '/images/dining/pihu.webp',
     alt: 'Lakeside dining at Pihu',
   },
   {
@@ -46,7 +46,7 @@ const moments: Moment[] = [
     id: 'night',
     hour: 'Night',
     caption: 'Dinner under the stars at The Den.',
-    image: '/images/dining/the-den.jpg',
+    image: '/images/dining/the-den.webp',
     alt: 'Evening dining at The Den',
   },
 ];

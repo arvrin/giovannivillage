@@ -6,12 +6,12 @@ import { Instagram } from 'lucide-react';
 import { siteConfig } from '@/lib/data';
 
 const TILES = [
-  '/images/rooms/king-pool-garden.jpg',
-  '/images/dining/gourmet-by-the-woods.jpg',
-  '/images/about/landscape-1.jpg',
-  '/images/rooms/royal-suite.jpg',
-  '/images/about/landscape-3.jpg',
-  '/images/dining/pihu.jpg',
+  '/images/rooms/king-pool-garden.webp',
+  '/images/dining/gourmet-by-the-woods.webp',
+  '/images/about/landscape-1.webp',
+  '/images/rooms/royal-suite.webp',
+  '/images/about/landscape-3.webp',
+  '/images/dining/pihu.webp',
 ];
 
 const InstagramStrip = () => {

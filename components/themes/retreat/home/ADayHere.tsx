@@ -11,7 +11,7 @@ const FRAMES = [
     titleAccent: 'quiet',
     titleTail: 'deck',
     body: 'First light through the teaks. Mist on the lawn. The kettle whistles before the world wakes.',
-    img: '/images/rooms/junior-deck-garden.jpg',
+    img: '/images/rooms/junior-deck-garden.webp',
   },
   {
     time: '10:30',
@@ -29,7 +29,7 @@ const FRAMES = [
     titleAccent: 'Gourmet',
     titleTail: 'By The Woods',
     body: 'Slow Malwa cooking. A bottle of something cold. Light filtering through the canopy.',
-    img: '/images/dining/gourmet-by-the-woods.jpg',
+    img: '/images/dining/gourmet-by-the-woods.webp',
   },
   {
     time: '17:00',
@@ -47,7 +47,7 @@ const FRAMES = [
     titleAccent: 'stars',
     titleTail: '',
     body: 'The Den lights its lanterns. A telescope finds Saturn. The forest carries on without you.',
-    img: '/images/dining/the-den.jpg',
+    img: '/images/dining/the-den.webp',
   },
 ];
 

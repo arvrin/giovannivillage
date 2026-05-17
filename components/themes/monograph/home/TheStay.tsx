@@ -51,7 +51,7 @@ const TheStay = () => {
           <div className="md:col-span-8">
             <div className="relative aspect-[4/3] md:aspect-[16/10] w-full overflow-hidden">
               <Image
-                src="/images/rooms/royal-suite.jpg"
+                src="/images/rooms/royal-suite.webp"
                 alt="Royal Suite at Giovanni Village — lakeside view"
                 fill
                 sizes="(max-width: 768px) 100vw, 66vw"

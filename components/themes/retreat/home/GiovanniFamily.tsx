@@ -25,7 +25,7 @@ const BRANDS: BrandCard[] = [
     location: 'E-4, Arera Colony, Bhopal',
     href: 'https://live.ipms247.com/booking/roomlisting-giovannistays-hotelgiovannihouse-en',
     external: true,
-    image: '/images/sister-properties/giovanni-house.jpg',
+    image: '/images/sister-properties/giovanni-house.webp',
   },
   {
     name: 'Giovanni Suites',
@@ -35,7 +35,7 @@ const BRANDS: BrandCard[] = [
     location: 'E-8, Arera Colony, Bhopal',
     href: 'https://live.ipms247.com/booking/roomlisting-giovannistays-hotelgiovannisuites-en',
     external: true,
-    image: '/images/sister-properties/giovanni-suites.jpg',
+    image: '/images/sister-properties/giovanni-suites.webp',
   },
 ];
 

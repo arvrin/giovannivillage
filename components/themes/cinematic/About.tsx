@@ -25,7 +25,7 @@ const CinematicAbout = () => {
       {/* Image background */}
       <div className="absolute inset-0">
         <Image
-          src="/images/about/landscape-2.jpg"
+          src="/images/about/landscape-2.webp"
           alt=""
           fill
           className="object-cover"

@@ -99,7 +99,7 @@ export const rooms = [
     features: ['Pool View', 'Garden View', 'King Bed', 'Private Sit-Out'],
     capacity: '2 adults, 1 child',
     area: '430 sqft',
-    image: '/images/rooms/king-pool-garden.jpg',
+    image: '/images/rooms/king-pool-garden.webp',
     gallery: [
       '/images/rooms/_galleries/king-pool-garden/01.jpg',
       '/images/rooms/_galleries/king-pool-garden/02.jpg',
@@ -122,7 +122,7 @@ export const rooms = [
     features: ['Private Garden', 'King Bed', 'Garden Views', 'Premium Amenities'],
     capacity: '2 adults, 1 child',
     area: '700 sqft',
-    image: '/images/rooms/king-private-garden.jpg',
+    image: '/images/rooms/king-private-garden.webp',
     gallery: [
       '/images/rooms/_galleries/king-private-garden/01.jpg',
       '/images/rooms/_galleries/king-private-garden/02.jpg',
@@ -142,7 +142,7 @@ export const rooms = [
     features: ['Outdoor Deck', 'Garden View', 'Living Area', 'Premium Bath'],
     capacity: '2 adults, 1 child',
     area: '540 sqft',
-    image: '/images/rooms/junior-deck-garden.jpg',
+    image: '/images/rooms/junior-deck-garden.webp',
     gallery: [
       '/images/rooms/_galleries/junior-deck-garden/01.jpg',
       '/images/rooms/_galleries/junior-deck-garden/02.jpg',
@@ -164,7 +164,7 @@ export const rooms = [
     features: ['Private Garden', 'Outdoor Deck', 'Living Area', 'Premium Bath'],
     capacity: '2 adults, 1 child',
     area: '700 sqft',
-    image: '/images/rooms/junior-deck-private.jpg',
+    image: '/images/rooms/junior-deck-private.webp',
     gallery: [
       '/images/rooms/_galleries/junior-deck-private/01.jpg',
       '/images/rooms/_galleries/junior-deck-private/02.jpg',
@@ -184,7 +184,7 @@ export const rooms = [
     features: ['Open-to-Sky Bath', 'Plush Interiors', 'Living Area', 'Garden Vista'],
     capacity: '2 adults, 1 child',
     area: '530 sqft',
-    image: '/images/rooms/junior-bath-tub.jpg',
+    image: '/images/rooms/junior-bath-tub.webp',
     gallery: [
       '/images/rooms/_galleries/junior-bath-tub/01.jpeg',
       '/images/rooms/_galleries/junior-bath-tub/02.jpeg',
@@ -204,7 +204,7 @@ export const rooms = [
     features: ['Open-to-Sky Bath', 'Family Friendly', 'Living Area', 'Premium Amenities'],
     capacity: '2 adults, 2 children',
     area: '530 sqft',
-    image: '/images/rooms/master-bath-tub.jpg',
+    image: '/images/rooms/master-bath-tub.webp',
     gallery: [
       '/images/rooms/_galleries/master-bath-tub/01.jpg',
       '/images/rooms/_galleries/master-bath-tub/02.jpeg',
@@ -227,7 +227,7 @@ export const rooms = [
     features: ['Private Plunge Pool', 'Open-to-Sky', 'Living Area', 'Garden Views'],
     capacity: '2 adults, 2 children',
     area: '530 sqft',
-    image: '/images/rooms/junior-plunge-pool.jpg',
+    image: '/images/rooms/junior-plunge-pool.webp',
     gallery: [
       '/images/rooms/_galleries/junior-plunge-pool/01.jpeg',
       '/images/rooms/_galleries/junior-plunge-pool/02.jpeg',
@@ -246,7 +246,7 @@ export const rooms = [
     features: ['Private Plunge Pool', '2,000 sqft Lawn', 'Living Area', 'Butler Service'],
     capacity: '3 adults, 2 children',
     area: '1,100 sqft',
-    image: '/images/rooms/royal-suite.jpg',
+    image: '/images/rooms/royal-suite.webp',
     gallery: [
       '/images/rooms/_galleries/royal-suite/01.jpg',
       '/images/rooms/_galleries/royal-suite/02.jpeg',
@@ -276,7 +276,7 @@ export const experiences = [
     title: 'Restaurants & Dining',
     description:
       'Four signature venues — from fine dining at Gourmet By The Woods to rooftop romance at Pihu, café bites at Berry & Beans, and bistro evenings at The Den.',
-    image: '/images/dining/gourmet-by-the-woods.jpg',
+    image: '/images/dining/gourmet-by-the-woods.webp',
     activities: ['Fine dining', 'Telescopic nights', 'Farm-to-table breakfast', 'Self-service barbecue'],
   },
   {
@@ -304,7 +304,7 @@ export const restaurants = [
     tagline: 'A culinary adventure in the heart of nature',
     description:
       'Nestled amidst tranquillity, Gourmet By The Woods is our fine dining destination. A menu crafted by world-renowned chefs makes every dish a gastronomic delight.',
-    image: '/images/dining/gourmet-by-the-woods.jpg',
+    image: '/images/dining/gourmet-by-the-woods.webp',
     tags: ['Fine Dining', 'Multi-Course', 'Forest Setting'],
   },
   {
@@ -313,7 +313,7 @@ export const restaurants = [
     tagline: 'Dine under the stars',
     description:
       'Perched on our rooftop, Pihu offers an intimate setting with panoramic views, live music on weekends, telescopic nights and a diverse menu of international and local cuisines.',
-    image: '/images/dining/pihu.jpg',
+    image: '/images/dining/pihu.webp',
     tags: ['Rooftop', 'Candle-lit', 'Live Music', 'Telescope Nights'],
   },
   {
@@ -322,7 +322,7 @@ export const restaurants = [
     tagline: 'Anytime cravings, sorted',
     description:
       'A bright, vibrant café — morning coffee, midday snacks, late-night dessert. Light bites, pastries and beverages in a social setting where good food meets great conversation.',
-    image: '/images/dining/berry-and-beans.jpg',
+    image: '/images/dining/berry-and-beans.webp',
     tags: ['Café', 'Coffee', 'Pastries', 'Casual'],
   },
   {
@@ -331,7 +331,7 @@ export const restaurants = [
     tagline: 'Kick back and unwind',
     description:
       'Our bistro bar with an extensive list of wines, beers and spirits. Appetisers and comfort food, live sports nights and laid-back music — the perfect end to your day.',
-    image: '/images/dining/the-den.jpg',
+    image: '/images/dining/the-den.webp',
     tags: ['Bistro Bar', 'Wines & Spirits', 'Live Sports', 'Comfort Food'],
   },
 ];
@@ -580,7 +580,7 @@ export const sisterProperties = [
       'An intimate boutique home stay in the heart of Arera Colony — perfect for short city stays with the warmth of a Giovanni welcome.',
     location: 'E-4, Arera Colony, Bhopal',
     bookingUrl: 'https://live.ipms247.com/booking/roomlisting-giovannistays-hotelgiovannihouse-en',
-    image: '/images/sister-properties/giovanni-house.jpg',
+    image: '/images/sister-properties/giovanni-house.webp',
   },
   {
     id: 'giovanni-suites',
@@ -590,7 +590,7 @@ export const sisterProperties = [
       'Spacious suites for longer stays in central Bhopal — Giovanni hospitality, urban convenience.',
     location: 'E-8, Arera Colony, Bhopal',
     bookingUrl: 'https://live.ipms247.com/booking/roomlisting-giovannistays-hotelgiovannisuites-en',
-    image: '/images/sister-properties/giovanni-suites.jpg',
+    image: '/images/sister-properties/giovanni-suites.webp',
   },
 ];
 
@@ -602,7 +602,7 @@ export const testimonials = [
     rating: 5,
     quote:
       'Our wedding at Giovanni Village was beyond magical. The team took care of every detail and our guests are still raving about the experience.',
-    image: '/images/testimonials/testimonial-1.jpg',
+    image: '/images/testimonials/testimonial-1.webp',
   },
   {
     id: 2,
@@ -611,7 +611,7 @@ export const testimonials = [
     rating: 5,
     quote:
       'Perfect getaway for our corporate retreat. The facilities, food and service were impeccable.',
-    image: '/images/testimonials/testimonial-2.jpg',
+    image: '/images/testimonials/testimonial-2.webp',
   },
   {
     id: 3,
@@ -620,7 +620,7 @@ export const testimonials = [
     rating: 5,
     quote:
       'The spa experience at Elysium was transformative. Combined with the serene natural surroundings, it was the perfect wellness retreat.',
-    image: '/images/testimonials/testimonial-3.jpg',
+    image: '/images/testimonials/testimonial-3.webp',
   },
 ];
 

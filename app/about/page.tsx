@@ -44,7 +44,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-24 md:mb-32">
             <div className="relative h-[500px] lg:h-[680px] rounded-lg overflow-hidden">
               <Image
-                src="/images/about/landscape-1.jpg"
+                src="/images/about/landscape-1.webp"
                 alt="Giovanni Village Resort"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -114,9 +114,9 @@ export default function AboutPage() {
           <SectionHeader title="Frames from the estate" eyebrow="A glimpse" />
           <div className="mt-16 mb-24 md:mb-32 grid md:grid-cols-3 gap-8">
             {[
-              { src: '/images/about/landscape-1.jpg', alt: 'Nature Views' },
-              { src: '/images/about/landscape-2.jpg', alt: 'Garden Landscape' },
-              { src: '/images/about/landscape-3.jpg', alt: 'Resort Grounds' },
+              { src: '/images/about/landscape-1.webp', alt: 'Nature Views' },
+              { src: '/images/about/landscape-2.webp', alt: 'Garden Landscape' },
+              { src: '/images/about/landscape-3.webp', alt: 'Resort Grounds' },
             ].map((img) => (
               <div key={img.src} className="relative aspect-[4/3] rounded-lg overflow-hidden group">
                 <Image

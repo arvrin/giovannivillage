@@ -48,7 +48,7 @@ const ModernistAbout = () => {
             className="lg:col-span-7 relative aspect-[4/3] overflow-hidden"
           >
             <Image
-              src="/images/about/landscape-1.jpg"
+              src="/images/about/landscape-1.webp"
               alt="Giovanni Village estate"
               fill
               className="object-cover"

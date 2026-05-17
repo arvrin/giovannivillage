@@ -14,7 +14,7 @@ const WhereYouAre = () => {
   return (
     <section className="relative overflow-hidden bg-[color:var(--color-forest)] py-24 text-[color:var(--color-bg)] md:py-36">
       <Image
-        src="/images/about/landscape-3.jpg"
+        src="/images/about/landscape-3.webp"
         alt=""
         fill
         sizes="100vw"

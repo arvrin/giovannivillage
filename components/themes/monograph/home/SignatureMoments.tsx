@@ -21,7 +21,7 @@ const signatureMoments: SignatureMoment[] = [
     title: 'Telescopic Dinners',
     caption:
       'Dinner under a working telescope on the rooftop at Pihu — the Milky Way overhead, a curated tasting menu in front of you.',
-    image: '/images/dining/pihu.jpg',
+    image: '/images/dining/pihu.webp',
     alt: 'Rooftop telescopic dining at Pihu',
   },
   {
