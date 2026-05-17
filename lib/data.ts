@@ -292,7 +292,7 @@ export const experiences = [
     title: 'Weddings & Events',
     description:
       'From intimate ceremonies to grand celebrations for up to 5,000 guests — pillarless banquet halls and lakeside lawns.',
-    image: '/images/weddings/gourmet-lawn.png',
+    image: '/images/weddings/gourmet-lawn.webp',
     activities: ['Weddings', 'Conferences', 'Concerts', 'Private parties'],
   },
 ];
@@ -371,7 +371,7 @@ export const weddingVenues = [
       'A 9,000 sqft lawn dedicated to lively cocktail parties — stylish receptions where the beauty of nature complements every toast.',
     specs: '9,000 sqft',
     capacity: '200 pax seated',
-    image: '/images/weddings/cocktail-lawn.png',
+    image: '/images/weddings/cocktail-lawn.webp',
   },
   {
     id: 'gourmet-lawn',
@@ -380,7 +380,7 @@ export const weddingVenues = [
       'Adjacent to Gourmet By The Woods, this curated space offers breathtaking lake views and sophisticated charm — an ideal setting for fine-dining-led celebrations.',
     specs: 'Lakeside · adjacent to Gourmet By The Woods',
     capacity: 'Boutique celebrations',
-    image: '/images/weddings/gourmet-lawn.png',
+    image: '/images/weddings/gourmet-lawn.webp',
   },
   {
     id: 'poolside-lawn',
@@ -405,7 +405,7 @@ export const weddings = {
     'On-site rooms for every guest',
     'Decor and photography taken care of',
   ],
-  image: '/images/weddings/gourmet-lawn.png',
+  image: '/images/weddings/gourmet-lawn.webp',
 };
 
 // Activity icons sourced from giovannivillage.com/media/icon-N.png — same

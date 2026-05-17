@@ -58,7 +58,7 @@ const Discover = () => {
             className="relative aspect-[4/3] overflow-hidden rounded-md md:col-span-7"
           >
             <Image
-              src="/images/weddings/cocktail-lawn.png"
+              src="/images/weddings/cocktail-lawn.webp"
               alt="Giovanni estate"
               fill
               sizes="(max-width:768px) 100vw, 800px"
@@ -67,7 +67,7 @@ const Discover = () => {
             />
             <video
               ref={videoRef}
-              poster="/images/weddings/cocktail-lawn.png"
+              poster="/images/weddings/cocktail-lawn.webp"
               muted
               loop
               playsInline

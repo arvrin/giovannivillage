@@ -18,7 +18,7 @@ const ITEMS = [
     accent: 'lake',
     tail: 'at sunset',
     body: 'Marigold runners, a tamarind tree for an aisle, vows set against the slow gold of evening.',
-    img: '/images/weddings/gourmet-lawn.png',
+    img: '/images/weddings/gourmet-lawn.webp',
   },
   {
     n: '03',

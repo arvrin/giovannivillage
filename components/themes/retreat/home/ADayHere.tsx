@@ -20,7 +20,7 @@ const FRAMES = [
     titleAccent: 'walk',
     titleTail: 'through the estate',
     body: 'Mango plantations, lily ponds, lawns set for tea. The naturalist points out a hornbill on the way.',
-    img: '/images/weddings/cocktail-lawn.png',
+    img: '/images/weddings/cocktail-lawn.webp',
   },
   {
     time: '13:30',
@@ -38,7 +38,7 @@ const FRAMES = [
     titleAccent: 'ceremony',
     titleTail: 'on the lawn',
     body: 'Pheras at sunset by the lake. Marigold runners, lit aisles, vows beneath an old tamarind tree.',
-    img: '/images/weddings/gourmet-lawn.png',
+    img: '/images/weddings/gourmet-lawn.webp',
   },
   {
     time: '20:30',

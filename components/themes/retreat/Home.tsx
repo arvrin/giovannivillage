@@ -26,7 +26,7 @@ const RetreatHome = () => (
     <WhereYouAre />
     <AmbientInterlude
       src="/videos/golden-lawn.mp4"
-      poster="/images/weddings/cocktail-lawn.png"
+      poster="/images/weddings/cocktail-lawn.webp"
       alt="Golden hour through the trees"
       eyebrow="A pause"
       lead="The light slows down here"

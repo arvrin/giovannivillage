@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 const VENUES = [
-  { name: 'Cocktail', tail: 'Lawn', cap: '500', img: '/images/weddings/cocktail-lawn.png' },
+  { name: 'Cocktail', tail: 'Lawn', cap: '500', img: '/images/weddings/cocktail-lawn.webp' },
   { name: 'Poolside', tail: 'Lawn', cap: '300', img: '/images/weddings/poolside-pool.jpg' },
   { name: 'The Aria', tail: 'Hall', cap: '1,200', img: '/images/weddings/aria-grand-hall.jpg' },
   { name: 'Sudesh', tail: 'Lawns', cap: '5,000', img: '/images/weddings/sudesh-lawns.jpg' },
@@ -63,7 +63,7 @@ const Celebrations = () => {
             className="relative hidden h-44 w-52 shrink-0 overflow-hidden rounded-md md:block"
           >
             <Image
-              src="/images/weddings/gourmet-lawn.png"
+              src="/images/weddings/gourmet-lawn.webp"
               alt="Wedding setup at Giovanni"
               fill
               sizes="220px"
