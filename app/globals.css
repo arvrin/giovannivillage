@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/* Pre-hydration cover. The inline script in app/layout.tsx adds
+   .gv-pre-loading to <html> on a first-visit session, BEFORE the body
+   parses. This rule pins a full-screen ivory shade over everything so
+   the hero can't flash before the React loader mounts. The React
+   loader removes the class as soon as it's active. */
+html.gv-pre-loading::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: #F8F6F1;
+  z-index: 99;
+  pointer-events: none;
+}
+
 @layer base {
   /* ============================================================
      SHARED ROOT — variables that don't change between themes.

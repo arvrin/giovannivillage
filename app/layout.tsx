@@ -41,6 +41,12 @@ export const viewport: Viewport = {
 
 const fontVars = [onest.variable, hurricane.variable].join(' ');
 
+/* Inline script — runs synchronously before <body> parses. If this is a
+   first-visit session, marks <html> so the CSS in globals.css can hide page
+   content until the React loader takes over. Prevents the hero from
+   flashing before the splash. */
+const preLoaderScript = `(function(){try{if(sessionStorage.getItem('gv-loaded')!=='1'){document.documentElement.classList.add('gv-pre-loading');}}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,6 +54,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={fontVars} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: preLoaderScript }} />
+      </head>
       <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
       </body>

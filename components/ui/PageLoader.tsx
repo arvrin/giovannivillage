@@ -30,12 +30,17 @@ const PageLoader = () => {
     // Returning visitor — no splash this session. Signal "loader done"
     // immediately so dependent UI (background music) can proceed.
     if (sessionStorage.getItem('gv-loaded') === '1') {
+      // Returning visitor — make sure the pre-hydration shade is gone too.
+      document.documentElement.classList.remove('gv-pre-loading');
       window.dispatchEvent(new Event('gv-loader-done'));
       return;
     }
 
     sessionStorage.setItem('gv-loaded', '1');
     setActive(true);
+    // Once React's loader is mounted, drop the pre-hydration shade so it
+    // doesn't double-tint the React overlay.
+    document.documentElement.classList.remove('gv-pre-loading');
 
     const start = Date.now();
 
