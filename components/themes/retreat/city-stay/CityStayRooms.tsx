@@ -99,6 +99,14 @@ const CityStayRooms = ({ stay }: { stay: CityStay }) => {
             </motion.article>
           ))}
         </div>
+
+        <p
+          className="mx-auto mt-10 max-w-3xl text-center text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-text-tertiary)]"
+          style={{ fontFamily: 'var(--font-eyebrow)' }}
+        >
+          Rates exclude taxes. Room layouts and availability vary — confirm
+          specifics with our concierge before booking.
+        </p>
       </div>
     </section>
   );

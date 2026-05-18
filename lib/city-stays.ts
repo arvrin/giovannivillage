@@ -56,11 +56,27 @@ export interface CityStay {
 const SHARED_PHONE = '+91 74705 58218';
 const SHARED_WHATSAPP = '+917470558218';
 
+/**
+ * Nearby — only Arera Colony-adjacent landmarks within ~5 km.
+ * Upper Lake and Van Vihar are in the city's north and are 7-10 km
+ * away — they sit in the broader Bhopal worth-the-drive list, not
+ * "walking-distance" nearby.
+ */
 const NEARBY_ARERA: NearbyPlace[] = [
-  { name: 'Upper Lake', detail: 'Sunset boating + lakeside cafés', distanceKm: 2.5 },
-  { name: 'Van Vihar National Park', detail: 'Tigers, leopards, hyenas in a city park', distanceKm: 3 },
-  { name: 'MP Nagar Business District', detail: 'For the working visit', distanceKm: 4 },
-  { name: 'Birla Mandir', detail: 'Hilltop temple, panoramic city view', distanceKm: 5 },
+  { name: 'DB City Mall', detail: 'Cinema, food court, the closest big retail', distanceKm: 1.5 },
+  { name: 'Birla Mandir', detail: 'Hilltop temple on Arera Hills with a city panorama', distanceKm: 2 },
+  { name: 'Shahpura Lake', detail: 'A walkable lake — slower than Upper Lake, quieter at sunset', distanceKm: 2.5 },
+  { name: 'MP Nagar', detail: 'The city\'s working district — markets, cafés, offices', distanceKm: 4 },
+  { name: 'New Market', detail: 'Old-Bhopal shopping, sweets, street food', distanceKm: 4 },
+];
+
+/** Distances published on the site are courtesy approximations; actual
+ *  travel time depends on Bhopal traffic. Always confirm with concierge. */
+const ARERA_STATS = [
+  { value: '40 min', label: 'From Raja Bhoj Airport' },
+  { value: '15 min', label: 'From Habibganj Station' },
+  { value: '4 km', label: 'To MP Nagar' },
+  { value: '2 km', label: 'To Birla Mandir' },
 ];
 
 export const giovanniHouse: CityStay = {
@@ -74,7 +90,7 @@ export const giovanniHouse: CityStay = {
   },
   eyebrow: 'City stays · Bhopal',
   intro:
-    'A boutique homestay in the leafiest pocket of Bhopal — eight king suites kept by the same family that runs Giovanni Village. Built for the short business trip, the weekend with parents, the night before a wedding.',
+    'A boutique homestay in one of Bhopal\'s quietest residential pockets — kept by the same family that runs Giovanni Village. Three categories of king suite, built for the short business trip, the weekend with parents, the night before a wedding.',
   hero: '/images/city-stays/house/hero.webp',
   address: {
     line1: 'E-4:198, Arera Colony',
@@ -91,7 +107,7 @@ export const giovanniHouse: CityStay = {
       id: 'delux-king-suite',
       name: 'Delux King Suite',
       description:
-        'Our flagship room. King bed, a study corner, generous bath. Designed for the longer stay — every drawer and switch where you want it.',
+        'Our flagship category. King bed, generous bath, the highest rate at Giovanni House. Best for the longer stay.',
       rate: 2880,
       capacity: '2 adults · 2 children',
       guestsMax: 4,
@@ -106,7 +122,7 @@ export const giovanniHouse: CityStay = {
       id: 'superior-king-suite',
       name: 'Superior King Suite',
       description:
-        'A quieter floor with the same king bed and study corner. Best for the early-morning meeting day.',
+        'The mid-tier king. Same bed, same amenities, slightly different placement in the property. Sleeps four.',
       rate: 2700,
       capacity: '2 adults · 2 children',
       guestsMax: 4,
@@ -116,7 +132,7 @@ export const giovanniHouse: CityStay = {
       id: 'luxury-king',
       name: 'Luxury King',
       description:
-        'A compact king for a single traveller or a couple. Same Giovanni touches in a smaller footprint.',
+        'Our entry king. Same Giovanni touches at the most accessible rate. Sleeps up to four.',
       rate: 2250,
       capacity: '3 adults · 1 child',
       guestsMax: 4,
@@ -124,11 +140,11 @@ export const giovanniHouse: CityStay = {
     },
   ],
   included: [
-    'King bed with premium linen',
+    'King bed with fresh linen',
     'Air conditioning',
-    'High-speed Wi-Fi',
-    'Smart TV with streaming',
-    'En-suite bath with premium toiletries',
+    'Wi-Fi',
+    'Television',
+    'En-suite bath',
     '24/7 in-room dining',
     'Complimentary breakfast',
     'Reserved parking',
@@ -138,12 +154,7 @@ export const giovanniHouse: CityStay = {
   nearby: NEARBY_ARERA,
   mapEmbedSrc:
     'https://www.google.com/maps?q=E-4%2F198+Arera+Colony+Bhopal&output=embed',
-  stats: [
-    { value: '25 min', label: 'From Raja Bhoj Airport' },
-    { value: '10 min', label: 'From Bhopal Junction' },
-    { value: '4 km', label: 'To MP Nagar' },
-    { value: '2.5 km', label: 'To Upper Lake' },
-  ],
+  stats: ARERA_STATS,
 };
 
 export const giovanniSuites: CityStay = {
@@ -151,13 +162,13 @@ export const giovanniSuites: CityStay = {
   name: 'Giovanni Suites',
   tagline: 'Boutique Home Stay',
   headline: {
-    lead: 'Four rooms,',
+    lead: 'Four named rooms,',
     script: 'four',
     tail: 'small stories.',
   },
   eyebrow: 'City stays · Bhopal',
   intro:
-    'A poet\'s homestay in Arera Colony — four rooms named after the trees and colours of central India. Built for the slow weekend in the city, the family visit, the wedding-guest stay.',
+    'A homestay in Arera Colony with four named room categories — Amaltas, Gulmohar, Razz, Rangrez — drawn from the trees and language of central India. Built for the slow weekend in the city, the family visit, the wedding-guest stay.',
   hero: '/images/city-stays/suites/hero.webp',
   address: {
     line1: '58, Pradhan Devlok Farms',
@@ -172,9 +183,9 @@ export const giovanniSuites: CityStay = {
     {
       id: 'amaltas',
       name: 'Amaltas',
-      meaning: 'Indian Laburnum — the tree that blooms in golden chains',
+      meaning: 'Named for the Indian Laburnum',
       description:
-        'Our entry room. Cream walls, blue accents, a generous bath. Good for a couple on a short trip.',
+        'Our entry category. Sleeps up to four, breakfast included.',
       rate: 2250,
       capacity: '2 adults · 2 children',
       guestsMax: 4,
@@ -187,9 +198,9 @@ export const giovanniSuites: CityStay = {
     {
       id: 'gulmohar',
       name: 'Gulmohar',
-      meaning: 'Flame-of-the-Forest — the tree that turns the road red in May',
+      meaning: 'Named for the Flame-of-the-Forest',
       description:
-        'The family room. Sleeps five comfortably, an extra sofa-bed for the child who insists on staying with the cousins.',
+        'The family category — sleeps up to five with room for an extra bed.',
       rate: 2700,
       capacity: '3 adults · 2 children',
       guestsMax: 5,
@@ -202,9 +213,9 @@ export const giovanniSuites: CityStay = {
     {
       id: 'razz',
       name: 'Razz',
-      meaning: 'A signature corner room with the most natural light',
+      meaning: 'Our signature mid-tier',
       description:
-        'The corner room with two-sided light. Slightly more space, slightly higher floor — for the longer stay or the longer morning.',
+        'A step up in space and rate. Sleeps four.',
       rate: 2880,
       capacity: '3 adults · 1 child',
       guestsMax: 4,
@@ -213,9 +224,9 @@ export const giovanniSuites: CityStay = {
     {
       id: 'rangrez',
       name: 'Rangrez',
-      meaning: 'The dyer — the artisan who colours every Indian celebration',
+      meaning: 'Named for the dyer — the artisan who colours the celebration',
       description:
-        'Our largest. A king bed plus a separate living corner, sleeps six. Designed for the wedding-guest family, the visiting parents, the long birthday.',
+        'Our largest category. Sleeps up to six — for the wedding-guest family or the visiting parents.',
       rate: 4050,
       capacity: '4 adults · 2 children',
       guestsMax: 6,
@@ -223,11 +234,11 @@ export const giovanniSuites: CityStay = {
     },
   ],
   included: [
-    'King bed with premium linen',
+    'King bed with fresh linen',
     'Air conditioning',
-    'High-speed Wi-Fi',
-    'Smart TV with streaming',
-    'En-suite bath with premium toiletries',
+    'Wi-Fi',
+    'Television',
+    'En-suite bath',
     '24/7 in-room dining',
     'Complimentary breakfast',
     'Reserved parking',
@@ -237,12 +248,7 @@ export const giovanniSuites: CityStay = {
   nearby: NEARBY_ARERA,
   mapEmbedSrc:
     'https://www.google.com/maps?q=E-8+Arera+Colony+Bhopal&output=embed',
-  stats: [
-    { value: '25 min', label: 'From Raja Bhoj Airport' },
-    { value: '10 min', label: 'From Bhopal Junction' },
-    { value: '4 km', label: 'To MP Nagar' },
-    { value: '2.5 km', label: 'To Upper Lake' },
-  ],
+  stats: ARERA_STATS,
 };
 
 export const cityStays = [giovanniHouse, giovanniSuites] as const;
