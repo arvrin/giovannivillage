@@ -536,7 +536,11 @@ html.retreat .font-script {
   font-weight: 400;
   letter-spacing: 0;
   line-height: 0.9;
-  font-size: 1.25em; /* compensate for Hurricane's smaller x-height */
+  /* Hurricane has a very low x-height. font-size-adjust normalises the
+     x-height to match Onest (0.5) so the script feels visually equal
+     to the surrounding sans regardless of headline size. */
+  font-size: 1.4em;
+  font-size-adjust: 0.5;
   color: var(--color-brass);
   font-style: normal;
 }
