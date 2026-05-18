@@ -21,21 +21,19 @@ const BRANDS: BrandCard[] = [
     name: 'Giovanni House',
     tagline: 'Boutique Home Stay',
     description:
-      'An intimate boutique stay in the heart of Arera Colony — perfect for short city trips with the warmth of a Giovanni welcome.',
+      'Eight king suites in the leafiest pocket of Arera Colony — perfect for the short business trip or the night before a wedding.',
     location: 'E-4, Arera Colony, Bhopal',
-    href: 'https://live.ipms247.com/booking/roomlisting-giovannistays-hotelgiovannihouse-en',
-    external: true,
-    image: '/images/sister-properties/giovanni-house.webp',
+    href: '/house',
+    image: '/images/city-stays/house/hero.webp',
   },
   {
     name: 'Giovanni Suites',
     tagline: 'Boutique Home Stay',
     description:
-      'Spacious suites for longer stays in central Bhopal — same Giovanni hospitality, urban convenience.',
+      'Four rooms named for the trees and colours of central India — Amaltas, Gulmohar, Razz, Rangrez. Slow weekends, family visits, wedding-guest stays.',
     location: 'E-8, Arera Colony, Bhopal',
-    href: 'https://live.ipms247.com/booking/roomlisting-giovannistays-hotelgiovannisuites-en',
-    external: true,
-    image: '/images/sister-properties/giovanni-suites.webp',
+    href: '/suites',
+    image: '/images/city-stays/suites/hero.webp',
   },
 ];
 
@@ -145,7 +143,7 @@ const GiovanniFamily = () => {
                       className="text-[10px] tracking-[0.3em] uppercase text-[color:var(--color-text)]"
                       style={{ fontFamily: 'var(--font-eyebrow)' }}
                     >
-                      {b.external ? `Visit ${b.name.split(' ')[1]}` : 'Enquire'}
+                      Explore {b.name.split(' ')[1]}
                     </span>
                     <ArrowUpRight className="h-4 w-4 text-[color:var(--color-text)] transition group-hover:text-[color:var(--color-brass)]" />
                   </div>
