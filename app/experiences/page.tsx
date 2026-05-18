@@ -31,7 +31,7 @@ export default function ExperiencesPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/images/experiences/wildlife/safari-elephants.jpg"
+          image="/images/experiences/safari-jeep.webp"
           alt="Ratapani Sanctuary safari"
           eyebrow="The doings"
           title="Ways to lose the day"

@@ -35,6 +35,7 @@ const galleryImages = [
   { id: 24, category: 'Spa', url: '/images/experiences/landscapes/spa-landscape.jpg', title: 'Meditation Deck' },
   { id: 22, category: 'Landscape', url: '/images/experiences/wildlife/safari-elephants.jpg', title: 'Safari Elephants' },
   { id: 23, category: 'Landscape', url: '/images/experiences/wildlife/tiger-log.jpg', title: 'Ratapani Tiger' },
+  { id: 25, category: 'Landscape', url: '/images/experiences/safari-jeep.webp', title: 'Giovanni Safari Jeep' },
 ];
 
 export default function GalleryPage() {
