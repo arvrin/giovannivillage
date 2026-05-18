@@ -5,7 +5,7 @@ import { giovanniHouse } from '@/lib/city-stays';
 export const metadata: Metadata = {
   title: 'Giovanni House — Boutique Homestay in Arera Colony, Bhopal',
   description:
-    'Eight king suites in the leafiest pocket of Bhopal. By the same family that runs Giovanni Village Resort. From ₹2,250/night, breakfast included.',
+    'A boutique homestay in Arera Colony, Bhopal — three categories of king suite, breakfast included. By the same family that runs Giovanni Village Resort. From ₹2,250/night.',
 };
 
 export default function HousePage() {

@@ -50,6 +50,16 @@ const CityStayHero = ({ stay }: { stay: CityStay }) => {
               {stay.headline.tail}
             </h1>
             <p
+              className="mt-5 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[10px] tracking-[0.28em] uppercase text-white/95 backdrop-blur-md"
+              style={{ fontFamily: 'var(--font-eyebrow)' }}
+            >
+              <span>{stay.tagline}</span>
+              <span aria-hidden className="h-1 w-1 rounded-full bg-white/50" />
+              <span>{stay.rooms.length} room categories</span>
+              <span aria-hidden className="h-1 w-1 rounded-full bg-white/50" />
+              <span>Arera Colony, Bhopal</span>
+            </p>
+            <p
               className="mt-6 max-w-md text-[15px] leading-[1.85] text-white/90 md:text-base"
               style={{ fontFamily: 'var(--font-body)' }}
             >

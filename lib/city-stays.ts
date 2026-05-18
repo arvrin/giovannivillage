@@ -88,7 +88,7 @@ export const giovanniHouse: CityStay = {
     script: 'address',
     tail: 'in Arera Colony.',
   },
-  eyebrow: 'City stays · Bhopal',
+  eyebrow: 'Boutique stays · Bhopal',
   intro:
     'A boutique homestay in one of Bhopal\'s quietest residential pockets — kept by the same family that runs Giovanni Village. Three categories of king suite, built for the short business trip, the weekend with parents, the night before a wedding.',
   hero: '/images/city-stays/house/hero.webp',
@@ -166,9 +166,9 @@ export const giovanniSuites: CityStay = {
     script: 'four',
     tail: 'small stories.',
   },
-  eyebrow: 'City stays · Bhopal',
+  eyebrow: 'Boutique stays · Bhopal',
   intro:
-    'A homestay in Arera Colony with four named room categories — Amaltas, Gulmohar, Razz, Rangrez — drawn from the trees and language of central India. Built for the slow weekend in the city, the family visit, the wedding-guest stay.',
+    'A boutique homestay in Arera Colony with four named room categories — Amaltas, Gulmohar, Razz, Rangrez — drawn from the trees and language of central India. Built for the slow weekend in the city, the family visit, the wedding-guest stay.',
   hero: '/images/city-stays/suites/hero.webp',
   address: {
     line1: '58, Pradhan Devlok Farms',
