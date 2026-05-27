@@ -30,7 +30,7 @@ const signatureMoments: SignatureMoment[] = [
     title: 'Junior Chef',
     caption:
       'Children, in toques, at the kitchen pass. A two-hour lesson with our chef, ending in plated dishes the family eats together.',
-    image: '/Gourmet-By-The-Woods.jpg',
+    image: '/Gourmet-By-The-Woods.webp',
     alt: 'Fine dining at Gourmet By The Woods — the Junior Chef experience',
   },
   {
@@ -39,7 +39,7 @@ const signatureMoments: SignatureMoment[] = [
     title: 'Forest Trail with the Naturalist',
     caption:
       'A pre-dawn walk into Ratapani with someone who knows the names — bird calls, paw prints, the language of the forest.',
-    image: '/images/experiences/wildlife/tiger-log.jpg',
+    image: '/images/experiences/wildlife/tiger-log.webp',
     alt: 'Forest trail at Ratapani sanctuary',
   },
 ];

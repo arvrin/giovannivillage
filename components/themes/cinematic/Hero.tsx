@@ -40,7 +40,7 @@ const CinematicHero = () => {
       <div className="absolute inset-0">
         {/* Lightweight poster shows instantly while video loads */}
         <Image
-          src="/images/hero/landscape-3.jpg"
+          src="/images/hero/landscape-3.webp"
           alt="Giovanni Village"
           fill
           className="object-cover"
@@ -57,7 +57,7 @@ const CinematicHero = () => {
           transition={{ duration: 1.4 }}
           className="absolute inset-0 h-full w-full object-cover"
           src="/Giovanni-Video-Presentation.mp4"
-          poster="/images/hero/landscape-3.jpg"
+          poster="/images/hero/landscape-3.webp"
           autoPlay
           loop
           muted

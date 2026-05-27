@@ -78,7 +78,7 @@ const ModernistHeader = () => {
           {/* Logo */}
           <Link href="/" className="shrink-0 inline-flex items-center">
             <Image
-              src="/images/logo/gvr-final-logo.png"
+              src="/images/logo/gvr-final-logo.webp"
               alt={siteConfig.name}
               width={140}
               height={48}
@@ -143,7 +143,7 @@ const ModernistHeader = () => {
             >
               <div className="flex shrink-0 items-center justify-between px-6 py-5 border-b border-[var(--color-border)]">
                 <Image
-                  src="/images/logo/gvr-final-logo.png"
+                  src="/images/logo/gvr-final-logo.webp"
                   alt={siteConfig.name}
                   width={120}
                   height={40}

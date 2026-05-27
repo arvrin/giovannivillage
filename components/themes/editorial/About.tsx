@@ -29,7 +29,7 @@ const About = () => {
             className="relative h-[500px] overflow-hidden lg:col-span-3 lg:h-[680px]"
           >
             <Image
-              src="/images/hero/landscape-2.jpg"
+              src="/images/hero/landscape-2.webp"
               alt="Giovanni Village resort"
               fill
               className="object-cover"

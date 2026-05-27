@@ -14,7 +14,7 @@ const RetreatLoader = ({ progress }: LoaderProps) => {
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center bg-[color:var(--color-bg)]">
       <motion.img
-        src="/images/logo/gvr-final-logo.png"
+        src="/images/logo/gvr-final-logo.webp"
         alt="Giovanni Village"
         className="h-24 md:h-32 w-auto"
         initial={{ opacity: 0, scale: 0.92 }}

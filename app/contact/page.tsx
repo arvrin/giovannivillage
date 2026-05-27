@@ -102,7 +102,7 @@ export default function ContactPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/c1.jpg"
+          image="/c1.webp"
           alt="Contact Giovanni Village"
           eyebrow="A note"
           title="A line to your corner of the estate"

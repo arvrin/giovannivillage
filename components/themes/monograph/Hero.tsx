@@ -38,7 +38,7 @@ const MonographHero = () => {
     <section className="relative h-screen w-full overflow-hidden">
       <div className="absolute inset-0 bg-black">
         <Image
-          src="/f1.jpg"
+          src="/f1.webp"
           alt="Giovanni Village Resort"
           fill
           className="object-cover z-[5]"
@@ -63,7 +63,7 @@ const MonographHero = () => {
             muted
             playsInline
             preload="none"
-            poster="/f1.jpg"
+            poster="/f1.webp"
             onLoadedData={() => setVideoLoaded(true)}
             style={{ filter: 'grayscale(5%) brightness(0.85)' }}
           >

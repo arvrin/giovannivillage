@@ -13,7 +13,7 @@ const EditorialLoader = ({ progress }: LoaderProps) => {
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center bg-[var(--color-bg)]">
       <motion.img
-        src="/images/logo/gvr-final-logo.png"
+        src="/images/logo/gvr-final-logo.webp"
         alt="Giovanni Village Resort"
         className="h-24 md:h-32 w-auto"
         initial={{ opacity: 0, scale: 0.95 }}

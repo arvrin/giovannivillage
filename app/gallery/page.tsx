@@ -12,10 +12,10 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 const categories = ['All', 'Landscape', 'Rooms', 'Dining', 'Events', 'Spa'];
 
 const galleryImages = [
-  { id: 1, category: 'Landscape', url: '/images/hero/hero-1.jpg', title: 'Resort Landscape' },
-  { id: 2, category: 'Landscape', url: '/images/hero/landscape-2.jpg', title: 'Forest Vista' },
-  { id: 3, category: 'Landscape', url: '/images/hero/landscape-3.jpg', title: 'Garden Grounds' },
-  { id: 4, category: 'Landscape', url: '/images/hero/recent.jpg', title: 'Resort Exterior' },
+  { id: 1, category: 'Landscape', url: '/images/hero/hero-1.webp', title: 'Resort Landscape' },
+  { id: 2, category: 'Landscape', url: '/images/hero/landscape-2.webp', title: 'Forest Vista' },
+  { id: 3, category: 'Landscape', url: '/images/hero/landscape-3.webp', title: 'Garden Grounds' },
+  { id: 4, category: 'Landscape', url: '/images/hero/recent.webp', title: 'Resort Exterior' },
   { id: 5, category: 'Landscape', url: '/images/about/landscape-1.webp', title: 'Grounds' },
   { id: 6, category: 'Landscape', url: '/images/about/landscape-2.webp', title: 'Estate' },
   { id: 7, category: 'Rooms', url: '/images/rooms/king-pool-garden.webp', title: 'King Room — Pool & Garden' },
@@ -29,12 +29,12 @@ const galleryImages = [
   { id: 16, category: 'Dining', url: '/images/dining/pihu.webp', title: 'Pihu — Rooftop' },
   { id: 17, category: 'Dining', url: '/images/dining/berry-and-beans.webp', title: 'Berry & Beans' },
   { id: 18, category: 'Dining', url: '/images/dining/the-den.webp', title: 'The Den' },
-  { id: 19, category: 'Events', url: '/images/weddings/sudesh-lawns.jpg', title: 'Sudesh Lawns' },
+  { id: 19, category: 'Events', url: '/images/weddings/sudesh-lawns.webp', title: 'Sudesh Lawns' },
   { id: 20, category: 'Events', url: '/images/weddings/cocktail-lawn.webp', title: 'Cocktail Lawn' },
-  { id: 21, category: 'Spa', url: '/n1.jpg', title: 'Elysium Spa Treatment' },
-  { id: 24, category: 'Spa', url: '/images/experiences/landscapes/spa-landscape.jpg', title: 'Meditation Deck' },
-  { id: 22, category: 'Landscape', url: '/images/experiences/wildlife/safari-elephants.jpg', title: 'Safari Elephants' },
-  { id: 23, category: 'Landscape', url: '/images/experiences/wildlife/tiger-log.jpg', title: 'Ratapani Tiger' },
+  { id: 21, category: 'Spa', url: '/n1.webp', title: 'Elysium Spa Treatment' },
+  { id: 24, category: 'Spa', url: '/images/experiences/landscapes/spa-landscape.webp', title: 'Meditation Deck' },
+  { id: 22, category: 'Landscape', url: '/images/experiences/wildlife/safari-elephants.webp', title: 'Safari Elephants' },
+  { id: 23, category: 'Landscape', url: '/images/experiences/wildlife/tiger-log.webp', title: 'Ratapani Tiger' },
   { id: 25, category: 'Landscape', url: '/images/experiences/safari-jeep.webp', title: 'Giovanni Safari Jeep' },
 ];
 

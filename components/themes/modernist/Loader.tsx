@@ -43,7 +43,7 @@ const ModernistLoader = ({ progress }: LoaderProps) => {
           transition={{ duration: 0.9, delay: 0.1, ease: [0.215, 0.61, 0.355, 1] }}
         >
           <Image
-            src="/images/logo/gvr-final-logo.png"
+            src="/images/logo/gvr-final-logo.webp"
             alt="Giovanni Village Resort"
             width={200}
             height={68}

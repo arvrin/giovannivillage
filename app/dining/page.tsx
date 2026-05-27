@@ -33,7 +33,7 @@ export default function DiningPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/Gourmet-By-The-Woods.jpg"
+          image="/Gourmet-By-The-Woods.webp"
           alt="Gourmet By The Woods"
           eyebrow="The kitchens"
           title="Four kitchens, one philosophy"

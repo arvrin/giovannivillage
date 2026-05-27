@@ -13,7 +13,7 @@ const TheLand = () => {
     <section className="relative w-full overflow-hidden bg-[var(--color-bg-deep)]">
       <div className="relative h-[80vh] min-h-[560px] w-full">
         <Image
-          src="/images/hero/landscape-2.jpg"
+          src="/images/hero/landscape-2.webp"
           alt="Forest and lake at Giovanni Village, on the edge of Ratapani sanctuary"
           fill
           priority={false}

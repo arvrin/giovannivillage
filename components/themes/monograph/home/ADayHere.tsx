@@ -18,14 +18,14 @@ const moments: Moment[] = [
     id: 'sunrise',
     hour: 'Sunrise',
     caption: 'Yoga on the deck. Tea brought up.',
-    image: '/images/experiences/landscapes/57.jpg',
+    image: '/images/experiences/landscapes/57.webp',
     alt: 'Morning at Giovanni Village',
   },
   {
     id: 'morning',
     hour: 'Mid-morning',
     caption: 'Safari at Ratapani. A sambar deer at the edge of the road.',
-    image: '/images/experiences/wildlife/safari-elephants.jpg',
+    image: '/images/experiences/wildlife/safari-elephants.webp',
     alt: 'Safari at Ratapani sanctuary',
   },
   {
@@ -39,7 +39,7 @@ const moments: Moment[] = [
     id: 'evening',
     hour: 'Evening',
     caption: 'An hour at Elysium. Frangipani in the air.',
-    image: '/n1.jpg',
+    image: '/n1.webp',
     alt: 'Spa treatment at Elysium',
   },
   {

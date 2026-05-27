@@ -38,7 +38,7 @@ const ModernistHero = () => {
         <div className="relative overflow-hidden bg-black">
           {/* Static poster — instant render */}
           <Image
-            src="/images/hero/landscape-2.jpg"
+            src="/images/hero/landscape-2.webp"
             alt="Giovanni Village"
             fill
             className="object-cover"
@@ -55,7 +55,7 @@ const ModernistHero = () => {
             transition={{ duration: 1.0, ease: [0.215, 0.61, 0.355, 1] }}
             className="absolute inset-0 h-full w-full object-cover"
             src="/Giovanni-Video-Presentation.mp4"
-            poster="/images/hero/landscape-2.jpg"
+            poster="/images/hero/landscape-2.webp"
             autoPlay
             loop
             muted

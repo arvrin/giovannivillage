@@ -48,9 +48,9 @@ export default function ExperiencesPage() {
           />
           <div className="mt-12 mb-20 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
             {[
-              { src: '/images/experiences/wildlife/tiger-log.jpg', alt: 'Tiger resting on log' },
-              { src: '/images/experiences/wildlife/safari-elephants.jpg', alt: 'Safari elephants' },
-              { src: '/images/experiences/wildlife/tiger-face.jpg', alt: 'Tiger face' },
+              { src: '/images/experiences/wildlife/tiger-log.webp', alt: 'Tiger resting on log' },
+              { src: '/images/experiences/wildlife/safari-elephants.webp', alt: 'Safari elephants' },
+              { src: '/images/experiences/wildlife/tiger-face.webp', alt: 'Tiger face' },
             ].map((p) => (
               <div key={p.src} className="relative aspect-[3/4] overflow-hidden rounded-[var(--radius-md)]">
                 <Image

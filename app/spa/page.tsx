@@ -32,7 +32,7 @@ export default function SpaPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/n1.jpg"
+          image="/n1.webp"
           alt="Elysium Spa at Giovanni Village"
           eyebrow="Elysium"
           title="A long way home"

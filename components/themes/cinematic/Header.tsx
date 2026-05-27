@@ -83,7 +83,7 @@ const CinematicHeader = () => {
           {/* Centered logo */}
           <Link href="/" className="flex items-center justify-center">
             <Image
-              src="/images/logo/gvr-final-logo.png"
+              src="/images/logo/gvr-final-logo.webp"
               alt={siteConfig.name}
               width={140}
               height={48}
@@ -129,7 +129,7 @@ const CinematicHeader = () => {
             >
               <div className="flex shrink-0 items-center justify-between px-8 py-6 border-b border-[var(--color-accent)]/20">
                 <Image
-                  src="/images/logo/gvr-final-logo.png"
+                  src="/images/logo/gvr-final-logo.webp"
                   alt={siteConfig.name}
                   width={120}
                   height={40}

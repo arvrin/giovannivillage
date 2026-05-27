@@ -42,7 +42,7 @@ const CinematicLoader = ({ progress }: LoaderProps) => {
           className="mt-8"
         >
           <Image
-            src="/images/logo/gvr-final-logo.png"
+            src="/images/logo/gvr-final-logo.webp"
             alt="Giovanni Village Resort"
             width={220}
             height={76}

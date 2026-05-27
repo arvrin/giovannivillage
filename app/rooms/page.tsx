@@ -23,7 +23,7 @@ export default function RoomsIndexPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/r1.jpg"
+          image="/r1.webp"
           alt="Giovanni Village Rooms & Suites"
           eyebrow="The stays"
           title="Eight ways to fall asleep here"

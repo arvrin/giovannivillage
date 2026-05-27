@@ -24,7 +24,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              src="/images/logo/gvr-final-logo.png"
+              src="/images/logo/gvr-final-logo.webp"
               alt={siteConfig.name}
               className="mb-6 h-16 w-auto brightness-0 invert md:h-20"
             />

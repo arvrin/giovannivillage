@@ -24,7 +24,7 @@ const Elysium = () => {
           >
             <div className="relative aspect-[4/5] md:aspect-[3/4] w-full overflow-hidden">
               <Image
-                src="/n1.jpg"
+                src="/n1.webp"
                 alt="An Elysium spa treatment at Giovanni Village"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

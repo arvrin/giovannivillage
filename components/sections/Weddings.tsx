@@ -22,7 +22,7 @@ const Weddings = () => {
       <div className="relative h-[70vh] md:h-[80vh] lg:h-[85vh]">
         <div
           className="h-full w-full bg-cover bg-center"
-          style={{ backgroundImage: 'url(/w1.jpg)' }}
+          style={{ backgroundImage: 'url(/w1.webp)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-charcoal)]/40 via-[var(--color-charcoal)]/50 to-[var(--color-charcoal)]/70" />
 

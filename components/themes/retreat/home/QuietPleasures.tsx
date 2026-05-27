@@ -10,7 +10,7 @@ const ITEMS = [
     accent: 'to the sky',
     tail: '',
     body: 'Sink in after a long day. Look up. The night-jar will call back through the leaves.',
-    img: '/images/rooms/_galleries/junior-plunge-pool/02.jpeg',
+    img: '/images/rooms/_galleries/junior-plunge-pool/02.webp',
   },
   {
     n: '02',
@@ -26,7 +26,7 @@ const ITEMS = [
     accent: 'lawn',
     tail: '',
     body: 'Slow eggs, hand-pulled coffee, the smell of warm cardamom drifting from the kitchen.',
-    img: '/images/rooms/_galleries/royal-suite/04.jpeg',
+    img: '/images/rooms/_galleries/royal-suite/04.webp',
   },
   {
     n: '04',
@@ -34,7 +34,7 @@ const ITEMS = [
     accent: 'takes',
     tail: 'its time',
     body: 'Forest oils, warm stone, the unhurried hands at Elysium. You will sleep like a child.',
-    img: '/n1.jpg',
+    img: '/n1.webp',
   },
 ];
 

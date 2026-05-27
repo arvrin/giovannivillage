@@ -96,7 +96,7 @@ export default function Sidebar({ userName, userRole }: SidebarProps) {
         }}
       >
         <Image
-          src="/images/logo/gvr-final-logo.png"
+          src="/images/logo/gvr-final-logo.webp"
           alt="Giovanni Village"
           width={collapsed ? 36 : 156}
           height={collapsed ? 36 : 50}

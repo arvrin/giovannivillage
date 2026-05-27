@@ -89,7 +89,7 @@ const Header = () => {
               <a href="/" className="focus:outline-none">
                 <motion.img
                   layoutId="main-logo"
-                  src="/images/logo/gvr-final-logo.png"
+                  src="/images/logo/gvr-final-logo.webp"
                   alt={siteConfig.name}
                   className="h-10 w-auto md:h-14"
                   whileHover={{ scale: 1.02 }}
@@ -144,7 +144,7 @@ const Header = () => {
               {/* Sidebar Header */}
               <div className="flex shrink-0 items-center justify-between p-8 border-b border-[var(--color-text-tertiary)]/10">
                 <motion.img
-                  src="/images/logo/gvr-final-logo.png"
+                  src="/images/logo/gvr-final-logo.webp"
                   alt={siteConfig.name}
                   className="h-10 w-auto"
                   initial={{ opacity: 0, x: -20 }}

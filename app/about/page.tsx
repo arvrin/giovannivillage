@@ -32,7 +32,7 @@ export default function AboutPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/a1.jpg"
+          image="/a1.webp"
           alt="About Giovanni Village Resort"
           eyebrow="The estate"
           title={about.title}

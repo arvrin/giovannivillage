@@ -27,7 +27,7 @@ export default function WeddingsPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/w1.jpg"
+          image="/w1.webp"
           alt="Weddings & Events at Giovanni Village"
           eyebrow="Celebrations"
           title="The wedding that found its setting"

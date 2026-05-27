@@ -63,7 +63,7 @@ const RetreatHeader = () => {
 
           <Link href="/" aria-label="Giovanni Village" className="flex items-center">
             <Image
-              src="/images/logo/gvr-final-logo.png"
+              src="/images/logo/gvr-final-logo.webp"
               alt="Giovanni Village"
               width={220}
               height={70}
