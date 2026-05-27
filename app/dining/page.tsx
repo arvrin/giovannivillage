@@ -99,6 +99,33 @@ export default function DiningPage() {
             </div>
           </div>
 
+          {/* Menus */}
+          <div className="text-center max-w-3xl mx-auto mb-24">
+            <SectionHeader
+              title="Browse the menus"
+              eyebrow="What's on the table"
+              description="Our 2026 collection of restaurant dishes and bar pours — open the PDFs to browse the full lists."
+            />
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="cta"
+                size="lg"
+                href="/menus/giovanni-restaurant-menu-2026.pdf"
+                external
+              >
+                View Restaurant Menu
+              </Button>
+              <Button
+                variant="cta-outline"
+                size="lg"
+                href="/menus/giovanni-bar-menu-2026.pdf"
+                external
+              >
+                View Bar &amp; Beverages
+              </Button>
+            </div>
+          </div>
+
           {/* Reservations */}
           <div className="text-center max-w-3xl mx-auto pb-16">
             <SectionHeader

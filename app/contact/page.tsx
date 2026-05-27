@@ -206,7 +206,7 @@ export default function ContactPage() {
           <div className="w-full h-[500px] md:h-[600px] bg-[var(--color-background-secondary)] rounded-lg overflow-hidden shadow-sm mb-16">
             <iframe
               title="Giovanni Village location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.965446708647!2d77.41!3d23.2599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDE1JzM1LjYiTiA3N8KwMjQnMzkuNiJF!5e0!3m2!1sen!2sin!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.004096023367!2d77.3991207!3d23.096945899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c45a04317e2f1%3A0xbb8110e5e4959a11!2sGiovanni%20Village!5e0!3m2!1sen!2sin!4v1779886809904!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}

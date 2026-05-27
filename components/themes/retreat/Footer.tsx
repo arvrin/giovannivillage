@@ -43,6 +43,11 @@ const COL_C = [
   { label: 'Cancellation', href: '/cancellation' },
   { label: 'Disclaimer', href: '/disclaimer' },
 ];
+const COL_MENUS = [
+  { label: 'Restaurant Menu', href: '/menus/giovanni-restaurant-menu-2026.pdf' },
+  { label: 'Bar & Beverages', href: '/menus/giovanni-bar-menu-2026.pdf' },
+  { label: 'Spa Menu', href: '/menus/giovanni-spa-menu.pdf' },
+];
 
 const RetreatFooter = () => {
   const pathname = usePathname() || '/';
@@ -133,6 +138,31 @@ const RetreatFooter = () => {
                 ))}
               </ul>
             ))}
+            <div className="col-span-2 mt-2 border-t border-[color:var(--color-border)] pt-6">
+              <p
+                className="mb-3 text-[10px] tracking-[0.36em] uppercase text-[color:var(--color-text-tertiary)]"
+                style={{ fontFamily: 'var(--font-eyebrow)' }}
+              >
+                Menus
+              </p>
+              <ul
+                className="grid grid-cols-1 gap-2 sm:grid-cols-3"
+                style={{ fontFamily: 'var(--font-body)' }}
+              >
+                {COL_MENUS.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm text-[color:var(--color-text)] transition hover:text-[color:var(--color-brass)]"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <ul
               className="col-span-2 mt-2 grid grid-cols-2 gap-3 border-t border-[color:var(--color-border)] pt-6 md:col-span-2"
               style={{ fontFamily: 'var(--font-body)' }}
@@ -200,7 +230,7 @@ const RetreatFooter = () => {
           className="mt-16 text-center text-[10px] tracking-[0.4em] uppercase text-[color:var(--color-text-tertiary)]"
           style={{ fontFamily: 'var(--font-eyebrow)' }}
         >
-          © {new Date().getFullYear()} Giovanni Village · A Sudesh Retreat
+          © {new Date().getFullYear()} Giovanni Village · A Venture of Sudesh The Village Resort
         </p>
       </div>
     </footer>

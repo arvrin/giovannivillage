@@ -25,9 +25,9 @@ export default function RoomsIndexPage() {
         <PageHero
           image="/r1.webp"
           alt="Giovanni Village Rooms & Suites"
-          eyebrow="The stays"
-          title="Eight ways to fall asleep here"
-          description="Each suite opens to green. Some keep secrets of their own — a plunge pool open to the sky, a bath under the stars, a deck with the forest at its rail."
+          eyebrow="The rooms"
+          title="Rooms for slow mornings and softer days."
+          description="Plunge pools open to the sky. Baths under uncovered stars. Decks the forest leans over. Each suite at the edge of Ratapani is built around a different way of taking your time."
           video="/videos/suite-reveal.mp4"
         />
 

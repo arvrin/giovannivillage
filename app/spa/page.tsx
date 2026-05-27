@@ -18,11 +18,13 @@ const treatments = [
   { title: 'Meditation', description: 'Mindfulness sessions to achieve inner peace and clarity.', duration: '45–60 min', icon: Moon },
 ];
 
-const spaServices = [
-  { category: 'Body Treatments', services: ['Swedish Massage', 'Deep Tissue Massage', 'Hot Stone Therapy', 'Aromatherapy Massage', 'Body Scrubs & Wraps'] },
-  { category: 'Facial Treatments', services: ['Anti-Aging Facial', 'Deep Cleansing Facial', 'Hydrating Treatment', 'Brightening Therapy', 'Organic Facial'] },
-  { category: 'Wellness Programs', services: ['Detox Program', 'Stress Relief Package', 'Sleep Enhancement', 'Immunity Boost', 'Wellness Retreats'] },
-  { category: 'Specialty Services', services: ["Couple's Spa Experience", 'Prenatal Massage', 'Reflexology', 'Indian Head Massage', 'Ayurvedic Shirodhara'] },
+const spaMenuCategories = [
+  'Giovanni Signature Massages',
+  'Local Specialties',
+  'Traditional Ayurvedic Therapies',
+  'Pain Relief Packages',
+  'Express Treatments',
+  'Couple Spa Packages',
 ];
 
 export default function SpaPage() {
@@ -75,24 +77,27 @@ export default function SpaPage() {
             })}
           </div>
 
-          {/* Spa menu */}
-          <SectionHeader title="The full menu" eyebrow="Browse the whole list" />
-          <div className="mt-16 mb-24 grid md:grid-cols-2 gap-8">
-            {spaServices.map((service) => (
-              <div key={service.category} className="bg-[var(--color-background-secondary)] p-10 rounded-lg">
-                <h3 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-[var(--color-bronze)]">
-                  {service.category}
-                </h3>
-                <ul className="space-y-3">
-                  {service.services.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
-                      <div className="h-1.5 w-1.5 rounded-full bg-[var(--color-bronze)]" />
-                      <span className="text-base text-[var(--color-text-secondary)]">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* Spa menu PDF */}
+          <SectionHeader title="The full menu" eyebrow="Browse the whole list" description="Six chapters of therapies — from Giovanni Signature Massages to Ayurvedic rituals and Couple Spa packages. Open the menu to see every treatment, duration and price." />
+          <div className="mt-12 mb-24 max-w-3xl mx-auto">
+            <ul className="grid sm:grid-cols-2 gap-3 mb-10">
+              {spaMenuCategories.map((cat) => (
+                <li key={cat} className="flex items-center gap-3 bg-[var(--color-background-secondary)] px-5 py-4 rounded-lg">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[var(--color-bronze)]" />
+                  <span className="text-base text-[var(--color-text-secondary)]">{cat}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="text-center">
+              <Button
+                variant="cta"
+                size="lg"
+                href="/menus/giovanni-spa-menu.pdf"
+                external
+              >
+                View Full Spa Menu
+              </Button>
+            </div>
           </div>
 
           {/* Booking CTA */}
