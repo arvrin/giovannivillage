@@ -9,6 +9,7 @@ import PageHero from '@/components/ui/PageHero';
 import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import FaqBlock from '@/components/ui/FaqBlock';
 import { restaurants, siteConfig } from '@/lib/data';
 
 const highlights = [
@@ -153,6 +154,8 @@ export default function DiningPage() {
             </p>
           </div>
         </Container>
+
+        <FaqBlock topic="dining" />
       </main>
 
       <Footer />

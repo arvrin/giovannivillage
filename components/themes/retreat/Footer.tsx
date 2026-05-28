@@ -35,6 +35,7 @@ const COL_B = [
   { label: 'Celebrations', href: '/weddings' },
   { label: 'About', href: '/about' },
   { label: 'Gallery', href: '/gallery' },
+  { label: 'Questions', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
 const COL_C = [

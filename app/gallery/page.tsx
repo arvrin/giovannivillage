@@ -1,140 +1,196 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Play } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import GalleryLightbox from '@/components/ui/GalleryLightbox';
+import { galleryItems, categoryCounts } from '@/lib/gallery';
+import { CATEGORY_LABELS, CATEGORY_ORDER, type GalleryCategory } from '@/lib/gallery-types';
 
-// Import categorized images (we have 705 images from WordPress)
-const categories = ['All', 'Landscape', 'Rooms', 'Dining', 'Events', 'Spa'];
+type FilterKey = 'All' | GalleryCategory;
 
-const galleryImages = [
-  { id: 1, category: 'Landscape', url: '/images/hero/hero-1.webp', title: 'Resort Landscape' },
-  { id: 2, category: 'Landscape', url: '/images/hero/landscape-2.webp', title: 'Forest Vista' },
-  { id: 3, category: 'Landscape', url: '/images/hero/landscape-3.webp', title: 'Garden Grounds' },
-  { id: 4, category: 'Landscape', url: '/images/hero/recent.webp', title: 'Resort Exterior' },
-  { id: 5, category: 'Landscape', url: '/images/about/landscape-1.webp', title: 'Grounds' },
-  { id: 6, category: 'Landscape', url: '/images/about/landscape-2.webp', title: 'Estate' },
-  { id: 7, category: 'Rooms', url: '/images/rooms/king-pool-garden.webp', title: 'King Room — Pool & Garden' },
-  { id: 8, category: 'Rooms', url: '/images/rooms/king-private-garden.webp', title: 'King Room — Private Garden' },
-  { id: 9, category: 'Rooms', url: '/images/rooms/junior-deck-garden.webp', title: 'Junior Suite — Deck' },
-  { id: 10, category: 'Rooms', url: '/images/rooms/junior-deck-private.webp', title: 'Junior Suite — Private' },
-  { id: 11, category: 'Rooms', url: '/images/rooms/junior-bath-tub.webp', title: 'Open-to-Sky Bath Tub' },
-  { id: 12, category: 'Rooms', url: '/images/rooms/junior-plunge-pool.webp', title: 'Plunge Pool Suite' },
-  { id: 13, category: 'Rooms', url: '/images/rooms/royal-suite.webp', title: 'Royal Suite' },
-  { id: 15, category: 'Dining', url: '/images/dining/gourmet-by-the-woods.webp', title: 'Gourmet By The Woods' },
-  { id: 16, category: 'Dining', url: '/images/dining/pihu.webp', title: 'Pihu — Rooftop' },
-  { id: 17, category: 'Dining', url: '/images/dining/berry-and-beans.webp', title: 'Berry & Beans' },
-  { id: 18, category: 'Dining', url: '/images/dining/the-den.webp', title: 'The Den' },
-  { id: 19, category: 'Events', url: '/images/weddings/sudesh-lawns.webp', title: 'Sudesh Lawns' },
-  { id: 20, category: 'Events', url: '/images/weddings/cocktail-lawn.webp', title: 'Cocktail Lawn' },
-  { id: 21, category: 'Spa', url: '/n1.webp', title: 'Elysium Spa Treatment' },
-  { id: 24, category: 'Spa', url: '/images/experiences/landscapes/spa-landscape.webp', title: 'Meditation Deck' },
-  { id: 22, category: 'Landscape', url: '/images/experiences/wildlife/safari-elephants.webp', title: 'Safari Elephants' },
-  { id: 23, category: 'Landscape', url: '/images/experiences/wildlife/tiger-log.webp', title: 'Ratapani Tiger' },
-  { id: 25, category: 'Landscape', url: '/images/experiences/safari-jeep.webp', title: 'Giovanni Safari Jeep' },
-];
+const FILTERS: FilterKey[] = ['All', ...CATEGORY_ORDER];
 
 export default function GalleryPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
+  return (
+    <Suspense fallback={null}>
+      <GalleryView />
+    </Suspense>
+  );
+}
 
-  const filteredImages = selectedCategory === 'All'
-    ? galleryImages
-    : galleryImages.filter(img => img.category === selectedCategory);
+function GalleryView() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Initialise filter + open item from URL so deep-links work
+  const initialCat = (searchParams.get('cat') as FilterKey | null) ?? 'All';
+  const initialId = searchParams.get('item');
+
+  const [filter, setFilter] = useState<FilterKey>(
+    FILTERS.includes(initialCat) ? initialCat : 'All',
+  );
+  const [openId, setOpenId] = useState<string | null>(initialId);
+
+  const filtered = useMemo(
+    () => (filter === 'All' ? galleryItems : galleryItems.filter((i) => i.category === filter)),
+    [filter],
+  );
+
+  const openIndex = useMemo(() => {
+    if (!openId) return null;
+    const idx = filtered.findIndex((i) => i.id === openId);
+    return idx >= 0 ? idx : null;
+  }, [filtered, openId]);
+
+  // Keep the URL in sync with state so deep-link & back-button work
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (filter !== 'All') params.set('cat', filter);
+    if (openId) params.set('item', openId);
+    const qs = params.toString();
+    const url = qs ? `/gallery?${qs}` : '/gallery';
+    // Use replace so we don't pollute history with every hover/filter change
+    router.replace(url, { scroll: false });
+  }, [filter, openId, router]);
+
+  const handleFilter = useCallback((next: FilterKey) => {
+    setFilter(next);
+    setOpenId(null);
+  }, []);
+
+  const handleNavigate = useCallback(
+    (nextIdx: number) => setOpenId(filtered[nextIdx]?.id ?? null),
+    [filtered],
+  );
+
+  const counts: Record<FilterKey, number> = {
+    All: galleryItems.length,
+    Estate: categoryCounts.Estate ?? 0,
+    Rooms: categoryCounts.Rooms ?? 0,
+    Kitchens: categoryCounts.Kitchens ?? 0,
+    Spa: categoryCounts.Spa ?? 0,
+    Weddings: categoryCounts.Weddings ?? 0,
+    Wild: categoryCounts.Wild ?? 0,
+    Films: categoryCounts.Films ?? 0,
+  };
 
   return (
     <>
       <Header />
 
-      <main className="min-h-screen bg-[var(--color-background)] pt-32 md:pt-36 pb-16">
+      <main className="min-h-screen bg-[var(--color-background)] pb-16 pt-32 md:pt-36">
         <Container>
           <SectionHeader
             eyebrow="The estate in pictures"
             title="Frames from the estate"
-            description="Pictures from across the property — rooms, kitchens, the lake, the lawns, the spa, the safari days. Hover for a closer look."
+            description="Rooms, kitchens, lakes, lawns, the spa, the safari days, the films in between. Open any frame to step in — arrows or swipe to wander."
           />
 
-          {/* Category filter */}
-          <div className="mt-16 mb-16 flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'bg-[var(--color-bronze)] text-white'
-                    : 'bg-[var(--color-background-secondary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bronze)]/10'
-                }`}
-                style={{ letterSpacing: '0.1em' }}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Gallery Grid - Masonry Style with Luxury Spacing */}
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-            {filteredImages.map((image) => (
-              <div
-                key={image.id}
-                className="break-inside-avoid cursor-pointer group"
-                onClick={() => setSelectedImage(image)}
-              >
-                <div className="relative overflow-hidden rounded-lg shadow-lg">
-                  <Image
-                    src={image.url}
-                    alt={image.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <p className="text-white font-heading text-xl font-bold mb-1">{image.title}</p>
-                      <p className="text-white/90 text-sm font-medium uppercase tracking-wider" style={{ letterSpacing: '1.5px' }}>{image.category}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-
-        {/* Lightbox Modal - LUXURY EDITION */}
-        {selectedImage && (
-          <div
-            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-6 md:p-12"
-            onClick={() => setSelectedImage(null)}
-          >
-            <button
-              className="absolute top-8 right-8 text-white text-5xl md:text-6xl hover:text-[var(--color-gold)] transition-colors duration-300"
-              onClick={() => setSelectedImage(null)}
-            >
-              ×
-            </button>
-            <div className="max-w-7xl w-full">
-              <Image
-                src={selectedImage.url}
-                alt={selectedImage.title}
-                width={1200}
-                height={800}
-                className="w-full h-auto object-contain rounded-lg shadow-2xl"
-              />
-              <div className="text-center mt-8 text-white">
-                <p className="text-2xl md:text-3xl font-heading font-bold mb-2">{selectedImage.title}</p>
-                <p className="text-lg text-white/80 uppercase tracking-wider" style={{ letterSpacing: '1.5px' }}>{selectedImage.category}</p>
-              </div>
+          {/* Filter bar */}
+          <div className="sticky top-20 z-30 -mx-4 mt-12 mb-12 overflow-x-auto bg-[var(--color-background)]/85 px-4 py-3 backdrop-blur-md md:top-24 md:mt-16">
+            <div className="mx-auto flex w-max max-w-full justify-center gap-2 md:gap-3">
+              {FILTERS.map((key) => {
+                const label = key === 'All' ? 'All' : CATEGORY_LABELS[key];
+                const isActive = filter === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => handleFilter(key)}
+                    aria-pressed={isActive}
+                    className={`shrink-0 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all duration-300 md:px-5 md:py-2.5 md:text-xs ${
+                      isActive
+                        ? 'bg-[var(--color-bronze)] text-white shadow-sm'
+                        : 'bg-[var(--color-background-secondary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bronze)]/10'
+                    }`}
+                  >
+                    {label}
+                    <span
+                      className={`ml-2 text-[10px] tabular-nums ${
+                        isActive ? 'text-white/70' : 'text-[var(--color-text-tertiary)]'
+                      }`}
+                    >
+                      {counts[key]}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
-        )}
+
+          {/* Grid — CSS columns with aspect-ratio holders so layout doesn't jump */}
+          <div className="columns-1 gap-4 md:columns-2 md:gap-6 lg:columns-3">
+            {filtered.map((item, i) => {
+              const aspect = `${item.width} / ${item.height}`;
+              const showVideoChip = item.type === 'video';
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setOpenId(item.id)}
+                  className="group mb-4 block w-full break-inside-avoid overflow-hidden rounded-lg bg-[var(--color-background-secondary)] text-left shadow-sm transition-all duration-500 hover:shadow-xl md:mb-6"
+                  style={{ aspectRatio: aspect }}
+                  aria-label={`Open ${item.title}`}
+                >
+                  <div className="relative h-full w-full overflow-hidden">
+                    <Image
+                      src={item.poster ?? item.src}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={item.priority && i < 6}
+                      loading={item.priority && i < 6 ? undefined : 'lazy'}
+                      className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                    />
+
+                    {/* Subtle bottom gradient + caption (always visible on mobile, fades up on desktop hover) */}
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-5 opacity-100 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100">
+                      <p
+                        className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/70"
+                        style={{ fontFamily: 'var(--font-eyebrow)' }}
+                      >
+                        {CATEGORY_LABELS[item.category]}
+                      </p>
+                      <p className="mt-1 font-heading text-base text-white md:text-lg">
+                        {item.title}
+                      </p>
+                    </div>
+
+                    {showVideoChip && (
+                      <div className="pointer-events-none absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+                        <Play className="h-4 w-4 fill-current" />
+                      </div>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {filtered.length === 0 && (
+            <p className="py-24 text-center text-[var(--color-text-tertiary)]">
+              No frames in this set yet.
+            </p>
+          )}
+        </Container>
       </main>
 
       <Footer />
       <WhatsAppButton />
+
+      <GalleryLightbox
+        items={filtered}
+        index={openIndex}
+        onClose={() => setOpenId(null)}
+        onNavigate={handleNavigate}
+      />
     </>
   );
 }

@@ -9,6 +9,7 @@ import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ImageCard from '@/components/ui/ImageCard';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import FaqBlock from '@/components/ui/FaqBlock';
 import { weddings, weddingVenues, siteConfig } from '@/lib/data';
 
 /** Editorial one-liner row replacing the icon-tile grid.
@@ -128,6 +129,8 @@ export default function WeddingsPage() {
             </p>
           </div>
         </Container>
+
+        <FaqBlock topic="weddings" />
       </main>
 
       <Footer />

@@ -8,6 +8,7 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import PageHero from '@/components/ui/PageHero';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import FaqBlock from '@/components/ui/FaqBlock';
 import { siteConfig } from '@/lib/data';
 
 interface ContactItem {
@@ -216,6 +217,8 @@ export default function ContactPage() {
             />
           </div>
         </Container>
+
+        <FaqBlock topic={['contact', 'general']} />
       </main>
 
       <Footer />

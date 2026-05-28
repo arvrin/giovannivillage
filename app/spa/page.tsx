@@ -9,6 +9,7 @@ import PageHero from '@/components/ui/PageHero';
 import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import FaqBlock from '@/components/ui/FaqBlock';
 import { siteConfig } from '@/lib/data';
 
 const treatments = [
@@ -124,6 +125,8 @@ export default function SpaPage() {
             </div>
           </div>
         </Container>
+
+        <FaqBlock topic="spa" />
       </main>
 
       <Footer />

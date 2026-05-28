@@ -7,6 +7,7 @@ import PageHero from '@/components/ui/PageHero';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Eyebrow from '@/components/ui/Eyebrow';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import FaqBlock from '@/components/ui/FaqBlock';
 import { activities, siteConfig } from '@/lib/data';
 
 export const metadata = {
@@ -171,6 +172,8 @@ export default function ExperiencesPage() {
             </div>
           </div>
         </Container>
+
+        <FaqBlock topic="experiences" />
       </main>
 
       <Footer />

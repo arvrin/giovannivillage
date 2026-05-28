@@ -8,6 +8,7 @@ import Button from '@/components/ui/Button';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import FaqBlock from '@/components/ui/FaqBlock';
 import { rooms, siteConfig } from '@/lib/data';
 
 export const metadata = {
@@ -115,6 +116,8 @@ export default function RoomsIndexPage() {
             </div>
           </div>
         </Container>
+
+        <FaqBlock topic="rooms" />
       </main>
 
       <Footer />
