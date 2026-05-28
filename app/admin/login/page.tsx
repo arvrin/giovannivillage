@@ -2,7 +2,6 @@
 
 import { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { getSupabaseBrowser } from '@/lib/supabase/browser';
 
 export default function AdminLogin() {
   return (
@@ -15,31 +14,28 @@ export default function AdminLogin() {
 function AdminLoginInner() {
   const search = useSearchParams();
   const next = search.get('next') || '/admin';
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [phone, setPhone] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
   const [error, setError] = useState<string | null>(null);
-
-  const envMissing =
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
     setError(null);
     try {
-      const supabase = getSupabaseBrowser();
-      const origin = window.location.origin;
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: `${origin}/admin/auth/callback?next=${encodeURIComponent(next)}`,
-        },
+      const res = await fetch('/api/admin/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone }),
       });
-      if (error) throw error;
-      setStatus('sent');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data?.error || 'Could not sign in.');
+      }
+      // Hard navigation so the new cookie is sent on the very first request.
+      window.location.href = next;
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Could not send link');
+      setError(err instanceof Error ? err.message : 'Could not sign in.');
       setStatus('error');
     }
   };
@@ -77,31 +73,12 @@ function AdminLoginInner() {
         </p>
         <h1 style={{ fontSize: 26, fontWeight: 600, marginBottom: 8 }}>Sign in</h1>
         <p style={{ color: 'var(--admin-text-muted)', marginBottom: 28, fontSize: 14 }}>
-          We'll email you a one-time link. Click it to enter the portal.
+          Enter your mobile number to enter the portal. Only allow-listed numbers can sign in.
         </p>
-
-        {envMissing && (
-          <div
-            style={{
-              padding: '12px 14px',
-              borderRadius: 8,
-              background: 'rgba(166,75,75,0.08)',
-              border: '1px solid rgba(166,75,75,0.25)',
-              color: 'var(--admin-error)',
-              fontSize: 13,
-              marginBottom: 16,
-            }}
-          >
-            <strong>Setup required.</strong> Add{' '}
-            <code>NEXT_PUBLIC_SUPABASE_URL</code> and{' '}
-            <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> to your <code>.env.local</code>.
-            See <code>ADMIN-PORTAL-SETUP.md</code>.
-          </div>
-        )}
 
         <form onSubmit={handleSubmit}>
           <label
-            htmlFor="email"
+            htmlFor="phone"
             style={{
               display: 'block',
               fontSize: 12,
@@ -110,16 +87,24 @@ function AdminLoginInner() {
               color: 'var(--admin-text-muted)',
             }}
           >
-            Email address
+            Mobile number
           </label>
           <input
-            id="email"
-            type="email"
+            id="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
             required
-            placeholder="you@giovannivillage.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={status === 'sending' || status === 'sent'}
+            placeholder="9176084110"
+            value={phone}
+            onChange={(e) => {
+              setPhone(e.target.value);
+              if (status === 'error') {
+                setStatus('idle');
+                setError(null);
+              }
+            }}
+            disabled={status === 'sending'}
             style={{
               width: '100%',
               padding: '10px 14px',
@@ -134,7 +119,7 @@ function AdminLoginInner() {
 
           <button
             type="submit"
-            disabled={status === 'sending' || status === 'sent' || envMissing}
+            disabled={status === 'sending'}
             style={{
               width: '100%',
               marginTop: 16,
@@ -147,30 +132,24 @@ function AdminLoginInner() {
               fontSize: 13,
               letterSpacing: '0.04em',
               cursor: status === 'sending' ? 'wait' : 'pointer',
-              opacity: envMissing ? 0.5 : 1,
             }}
           >
-            {status === 'sending' ? 'Sending…' : status === 'sent' ? 'Check your inbox' : 'Send magic link'}
+            {status === 'sending' ? 'Signing in…' : 'Sign in'}
           </button>
         </form>
 
-        {status === 'sent' && (
+        {error && (
           <p
             style={{
-              marginTop: 18,
-              padding: '12px 14px',
+              marginTop: 14,
+              padding: '10px 14px',
               borderRadius: 8,
-              background: 'rgba(107,142,107,0.10)',
-              color: 'var(--admin-success)',
+              background: 'rgba(166,75,75,0.08)',
+              border: '1px solid rgba(166,75,75,0.25)',
+              color: 'var(--admin-error)',
               fontSize: 13,
             }}
           >
-            ✓ Link sent. Open the email and click the link — it'll bring you right back here.
-          </p>
-        )}
-
-        {error && (
-          <p style={{ marginTop: 14, color: 'var(--admin-error)', fontSize: 13 }}>
             {error}
           </p>
         )}

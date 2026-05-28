@@ -1,5 +1,6 @@
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { getSupabaseServer } from '@/lib/supabase/server';
+import { SESSION_COOKIE, verifySession } from '@/lib/admin-auth';
 import Sidebar from './Sidebar';
 
 export default async function AuthedAdminLayout({
@@ -7,22 +8,15 @@ export default async function AuthedAdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let userName: string | null = null;
-  let userRole: string | null = null;
-  try {
-    const supabase = await getSupabaseServer();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) redirect('/admin/login');
-    const { data: profile } = await supabase
-      .from('users')
-      .select('name, role')
-      .eq('id', user.id)
-      .single();
-    userName = profile?.name ?? user.email ?? null;
-    userRole = profile?.role ?? null;
-  } catch {
-    // env not configured — render anyway with placeholders
-  }
+  // Middleware already gates this, but verify again so React Server
+  // Components can rely on a real session being present.
+  const cookieStore = await cookies();
+  const session = await verifySession(cookieStore.get(SESSION_COOKIE)?.value);
+  if (!session) redirect('/admin/login');
+
+  // Display the phone with a light format: 91-XXXXX-XXXXX style.
+  const userName = formatPhone(session.phone);
+  const userRole = 'Administrator';
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
@@ -32,4 +26,10 @@ export default async function AuthedAdminLayout({
       </main>
     </div>
   );
+}
+
+function formatPhone(p: string): string {
+  // 10-digit input → "+91 91760 84110"
+  if (p.length !== 10) return p;
+  return `+91 ${p.slice(0, 5)} ${p.slice(5)}`;
 }

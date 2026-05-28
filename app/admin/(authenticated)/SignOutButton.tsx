@@ -1,13 +1,15 @@
 'use client';
 
 import { LogOut } from 'lucide-react';
-import { getSupabaseBrowser } from '@/lib/supabase/browser';
 
 export default function SignOutButton() {
   const handle = async () => {
-    const supabase = getSupabaseBrowser();
-    await supabase.auth.signOut();
-    window.location.href = '/admin/login';
+    try {
+      await fetch('/api/admin/auth/logout', { method: 'POST' });
+    } finally {
+      // Hard navigation so the cleared cookie is reflected on the next request.
+      window.location.href = '/admin/login';
+    }
   };
   return (
     <button

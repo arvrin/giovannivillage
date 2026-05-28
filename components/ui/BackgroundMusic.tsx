@@ -4,34 +4,42 @@ import { useEffect, useRef, useState } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 /**
- * Ambient background music — "gentle rains".
+ * Ambient background music — Days of Absence.
  *
- * Behaviour:
- *  - Waits for the `gv-loader-done` event (fired by PageLoader as the splash
- *    leaves), then *attempts* autoplay.
- *  - Browsers block audio-with-sound until the user grants "user activation".
- *    Only real interactions count — click / tap / keydown. Scroll and
- *    mousemove explicitly DO NOT. So the gesture fallback listens for
- *    pointerdown / keydown / touchend only, and keeps the listeners armed
- *    until a play() call actually succeeds (a failed attempt must not burn
- *    the listeners).
- *  - Fades volume in over ~3s so it never "pops" in.
- *  - A small mute toggle, bottom-left, persisted in localStorage — a
- *    returning visitor who muted it is not auto-started.
+ * Goal: get sound playing as early and seamlessly as possible without
+ * fighting browser autoplay policy.
+ *
+ * Strategy (in order, each step falls through to the next if blocked):
+ *   1. Try unmuted autoplay the instant we mount (parallel with the
+ *      page loader). Returning visitors with high media-engagement
+ *      get sound from frame one.
+ *   2. If that fails, start MUTED autoplay so the element is already
+ *      "playing" silently — most browsers allow this.
+ *   3. On the very first user interaction (pointerdown / touchstart /
+ *      keydown / wheel), unmute and crossfade up to volume. Because
+ *      the element is already playing, switching `muted: false` does
+ *      NOT require a fresh activation gesture on most browsers.
+ *   4. Re-attempt on `visibilitychange` and `pageshow` (bfcache) too,
+ *      so coming back to the tab can wake the sound up.
+ *
+ * The mute toggle persists a hard preference — a visitor who muted
+ * before is never auto-started.
  */
 
-const SRC = '/audio/ambient-rain.mp3';
+const SRC = '/audio/days-of-absence.mp3';
 const TARGET_VOLUME = 0.32;
-const FADE_MS = 3000;
+const FADE_MS = 2400;
 const STORAGE_KEY = 'gv-music'; // 'on' | 'off'
 
 const BackgroundMusic = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const fadeRafRef = useRef<number | null>(null);
-  const startedRef = useRef(false);
+  // Has the audio reached audible playback at least once?
+  const audibleRef = useRef(false);
+  const gestureCleanupRef = useRef<(() => void) | null>(null);
   const [mounted, setMounted] = useState(false);
-  const [muted, setMuted] = useState(false);
-  const [playing, setPlaying] = useState(false);
+  const [userMuted, setUserMuted] = useState(false);
+  const [audible, setAudible] = useState(false);
 
   // ── Volume fade helper ────────────────────────────────────────────────
   const fadeTo = (target: number, ms: number, onDone?: () => void) => {
@@ -44,8 +52,9 @@ const BackgroundMusic = () => {
       const a = audioRef.current;
       if (!a) return;
       const t = Math.min(1, (now - start) / ms);
+      // easeInOutQuad
       const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-      a.volume = from + (target - from) * eased;
+      a.volume = Math.max(0, Math.min(1, from + (target - from) * eased));
       if (t < 1) {
         fadeRafRef.current = requestAnimationFrame(step);
       } else {
@@ -56,116 +65,184 @@ const BackgroundMusic = () => {
     fadeRafRef.current = requestAnimationFrame(step);
   };
 
-  // ── Mount ─────────────────────────────────────────────────────────────
+  // ── Lifecycle ─────────────────────────────────────────────────────────
   useEffect(() => {
     setMounted(true);
+
     const stored = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null;
     const startMuted = stored === 'off';
-    setMuted(startMuted);
+    setUserMuted(startMuted);
 
     const audio = new Audio(SRC);
     audio.loop = true;
     audio.preload = 'auto';
+    audio.crossOrigin = 'anonymous';
+    // Setting a property on HTMLMediaElement helps some browsers (iOS Safari)
+    // treat this as an in-page media element rather than a download.
+    audio.setAttribute('playsinline', '');
     audio.volume = 0;
     audioRef.current = audio;
 
-    let gestureCleanup: (() => void) | null = null;
+    // If the user explicitly muted on a previous visit, do nothing.
+    if (startMuted) {
+      return () => {
+        audio.pause();
+        audioRef.current = null;
+      };
+    }
 
-    const tryPlay = () => {
+    // Try unmuted first; fall back to muted; arm gesture for unmute.
+    const tryUnmutedPlay = async () => {
       const a = audioRef.current;
-      if (!a || startedRef.current) return;
+      if (!a || audibleRef.current) return;
+      a.muted = false;
       a.volume = 0;
+      try {
+        await a.play();
+        // Sound is permitted — fade up.
+        audibleRef.current = true;
+        setAudible(true);
+        fadeTo(TARGET_VOLUME, FADE_MS);
+        cleanupGesture();
+      } catch {
+        // Most likely autoplay blocked. Fall through to muted attempt.
+        tryMutedPlay();
+      }
+    };
+
+    const tryMutedPlay = async () => {
+      const a = audioRef.current;
+      if (!a || audibleRef.current) return;
+      a.muted = true;
+      // Pre-warm target volume so unmute is instant.
+      a.volume = TARGET_VOLUME;
+      try {
+        await a.play();
+        // Silent playback running — wait for any gesture to unmute.
+        armGesture();
+      } catch {
+        // Even muted play was rejected (rare). Still arm gesture; first
+        // tap will retry from scratch with sound.
+        armGesture();
+      }
+    };
+
+    const onFirstGesture = () => {
+      const a = audioRef.current;
+      if (!a || audibleRef.current) {
+        cleanupGesture();
+        return;
+      }
+      const wasPlaying = !a.paused;
+      a.muted = false;
+      if (!wasPlaying) {
+        a.volume = 0;
+      } else {
+        // Hold current (pre-warmed) volume to avoid a click, but force
+        // through the fade from 0 for a smoother transition.
+        a.volume = 0;
+      }
       a.play()
         .then(() => {
-          startedRef.current = true;
-          setPlaying(true);
-          fadeTo(TARGET_VOLUME, FADE_MS);
-          gestureCleanup?.();
-          gestureCleanup = null;
+          audibleRef.current = true;
+          setAudible(true);
+          fadeTo(TARGET_VOLUME, 1800);
+          cleanupGesture();
         })
         .catch(() => {
-          // Still blocked — keep listeners armed for the next real interaction.
+          // Shouldn't happen post-gesture, but harmless to retry on the next.
         });
     };
 
-    const armGestureFallback = () => {
-      if (gestureCleanup) return;
+    const armGesture = () => {
+      if (gestureCleanupRef.current) return;
       const opts: AddEventListenerOptions = { passive: true, capture: true };
-      window.addEventListener('pointerdown', tryPlay, opts);
-      window.addEventListener('keydown', tryPlay, opts);
-      window.addEventListener('touchend', tryPlay, opts);
-      gestureCleanup = () => {
-        window.removeEventListener('pointerdown', tryPlay, opts);
-        window.removeEventListener('keydown', tryPlay, opts);
-        window.removeEventListener('touchend', tryPlay, opts);
+      const evs: (keyof WindowEventMap)[] = [
+        'pointerdown',
+        'touchstart',
+        'keydown',
+        'wheel',
+        'click',
+      ];
+      evs.forEach((e) => window.addEventListener(e, onFirstGesture, opts));
+      gestureCleanupRef.current = () => {
+        evs.forEach((e) => window.removeEventListener(e, onFirstGesture, opts));
+        gestureCleanupRef.current = null;
       };
     };
 
-    const onLoaderDone = () => {
-      if (startMuted || startedRef.current) return;
-      const a = audioRef.current;
-      if (!a) return;
-      a.volume = 0;
-      a.play()
-        .then(() => {
-          startedRef.current = true;
-          setPlaying(true);
-          fadeTo(TARGET_VOLUME, FADE_MS);
-        })
-        .catch(() => {
-          armGestureFallback();
-        });
+    const cleanupGesture = () => {
+      gestureCleanupRef.current?.();
     };
 
-    window.addEventListener('gv-loader-done', onLoaderDone, { once: true });
-    const fallbackTimer = window.setTimeout(onLoaderDone, 2600);
+    // ── Kick off (in parallel with PageLoader; do NOT wait for it) ──────
+    tryUnmutedPlay();
+
+    // Some browsers grant activation after the tab gets focus / bfcache
+    // restore. Retry on these.
+    const onVisible = () => {
+      if (document.visibilityState === 'visible' && !audibleRef.current) {
+        tryUnmutedPlay();
+      }
+    };
+    const onPageShow = () => {
+      if (!audibleRef.current) tryUnmutedPlay();
+    };
+    document.addEventListener('visibilitychange', onVisible);
+    window.addEventListener('pageshow', onPageShow);
 
     return () => {
-      window.removeEventListener('gv-loader-done', onLoaderDone);
-      window.clearTimeout(fallbackTimer);
-      gestureCleanup?.();
+      document.removeEventListener('visibilitychange', onVisible);
+      window.removeEventListener('pageshow', onPageShow);
+      cleanupGesture();
       if (fadeRafRef.current) cancelAnimationFrame(fadeRafRef.current);
       audio.pause();
       audioRef.current = null;
-      startedRef.current = false;
+      audibleRef.current = false;
     };
   }, []);
 
-  // ── Mute toggle ───────────────────────────────────────────────────────
+  // ── Manual mute toggle ─────────────────────────────────────────────────
   const toggle = () => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (muted) {
-      setMuted(false);
+    if (userMuted) {
+      // Unmuting after a previous explicit mute.
+      setUserMuted(false);
       localStorage.setItem(STORAGE_KEY, 'on');
+      audio.muted = false;
       audio.volume = 0;
       audio
         .play()
         .then(() => {
-          startedRef.current = true;
-          setPlaying(true);
-          fadeTo(TARGET_VOLUME, 1600);
+          audibleRef.current = true;
+          setAudible(true);
+          fadeTo(TARGET_VOLUME, 1500);
         })
         .catch(() => {});
     } else {
-      setMuted(true);
+      // Muting — fade to silence then pause.
+      setUserMuted(true);
       localStorage.setItem(STORAGE_KEY, 'off');
-      fadeTo(0, 900, () => {
+      fadeTo(0, 800, () => {
         audio.pause();
-        setPlaying(false);
+        audibleRef.current = false;
+        setAudible(false);
       });
     }
   };
 
   if (!mounted) return null;
 
+  // The icon reflects user intent (muted vs not). The gold dot indicates
+  // audible playback is actually happening right now.
+  const showAsMuted = userMuted;
+
   return (
     <button
       onClick={toggle}
-      aria-label={muted ? 'Turn on ambient sound' : 'Mute ambient sound'}
-      title={muted ? 'Sound on' : 'Sound off'}
-      /* Bottom-right, stacked above the WhatsApp button (bottom-6 right-6,
-         ~64px tall). Kept off bottom-left to avoid the Next.js dev indicator. */
+      aria-label={showAsMuted ? 'Turn on ambient sound' : 'Mute ambient sound'}
+      title={showAsMuted ? 'Sound on' : 'Sound off'}
       className="fixed z-[60] flex h-11 w-11 items-center justify-center rounded-full backdrop-blur-md transition-colors hover:bg-[rgba(31,42,36,0.75)]"
       style={{
         bottom: 'calc(104px + env(safe-area-inset-bottom))',
@@ -175,12 +252,12 @@ const BackgroundMusic = () => {
         color: '#FDFBF7',
       }}
     >
-      {muted ? (
+      {showAsMuted ? (
         <VolumeX className="h-4 w-4" strokeWidth={1.6} />
       ) : (
         <span className="relative flex items-center justify-center">
           <Volume2 className="h-4 w-4" strokeWidth={1.6} />
-          {playing && (
+          {audible && (
             <span
               className="absolute -right-1.5 -top-1.5 h-1.5 w-1.5 rounded-full"
               style={{ background: '#C9A961' }}
