@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import Eyebrow from './Eyebrow';
@@ -24,9 +23,9 @@ const titleSize = {
   lg: 'text-4xl md:text-5xl lg:text-6xl xl:text-7xl',
 };
 
-/** When the title is a string under the retreat theme, render the last word
- *  in Hurricane brass-script to match the homepage signature. */
-const renderRetreatTitle = (title: ReactNode) => {
+/** Render the last word of a string title in Hurricane brass-script — matches
+ *  the homepage signature treatment. Skipped for ReactNode titles. */
+const renderTitle = (title: ReactNode) => {
   if (typeof title !== 'string') return title;
   const trimmed = title.trim();
   const lastSpace = trimmed.lastIndexOf(' ');
@@ -52,8 +51,6 @@ const SectionHeader = ({
   level = 'h2',
 }: SectionHeaderProps) => {
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left';
-  const { theme } = useTheme();
-  const isRetreat = theme === 'retreat';
   const HeadingTag = level;
 
   return (
@@ -70,23 +67,10 @@ const SectionHeader = ({
         </Eyebrow>
       )}
       <HeadingTag
-        className={cn(
-          isRetreat ? 'display-italic text-[var(--color-text)]' : 'text-[var(--color-text-primary)]',
-          titleSize[size],
-        )}
-        style={
-          isRetreat
-            ? { lineHeight: 1.05 }
-            : {
-                fontFamily: 'var(--font-heading)',
-                fontWeight: 'var(--weight-heading)' as unknown as number,
-                letterSpacing: 'var(--tracking-heading)',
-                textTransform: 'var(--transform-heading)' as React.CSSProperties['textTransform'],
-                lineHeight: 1.1,
-              }
-        }
+        className={cn('display-italic text-[var(--color-text)]', titleSize[size])}
+        style={{ lineHeight: 1.05 }}
       >
-        {isRetreat ? renderRetreatTitle(title) : title}
+        {renderTitle(title)}
       </HeadingTag>
       {description && (
         <p

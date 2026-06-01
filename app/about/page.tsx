@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Hotel, Leaf, Utensils, Sparkles } from 'lucide-react';
+import { Hotel, Leaf, Utensils, Flower2 } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
@@ -15,14 +15,14 @@ const iconMap = {
   hotel: Hotel,
   leaf: Leaf,
   utensils: Utensils,
-  spa: Sparkles,
+  spa: Flower2,
 };
 
 const stats = [
   { value: '10', label: 'Acres of estate' },
   { value: '20', label: 'Minutes from the city' },
   { value: '5 km', label: 'To Ratapani' },
-  { value: '5,000', label: 'For the wedding' },
+  { value: '5,000', label: 'Guests at one time' },
 ];
 
 export default function AboutPage() {
@@ -94,18 +94,36 @@ export default function AboutPage() {
           </div>
 
           {/* Stats */}
-          <div className="bg-[var(--color-background-secondary)] rounded-lg p-12 md:p-16 mb-24 md:mb-32">
-            <div className="grid md:grid-cols-4 gap-12 text-center">
-              {stats.map((s) => (
-                <div key={s.label}>
+          <div className="mb-24 md:mb-32 rounded-lg bg-[var(--color-background-secondary)] p-10 md:p-16">
+            <p
+              className="mb-10 text-center text-[11px] uppercase tracking-[0.36em] text-[var(--color-text-tertiary)]"
+              style={{ fontFamily: 'var(--font-eyebrow)' }}
+            >
+              The estate at a glance
+            </p>
+            <div className="grid grid-cols-2 gap-y-10 text-center md:grid-cols-4 md:gap-y-0 md:divide-x md:divide-[var(--color-border)]">
+              {stats.map((s, i) => (
+                <motion.div
+                  key={s.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.6, delay: i * 0.08 }}
+                  className="px-2 md:px-6"
+                >
                   <p
-                    className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-bronze)] mb-3"
-                    style={{ lineHeight: 1.05 }}
+                    className="display-italic mb-3 text-5xl text-[var(--color-bronze)] md:text-6xl"
+                    style={{ fontWeight: 500, lineHeight: 1 }}
                   >
                     {s.value}
                   </p>
-                  <p className="text-base md:text-lg text-[var(--color-text-secondary)]">{s.label}</p>
-                </div>
+                  <p
+                    className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-text-secondary)]"
+                    style={{ fontFamily: 'var(--font-eyebrow)' }}
+                  >
+                    {s.label}
+                  </p>
+                </motion.div>
               ))}
             </div>
           </div>

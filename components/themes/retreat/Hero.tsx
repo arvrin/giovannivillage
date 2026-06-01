@@ -3,13 +3,68 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { hero } from '@/lib/data';
+
+/** Rotating hero lines. Each is anchored to "A place to" — the brand promise —
+ *  and finishes on a different pillar of the property (slow living, the farm,
+ *  the forest, weddings, the spa). Visitor watching all five gets the full
+ *  pitch in under thirty seconds. */
+interface HeroLine {
+  /** Optional prefix between "A place to" and the scripted accent word. */
+  lead?: string;
+  /** The Hurricane-script accent word. */
+  script: string;
+  /** Plain-text tail after the script word, including ending punctuation. */
+  tail: string;
+  /** Sub-headline rendered below the h1. */
+  description: string;
+}
+
+const HERO_LINES: HeroLine[] = [
+  {
+    script: 'remember',
+    tail: 'what slow feels like.',
+    description:
+      'An uber-luxury estate folded into ten acres of forest — for the wedding of a lifetime, a weekend that resets you, or a safari you came for and a sunset you stayed for.',
+  },
+  {
+    lead: 'remember what',
+    script: 'fresh',
+    tail: 'tastes like.',
+    description:
+      'Royalton Farms is inside our gates. The vegetables walk in by sunrise, the milk arrives still warm, and the kitchens cook from whatever the land gave today.',
+  },
+  {
+    lead: 'fall asleep to the',
+    script: 'forest',
+    tail: '.',
+    description:
+      'Ten suites at the edge of Ratapani Tiger Reserve — five hundred square kilometres of teak forest just past the gate, and a naturalist who knows where the leopards drink.',
+  },
+  {
+    script: 'marry',
+    tail: 'by the lakeside.',
+    description:
+      'Twelve venues across ten acres — from a pillarless 9,500 sq ft hall to a lakeside lawn with sunset pheras — and a planner who only does your wedding.',
+  },
+  {
+    lead: 'find the long way',
+    script: 'home',
+    tail: '.',
+    description:
+      'Elysium Spa: forest oils, warm stone, unhurried hands. The kind of rest a busy life forgets it needs.',
+  },
+];
+
+/** Time between line swaps, ms. Long enough to read the description. */
+const ROTATION_INTERVAL = 4500;
 
 const RetreatHero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [activeLine, setActiveLine] = useState(0);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -25,6 +80,17 @@ const RetreatHero = () => {
       setTimeout(start, 200);
     }
   }, []);
+
+  // Rotate the hero line + description.
+  useEffect(() => {
+    if (HERO_LINES.length <= 1) return;
+    const id = setInterval(() => {
+      setActiveLine((i) => (i + 1) % HERO_LINES.length);
+    }, ROTATION_INTERVAL);
+    return () => clearInterval(id);
+  }, []);
+
+  const line = HERO_LINES[activeLine];
 
   return (
     <section className="relative isolate h-[100svh] min-h-[680px] w-full overflow-hidden bg-[color:var(--color-forest)] text-[color:var(--color-bg)]">
@@ -70,16 +136,39 @@ const RetreatHero = () => {
             style={{ textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}
           >
             <h1 className="display-italic text-[clamp(2.5rem,6.5vw,5.5rem)] leading-[1.08] text-white">
-              A place to <span className="font-script">remember</span> what slow feels like.
+              A place to{' '}
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={activeLine}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block align-baseline"
+                >
+                  {line.lead ? <>{line.lead} </> : null}
+                  <span className="font-script">{line.script}</span>
+                  {line.tail.startsWith('.') ? line.tail : ` ${line.tail}`}
+                </motion.span>
+              </AnimatePresence>
             </h1>
-            <p
-              className="mt-6 max-w-md text-[15px] leading-[1.85] text-white/90 md:text-base"
-              style={{ fontFamily: 'var(--font-body)' }}
-            >
-              An uber-luxury estate folded into ten acres of forest — for the
-              wedding of a lifetime, a weekend that resets you, or a safari you
-              came for and a sunset you stayed for.
-            </p>
+            {/* Min-h reserves the largest description's height so the CTAs below
+                don't shift when the line swaps. */}
+            <div className="mt-6 min-h-[6.5rem] max-w-md md:min-h-[7.5rem]">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.p
+                  key={activeLine}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[15px] leading-[1.85] text-white/90 md:text-base"
+                  style={{ fontFamily: 'var(--font-body)' }}
+                >
+                  {line.description}
+                </motion.p>
+              </AnimatePresence>
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button variant="light" size="lg" href="/rooms">

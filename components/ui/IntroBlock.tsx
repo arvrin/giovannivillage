@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
@@ -11,7 +10,10 @@ interface IntroBlockProps {
   className?: string;
 }
 
-const renderRetreatTitle = (title: ReactNode) => {
+/** Render the last word of a string title in Hurricane brass-script — matches
+ *  the homepage's signature treatment. Skipped for ReactNode titles, where the
+ *  caller is expected to compose the script accent themselves. */
+const renderTitle = (title: ReactNode) => {
   if (typeof title !== 'string') return title;
   const trimmed = title.trim();
   const lastSpace = trimmed.lastIndexOf(' ');
@@ -27,8 +29,6 @@ const renderRetreatTitle = (title: ReactNode) => {
 };
 
 const IntroBlock = ({ title, children, className }: IntroBlockProps) => {
-  const { theme } = useTheme();
-  const isRetreat = theme === 'retreat';
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -38,23 +38,10 @@ const IntroBlock = ({ title, children, className }: IntroBlockProps) => {
       className={cn('mx-auto max-w-4xl text-center', className)}
     >
       <h2
-        className={cn(
-          'text-3xl md:text-4xl lg:text-5xl mb-8',
-          isRetreat ? 'display-italic text-[var(--color-text)]' : 'text-[var(--color-text-primary)]',
-        )}
-        style={
-          isRetreat
-            ? { lineHeight: 1.05 }
-            : {
-                fontFamily: 'var(--font-heading)',
-                fontWeight: 'var(--weight-heading)' as unknown as number,
-                letterSpacing: 'var(--tracking-heading)',
-                textTransform: 'var(--transform-heading)' as React.CSSProperties['textTransform'],
-                lineHeight: 1.1,
-              }
-        }
+        className="display-italic text-3xl md:text-4xl lg:text-5xl mb-8 text-[var(--color-text)]"
+        style={{ lineHeight: 1.05 }}
       >
-        {isRetreat ? renderRetreatTitle(title) : title}
+        {renderTitle(title)}
       </h2>
       <div
         className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl text-[var(--color-text-secondary)] space-y-6"

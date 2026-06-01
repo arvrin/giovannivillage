@@ -72,27 +72,38 @@ const RetreatPageHero = ({
       )}
     >
       {video ? (
-        <div className="absolute inset-0" style={{ filter: 'brightness(0.62) contrast(1.05) saturate(1.1)' }}>
-          <VideoBlock src={video} poster={image} alt={alt} />
+        // The ken-burns wrapper gives the hero motion the moment the poster
+        // renders — so the page never feels "still" while the video is loading.
+        <div
+          className="absolute inset-0 motion-reduce:animate-none animate-[gv-kenburns_18s_ease-out_both]"
+          style={{ filter: 'brightness(0.72) contrast(1.05) saturate(1.1)' }}
+        >
+          <VideoBlock src={video} poster={image} alt={alt} eager />
         </div>
       ) : (
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          className="object-cover"
-          priority
-          style={{ filter: 'brightness(0.62) contrast(1.05) saturate(1.1)' }}
-        />
+        <div
+          className="absolute inset-0 motion-reduce:animate-none animate-[gv-kenburns_18s_ease-out_both]"
+          style={{ filter: 'brightness(0.72) contrast(1.05) saturate(1.1)' }}
+        >
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
       )}
-      {/* Strong base gradient — guarantees readability over any image brightness. */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/35" />
+      {/* Base gradient — guarantees readability over any image brightness.
+          Toned slightly so the image breathes. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/25" />
       {/* Localised scrim where the title sits (bottom band, both sides). */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.35) 35%, transparent 70%)',
+            'linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.25) 35%, transparent 70%)',
         }}
       />
 
