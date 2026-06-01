@@ -4,6 +4,9 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Button from '@/components/ui/Button';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import { siteConfig } from '@/lib/data';
+import { getWhatsAppLink } from '@/lib/utils';
+import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
 export const metadata: Metadata = {
   title: 'Page not found',
@@ -46,7 +49,12 @@ export default function NotFound() {
             <Button variant="cta" size="lg" href="/">
               Back to the homepage
             </Button>
-            <Button variant="cta-outline" size="lg" href="/contact">
+            <Button
+              variant="cta-outline"
+              size="lg"
+              href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.notFound)}
+              external
+            >
               Talk to the concierge
             </Button>
           </div>

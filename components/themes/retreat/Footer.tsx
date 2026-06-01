@@ -16,8 +16,12 @@ function getFooterCopy(pathname: string): { eyebrow: string; line: React.ReactNo
     '/dining': { eyebrow: 'The tables', line: <>Three tables, <span className="font-script">one</span> long meal.</> },
     '/spa': { eyebrow: 'Elysium', line: <>A long way <span className="font-script">home</span>.</> },
     '/experiences': { eyebrow: 'The doings', line: <>Ways to <span className="font-script">lose</span> the day.</> },
-    '/weddings': { eyebrow: 'Celebrations', line: <>The wedding that <span className="font-script">found</span> its setting.</> },
+    '/weddings': { eyebrow: 'Weddings', line: <>The wedding that <span className="font-script">found</span> its setting.</> },
+    '/events': { eyebrow: 'Meetings & Events', line: <>The boardroom that opens <span className="font-script">to</span> a lake.</> },
+    '/celebrations': { eyebrow: 'Private Celebrations', line: <>The milestone the <span className="font-script">forest</span> remembers.</> },
     '/gallery': { eyebrow: 'In pictures', line: <>Frames from the <span className="font-script">estate</span>.</> },
+    '/blog': { eyebrow: 'The journal', line: <>Notes from the <span className="font-script">estate</span>.</> },
+    '/careers': { eyebrow: 'Work with us', line: <>Make this estate your <span className="font-script">everyday</span>.</> },
     '/contact': { eyebrow: 'A note', line: <>A line to your <span className="font-script">corner</span> of the estate.</> },
   };
   if (map[pathname]) return map[pathname];
@@ -30,11 +34,15 @@ const COL_A = [
   { label: 'Dining', href: '/dining' },
   { label: 'Spa & Wellness', href: '/spa' },
   { label: 'Experiences', href: '/experiences' },
+  { label: 'Weddings', href: '/weddings' },
+  { label: 'Meetings & Events', href: '/events' },
+  { label: 'Private Celebrations', href: '/celebrations' },
 ];
 const COL_B = [
-  { label: 'Celebrations', href: '/weddings' },
   { label: 'About', href: '/about' },
   { label: 'Gallery', href: '/gallery' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Questions', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];

@@ -23,7 +23,11 @@ export const siteConfig = {
     phoneSecondary: '+91 90390 37302',
     email: 'reservations@giovannivillage.com',
     emailHr: 'hr@giovannivillage.com',
-    whatsapp: '+91 90390 37300',
+    // 37302 is the WhatsApp-bot line. All "Enquire" / "Send a message" CTAs
+    // across the site route here so the bot can respond to context-specific
+    // prefilled messages. The two `tel:` numbers (phone, phoneSecondary)
+    // still hit human reservations and F&B.
+    whatsapp: '+91 90390 37302',
     address: {
       street: 'Giovanni Village, 410, Village Kalapani, Kolar Road',
       city: 'Bhopal',

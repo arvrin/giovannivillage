@@ -9,6 +9,8 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import ExperiencesEditorial from './ExperiencesEditorial';
 import { siteConfig } from '@/lib/data';
+import { getWhatsAppLink } from '@/lib/utils';
+import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
 export const metadata = {
   title: 'Resort Experiences — Giovanni Village',
@@ -85,7 +87,12 @@ export default function ExperiencesPage() {
               <Button variant="cta" size="lg" href={siteConfig.booking.resort}>
                 Book Your Stay
               </Button>
-              <Button variant="cta-outline" size="lg" href="/contact">
+              <Button
+                variant="cta-outline"
+                size="lg"
+                href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.experiences)}
+                external
+              >
                 Talk to Concierge
               </Button>
             </div>

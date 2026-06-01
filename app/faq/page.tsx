@@ -7,6 +7,9 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import { faqs, faqJsonLd, faqsGrouped, TOPIC_LABELS } from '@/lib/faqs';
+import { siteConfig } from '@/lib/data';
+import { getWhatsAppLink } from '@/lib/utils';
+import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
 export const metadata: Metadata = {
   title: 'Questions, Answered — Giovanni Village Resort',
@@ -115,12 +118,14 @@ export default function FaqPage() {
               </a>
             </p>
             <p className="mt-4">
-              <Link
-                href="/contact"
+              <a
+                href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.faq)}
+                target="_blank"
+                rel="noreferrer"
                 className="text-sm font-semibold uppercase tracking-[0.15em] text-[var(--color-bronze)] hover:underline"
               >
                 Send a message →
-              </Link>
+              </a>
             </p>
           </div>
         </Container>

@@ -11,6 +11,8 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import { siteConfig } from '@/lib/data';
+import { getWhatsAppLink } from '@/lib/utils';
+import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
 const treatments = [
   { title: 'Massage Therapy', description: 'Traditional and contemporary techniques for deep relaxation and muscle relief.', duration: '60–90 min', icon: Sparkles },
@@ -118,7 +120,12 @@ export default function SpaPage() {
                 >
                   Call Spa Reception
                 </Button>
-                <Button variant="cta-outline" size="lg" href="/contact">
+                <Button
+                  variant="cta-outline"
+                  size="lg"
+                  href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.spa)}
+                  external
+                >
                   Send a Message
                 </Button>
               </div>

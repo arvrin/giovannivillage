@@ -9,16 +9,31 @@ import { Menu, X } from 'lucide-react';
 import { siteConfig } from '@/lib/data';
 import { getWhatsAppLink } from '@/lib/utils';
 
-const NAV = [
+interface NavLeaf { label: string; href: string }
+interface NavGroup { label: string; children: NavLeaf[] }
+type NavItem = NavLeaf | NavGroup;
+
+const NAV: NavItem[] = [
   { label: 'Stays', href: '/rooms' },
   { label: 'Dining', href: '/dining' },
   { label: 'Spa & Wellness', href: '/spa' },
   { label: 'Experiences', href: '/experiences' },
-  { label: 'Celebrations', href: '/weddings' },
+  {
+    label: 'Celebrations',
+    children: [
+      { label: 'Weddings', href: '/weddings' },
+      { label: 'Meetings & Events', href: '/events' },
+      { label: 'Private Celebrations', href: '/celebrations' },
+    ],
+  },
   { label: 'Gallery', href: '/gallery' },
   { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
 ];
+
+const isGroup = (n: NavItem): n is NavGroup => 'children' in n;
 
 /** Pages that don't render a dark hero image; the header should default to
  *  its scrolled (dark-on-light) state on these routes. */
@@ -177,28 +192,66 @@ const RetreatHeader = () => {
               </motion.div>
 
               <nav className="my-auto">
-                <ul className="space-y-2 md:space-y-4">
-                  {NAV.map((item, i) => (
-                    <motion.li
-                      key={item.href}
-                      initial={{ opacity: 0, y: 24 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 12 }}
-                      // Items rise softly from below — more cinematic than
-                      // the previous left-slide. Stagger begins as the unroll
-                      // crosses 60% width, so items appear as the carpet
-                      // reaches their position.
-                      transition={{ duration: 0.9, delay: 0.85 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <Link
-                        href={item.href}
-                        onClick={() => setOpen(false)}
-                        className="display-italic block text-4xl leading-[1.1] transition hover:text-[color:var(--color-brass)] md:text-6xl"
+                <ul className="space-y-1 md:space-y-3">
+                  {NAV.map((item, i) => {
+                    const baseDelay = 0.85 + i * 0.06;
+                    if (isGroup(item)) {
+                      // A nested group — render the parent label as a small
+                      // eyebrow above its children. Children sit one indent
+                      // in, slightly smaller than top-level entries.
+                      return (
+                        <motion.li
+                          key={item.label}
+                          initial={{ opacity: 0, y: 24 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 12 }}
+                          transition={{ duration: 0.9, delay: baseDelay, ease: [0.16, 1, 0.3, 1] }}
+                          className="py-1"
+                        >
+                          <p
+                            className="text-[10px] tracking-[0.32em] uppercase text-white/55"
+                            style={{ fontFamily: 'var(--font-eyebrow)' }}
+                          >
+                            {item.label}
+                          </p>
+                          <ul className="mt-1 md:mt-2 space-y-1 md:space-y-2">
+                            {item.children.map((child) => (
+                              <li key={child.href}>
+                                <Link
+                                  href={child.href}
+                                  onClick={() => setOpen(false)}
+                                  className="display-italic block text-3xl leading-[1.1] transition hover:text-[color:var(--color-brass)] md:text-5xl"
+                                >
+                                  {child.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.li>
+                      );
+                    }
+                    return (
+                      <motion.li
+                        key={item.href}
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 12 }}
+                        // Items rise softly from below — more cinematic than
+                        // the previous left-slide. Stagger begins as the unroll
+                        // crosses 60% width, so items appear as the carpet
+                        // reaches their position.
+                        transition={{ duration: 0.9, delay: baseDelay, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        {item.label}
-                      </Link>
-                    </motion.li>
-                  ))}
+                        <Link
+                          href={item.href}
+                          onClick={() => setOpen(false)}
+                          className="display-italic block text-4xl leading-[1.1] transition hover:text-[color:var(--color-brass)] md:text-6xl"
+                        >
+                          {item.label}
+                        </Link>
+                      </motion.li>
+                    );
+                  })}
                 </ul>
               </nav>
 

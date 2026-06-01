@@ -12,6 +12,8 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import { RestaurantsSchema } from '@/components/seo/StructuredData';
 import { restaurants, siteConfig } from '@/lib/data';
+import { getWhatsAppLink } from '@/lib/utils';
+import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
 const highlights = [
   {
@@ -144,7 +146,12 @@ export default function DiningPage() {
               >
                 Call F&amp;B Team
               </Button>
-              <Button variant="cta-outline" size="lg" href="/contact">
+              <Button
+                variant="cta-outline"
+                size="lg"
+                href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.dining)}
+                external
+              >
                 Send a Message
               </Button>
             </div>

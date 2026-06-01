@@ -644,3 +644,61 @@ html.retreat .font-script {
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   Blog post body typography (MDX render output).
+   Targets the .prose-blog wrapper on /blog/[slug] post pages.
+   ============================================================ */
+.prose-blog {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--color-text);
+}
+.prose-blog > * + * { margin-top: 1.25em; }
+.prose-blog p { color: var(--color-text); }
+.prose-blog h2 {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.875rem;
+  line-height: 1.15;
+}
+.prose-blog h3 {
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.prose-blog a {
+  color: var(--color-bronze);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.prose-blog a:hover { color: var(--color-brass); }
+.prose-blog blockquote {
+  border-left: 2px solid var(--color-bronze);
+  padding-left: 1.25rem;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+.prose-blog ul, .prose-blog ol {
+  padding-left: 1.5rem;
+}
+.prose-blog ul { list-style: disc; }
+.prose-blog ol { list-style: decimal; }
+.prose-blog li { margin: 0.4em 0; }
+.prose-blog img {
+  margin: 2em auto;
+  border-radius: 0.5rem;
+}
+.prose-blog strong { color: var(--color-text); }
+.prose-blog hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin: 2.5em 0;
+}

@@ -10,68 +10,74 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import ImageCard from '@/components/ui/ImageCard';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
-import { weddings, weddingVenues, siteConfig } from '@/lib/data';
+import { weddingVenues, siteConfig } from '@/lib/data';
 import { getWhatsAppLink } from '@/lib/utils';
 import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
-/** Editorial one-liner row replacing the icon-tile grid.
- *  Each event type is a single italicised noun + a short hand-written line. */
-const eventTypes = [
-  { title: 'Weddings', line: 'Lakeside pheras at sunset; sangeet in a thousand-bulb hall.' },
-  { title: 'Conferences', line: 'Pillarless halls and poolside boardrooms with the lake outside.' },
-  { title: 'Concerts', line: 'Outdoor stages, big sound, and forest acoustics.' },
-  { title: 'Private gatherings', line: 'Anniversaries, birthdays, milestone dinners under marigolds.' },
+const formats = [
+  { title: 'Conferences & AGMs', line: 'Pillarless halls up to 9,500 sq ft, AV-ready, with breakaway rooms for working sessions.' },
+  { title: 'Corporate Offsites', line: 'Stay-and-work formats — boardroom mornings, forest afternoons, dinners under the canopy.' },
+  { title: 'Brand Activations', line: 'Indoor + outdoor venues in combination, custom builds for launches and experiential moments.' },
+  { title: 'Board Meetings', line: 'The Forum — a 1,000 sq ft purpose-built boardroom overlooking the pool, with intimate dining alongside.' },
 ];
 
-export default function WeddingsPage() {
+const included = [
+  'AV, lighting and stage setup as standard',
+  'High-speed Wi-Fi across every venue',
+  'Breakaway rooms for working groups',
+  'Custom F&B from Royalton Farms inside the estate',
+  'Corporate group room rates with billed accommodation',
+  'Dedicated events manager from RFP to wrap-up',
+  'Branded signage and printed collateral coordination',
+  'Single-point billing with GST invoicing',
+];
+
+export default function EventsPage() {
   return (
     <>
       <Header />
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/w1.webp"
-          alt="Weddings & Events at Giovanni Village"
-          eyebrow="Celebrations"
-          title="The wedding that found its setting"
-          description="Pillarless halls, lakeside lawns, forest clearings. Held under marigold canopies, with a dedicated planner shaping every hour."
-          video="/videos/evening-lounge.mp4"
+          image="/images/weddings/the-forum.webp"
+          alt="The Forum at Giovanni Village"
+          eyebrow="Meetings & Events"
+          title="The boardroom that opens to a lake"
+          description="A different rhythm from a conference centre. Pillarless halls, breakaway rooms, an AV team that knows what they’re doing, and after-hours the same estate guests get."
+          video="/videos/twilight-path.mp4"
         />
 
         <Container>
-          <IntroBlock title="The estate has many rooms">
+          <IntroBlock title="Built for the kind of business that gets done outdoors">
             <p>
-              Mehndi by the lily pond. Haldi under marigold archways. Pheras at the lake at sunset. Sangeet in a thousand-bulb hall. The estate stages each function in the venue it deserves, and the planner makes the day disappear into yours.
+              Twelve venues across five indoor halls and seven outdoor settings — the same estate that hosts five-thousand-guest weddings hosts the 20-person leadership offsite, the 200-delegate conference, the half-day board meeting with a working lunch on the lawn.
+            </p>
+            <p>
+              We run RFPs cleanly. One events manager, one quote, one invoice. The team knows the AV vendors, the catering rhythm, and the room block dynamics so you don’t have to.
             </p>
           </IntroBlock>
 
-          {/* Event types — editorial row, no icon tiles */}
-          <div className="mt-20 mb-24">
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 max-w-5xl">
-              {eventTypes.map(({ title, line }) => (
-                <li key={title} className="flex gap-6 items-baseline">
-                  <span
-                    aria-hidden
-                    className="h-px w-8 flex-shrink-0 bg-[var(--color-border-strong)] translate-y-3"
-                  />
-                  <div>
-                    <h3 className="display-italic text-2xl md:text-3xl mb-2 text-[var(--color-text)]">
-                      {title}
-                    </h3>
-                    <p
-                      className="text-[15px] leading-[1.75] text-[var(--color-text-secondary)]"
-                      style={{ fontFamily: 'var(--font-body)' }}
-                    >
-                      {line}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          {/* Formats */}
+          <SectionHeader title="The formats we handle" eyebrow="Four shapes a corporate stay can take" className="mt-24" />
+          <div className="mt-12 mb-24 grid md:grid-cols-2 gap-8">
+            {formats.map((f) => (
+              <div key={f.title} className="border-l-2 border-[var(--color-bronze)] pl-6 py-2">
+                <h3 className="font-heading text-xl md:text-2xl mb-3" style={{ letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+                  {f.title}
+                </h3>
+                <p className="text-base text-[var(--color-text-secondary)]" style={{ lineHeight: 1.75 }}>
+                  {f.line}
+                </p>
+              </div>
+            ))}
           </div>
 
-          {/* Venues — grouped by Indoor / Outdoor */}
-          <SectionHeader title="Twelve venues, twenty ceremonies" eyebrow="The spaces" />
+          {/* Venues — same 12 with corporate framing */}
+          <SectionHeader
+            title="Twelve venues, every business shape"
+            eyebrow="The spaces"
+            description="The same venues that hold five-thousand-guest weddings hold twenty-person boardrooms — reconfigured for theatre, classroom, U-shape or banquet seating per your brief."
+          />
 
           <div className="mt-12 mb-6">
             <p
@@ -80,9 +86,7 @@ export default function WeddingsPage() {
             >
               Indoor · Air-Conditioned
             </p>
-            <h3 className="display-italic text-2xl leading-tight md:text-3xl">
-              Five pillarless halls and decks
-            </h3>
+            <h3 className="display-italic text-2xl leading-tight md:text-3xl">Five pillarless halls and decks</h3>
           </div>
           <div className="mb-20 grid md:grid-cols-2 gap-8">
             {weddingVenues
@@ -102,7 +106,7 @@ export default function WeddingsPage() {
                       size="md"
                       href={getWhatsAppLink(
                         siteConfig.contact.whatsapp,
-                        WHATSAPP_MESSAGES.weddingVenue(v.name),
+                        WHATSAPP_MESSAGES.corporateVenue(v.name),
                       )}
                       external
                     >
@@ -120,9 +124,7 @@ export default function WeddingsPage() {
             >
               Outdoor
             </p>
-            <h3 className="display-italic text-2xl leading-tight md:text-3xl">
-              Seven lawns, lakesides and decks
-            </h3>
+            <h3 className="display-italic text-2xl leading-tight md:text-3xl">Seven lawns, lakesides and decks</h3>
           </div>
           <div className="mb-24 grid md:grid-cols-2 gap-8">
             {weddingVenues
@@ -142,7 +144,7 @@ export default function WeddingsPage() {
                       size="md"
                       href={getWhatsAppLink(
                         siteConfig.contact.whatsapp,
-                        WHATSAPP_MESSAGES.weddingVenue(v.name),
+                        WHATSAPP_MESSAGES.corporateVenue(v.name),
                       )}
                       external
                     >
@@ -153,14 +155,16 @@ export default function WeddingsPage() {
               ))}
           </div>
 
-          {/* What we offer */}
+          {/* What's included */}
           <div className="bg-[var(--color-background-secondary)] rounded-lg p-12 md:p-16 mb-24">
-            <SectionHeader title="What's in your hands when you arrive" eyebrow="Included" />
+            <SectionHeader title="What's included from RFP to wrap-up" eyebrow="Standard with every event" />
             <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {weddings.features.map((f) => (
+              {included.map((f) => (
                 <div key={f} className="flex items-start gap-3">
                   <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-bronze)]" />
-                  <span className="text-base text-[var(--color-text-secondary)]" style={{ lineHeight: 1.7 }}>{f}</span>
+                  <span className="text-base text-[var(--color-text-secondary)]" style={{ lineHeight: 1.7 }}>
+                    {f}
+                  </span>
                 </div>
               ))}
             </div>
@@ -169,15 +173,15 @@ export default function WeddingsPage() {
           {/* CTA */}
           <div className="text-center max-w-3xl mx-auto pb-16">
             <SectionHeader
-              title="Let's talk through your date"
-              eyebrow="Tell the planner"
-              description="A short call, a few dates, the vibe you're after. We send a proposal in 48 hours and a free one-night stay if you'd like to walk the venues yourself."
+              title="Send us the brief"
+              eyebrow="Talk to the events team"
+              description="Share the date, the headcount and the format — we’ll come back with a proposal, room block and a planning timeline within a working day."
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 variant="cta"
                 size="lg"
-                href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.wedding)}
+                href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.corporateEvent)}
                 external
               >
                 Request a Proposal
@@ -191,10 +195,14 @@ export default function WeddingsPage() {
               </Button>
             </div>
             <p className="mt-6 text-sm text-[var(--color-text-tertiary)]">
-              Concierge:{' '}
-              <a href={`tel:${siteConfig.contact.phone}`} className="text-[var(--color-bronze)] hover:underline">{siteConfig.contact.phone}</a>{' '}
+              Events:{' '}
+              <a href={`tel:${siteConfig.contact.phone}`} className="text-[var(--color-bronze)] hover:underline">
+                {siteConfig.contact.phone}
+              </a>{' '}
               · Email:{' '}
-              <a href={`mailto:${siteConfig.contact.email}`} className="text-[var(--color-bronze)] hover:underline">{siteConfig.contact.email}</a>
+              <a href={`mailto:${siteConfig.contact.email}`} className="text-[var(--color-bronze)] hover:underline">
+                {siteConfig.contact.email}
+              </a>
             </p>
           </div>
         </Container>
