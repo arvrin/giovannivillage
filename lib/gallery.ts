@@ -19,6 +19,7 @@ export const galleryItems: GalleryItem[] = [
   { id: 'estate-spa-courtyard', src: '/images/experiences/landscapes/spa-landscape.webp', width: 1920, height: 1080, category: 'Estate', title: 'Spa courtyard' },
   { id: 'estate-farm-harvest', src: '/images/experiences/farm-produce.webp', width: 1920, height: 900, category: 'Estate', title: 'Farm-fresh harvest' },
   { id: 'estate-wellness-gardens', src: '/images/_library/homepage-tiles/wellness-landscape.webp', width: 1920, height: 1080, category: 'Estate', title: 'Wellness gardens' },
+  { id: 'estate-lakeside-pergola', src: '/images/_library/scraped/lakeside-pergola.webp', width: 1920, height: 1080, category: 'Estate', title: 'Lakeside pergola' },
 
   // ────────────────────────────────────────────────────────── Rooms — hero shots
   { id: 'room-king-pool-garden', src: '/images/rooms/king-pool-garden.webp', width: 800, height: 534, category: 'Rooms', title: 'King Room — Pool & Garden', priority: true },
