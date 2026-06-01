@@ -12,10 +12,17 @@ import { getWhatsAppLink } from '@/lib/utils';
 import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
 export const metadata: Metadata = {
-  title: 'Questions, Answered — Giovanni Village Resort',
+  title: 'Questions, Answered',
   description:
     'Everything guests ask about Giovanni Village Resort in Bhopal — from room types and Ratapani safaris to dining, spa treatments, weddings, cancellation policy, and how to reach us.',
   alternates: { canonical: '/faq' },
+  openGraph: {
+    title: 'Questions, Answered — Giovanni Village Resort',
+    description:
+      'Everything guests ask about Giovanni Village — rooms, safaris, dining, weddings, cancellations.',
+    url: '/faq',
+    images: ['/images/hero/hero-1.webp'],
+  },
 };
 
 const grouped = faqsGrouped();

@@ -13,9 +13,17 @@ import { getWhatsAppLink } from '@/lib/utils';
 import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
 export const metadata = {
-  title: 'Resort Experiences — Giovanni Village',
+  title: 'Resort Experiences',
   description:
-    'Ten signature experiences and ten on-property pleasures at Giovanni Village Resort — from Ratapani safaris and rooftop telescope dinners to lake-side fishing, farm-to-table breakfasts and a 4:30 AM milking walk.',
+    'Twenty experiences across Giovanni Village Resort, Bhopal — Ratapani tiger safaris, rooftop telescope dinners at Pihu, lake-side fishing, farm-to-table breakfasts at Royalton Farms, a 4:30 AM milking walk, and quieter on-property pleasures.',
+  alternates: { canonical: '/experiences' },
+  openGraph: {
+    title: 'Experiences — Giovanni Village Resort',
+    description:
+      'Twenty experiences from the estate — safaris at dawn, dinners under the stars, mornings at the farm.',
+    url: '/experiences',
+    images: ['/images/experiences/safari-jeep.webp'],
+  },
 };
 
 export default function ExperiencesPage() {

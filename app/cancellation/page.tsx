@@ -1,8 +1,14 @@
 import LegalLayout from '@/components/ui/LegalLayout';
 
 export const metadata = {
-  title: 'Cancellation & Refund Policy — Giovanni Village Resort',
-  description: 'Booking cancellation, returned deposit and non-arrival conditions at Giovanni Village.',
+  title: 'Cancellation & Refund Policy',
+  description: 'Booking cancellation, returned deposit and non-arrival conditions at Giovanni Village Resort, Bhopal.',
+  alternates: { canonical: '/cancellation' },
+  openGraph: {
+    title: 'Cancellation & Refund Policy — Giovanni Village Resort',
+    description: 'Cancellation windows, deposits, and non-arrival rules.',
+    url: '/cancellation',
+  },
 };
 
 export default function CancellationPage() {

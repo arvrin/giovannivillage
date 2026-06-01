@@ -1,8 +1,14 @@
 import LegalLayout from '@/components/ui/LegalLayout';
 
 export const metadata = {
-  title: 'Terms & Conditions — Giovanni Village Resort',
-  description: 'Resort policies, check-in / check-out times and house rules for guests staying at Giovanni Village.',
+  title: 'Terms & Conditions',
+  description: 'Resort policies, check-in / check-out times and house rules for guests staying at Giovanni Village Resort, Bhopal.',
+  alternates: { canonical: '/terms' },
+  openGraph: {
+    title: 'Terms & Conditions — Giovanni Village Resort',
+    description: 'Resort policies, check-in / check-out times and house rules.',
+    url: '/terms',
+  },
 };
 
 export default function TermsPage() {

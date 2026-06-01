@@ -1,8 +1,14 @@
 import LegalLayout from '@/components/ui/LegalLayout';
 
 export const metadata = {
-  title: 'Privacy Policy — Giovanni Village Resort',
-  description: 'Privacy policy describing how Giovanni Village collects, uses and discloses information.',
+  title: 'Privacy Policy',
+  description: 'Privacy policy describing how Giovanni Village Resort collects, uses and discloses guest information.',
+  alternates: { canonical: '/privacy' },
+  openGraph: {
+    title: 'Privacy Policy — Giovanni Village Resort',
+    description: 'How Giovanni Village handles guest data.',
+    url: '/privacy',
+  },
 };
 
 export default function PrivacyPage() {

@@ -1,8 +1,14 @@
 import LegalLayout from '@/components/ui/LegalLayout';
 
 export const metadata = {
-  title: 'Disclaimer — Giovanni Village Resort',
-  description: 'Disclaimer for Giovanni Village — A Venture of Sudesh The Village Resort.',
+  title: 'Disclaimer',
+  description: 'Disclaimer for Giovanni Village Resort — A Venture of Sudesh The Village Resort.',
+  alternates: { canonical: '/disclaimer' },
+  openGraph: {
+    title: 'Disclaimer — Giovanni Village Resort',
+    description: 'Disclaimer for Giovanni Village Resort, Bhopal.',
+    url: '/disclaimer',
+  },
 };
 
 export default function DisclaimerPage() {
