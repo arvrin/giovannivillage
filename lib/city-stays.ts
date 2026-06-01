@@ -168,7 +168,7 @@ export const giovanniSuites: CityStay = {
   },
   eyebrow: 'Boutique stays · Bhopal',
   intro:
-    'A boutique homestay in Arera Colony with four named room categories — Amaltas, Gulmohar, Razz, Rangrez — drawn from the trees and language of central India. Built for the slow weekend in the city, the family visit, the wedding-guest stay.',
+    'A boutique homestay in Arera Colony with four named room categories — Amaltas, Gulmohar, Razz, Rangrez — drawn from the trees and language of central India. Built for the long weekend in the city, the family visit, the wedding-guest stay.',
   hero: '/images/city-stays/suites/hero.webp',
   address: {
     line1: '58, Pradhan Devlok Farms',

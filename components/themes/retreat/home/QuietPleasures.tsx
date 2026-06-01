@@ -17,7 +17,7 @@ const ITEMS = [
     lead: 'Pheras by the',
     accent: 'lake',
     tail: 'at sunset',
-    body: 'Marigold runners, a tamarind tree for an aisle, vows set against the slow gold of evening.',
+    body: 'Marigold runners, a tamarind tree for an aisle, vows set against the deepening gold of evening.',
     img: '/images/weddings/gourmet-lawn.webp',
   },
   {
@@ -25,7 +25,7 @@ const ITEMS = [
     lead: 'Breakfast on the',
     accent: 'lawn',
     tail: '',
-    body: 'Slow eggs, hand-pulled coffee, the smell of warm cardamom drifting from the kitchen.',
+    body: 'Eggs from our hens, hand-pulled coffee, the smell of warm cardamom drifting from the kitchen.',
     img: '/images/rooms/_galleries/royal-suite/04.webp',
   },
   {

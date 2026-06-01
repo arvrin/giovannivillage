@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 /**
- * Ambient background music — Days of Absence.
+ * Ambient background music — gentle rains.
  *
  * Goal: get sound playing as early and seamlessly as possible without
  * fighting browser autoplay policy.
@@ -26,7 +26,7 @@ import { Volume2, VolumeX } from 'lucide-react';
  * before is never auto-started.
  */
 
-const SRC = '/audio/days-of-absence.mp3';
+const SRC = '/audio/ambient-rain.mp3';
 const TARGET_VOLUME = 0.32;
 const FADE_MS = 2400;
 const STORAGE_KEY = 'gv-music'; // 'on' | 'off'

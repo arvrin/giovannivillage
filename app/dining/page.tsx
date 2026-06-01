@@ -38,7 +38,7 @@ export default function DiningPage() {
           alt="Gourmet By The Woods"
           eyebrow="The kitchens"
           title="Four kitchens, one philosophy"
-          description="Cook from the land. Plate it under the trees. Slow Malwa cooking at Gourmet By The Woods; rooftop telescope dinners at Pihu; warm pastry mornings at Berry & Beans; lanterns and bistro nights at The Den."
+          description="Cook from Royalton Farms inside the gates. Plate it under the trees. Farm-fresh Malwa cooking at Gourmet By The Woods; rooftop telescope dinners at Pihu; warm pastry mornings at Berry & Beans; lanterns and bistro nights at The Den."
           video="/videos/dining-arrival.mp4"
         />
 

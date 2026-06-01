@@ -61,7 +61,7 @@ export const about = {
   title: 'A house that learned to listen',
   subtitle: 'Ten acres, eight suites, one long pause in the day.',
   content: [
-    'Giovanni Village sits on the edge of Ratapani Tiger Reserve, twenty minutes outside Bhopal. Ten acres of mango groves, lily ponds, and lakeside paths — built to be lived in slowly.',
+    'Giovanni Village sits on the edge of Ratapani Tiger Reserve, twenty minutes outside Bhopal. Ten acres of mango groves, lily ponds, lakeside paths — and Royalton Farms, our working organic farm where most of what reaches the table is grown.',
     'Brides, naturalists, weekending families, second-honeymooners, conference delegates, the dog you brought. The estate holds them all without raising its voice.',
     'Eight forest-view suites. Four kitchens, each with its own hour of the day. Five event spaces that disappear into the trees. A spa built for the long way home.',
     'And five kilometres up the road, the reserve waits — five hundred square kilometres of teak forest, leopard, sloth bear, and one of India’s healthiest tiger populations.',
@@ -79,12 +79,12 @@ export const about = {
     },
     {
       icon: 'utensils',
-      title: 'Four kitchens',
-      description: 'Gourmet By The Woods, Pihu, Berry & Beans, The Den — one hour each.',
+      title: 'Farm-to-fire cuisine',
+      description: 'Four kitchens, all cooking from Royalton Farms inside the gates — same morning, same hands.',
     },
     {
       icon: 'spa',
-      title: 'Slow hours at Elysium',
+      title: 'Long hours at Elysium',
       description: 'Forest oils, warm stone, the unhurried hands. You sleep like a child.',
     },
   ],
@@ -465,7 +465,7 @@ export const activities = [
   {
     id: 'soft-touch-pool',
     title: 'Soft-Touch Swimming Pool',
-    description: 'A tranquil oasis amidst the resort — perfect for an unhurried dip or sunset float.',
+    description: 'A tranquil oasis amidst the resort — perfect for a long dip or sunset float.',
     category: 'Wellness',
     image: '/images/experiences/icons/icon-8.webp',
   },

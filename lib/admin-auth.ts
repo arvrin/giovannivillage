@@ -83,12 +83,13 @@ function getSecret(): string {
 }
 
 /**
- * Sign a session payload as `{phone}.{expISO}.{sig}`. `expISO` is an
- * absolute expiry timestamp (ISO 8601). The signature covers `phone.expISO`.
+ * Sign a session payload as `{phone}.{expMs}.{sig}` — expMs is an absolute
+ * expiry as Unix millis (a plain number, no dots) so the cookie is safe
+ * to `split('.')` for parsing. The signature covers `phone.expMs`.
  */
 export async function signSession(phone: string): Promise<string> {
-  const exp = new Date(Date.now() + SESSION_MAX_AGE_SECONDS * 1000).toISOString();
-  const payload = `${phone}.${exp}`;
+  const expMs = Date.now() + SESSION_MAX_AGE_SECONDS * 1000;
+  const payload = `${phone}.${expMs}`;
   const key = await importKey(getSecret());
   const sig = await crypto.subtle.sign('HMAC', key, enc.encode(payload));
   return `${payload}.${base64UrlEncode(sig)}`;
@@ -104,7 +105,10 @@ export async function verifySession(cookieValue: string | undefined): Promise<Ve
   if (!cookieValue) return null;
   const parts = cookieValue.split('.');
   if (parts.length !== 3) return null;
-  const [phone, expISO, sig] = parts;
+  const [phone, expMsStr, sig] = parts;
+
+  const expMs = Number(expMsStr);
+  if (!Number.isFinite(expMs)) return null;
 
   // Re-compute the signature over the payload and compare.
   let key: CryptoKey;
@@ -113,14 +117,13 @@ export async function verifySession(cookieValue: string | undefined): Promise<Ve
   } catch {
     return null;
   }
-  const expectedSig = await crypto.subtle.sign('HMAC', key, enc.encode(`${phone}.${expISO}`));
+  const expectedSig = await crypto.subtle.sign('HMAC', key, enc.encode(`${phone}.${expMsStr}`));
   if (base64UrlEncode(expectedSig) !== sig) return null;
 
-  const expiresAt = new Date(expISO);
-  if (Number.isNaN(expiresAt.getTime()) || expiresAt.getTime() <= Date.now()) return null;
+  if (expMs <= Date.now()) return null;
 
-  // Optional defensive re-check: phone must still be allowed.
+  // Defensive re-check: phone must still be on the whitelist.
   if (!isPhoneAllowed(phone)) return null;
 
-  return { phone, expiresAt };
+  return { phone, expiresAt: new Date(expMs) };
 }

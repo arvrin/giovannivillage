@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Phone, Mail, MessageCircle } from 'lucide-react';
-import { getSupabaseServer } from '@/lib/supabase/server';
+import { getSupabaseAdmin } from '@/lib/supabase/server';
 import type { DBLead, DBLeadNote, DBUser } from '@/lib/supabase/types';
 import StatusChanger from './StatusChanger';
 import AddNote from './AddNote';
 
 async function loadLead(id: string): Promise<{ lead: DBLead; notes: DBLeadNote[]; team: DBUser[]; assigned: DBUser | null } | null> {
   try {
-    const supabase = await getSupabaseServer();
+    const supabase = getSupabaseAdmin();
     const [{ data: lead }, { data: notes }, { data: team }] = await Promise.all([
       supabase.from('leads').select('*').eq('id', id).maybeSingle(),
       supabase.from('lead_notes').select('*').eq('lead_id', id).order('created_at', { ascending: false }),

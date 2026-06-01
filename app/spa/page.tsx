@@ -44,7 +44,7 @@ export default function SpaPage() {
         />
 
         <Container>
-          <IntroBlock title="The slow hour">
+          <IntroBlock title="The hour off the clock">
             <p>
               Ancient practice meets the body that needs it now. Ayurveda, deep tissue, breath work — each ritual designed to land you somewhere lower, quieter than where you began.
             </p>

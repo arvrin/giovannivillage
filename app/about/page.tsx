@@ -135,7 +135,7 @@ export default function AboutPage() {
             <SectionHeader
               title="The reason people return"
               eyebrow="What it actually feels like"
-              description="The food on the lawn at breakfast. The night-jar at the plunge pool. A planner who remembers your aunt’s name. Slow days, soft evenings, and the small hospitality that hides the work behind it."
+              description="The food on the lawn at breakfast — grown a few steps away at Royalton Farms. The night-jar at the plunge pool. A planner who remembers your aunt’s name. Long days, softer evenings, and the small hospitality that hides the work behind it."
             />
           </div>
         </Container>

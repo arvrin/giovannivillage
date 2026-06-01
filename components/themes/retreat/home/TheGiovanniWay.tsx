@@ -9,7 +9,7 @@ const FEATURES = [
   { icon: Heart, label: 'Personalised Hospitality', body: 'Butler-led service that learns your day before you do.' },
   { icon: Trees, label: 'Forest at the Doorstep', body: 'Ten acres folded into the edge of Ratapani Tiger Reserve.' },
   { icon: Sparkles, label: 'Affordable Luxury', body: 'Suites with private plunge pools — without the metropolitan markup.' },
-  { icon: Utensils, label: 'Slow, Regional Cuisine', body: 'Four kitchens, one philosophy: cook from the land around us.' },
+  { icon: Utensils, label: 'Farm-to-fire Cuisine', body: 'Four kitchens, one philosophy: cook from Royalton Farms inside our gates.' },
   { icon: Leaf, label: 'Pet-Friendly Estate', body: 'Open lawns, mango groves, and quiet trails — for the whole family.' },
 ];
 

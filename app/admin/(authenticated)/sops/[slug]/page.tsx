@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
-import { getSupabaseServer } from '@/lib/supabase/server';
+import { getSupabaseAdmin } from '@/lib/supabase/server';
 import type { DBSop } from '@/lib/supabase/types';
 
 async function loadSop(slug: string): Promise<DBSop | null> {
   try {
-    const supabase = await getSupabaseServer();
+    const supabase = getSupabaseAdmin();
     const { data } = await supabase.from('sops').select('*').eq('slug', slug).maybeSingle();
     return (data as DBSop) ?? null;
   } catch {

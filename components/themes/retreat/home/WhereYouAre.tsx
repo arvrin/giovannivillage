@@ -56,7 +56,7 @@ const WhereYouAre = () => {
             >
               Giovanni Village sits on ten quiet acres at the boundary of the
               Ratapani Reserve — close enough to Bhopal for a quick weekend, far
-              enough that the air changes the moment you arrive. Built for slow
+              enough that the air changes the moment you arrive. Built for long
               stays, larger-than-life weddings, and everything between.
             </p>
           </motion.div>

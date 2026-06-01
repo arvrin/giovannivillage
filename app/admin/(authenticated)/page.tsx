@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ExternalLink, Calendar, FileSpreadsheet, Building2 } from 'lucide-react';
-import { getSupabaseServer } from '@/lib/supabase/server';
+import { getSupabaseAdmin } from '@/lib/supabase/server';
 
 interface StatBox {
   label: string;
@@ -11,7 +11,7 @@ interface StatBox {
 
 async function loadStats(): Promise<{ stats: StatBox[]; recent: Array<{ id: string; name: string; interest: string; status: string; created_at: string }> }> {
   try {
-    const supabase = await getSupabaseServer();
+    const supabase = getSupabaseAdmin();
     const since = new Date();
     since.setDate(since.getDate() - 7);
     const sinceIso = since.toISOString();

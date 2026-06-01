@@ -28,7 +28,7 @@ const FRAMES = [
     titleLead: 'Long lunch at',
     titleAccent: 'Gourmet',
     titleTail: 'By The Woods',
-    body: 'Slow Malwa cooking. A bottle of something cold. Light filtering through the canopy.',
+    body: 'Farm-fresh Malwa cooking, produce walked in from Royalton this morning. A bottle of something cold. Light filtering through the canopy.',
     img: '/images/dining/gourmet-by-the-woods.webp',
   },
   {

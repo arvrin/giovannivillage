@@ -27,7 +27,7 @@ export default function RoomsIndexPage() {
           image="/r1.webp"
           alt="Giovanni Village Rooms & Suites"
           eyebrow="The rooms"
-          title="Rooms for slow mornings and softer days."
+          title="Rooms for long mornings and softer days."
           description="Plunge pools open to the sky. Baths under uncovered stars. Decks the forest leans over. Each suite at the edge of Ratapani is built around a different way of taking your time."
           video="/videos/suite-reveal.mp4"
         />

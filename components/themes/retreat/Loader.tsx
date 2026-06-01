@@ -32,7 +32,7 @@ const RetreatLoader = ({ progress }: LoaderProps) => {
           className="text-[10px] tracking-[0.42em] uppercase text-[color:var(--color-text-tertiary)]"
           style={{ fontFamily: 'var(--font-eyebrow)' }}
         >
-          A slow welcome
+          A soft welcome
         </span>
         <p
           className="mt-3 display-italic text-[1.6rem] md:text-[2rem] leading-none text-[color:var(--color-text)]"

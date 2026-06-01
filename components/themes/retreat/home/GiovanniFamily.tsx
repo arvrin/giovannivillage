@@ -30,7 +30,7 @@ const BRANDS: BrandCard[] = [
     name: 'Giovanni Suites',
     tagline: 'Boutique Home Stay',
     description:
-      'Four rooms named for the trees and colours of central India — Amaltas, Gulmohar, Razz, Rangrez. Slow weekends, family visits, wedding-guest stays.',
+      'Four rooms named for the trees and colours of central India — Amaltas, Gulmohar, Razz, Rangrez. Long weekends, family visits, wedding-guest stays.',
     location: 'E-8, Arera Colony, Bhopal',
     href: '/suites',
     image: '/images/city-stays/suites/hero.webp',

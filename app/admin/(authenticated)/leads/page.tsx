@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getSupabaseServer } from '@/lib/supabase/server';
+import { getSupabaseAdmin } from '@/lib/supabase/server';
 import type { DBLead } from '@/lib/supabase/types';
 
 interface SearchParams {
@@ -12,7 +12,7 @@ interface SearchParams {
 
 async function loadLeads(params: SearchParams): Promise<{ leads: DBLead[]; error: string | null }> {
   try {
-    const supabase = await getSupabaseServer();
+    const supabase = getSupabaseAdmin();
     let query = supabase.from('leads').select('*').order('created_at', { ascending: false }).limit(100);
     if (params.status) query = query.eq('status', params.status);
     if (params.interest) query = query.eq('interest', params.interest);

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { BookOpen } from 'lucide-react';
-import { getSupabaseServer } from '@/lib/supabase/server';
+import { getSupabaseAdmin } from '@/lib/supabase/server';
 import type { DBSop, SopCategory } from '@/lib/supabase/types';
 
 const CATEGORY_LABEL: Record<SopCategory, string> = {
@@ -21,7 +21,7 @@ const CATEGORY_LABEL: Record<SopCategory, string> = {
 
 async function loadSops(): Promise<DBSop[]> {
   try {
-    const supabase = await getSupabaseServer();
+    const supabase = getSupabaseAdmin();
     const { data } = await supabase.from('sops').select('*').order('category').order('title');
     return (data as DBSop[]) ?? [];
   } catch {

@@ -108,14 +108,59 @@ const RetreatHeader = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[70] bg-[color:var(--color-forest)] text-[color:var(--color-bg)]"
+            key="menu-panel"
+            // The carpet unroll — pool image revealed left-to-right via clip-path
+            // with a long, expo-out ease that feels deliberate rather than
+            // animated. No literal rolling object — restraint reads as luxury.
+            initial={{ clipPath: 'inset(0 100% 0 0)' }}
+            animate={{ clipPath: 'inset(0 0% 0 0)' }}
+            exit={{ clipPath: 'inset(0 100% 0 0)' }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[70] text-[color:var(--color-bg)] will-change-[clip-path]"
           >
-            <div className="flex h-full flex-col px-6 py-6 md:px-16 md:py-10">
-              <div className="flex items-center justify-between">
+            {/* Aerial pool with the Giovanni logo etched in the floor — slow
+                zoom-out adds cinematic depth so the image feels alive */}
+            <motion.div
+              initial={{ scale: 1.08 }}
+              animate={{ scale: 1.0 }}
+              exit={{ scale: 1.08 }}
+              transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 will-change-transform"
+            >
+              <Image
+                src="/images/menu-pool-logo.webp"
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+              />
+            </motion.div>
+            {/* Darken only the left strip where menu items sit; let the pool +
+                Giovanni-logo etching breathe in the centre/right of the screen */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to right, rgba(8, 22, 28, 0.80) 0%, rgba(8, 22, 28, 0.50) 35%, rgba(8, 22, 28, 0.18) 60%, rgba(8, 22, 28, 0.10) 100%)',
+              }}
+            />
+            {/* Subtle vignette at top/bottom for the eyebrow + address rows */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  'linear-gradient(to bottom, rgba(8, 22, 28, 0.32) 0%, rgba(8, 22, 28, 0) 12%, rgba(8, 22, 28, 0) 86%, rgba(8, 22, 28, 0.32) 100%)',
+              }}
+            />
+            <div className="relative flex h-full flex-col px-6 py-6 md:px-16 md:py-10">
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.7, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center justify-between"
+              >
                 <p
                   className="text-[11px] tracking-[0.3em] uppercase opacity-70"
                   style={{ fontFamily: 'var(--font-eyebrow)' }}
@@ -129,16 +174,21 @@ const RetreatHeader = () => {
                 >
                   <X className="h-5 w-5" />
                 </button>
-              </div>
+              </motion.div>
 
               <nav className="my-auto">
                 <ul className="space-y-2 md:space-y-4">
                   {NAV.map((item, i) => (
                     <motion.li
                       key={item.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.08 + i * 0.04 }}
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 12 }}
+                      // Items rise softly from below — more cinematic than
+                      // the previous left-slide. Stagger begins as the unroll
+                      // crosses 60% width, so items appear as the carpet
+                      // reaches their position.
+                      transition={{ duration: 0.9, delay: 0.85 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <Link
                         href={item.href}
@@ -152,15 +202,42 @@ const RetreatHeader = () => {
                 </ul>
               </nav>
 
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.7, delay: 1.35, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col gap-2 text-sm opacity-80 md:flex-row md:items-center md:justify-between"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
                 <p>{siteConfig.contact.address.street}</p>
                 <p>{siteConfig.contact.phone} · {siteConfig.contact.email}</p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
+        )}
+
+        {open && (
+          <motion.div
+            key="menu-edge"
+            // A single hair-thin brass line that travels at the leading edge of
+            // the unroll. This is the entire "carpet" cue — no chunky cylinder,
+            // just a quiet golden seam that suggests the cloth being laid down.
+            initial={{ x: '-2px', opacity: 0 }}
+            animate={{ x: '100vw', opacity: 1 }}
+            exit={{ x: '-2px', opacity: 0 }}
+            transition={{
+              x: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
+              opacity: { duration: 0.4 },
+            }}
+            aria-hidden
+            className="pointer-events-none fixed inset-y-0 left-0 z-[72] w-px will-change-transform"
+            style={{
+              boxShadow: '0 0 18px 2px rgba(201, 169, 97, 0.55), 0 0 36px 6px rgba(201, 169, 97, 0.25)',
+              background:
+                'linear-gradient(to bottom, transparent 0%, rgba(248, 222, 162, 0.85) 18%, rgba(255, 240, 195, 0.95) 50%, rgba(248, 222, 162, 0.85) 82%, transparent 100%)',
+            }}
+          />
         )}
       </AnimatePresence>
     </>

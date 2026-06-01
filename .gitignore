@@ -40,3 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 vercel-env-paste.txt
+
+# Raw client-uploaded asset dump — too large for the repo, integrate piece by
+# piece. See memory/giovanni-newcontent-catalog.md for the catalog.
+/public/Newcontent/

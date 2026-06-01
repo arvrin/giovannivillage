@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ExternalLink, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
-import { getSupabaseServer } from '@/lib/supabase/server';
+import { getSupabaseAdmin } from '@/lib/supabase/server';
 import SyncNowButton from './SyncNowButton';
 
 interface SyncRun {
@@ -25,7 +25,7 @@ async function loadData(): Promise<{
   let totalLeads = 0;
   let runs: SyncRun[] = [];
   try {
-    const supabase = await getSupabaseServer();
+    const supabase = getSupabaseAdmin();
     const [{ count }, { data }] = await Promise.all([
       supabase
         .from('leads')

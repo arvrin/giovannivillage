@@ -29,7 +29,7 @@ const RetreatHome = () => (
       poster="/images/weddings/cocktail-lawn.webp"
       alt="Golden hour through the trees"
       eyebrow="A pause"
-      lead="The light slows down here"
+      lead="The light hangs longer here"
       accent="long"
       tail="before it leaves."
       height="md"

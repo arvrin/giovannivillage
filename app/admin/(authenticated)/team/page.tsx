@@ -1,9 +1,9 @@
-import { getSupabaseServer } from '@/lib/supabase/server';
+import { getSupabaseAdmin } from '@/lib/supabase/server';
 import type { DBUser } from '@/lib/supabase/types';
 
 async function loadTeam(): Promise<DBUser[]> {
   try {
-    const supabase = await getSupabaseServer();
+    const supabase = getSupabaseAdmin();
     const { data } = await supabase.from('users').select('*').order('name');
     return (data as DBUser[]) ?? [];
   } catch {
