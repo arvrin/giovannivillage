@@ -19,14 +19,21 @@ export const siteConfig = {
     'Corporate retreat venue Bhopal',
   ],
   contact: {
-    phone: '+91 90390 37300',
+    // The "public" number shown across every page except /contact — this is
+    // the 37302 WhatsApp-bot line, also reachable by phone. Routing customer
+    // calls through the bot lets every CTA respond to context-specific
+    // prefilled messages without losing a human fallback.
+    phone: '+91 90390 37302',
+    // The human reception line at the resort — shown ONLY on /contact, so
+    // visitors with a specific operational query (lost item, late arrival,
+    // etc.) still have a direct path to staff.
+    phoneReception: '+91 90390 37300',
+    // Legacy alias for phone — used by /dining + Restaurant structured data
+    // for the F&B routing. Same number, kept distinct so the labels can read
+    // differently on the page.
     phoneSecondary: '+91 90390 37302',
     email: 'reservations@giovannivillage.com',
     emailHr: 'hr@giovannivillage.com',
-    // 37302 is the WhatsApp-bot line. All "Enquire" / "Send a message" CTAs
-    // across the site route here so the bot can respond to context-specific
-    // prefilled messages. The two `tel:` numbers (phone, phoneSecondary)
-    // still hit human reservations and F&B.
     whatsapp: '+91 90390 37302',
     address: {
       street: 'Giovanni Village, 410, Village Kalapani, Kolar Road',
@@ -84,7 +91,7 @@ export const about = {
     {
       icon: 'utensils',
       title: 'Farm-to-fire cuisine',
-      description: 'Three dining venues, all cooking from Royalton Farms inside the gates — same morning, same hands.',
+      description: 'Three dining venues, all cooking with produce from Royalton Farms inside the gates — same morning, same hands.',
     },
     {
       icon: 'spa',
@@ -94,13 +101,34 @@ export const about = {
   ],
 };
 
-export const rooms = [
+export interface RoomRich {
+  subtitle: string;
+  intro: string;
+  sections: { heading: string; body: string }[];
+  specs: { label: string; value: string }[];
+  distinction?: { label: string; body: string };
+}
+
+export interface Room {
+  id: string;
+  name: string;
+  description: string;
+  features: string[];
+  capacity: string;
+  area: string;
+  image: string;
+  gallery: string[];
+  price: number;
+  rich?: RoomRich;
+}
+
+export const rooms: Room[] = [
   {
     id: 'king-room-pool-garden',
     name: 'King Room — Pool and Garden View',
     description:
-      'Wake up to the melodies of nature and panoramic forest vistas. Our King Rooms offer a perfect blend of comfort and natural beauty with stunning pool and garden views.',
-    features: ['Pool View', 'Garden View', 'King Bed', 'Private Sit-Out'],
+      '430ft² of soft organic aesthetic. Dual perspective — the rhythmic serenity of the pool and the grounding presence of the gardens — anchored by an Extra Large King on our Patented Natural Latex mattress.',
+    features: ['Pool View', 'Garden View', 'Extra Large King', 'Natural Latex Mattress'],
     capacity: '2 adults, 1 child',
     area: '430 sqft',
     image: '/images/rooms/king-pool-garden.webp',
@@ -117,15 +145,36 @@ export const rooms = [
       '/images/rooms/_galleries/king-pool-garden/10.webp',
     ],
     price: 9999,
+    rich: {
+      subtitle: 'Where organic tranquility meets uber-luxury',
+      intro:
+        'A residence designed not just for stay, but for restoration. Spanning 430ft², this sanctuary replaces corporate rigidity with a soft, organic aesthetic. Bathed in natural light, the room offers a rare dual perspective — the rhythmic serenity of the pool view and the lush, grounding presence of our garden view. Every element has been curated to resonate with a lifestyle of mindful opulence.',
+      sections: [
+        {
+          heading: 'The sleep suite',
+          body: 'At the heart of the experience is an Extra Large King bed, outfitted with a Patented Natural Latex mattress. Unlike standard hospitality bedding, this organic foundation breathes with your body, providing a weightless, cloud-like support that is as sustainable as it is indulgent.',
+        },
+        {
+          heading: 'Refined essentials',
+          body: 'A strictly non-smoking policy keeps the air as crisp as the garden outside. An elegant work desk and seamless WiFi offer a quiet space for focus without encroaching on the room’s peaceful energy. Large-format windows frame a living tapestry of water and flora, blurring the line between the interior luxury and the natural world.',
+        },
+      ],
+      specs: [
+        { label: 'Space', value: '430ft² of curated elegance' },
+        { label: 'Capacity', value: 'Up to 3 guests' },
+        { label: 'Bedding', value: 'Bespoke Extra Large King' },
+        { label: 'Perspective', value: 'Dual pool & garden vistas' },
+      ],
+    },
   },
   {
     id: 'king-room-private-garden',
     name: 'King Room with Private Garden',
     description:
-      'A spacious King Room with a generous private garden — your own slice of greenery to enjoy fresh forest air in complete seclusion.',
-    features: ['Private Garden', 'King Bed', 'Garden Views', 'Premium Amenities'],
+      '430ft² interior opening onto a 300ft² private lawn — your own slice of greenery in complete seclusion. Extra Large King on the Patented Natural Latex mattress.',
+    features: ['Private Garden 300ft²', 'Extra Large King', 'Natural Latex Mattress', 'Non-Smoking'],
     capacity: '2 adults, 1 child',
-    area: '700 sqft',
+    area: '430 sqft + 300 sqft garden',
     image: '/images/rooms/king-private-garden.webp',
     gallery: [
       '/images/rooms/_galleries/king-private-garden/01.webp',
@@ -137,15 +186,36 @@ export const rooms = [
       '/images/rooms/_galleries/king-private-garden/07.webp',
     ],
     price: 10499,
+    rich: {
+      subtitle: 'A king room that opens onto its own lawn',
+      intro:
+        'The same 430ft² of soft, organic interior as our pool-garden king — Patented Natural Latex on an Extra Large King, large-format windows, and a quietly elegant work desk — but here the doors open onto a 300ft² private walled lawn. A slice of the estate that is only yours for the stay.',
+      sections: [
+        {
+          heading: 'The private lawn',
+          body: 'A manicured outdoor strip immediately off the room — for morning chai with the birds, an evening drink under the trees, or simply somewhere to set your feet on the grass before bed.',
+        },
+        {
+          heading: 'The sleep suite',
+          body: 'Extra Large King with Patented Natural Latex mattress. Hypoallergenic, eco-friendly, breathable — designed to disappear under you while keeping spinal support precise.',
+        },
+      ],
+      specs: [
+        { label: 'Space', value: '430ft² interior + 300ft² private garden' },
+        { label: 'Capacity', value: 'Up to 3 guests' },
+        { label: 'Bedding', value: 'Bespoke Extra Large King' },
+        { label: 'Perspective', value: 'Private lawn' },
+      ],
+    },
   },
   {
     id: 'junior-suite-deck-garden',
     name: 'Junior Suite with Deck and Garden View',
     description:
-      'Plush Junior Suite with an outdoor deck overlooking landscaped gardens — perfect for morning coffee or sundowner cocktails.',
-    features: ['Outdoor Deck', 'Garden View', 'Living Area', 'Premium Bath'],
+      '540ft² of organic interior that flows onto your own timber deck. Sunrise yoga, an evening drink overlooking the garden — the outdoors becomes an extension of the room.',
+    features: ['Private Deck', 'Garden Views', 'Extra Large King', 'Natural Latex Mattress'],
     capacity: '2 adults, 1 child',
-    area: '540 sqft',
+    area: '540 sqft + private deck',
     image: '/images/rooms/junior-deck-garden.webp',
     gallery: [
       '/images/rooms/_galleries/junior-deck-garden/01.webp',
@@ -159,15 +229,45 @@ export const rooms = [
       '/images/rooms/_galleries/junior-deck-garden/09.webp',
     ],
     price: 11999,
+    rich: {
+      subtitle: 'Private al fresco living meets masterful interior design',
+      intro:
+        'Our most coveted Junior Suite, where indoor elegance flows seamlessly onto your own private outdoor deck. Spanning a generous 540ft², it is the hallmark of organic luxury — designed for those who appreciate the quiet prestige of space and the healing power of nature. Here, the great outdoors is not just a view; it is an extension of your living room.',
+      sections: [
+        {
+          heading: 'The private deck',
+          body: 'Step through expansive glass doors onto your secluded timber deck — the perfect stage for a sunrise yoga session or an intimate starlit conversation overlooking the curated garden view.',
+        },
+        {
+          heading: 'Organic restoration',
+          body: 'Central to the suite is the Extra Large King bed, with our Patented Natural Latex mattress. It offers an elite, chemical-free sleep environment that adapts to your body’s every curve.',
+        },
+        {
+          heading: 'Sophisticated utilities',
+          body: 'Balance leisure with a touch of productivity at the artisanal work desk, supported by seamless WiFi and a pristine, non-smoking atmosphere.',
+        },
+      ],
+      specs: [
+        { label: 'Living space', value: '540ft² + private outdoor deck' },
+        { label: 'Bedding', value: 'Bespoke Extra Large King' },
+        { label: 'Vistas', value: 'Immersive garden & landscape views' },
+        { label: 'Occupancy', value: 'Up to 3 guests' },
+        { label: 'Environment', value: '100% non-smoking' },
+      ],
+      distinction: {
+        label: 'The Junior Suite distinction',
+        body: 'Our most expansive base offering, with a physical connection to the gardens via your private deck — a level of liberation and luxury that defines the ultimate retreat.',
+      },
+    },
   },
   {
     id: 'junior-suite-deck-private-garden',
     name: 'Junior Suite with Deck and Private Garden',
     description:
-      'Junior Suite with a private deck and walled garden, offering uninterrupted privacy amidst the resort’s verdant landscape.',
-    features: ['Private Garden', 'Outdoor Deck', 'Living Area', 'Premium Bath'],
+      '540ft² interior + 300ft² private walled garden — 840ft² of indoor-outdoor estate, in total seclusion. The most prestigious of our Junior Suites.',
+    features: ['Private Walled Garden', '840 sqft Total', 'Extra Large King', 'Natural Latex Mattress'],
     capacity: '2 adults, 1 child',
-    area: '700 sqft',
+    area: '540 sqft + 300 sqft private garden',
     image: '/images/rooms/junior-deck-private.webp',
     gallery: [
       '/images/rooms/_galleries/junior-deck-private/01.webp',
@@ -179,15 +279,46 @@ export const rooms = [
       '/images/rooms/_galleries/junior-deck-private/07.webp',
     ],
     price: 12999,
+    rich: {
+      subtitle: 'An ultra-exclusive sanctuary of earth and elegance',
+      intro:
+        'Privacy redefined. The Junior Suite Private Garden is a masterclass in uber-luxury — a 540ft² designer interior merged with your own 300ft² private walled garden. This is not simply a room with a view; it is a sprawling 840ft² indoor-outdoor estate where you can reconnect with nature in total seclusion.',
+      sections: [
+        {
+          heading: 'Your private botanical oasis',
+          body: 'A 300ft² manicured sanctuary exclusively for your use. Whether for a private morning meditation or an evening under the stars, this lush outdoor living space offers a level of intimacy rarely found in high-end hospitality.',
+        },
+        {
+          heading: 'Masterful sleep',
+          body: 'At the heart of the suite lies the Extra Large King with our Patented Natural Latex mattress — a weightless, organic sleep that mirrors the tranquility of your surroundings.',
+        },
+        {
+          heading: 'Mindful productivity',
+          body: 'A bespoke work desk and high-speed WiFi provide a quiet corner for reflection, all within a strictly non-smoking, purified environment.',
+        },
+      ],
+      specs: [
+        { label: 'Interior space', value: '540ft² of organic luxury' },
+        { label: 'Exterior space', value: '300ft² exclusive private garden' },
+        { label: 'Total living area', value: '840ft²' },
+        { label: 'Bedding', value: 'Bespoke Extra Large King' },
+        { label: 'Occupancy', value: 'Up to 3 guests' },
+        { label: 'Environment', value: '100% non-smoking' },
+      ],
+      distinction: {
+        label: 'The Private Garden distinction',
+        body: 'Our most elite tier of base suites. By doubling the outdoor footprint, this suite offers an unparalleled sense of freedom and "staying grounded" — the ultimate antidote to the modern world.',
+      },
+    },
   },
   {
     id: 'junior-suite-bath-tub',
     name: 'Junior Suite with Open-to-Sky Bath Tub',
     description:
-      'A sensual retreat featuring an outdoor open-to-sky bath tub — soak under the stars surrounded by greenery.',
-    features: ['Open-to-Sky Bath', 'Plush Interiors', 'Living Area', 'Garden Vista'],
+      '530ft² suite anchored by a 250ft² open-to-sky stone bath — soak under drifting clouds by day, beneath a canopy of stars by night.',
+    features: ['Open-to-Sky Bath 250ft²', 'Extra Large King', 'Natural Latex Mattress', 'French Press Coffee'],
     capacity: '2 adults, 1 child',
-    area: '530 sqft',
+    area: '530 sqft (incl. 250 sqft open-to-sky bath)',
     image: '/images/rooms/junior-bath-tub.webp',
     gallery: [
       '/images/rooms/_galleries/junior-bath-tub/01.webp',
@@ -199,15 +330,45 @@ export const rooms = [
       '/images/rooms/_galleries/junior-bath-tub/07.webp',
     ],
     price: 13999,
+    rich: {
+      subtitle: 'Where celestial wonder meets organic opulence',
+      intro:
+        'A 530ft² sanctuary where the boundaries between modern indulgence and the rhythmic pulse of nature dissolve. Soft ambient lighting, handcrafted wooden details, a profound sense of calm that slows time to a whisper.',
+      sections: [
+        {
+          heading: 'The bath ritual — under the stars',
+          body: 'The soul of this suite is the 250ft² open-to-sky bathroom — a magnificent stone-clad alcove where the ceiling is replaced by the heavens. Recline in the warm water as the night air brushes your skin and the jungle orchestra serenades you from above. Enhanced with scented oils and soft lighting, it is more than a bath — it is a spiritual reconnection with the elements.',
+        },
+        {
+          heading: 'Sleep, redefined',
+          body: 'A Patented Natural Latex mattress, meticulously designed for elite spinal support and cooling comfort. Hypoallergenic and eco-friendly, it contours to your body for a weightless, uninterrupted sleep that restores the spirit.',
+        },
+        {
+          heading: 'Amenities of distinction',
+          body: 'A complimentary farm-fresh breakfast for two from our own organic fields. A Smart LED TV or projector, high-speed WiFi, a curated minibar. 24-hour room service and our signature evening turndown.',
+        },
+      ],
+      specs: [
+        { label: 'Interior space', value: '530ft² of curated luxury' },
+        { label: 'The bath estate', value: '250ft² open-to-sky stone bathroom' },
+        { label: 'Sleep', value: 'Bespoke Extra Large King with Natural Latex' },
+        { label: 'Inclusive', value: 'Farm-to-Table breakfast for two' },
+        { label: 'Environment', value: '100% non-smoking' },
+      ],
+      distinction: {
+        label: 'The Open-to-Sky distinction',
+        body: 'Designed for the connoisseur of quiet luxury — the rare opportunity to bathe under the stars and sleep on the earth’s finest organic materials.',
+      },
+    },
   },
   {
     id: 'master-suite-bath-tub',
     name: 'Master Suite with Open-to-Sky Bath Tub',
     description:
-      'Larger family-friendly Master Suite with the signature open-to-sky bath tub — designed for unforgettable celebrations and getaways.',
-    features: ['Open-to-Sky Bath', 'Family Friendly', 'Living Area', 'Premium Amenities'],
+      '1,100ft² grand estate with a private living room, an in-room cinema projector, an open-to-sky stone bath, and a balcony over the organic orchard. Furnished by Giovanni Boutique.',
+    features: ['Cinema Projector', 'Open-to-Sky Bath', 'Orchard Balcony', '1,100 sqft'],
     capacity: '2 adults, 2 children',
-    area: '530 sqft',
+    area: '1,100 sqft',
     image: '/images/rooms/master-bath-tub.webp',
     gallery: [
       '/images/rooms/_galleries/master-bath-tub/01.webp',
@@ -222,15 +383,47 @@ export const rooms = [
       '/images/rooms/_galleries/master-bath-tub/10.webp',
     ],
     price: 17499,
+    rich: {
+      subtitle: 'A grand estate of style, silence, and sophistication',
+      intro:
+        'Where the untamed wilderness meets unparalleled luxury, the Master Suite stands as our most expansive and prestigious retreat. Spanning a magnificent 1,100ft², this grand estate is designed for the connoisseur of fine living — a private world where organic character and high-tier indulgence coexist in perfect harmony.',
+      sections: [
+        {
+          heading: 'The crown jewel — a dialogue with the elements',
+          body: 'The heart of the Master Suite is its open-to-sky bath ritual. Framed by natural stone and lush foliage, this sanctuary allows you to slip into a warm soak under drifting clouds by day, or a canopy of stars by night. Surrounded by the fragrance of fresh air and the hum of the forest.',
+        },
+        {
+          heading: 'The private living room & cinema',
+          body: 'A sprawling Private Living Room designed for both relaxation and celebration. An in-room Cinema Projector and Smart TV transform the lounge into a private theater. Your living area extends onto a private terrace overlooking a verdant canopy of fruit trees — a serene vantage point for slow morning coffees and golden-hour reflections. A curated in-room bar of wines and spirits, alongside bespoke handcrafted furniture by Giovanni Boutique Furniture.',
+        },
+        {
+          heading: 'The science of restoration',
+          body: 'Sink into a state of total weightlessness on our Patented Natural Latex mattress. Breathable, eco-friendly, and engineered for orthopedic comfort, this organic foundation ensures that your sleep is as restorative as your surroundings.',
+        },
+      ],
+      specs: [
+        { label: 'Total space', value: '1,100ft² of master-crafted luxury' },
+        { label: 'Living area', value: 'Private living room with cinema projector & lounge' },
+        { label: 'The bath ritual', value: 'Signature open-to-sky stone bathtub' },
+        { label: 'Vistas', value: 'Private balcony overlooking the organic orchard' },
+        { label: 'Inclusions', value: 'Farm-to-Table breakfast for two' },
+        { label: 'Sleep', value: 'Extra Large King with Natural Latex' },
+        { label: 'Service', value: 'Personalised butler on request' },
+      ],
+      distinction: {
+        label: 'The Master distinction',
+        body: 'At 1,100ft², this is more than a suite — it is a sprawling residence. By combining the vastness of a private cinema lounge with the intimacy of a sky-lit bath, we have created the ultimate sanctuary for those who demand both space and soul.',
+      },
+    },
   },
   {
     id: 'junior-suite-plunge-pool',
     name: 'Junior Suite with Open-to-Sky Plunge Pool',
     description:
-      'Indulgent Junior Suite featuring a private open-to-sky plunge pool — your personal oasis at Giovanni.',
-    features: ['Private Plunge Pool', 'Open-to-Sky', 'Living Area', 'Garden Views'],
+      '530ft² with a private 8ft × 6ft open-to-sky plunge pool, nested inside a 250ft² stone-clad bath estate. Submerge under the canopy by day, under the stars by night.',
+    features: ['8x6 Plunge Pool', 'Open-to-Sky', 'Stone Bath 250ft²', 'Natural Latex Mattress'],
     capacity: '2 adults, 2 children',
-    area: '530 sqft',
+    area: '530 sqft (incl. 250 sqft bath + 8x6 plunge pool)',
     image: '/images/rooms/junior-plunge-pool.webp',
     gallery: [
       '/images/rooms/_galleries/junior-plunge-pool/01.webp',
@@ -241,15 +434,46 @@ export const rooms = [
       '/images/rooms/_galleries/junior-plunge-pool/06.webp',
     ],
     price: 14999,
+    rich: {
+      subtitle: 'A private aquatic retreat beneath the heavens',
+      intro:
+        'A 530ft² haven where organic architecture meets high-concept luxury. Designed for the discerning traveller who seeks a deep, visceral connection with the elements. Defined by handcrafted wooden details and bathed in soft, natural light, this sanctuary slows the pace of life the moment you cross the threshold.',
+      sections: [
+        {
+          heading: 'The aquatic ritual — sky-lit serenity',
+          body: 'The centrepiece is your private 8ft × 6ft open-to-sky plunge pool, nested within a magnificent 250ft² stone-clad bathroom estate. Submerge in temperate water as the night air brushes your skin and the ceiling opens to the stars. Whether a refreshing morning dip or a midnight ritual under the jungle canopy, the open-air design turns every moment into pure transcendence.',
+        },
+        {
+          heading: 'Sleep, redefined',
+          body: 'Rest is an art form in this suite. Our Patented Natural Latex mattress, chosen for hypoallergenic properties and superior spinal support, contours to your body for a weightless, restorative sleep that mirrors the stillness of the surrounding forest.',
+        },
+        {
+          heading: 'Amenities of distinction',
+          body: 'Complimentary farm-fresh breakfast for two from our own organic fields. A Smart LED TV or projector, high-speed WiFi, premium in-room tea and coffee. 24-hour room service and our signature evening turndown.',
+        },
+      ],
+      specs: [
+        { label: 'Interior space', value: '530ft² of organic luxury' },
+        { label: 'Outdoor feature', value: '8ft × 6ft private open-to-sky plunge pool' },
+        { label: 'The bath estate', value: '250ft² stone-clad sanctuary' },
+        { label: 'Sleep', value: 'Bespoke Extra Large King with Natural Latex' },
+        { label: 'Inclusive', value: 'Farm-to-Table breakfast for two' },
+        { label: 'Environment', value: '100% non-smoking' },
+      ],
+      distinction: {
+        label: 'The Plunge Pool distinction',
+        body: 'Our most immersive aquatic offering. By combining the vastness of an open-air bath with the luxury of a private pool, we have created a space where you don’t just observe nature — you live within it.',
+      },
+    },
   },
   {
     id: 'royal-suite-plunge-pool',
     name: 'Royal Suite with Plunge Pool and Private Garden',
     description:
-      'Bespoke wilderness suite with a private plunge pool and a sprawling 2,000 sqft lawn — perfect for special occasions and intimate gatherings.',
-    features: ['Private Plunge Pool', '2,000 sqft Lawn', 'Living Area', 'Butler Service'],
+      'The crown jewel — 1,100ft² interior, 2,000ft² private garden, a private open-to-sky plunge pool, lounge & dining, an in-room cinema, and a butler on request. Over 3,000ft² of total private estate.',
+    features: ['Plunge Pool', '2,000ft² Private Garden', 'Cinema Projector', 'Butler Service'],
     capacity: '3 adults, 2 children',
-    area: '1,100 sqft',
+    area: '1,100 sqft + 2,000 sqft private garden',
     image: '/images/rooms/royal-suite.webp',
     gallery: [
       '/images/rooms/_galleries/royal-suite/01.webp',
@@ -263,6 +487,37 @@ export const rooms = [
       '/images/rooms/_galleries/royal-suite/09.webp',
     ],
     price: 21000,
+    rich: {
+      subtitle: 'The crown jewel of Giovanni Village',
+      intro:
+        'Our most prestigious offering. 1,100ft² of interior elegance cocooned within a sprawling private estate — the definitive expression of uber-luxury. Crafted for those who demand absolute silence, vast space, and a soul-soothing connection to the earth, the Royal Suite is less a room and more a private sanctuary.',
+      sections: [
+        {
+          heading: 'The aquatic & botanical estate',
+          body: 'A private open-to-sky plunge pool where warm water meets the cool breeze, the sky as your ceiling and the jungle canopy as your backdrop. Surrounding the suite, a 2,000ft² private garden — a massive, lush sanctuary of flowering trees and fruit groves with lounging corners perfect for private yoga, morning picnics, or intimate starlit dinners.',
+        },
+        {
+          heading: 'Masterful interiors & cinema',
+          body: 'A dedicated lounge & dining area and a private living room with a Cinema Projector and Smart TV for immersive evenings. A complementary stone-clad open-to-sky bath ritual with aromatic oils and a direct view of the drifting clouds above. Every corner is adorned with handcrafted furnishings by Giovanni Boutique Furniture, balancing high design with organic comfort.',
+        },
+        {
+          heading: 'Restorative luxury',
+          body: 'Drift into a deep, orthopedic rest on our Patented Natural Latex mattress. Eco-friendly and hypoallergenic, it ensures your physical restoration matches the mental peace provided by your surroundings. Begin each day with a complimentary organic breakfast for two, harvested from our own fields and served in the privacy of your garden or suite.',
+        },
+      ],
+      specs: [
+        { label: 'Interior space', value: '1,100ft² of curated luxury' },
+        { label: 'Private exterior', value: '2,000ft² landscaped private garden' },
+        { label: 'Water feature', value: 'Private open-to-sky plunge pool' },
+        { label: 'Entertainment', value: 'Private cinema projector & curated in-room bar' },
+        { label: 'Service', value: 'Personalised butler & housekeeping on request' },
+        { label: 'Environment', value: '100% non-smoking' },
+      ],
+      distinction: {
+        label: 'The Royal distinction',
+        body: 'With over 3,000ft² of total private indoor-outdoor living space, the Royal Suite is the ultimate sanctuary. A place where you don’t just escape the world — you rediscover it beneath open skies and among whispering trees.',
+      },
+    },
   },
 ];
 
@@ -592,8 +847,8 @@ export const activities = [
   },
   {
     id: 'farm-tour',
-    title: 'Fields of Gold: Royalton Farm Tour',
-    description: 'Walk through our fertile Royalton farms and learn about sustainable farming practices.',
+    title: 'Fields of Gold: Royalton Farms Tour',
+    description: 'Walk through Royalton Farms — the working organic farm inside the estate — and meet the people who grow what reaches your plate.',
     category: 'Nature',
     image: '/images/experiences/icons/icon-17.webp',
   },
@@ -631,29 +886,6 @@ export const activities = [
     description: 'Let children unleash their culinary skills in an exclusive setting under expert supervision.',
     category: 'Family',
     image: '/images/experiences/icons/junior-chef.webp',
-  },
-];
-
-export const sisterProperties = [
-  {
-    id: 'giovanni-house',
-    name: 'Giovanni House',
-    tagline: 'Boutique Home Stay',
-    description:
-      'An intimate boutique home stay in the heart of Arera Colony — perfect for short city stays with the warmth of a Giovanni welcome.',
-    location: 'E-4, Arera Colony, Bhopal',
-    bookingUrl: 'https://live.ipms247.com/booking/roomlisting-giovannistays-hotelgiovannihouse-en',
-    image: '/images/sister-properties/giovanni-house.webp',
-  },
-  {
-    id: 'giovanni-suites',
-    name: 'Giovanni Suites',
-    tagline: 'Boutique Home Stay',
-    description:
-      'Spacious suites for longer stays in central Bhopal — Giovanni hospitality, urban convenience.',
-    location: 'E-8, Arera Colony, Bhopal',
-    bookingUrl: 'https://live.ipms247.com/booking/roomlisting-giovannistays-hotelgiovannisuites-en',
-    image: '/images/sister-properties/giovanni-suites.webp',
   },
 ];
 

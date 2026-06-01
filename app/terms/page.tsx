@@ -36,7 +36,7 @@ export default function TermsPage() {
       <h2>Contact</h2>
       <p>
         For any questions about these terms, please contact our concierge at{' '}
-        <a href="tel:+919039037300">+91 90390 37300</a> or{' '}
+        <a href="tel:+919039037302">+91 90390 37302</a> or{' '}
         <a href="mailto:reservations@giovannivillage.com">reservations@giovannivillage.com</a>.
       </p>
     </LegalLayout>

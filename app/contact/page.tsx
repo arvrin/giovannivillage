@@ -90,8 +90,8 @@ export default function ContactPage() {
   };
 
   const contactItems: ContactItem[] = [
-    { icon: Phone, label: 'Concierge', value: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone.replace(/\s/g, '')}`, meta: '24/7' },
-    { icon: Phone, label: 'F&B', value: siteConfig.contact.phoneSecondary, href: `tel:${siteConfig.contact.phoneSecondary.replace(/\s/g, '')}` },
+    { icon: Phone, label: 'Reception', value: siteConfig.contact.phoneReception, href: `tel:${siteConfig.contact.phoneReception.replace(/\s/g, '')}`, meta: '24/7' },
+    { icon: Phone, label: 'Concierge / WhatsApp', value: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone.replace(/\s/g, '')}` },
     { icon: Mail, label: 'Email', value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
     { icon: MapPin, label: 'Address', value: `${siteConfig.contact.address.street}, ${siteConfig.contact.address.city}, ${siteConfig.contact.address.state}` },
     { icon: Clock, label: 'Reception', value: '24/7 — always at your service' },

@@ -8,33 +8,48 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { siteConfig } from '@/lib/data';
+import { HOME_PAGE_BRANDS } from '@/lib/brands';
 import { getWhatsAppLink } from '@/lib/utils';
+import BrandCarousel from './BrandCarousel';
 
 interface NavLeaf { label: string; href: string }
-interface NavGroup { label: string; children: NavLeaf[] }
-type NavItem = NavLeaf | NavGroup;
 
-const NAV: NavItem[] = [
-  { label: 'Stays', href: '/rooms' },
-  { label: 'Dining', href: '/dining' },
-  { label: 'Spa & Wellness', href: '/spa' },
-  { label: 'Experiences', href: '/experiences' },
+interface NavSection {
+  /** Eyebrow shown above the group of links. */
+  eyebrow: string;
+  items: NavLeaf[];
+}
+
+/** The menu nav, grouped into three readable chunks instead of a flat list of ten. */
+const NAV_SECTIONS: NavSection[] = [
   {
-    label: 'Celebrations',
-    children: [
+    eyebrow: 'The Resort',
+    items: [
+      { label: 'Stays', href: '/rooms' },
+      { label: 'Dining', href: '/dining' },
+      { label: 'Spa & Wellness', href: '/spa' },
+      { label: 'Experiences', href: '/experiences' },
+    ],
+  },
+  {
+    eyebrow: 'Celebrations',
+    items: [
       { label: 'Weddings', href: '/weddings' },
       { label: 'Meetings & Events', href: '/events' },
       { label: 'Private Celebrations', href: '/celebrations' },
     ],
   },
-  { label: 'Gallery', href: '/gallery' },
-  { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Careers', href: '/careers' },
-  { label: 'Contact', href: '/contact' },
+  {
+    eyebrow: 'Discover',
+    items: [
+      { label: 'Gallery', href: '/gallery' },
+      { label: 'About', href: '/about' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
 ];
-
-const isGroup = (n: NavItem): n is NavGroup => 'children' in n;
 
 /** Pages that don't render a dark hero image; the header should default to
  *  its scrolled (dark-on-light) state on these routes. */
@@ -146,13 +161,13 @@ const RetreatHeader = () => {
                 className="object-cover"
               />
             </motion.div>
-            {/* Darken only the left strip where menu items sit; let the pool +
-                Giovanni-logo etching breathe in the centre/right of the screen */}
+            {/* Two columns now share the screen — keep the left dark for the nav
+                and let the right stay quieter but still legible for the brand cards. */}
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  'linear-gradient(to right, rgba(8, 22, 28, 0.80) 0%, rgba(8, 22, 28, 0.50) 35%, rgba(8, 22, 28, 0.18) 60%, rgba(8, 22, 28, 0.10) 100%)',
+                  'linear-gradient(to right, rgba(8, 22, 28, 0.82) 0%, rgba(8, 22, 28, 0.62) 45%, rgba(8, 22, 28, 0.52) 100%)',
               }}
             />
             {/* Subtle vignette at top/bottom for the eyebrow + address rows */}
@@ -186,69 +201,70 @@ const RetreatHeader = () => {
                 </button>
               </motion.div>
 
-              <nav className="my-auto">
-                <ul className="space-y-1 md:space-y-3">
-                  {NAV.map((item, i) => {
-                    const baseDelay = 0.85 + i * 0.06;
-                    if (isGroup(item)) {
-                      // A nested group — render the parent label as a small
-                      // eyebrow above its children. Children sit one indent
-                      // in, slightly smaller than top-level entries.
+              <div className="min-h-0 flex-1 grid grid-cols-1 gap-12 overflow-y-auto py-8 md:grid-cols-12 md:gap-10 md:overflow-visible md:py-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                {/* Left: nav grouped into three sections so ten items read as three
+                    chunks. Each section gets its own delay so they cascade in.
+                    On desktop the nav scrolls independently; on mobile the whole
+                    grid scrolls together. */}
+                <nav className="md:col-span-7 md:h-full md:overflow-y-auto md:py-8 md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
+                  <div className="space-y-8 md:space-y-10">
+                    {NAV_SECTIONS.map((section, sIdx) => {
+                      const sectionDelay = 0.85 + sIdx * 0.18;
                       return (
-                        <motion.li
-                          key={item.label}
+                        <motion.div
+                          key={section.eyebrow}
                           initial={{ opacity: 0, y: 24 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 12 }}
-                          transition={{ duration: 0.9, delay: baseDelay, ease: [0.16, 1, 0.3, 1] }}
-                          className="py-1"
+                          transition={{ duration: 0.8, delay: sectionDelay, ease: [0.16, 1, 0.3, 1] }}
                         >
                           <p
-                            className="text-[10px] tracking-[0.32em] uppercase text-white/55"
+                            className="mb-3 text-[10px] tracking-[0.36em] uppercase text-white/55 md:mb-4"
                             style={{ fontFamily: 'var(--font-eyebrow)' }}
                           >
-                            {item.label}
+                            {section.eyebrow}
                           </p>
-                          <ul className="mt-1 md:mt-2 space-y-1 md:space-y-2">
-                            {item.children.map((child) => (
-                              <li key={child.href}>
+                          <ul className="space-y-1 md:space-y-2">
+                            {section.items.map((item) => (
+                              <li key={item.href}>
                                 <Link
-                                  href={child.href}
+                                  href={item.href}
                                   onClick={() => setOpen(false)}
-                                  className="display-italic block text-3xl leading-[1.1] transition hover:text-[color:var(--color-brass)] md:text-5xl"
+                                  className="display-italic block text-3xl leading-[1.1] transition hover:text-[color:var(--color-brass)] md:text-[2.75rem]"
                                 >
-                                  {child.label}
+                                  {item.label}
                                 </Link>
                               </li>
                             ))}
                           </ul>
-                        </motion.li>
+                        </motion.div>
                       );
-                    }
-                    return (
-                      <motion.li
-                        key={item.href}
-                        initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 12 }}
-                        // Items rise softly from below — more cinematic than
-                        // the previous left-slide. Stagger begins as the unroll
-                        // crosses 60% width, so items appear as the carpet
-                        // reaches their position.
-                        transition={{ duration: 0.9, delay: baseDelay, ease: [0.16, 1, 0.3, 1] }}
-                      >
-                        <Link
-                          href={item.href}
-                          onClick={() => setOpen(false)}
-                          className="display-italic block text-4xl leading-[1.1] transition hover:text-[color:var(--color-brass)] md:text-6xl"
-                        >
-                          {item.label}
-                        </Link>
-                      </motion.li>
-                    );
-                  })}
-                </ul>
-              </nav>
+                    })}
+                  </div>
+                </nav>
+
+                {/* Right: auto-cycling carousel of the Giovanni family of brands.
+                    One card at a time so each brand gets a proper write-up; pauses
+                    on hover; dot indicators below. */}
+                <motion.aside
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 12 }}
+                  transition={{ duration: 0.9, delay: 1.15, ease: [0.16, 1, 0.3, 1] }}
+                  className="md:col-span-5 md:self-center"
+                >
+                  <p
+                    className="mb-4 text-[10px] tracking-[0.36em] uppercase text-white/55 md:mb-5"
+                    style={{ fontFamily: 'var(--font-eyebrow)' }}
+                  >
+                    The Giovanni family
+                  </p>
+                  <BrandCarousel
+                    brands={HOME_PAGE_BRANDS}
+                    onLinkClick={() => setOpen(false)}
+                  />
+                </motion.aside>
+              </div>
 
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
@@ -258,8 +274,31 @@ const RetreatHeader = () => {
                 className="flex flex-col gap-2 text-sm opacity-80 md:flex-row md:items-center md:justify-between"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
-                <p>{siteConfig.contact.address.street}</p>
-                <p>{siteConfig.contact.phone} · {siteConfig.contact.email}</p>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    `${siteConfig.contact.address.street}, ${siteConfig.contact.address.city}, ${siteConfig.contact.address.state}`,
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline-offset-4 transition hover:underline hover:opacity-100"
+                >
+                  {siteConfig.contact.address.street}
+                </a>
+                <p>
+                  <a
+                    href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
+                    className="underline-offset-4 transition hover:underline"
+                  >
+                    {siteConfig.contact.phone}
+                  </a>
+                  {' · '}
+                  <a
+                    href={`mailto:${siteConfig.contact.email}`}
+                    className="underline-offset-4 transition hover:underline"
+                  >
+                    {siteConfig.contact.email}
+                  </a>
+                </p>
               </motion.div>
             </div>
           </motion.div>

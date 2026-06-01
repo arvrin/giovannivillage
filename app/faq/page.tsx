@@ -106,8 +106,8 @@ export default function FaqPage() {
             </h2>
             <p className="mt-4 text-base text-[var(--color-text-secondary)]" style={{ lineHeight: 1.7 }}>
               Reservations:{' '}
-              <a href="tel:+919039037300" className="text-[var(--color-bronze)] hover:underline">
-                +91 90390 37300
+              <a href="tel:+919039037302" className="text-[var(--color-bronze)] hover:underline">
+                +91 90390 37302
               </a>{' '}
               · Email:{' '}
               <a

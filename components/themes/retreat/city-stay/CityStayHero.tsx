@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
@@ -8,6 +9,27 @@ import { getWhatsAppLink } from '@/lib/utils';
 import type { CityStay } from '@/lib/city-stays';
 
 const CityStayHero = ({ stay }: { stay: CityStay }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
+
+  // Lazy-start the video when the browser is idle so it doesn't compete with
+  // the LCP image. Matches the retreat Hero pattern.
+  useEffect(() => {
+    if (!stay.heroVideo) return;
+    const v = videoRef.current;
+    if (!v) return;
+    const start = () => {
+      v.load();
+      v.muted = true;
+      v.play().catch(() => {});
+    };
+    if ('requestIdleCallback' in window) {
+      (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(start);
+    } else {
+      setTimeout(start, 200);
+    }
+  }, [stay.heroVideo]);
+
   return (
     <section className="relative isolate h-[100svh] min-h-[640px] w-full overflow-hidden bg-[color:var(--color-forest)] text-white">
       <motion.div
@@ -22,8 +44,26 @@ const CityStayHero = ({ stay }: { stay: CityStay }) => {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className={`object-cover transition-opacity duration-1000 ${
+            stay.heroVideo && videoReady ? 'opacity-0' : 'opacity-100'
+          }`}
         />
+        {stay.heroVideo && (
+          <video
+            ref={videoRef}
+            poster={stay.hero}
+            muted
+            loop
+            playsInline
+            preload="none"
+            onLoadedData={() => setVideoReady(true)}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+              videoReady ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <source src={stay.heroVideo} type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
       </motion.div>

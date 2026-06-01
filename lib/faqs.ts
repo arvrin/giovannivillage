@@ -384,7 +384,7 @@ export const faqs: Faq[] = [
     topic: 'contact',
     question: 'How do I make a reservation at Giovanni Village?',
     answer:
-      'You can book Giovanni Village directly through our live availability portal, by calling our reservations team at +91 90390 37300, or by emailing reservations@giovannivillage.com. Direct bookings unlock our best-available rate and any seasonal offers.',
+      'You can book Giovanni Village directly through our live availability portal, by calling or messaging our concierge at +91 90390 37302, or by emailing reservations@giovannivillage.com. Direct bookings unlock our best-available rate and any seasonal offers.',
     featured: true,
   },
   {
@@ -392,7 +392,7 @@ export const faqs: Faq[] = [
     topic: 'contact',
     question: 'What is the contact number for Giovanni Village?',
     answer:
-      'The main reservations line for Giovanni Village is +91 90390 37300, and the F&B team can be reached at +91 90390 37302. WhatsApp is available on the same primary number, and email enquiries can be sent to reservations@giovannivillage.com.',
+      'The main contact number for Giovanni Village is +91 90390 37302 — reachable by phone or WhatsApp, 24/7. The on-site reception line is +91 90390 37300 (for late arrivals or specific operational queries). Email enquiries can be sent to reservations@giovannivillage.com.',
     featured: true,
   },
   {

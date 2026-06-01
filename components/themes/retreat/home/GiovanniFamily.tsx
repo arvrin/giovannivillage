@@ -4,38 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, MapPin } from 'lucide-react';
-
-interface BrandCard {
-  name: string;
-  tagline: string;
-  description: string;
-  location?: string;
-  href: string;
-  external?: boolean;
-  image: string;
-  isLogo?: boolean;
-}
-
-const BRANDS: BrandCard[] = [
-  {
-    name: 'Giovanni House',
-    tagline: 'Boutique Home Stay',
-    description:
-      'Eight king suites in the leafiest pocket of Arera Colony — perfect for the short business trip or the night before a wedding.',
-    location: 'E-4, Arera Colony, Bhopal',
-    href: '/house',
-    image: '/images/city-stays/house/hero.webp',
-  },
-  {
-    name: 'Giovanni Suites',
-    tagline: 'Boutique Home Stay',
-    description:
-      'Four rooms named for the trees and colours of central India — Amaltas, Gulmohar, Razz, Rangrez. Long weekends, family visits, wedding-guest stays.',
-    location: 'E-8, Arera Colony, Bhopal',
-    href: '/suites',
-    image: '/images/city-stays/suites/hero.webp',
-  },
-];
+import { HOME_PAGE_BRANDS } from '@/lib/brands';
 
 const GiovanniFamily = () => {
   return (
@@ -58,46 +27,37 @@ const GiovanniFamily = () => {
             </span>
           </div>
           <h2 className="display-italic text-3xl leading-[1.1] md:text-5xl md:leading-[1.05]">
-            One name, <span className="font-script">two</span> stays in the city.
+            One family. <span className="font-script">Four</span> ways to stay,
+            eat & live.
           </h2>
           <p
             className="mt-5 max-w-xl text-[15px] leading-[1.85] text-[color:var(--color-text-secondary)] md:text-base"
             style={{ fontFamily: 'var(--font-body)' }}
           >
-            Beyond the village, Giovanni runs two boutique stays in central Bhopal —
-            the same hand-crafted hospitality, closer to the airport and the city.
+            Beyond the village — a working organic farm at our doorstep, two
+            boutique homestays in central Bhopal, and a furniture studio
+            shaping every room you sleep in. Built by the same hands, held to
+            the same standard.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-          {BRANDS.map((b, i) => (
-            <motion.article
-              key={b.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.7, delay: i * 0.08 }}
-              className="group relative flex flex-col overflow-hidden rounded-lg bg-[color:var(--color-bg)] shadow-[var(--shadow-sm)] ring-1 ring-[color:var(--color-border)]"
-            >
-              <Link
-                href={b.href}
-                target={b.external ? '_blank' : undefined}
-                rel={b.external ? 'noreferrer' : undefined}
-                className="block"
-              >
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
+          {HOME_PAGE_BRANDS.map((b, i) => {
+            const CardInner = (
+              <>
                 <div
                   className={`relative aspect-[4/3] overflow-hidden ${
                     b.isLogo ? 'bg-[color:var(--color-forest)]' : ''
                   }`}
                 >
                   {b.isLogo ? (
-                    <div className="flex h-full w-full items-center justify-center p-12">
+                    <div className="flex h-full w-full items-center justify-center p-10">
                       <Image
                         src={b.image}
                         alt={b.name}
-                        width={180}
-                        height={180}
-                        className="h-32 w-auto object-contain transition duration-[1000ms] group-hover:scale-105"
+                        width={220}
+                        height={220}
+                        className="h-28 w-auto object-contain transition duration-[1000ms] group-hover:scale-105"
                       />
                     </div>
                   ) : (
@@ -105,26 +65,27 @@ const GiovanniFamily = () => {
                       src={b.image}
                       alt={b.name}
                       fill
-                      sizes="(max-width:768px) 100vw, 33vw"
+                      sizes="(max-width:768px) 100vw, 25vw"
                       className="object-cover transition duration-[1400ms] group-hover:scale-[1.04]"
                     />
                   )}
                   <span
-                    className="absolute left-5 top-5 rounded-full bg-[color:var(--color-forest)] px-3.5 py-1.5 text-[10px] tracking-[0.32em] uppercase text-white"
+                    className="absolute left-4 top-4 rounded-full bg-[color:var(--color-forest)] px-3 py-1 text-[9px] tracking-[0.3em] uppercase text-white"
                     style={{ fontFamily: 'var(--font-eyebrow)' }}
                   >
                     {b.tagline}
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col gap-4 p-7">
+                <div className="flex flex-1 flex-col gap-3 p-6">
                   <div>
-                    <h3 className="display-italic text-2xl leading-tight">
-                      <span className="font-script">{b.name.split(' ')[0]}</span> {b.name.split(' ').slice(1).join(' ')}
+                    <h3 className="display-italic text-xl leading-tight md:text-2xl">
+                      <span className="font-script">{b.name.split(' ')[0]}</span>{' '}
+                      {b.name.split(' ').slice(1).join(' ')}
                     </h3>
                     {b.location && (
                       <p
-                        className="mt-2 inline-flex items-center gap-1.5 text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-text-tertiary)]"
+                        className="mt-1.5 inline-flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase text-[color:var(--color-text-tertiary)]"
                         style={{ fontFamily: 'var(--font-eyebrow)' }}
                       >
                         <MapPin className="h-3 w-3" />
@@ -133,24 +94,50 @@ const GiovanniFamily = () => {
                     )}
                   </div>
                   <p
-                    className="text-[14px] leading-[1.7] text-[color:var(--color-text-secondary)]"
+                    className="text-[13.5px] leading-[1.65] text-[color:var(--color-text-secondary)]"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
                     {b.description}
                   </p>
-                  <div className="mt-auto flex items-center justify-between border-t border-[color:var(--color-border)] pt-4">
+                  <div className="mt-auto flex items-center justify-between border-t border-[color:var(--color-border)] pt-3">
                     <span
-                      className="text-[10px] tracking-[0.3em] uppercase text-[color:var(--color-text)]"
+                      className="text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-text)]"
                       style={{ fontFamily: 'var(--font-eyebrow)' }}
                     >
-                      Explore {b.name.split(' ')[1]}
+                      {b.href ? `Explore ${b.name.split(' ')[1]}` : 'Studio · soon'}
                     </span>
-                    <ArrowUpRight className="h-4 w-4 text-[color:var(--color-text)] transition group-hover:text-[color:var(--color-brass)]" />
+                    {b.href && (
+                      <ArrowUpRight className="h-4 w-4 text-[color:var(--color-text)] transition group-hover:text-[color:var(--color-brass)]" />
+                    )}
                   </div>
                 </div>
-              </Link>
-            </motion.article>
-          ))}
+              </>
+            );
+
+            return (
+              <motion.article
+                key={b.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.7, delay: i * 0.08 }}
+                className="group relative flex flex-col overflow-hidden rounded-lg bg-[color:var(--color-bg)] shadow-[var(--shadow-sm)] ring-1 ring-[color:var(--color-border)]"
+              >
+                {b.href ? (
+                  <Link
+                    href={b.href}
+                    target={b.external ? '_blank' : undefined}
+                    rel={b.external ? 'noreferrer' : undefined}
+                    className="flex flex-1 flex-col"
+                  >
+                    {CardInner}
+                  </Link>
+                ) : (
+                  <div className="flex flex-1 flex-col">{CardInner}</div>
+                )}
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

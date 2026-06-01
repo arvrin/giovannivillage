@@ -42,7 +42,7 @@ export default function DiningPage() {
           alt="Gourmet By The Woods"
           eyebrow="The kitchens"
           title="Three tables, one philosophy"
-          description="Cook from Royalton Farms inside the gates. Plate it under the trees. Farm-fresh Malwa cooking at Gourmet By The Woods; rooftop telescope dinners at Pihu; intimate lakeside service at Gazebo by the Lake."
+          description="Produce walks in from Royalton Farms — the working organic farm inside the estate — and our kitchens cook it the same morning. Farm-fresh Malwa cooking at Gourmet By The Woods; rooftop telescope dinners at Pihu; intimate lakeside service at Gazebo by the Lake."
           video="/videos/dining-arrival.mp4"
         />
 

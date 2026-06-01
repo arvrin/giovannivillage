@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Users, Maximize, ArrowUpRight } from 'lucide-react';
 import Header from '@/components/layout/Header';
@@ -9,6 +8,7 @@ import PageHero from '@/components/ui/PageHero';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
+import RoomCardImage from '@/components/themes/retreat/RoomCardImage';
 import { rooms, siteConfig } from '@/lib/data';
 
 export const metadata = {
@@ -41,15 +41,11 @@ export default function RoomsIndexPage() {
                   index % 2 === 1 ? 'lg:[&>div:first-child]:order-2' : ''
                 }`}
               >
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                  <Image
-                    src={room.image}
-                    alt={room.name}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
+                <RoomCardImage
+                  images={room.gallery && room.gallery.length > 0 ? [room.image, ...room.gallery] : [room.image]}
+                  alt={room.name}
+                />
+
 
                 <div>
                   <h2

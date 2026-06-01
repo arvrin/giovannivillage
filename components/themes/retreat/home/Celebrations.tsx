@@ -61,11 +61,20 @@ const Celebrations = () => {
             className="relative hidden h-44 w-52 shrink-0 overflow-hidden rounded-md md:block"
           >
             <Image
-              src="/images/weddings/gourmet-lawn.webp"
-              alt="Wedding setup at Giovanni"
+              src="/images/weddings/real-wedding-poster.webp"
+              alt="A real wedding at Giovanni Village"
               fill
               sizes="220px"
               className="object-cover"
+            />
+            <video
+              src="/videos/weddings-real-loop.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </motion.div>
         </motion.div>

@@ -89,12 +89,92 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
           <div className="grid lg:grid-cols-3 gap-12 mb-24">
             {/* Main content */}
             <div className="lg:col-span-2">
+              {room.rich && (
+                <p
+                  className="mb-3 text-[11px] tracking-[0.36em] uppercase text-[var(--color-text-tertiary)]"
+                  style={{ fontFamily: 'var(--font-eyebrow)' }}
+                >
+                  {room.rich.subtitle}
+                </p>
+              )}
               <p
-                className="display-italic text-2xl md:text-3xl text-[var(--color-text)] mb-12"
-                style={{ lineHeight: 1.4 }}
+                className="display-italic text-2xl md:text-3xl text-[var(--color-text)] mb-10"
+                style={{ lineHeight: 1.35 }}
               >
                 {room.description}
               </p>
+
+              {room.rich && (
+                <>
+                  <p
+                    className="mb-12 text-base md:text-lg text-[var(--color-text-secondary)]"
+                    style={{ fontFamily: 'var(--font-body)', lineHeight: 1.85 }}
+                  >
+                    {room.rich.intro}
+                  </p>
+
+                  {/* Editorial sections */}
+                  <div className="mb-16 space-y-10">
+                    {room.rich.sections.map((s) => (
+                      <div key={s.heading} className="border-t border-[var(--color-border)] pt-6">
+                        <h3
+                          className="display-italic text-xl md:text-2xl text-[var(--color-text)]"
+                          style={{ fontWeight: 500, lineHeight: 1.25 }}
+                        >
+                          {s.heading}
+                        </h3>
+                        <p
+                          className="mt-3 text-base text-[var(--color-text-secondary)]"
+                          style={{ fontFamily: 'var(--font-body)', lineHeight: 1.8 }}
+                        >
+                          {s.body}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Suite specifications */}
+                  <div className="mb-16">
+                    <SectionHeader title="Suite specifications" eyebrow="The details" align="left" size="md" />
+                    <dl className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5">
+                      {room.rich.specs.map((spec) => (
+                        <div key={spec.label} className="border-b border-[var(--color-border)] pb-4">
+                          <dt
+                            className="text-[10px] tracking-[0.32em] uppercase text-[var(--color-text-tertiary)]"
+                            style={{ fontFamily: 'var(--font-eyebrow)' }}
+                          >
+                            {spec.label}
+                          </dt>
+                          <dd
+                            className="mt-1.5 text-base text-[var(--color-text)]"
+                            style={{ fontFamily: 'var(--font-body)' }}
+                          >
+                            {spec.value}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+
+                  {/* Distinction closer */}
+                  {room.rich.distinction && (
+                    <div className="mb-16 bg-[var(--color-background-secondary)] rounded-lg p-8 md:p-10">
+                      <p
+                        className="mb-3 text-[10px] tracking-[0.32em] uppercase text-[var(--color-bronze)]"
+                        style={{ fontFamily: 'var(--font-eyebrow)' }}
+                      >
+                        {room.rich.distinction.label}
+                      </p>
+                      <p
+                        className="text-base md:text-lg italic text-[var(--color-text)]"
+                        style={{ fontFamily: 'var(--font-body)', lineHeight: 1.8 }}
+                      >
+                        {room.rich.distinction.body}
+                      </p>
+                    </div>
+                  )}
+                </>
+              )}
 
               {/* Photo gallery */}
               {room.gallery && room.gallery.length > 0 && (

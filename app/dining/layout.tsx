@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dining at Giovanni Village Resort',
     description:
-      'Three tables, one philosophy: cook from Royalton Farms inside the gates.',
+      'Three tables, one philosophy: produce from Royalton Farms, plated under our trees.',
     url: '/dining',
     images: ['/Gourmet-By-The-Woods.webp'],
   },
