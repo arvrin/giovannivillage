@@ -86,7 +86,7 @@ export const faqs: Faq[] = [
     topic: 'general',
     question: 'What makes Giovanni Village different from other resorts near Bhopal?',
     answer:
-      'Giovanni Village is the only luxury resort in the Bhopal region built on the edge of the Ratapani Tiger Reserve, with eight distinct forest-view suites, four kitchens, an in-house spa (Elysium), and six event venues — all inside a ten-acre working estate with its own organic farm (Royalton Farms). Pets are welcome across the property.',
+      'Giovanni Village is the only luxury resort in the Bhopal region built on the edge of the Ratapani Tiger Reserve, with ten distinct forest-view suites, three dining venues, an in-house spa (Elysium), and twelve event venues — five indoor, seven outdoor — all inside a ten-acre working estate with its own organic farm (Royalton Farms). Pets are welcome across the property.',
     featured: true,
   },
   {
@@ -125,7 +125,7 @@ export const faqs: Faq[] = [
     topic: 'rooms',
     question: 'How many rooms and suite types does Giovanni Village have?',
     answer:
-      'Giovanni Village offers eight distinct room and suite types — from a 430 sqft King Room with pool and garden views to the 1,100 sqft Royal Suite with a private plunge pool and a 2,000 sqft lawn. Every room opens to forest or garden views.',
+      'Giovanni Village offers ten distinct room and suite types — from a 430 sqft King Room with pool and garden views to the 1,100 sqft Royal Suite with a private plunge pool and a 2,000 sqft lawn. Every room opens to forest or garden views.',
     featured: true,
   },
   {
@@ -177,7 +177,7 @@ export const faqs: Faq[] = [
     topic: 'rooms',
     question: 'Do all rooms at Giovanni Village have forest or garden views?',
     answer:
-      'Yes — every one of the eight room and suite types at Giovanni Village opens to either the forest, the gardens, the pool, or a private garden of its own. None of the rooms face the road.',
+      'Yes — every one of the ten room and suite types at Giovanni Village opens to either the forest, the gardens, the pool, or a private garden of its own. None of the rooms face the road.',
   },
 
   // ─────────────────────────────────────────────────────────── Dining
@@ -186,7 +186,7 @@ export const faqs: Faq[] = [
     topic: 'dining',
     question: 'How many restaurants does Giovanni Village have?',
     answer:
-      'Giovanni Village Resort has four signature dining venues on site: Gourmet By The Woods (fine dining under the canopy), Pihu (rooftop with weekend telescope dinners), Berry & Beans (all-day café), and The Den (bistro bar with wines and spirits).',
+      'Giovanni Village Resort has three signature dining venues on site: Gourmet By The Woods (fine dining under the canopy), Pihu (rooftop with telescope dinners), and Gazebo by the Lake (intimate lakeside service in a lantern-lit pavilion).',
     featured: true,
   },
   {
@@ -285,7 +285,7 @@ export const faqs: Faq[] = [
     topic: 'weddings',
     question: 'What is the wedding capacity at Giovanni Village?',
     answer:
-      'Giovanni Village hosts weddings from twenty guests to five thousand guests. The Aria Grand — a 10,000 sqft pillarless banquet hall with an attached 50,000 sqft lawn — is the largest single venue, while smaller venues like the Cocktail Lawn (200 pax) and Poolside Lawn (100 pax) handle intimate ceremonies.',
+      'Giovanni Village hosts weddings from twenty guests to five thousand guests. The Aria Grand — a 9,500 sq ft pillarless banquet hall with an attached 50,000 sq ft lawn — is the largest single venue, while smaller venues like the Cocktail Lawn (200 pax) and Pool Lawn (100 pax) handle intimate ceremonies.',
     featured: true,
   },
   {
@@ -293,7 +293,7 @@ export const faqs: Faq[] = [
     topic: 'weddings',
     question: 'How many wedding and event venues does Giovanni Village have?',
     answer:
-      'Giovanni Village has six dedicated event venues: The Aria Grand (pillarless 10,000 sqft hall + 50,000 sqft lawn), Sudesh Lawns (two lawns totalling 65,000 sqft), The Forum (1,000 sqft conference space), Cocktail Lawn (9,000 sqft), Gourmet Lawn (lakeside) and Poolside Lawn. Indoor and outdoor venues can be mixed across a multi-day function.',
+      'Giovanni Village has twelve dedicated event venues — five indoor and seven outdoor. Indoor (air-conditioned): The Forum, Aria Deck, Aria I + II + Deck (3,500 sq ft), Aria III (6,000 sq ft), and Aria Grand (9,500 sq ft pillarless hall + 50,000 sq ft attached lawn). Outdoor: Pihu Deck, Sudesh II (51,000 sq ft), Banquet Lawn, Sudesh I (14,000 sq ft), Cocktail Lawn (9,000 sq ft), Gourmet Lake Side Lawn, and Pool Lawn. Indoor and outdoor venues can be mixed across a multi-day function.',
     featured: true,
   },
   {
@@ -301,7 +301,7 @@ export const faqs: Faq[] = [
     topic: 'weddings',
     question: 'What are the dimensions of The Aria Grand banquet hall?',
     answer:
-      'The Aria Grand at Giovanni Village is a 10,000 sqft pillarless banquet hall with a 25-foot ceiling, a 50,000 sqft attached lawn, and a dedicated 1,500 sqft Aria Deck. It seats up to 5,000 guests across the combined indoor and outdoor footprint.',
+      'The Aria Grand at Giovanni Village is a 9,500 sq ft pillarless banquet hall with a 25-foot ceiling and a 50,000 sq ft attached lawn. It seats up to 5,000 guests across the combined indoor and outdoor footprint. The Aria Deck and the smaller Aria I + II + Deck (3,500 sq ft) and Aria III (6,000 sq ft) are also bookable indoor sub-spaces.',
   },
   {
     id: 'wedding-planner',
@@ -315,14 +315,14 @@ export const faqs: Faq[] = [
     topic: 'weddings',
     question: 'Can wedding guests stay on-site at Giovanni Village?',
     answer:
-      'Yes — Giovanni Village can accommodate wedding guest blocks across its eight room categories, and for larger functions the entire resort can be booked out exclusively. Speak to our reservations team to plan room allocation for your guest list.',
+      'Yes — Giovanni Village can accommodate wedding guest blocks across its ten room categories, and for larger functions the entire resort can be booked out exclusively. Speak to our reservations team to plan room allocation for your guest list.',
   },
   {
     id: 'wedding-catering',
     topic: 'weddings',
     question: 'Is wedding catering done in-house at Giovanni Village?',
     answer:
-      'Yes — all wedding catering at Giovanni Village is handled by the in-house kitchen team across our four restaurants and event kitchens, with custom menus shaped around the family\'s preferences. Regional and international cuisines, live counters, and dietary-specific menus (Jain, vegan, gluten-free) can all be arranged.',
+      'Yes — all wedding catering at Giovanni Village is handled by the in-house kitchen team across our three dining venues and the dedicated banquet kitchen, with custom menus shaped around the family\'s preferences. Regional and international cuisines, live counters, and dietary-specific menus (Jain, vegan, gluten-free) can all be arranged.',
   },
   {
     id: 'pre-wedding-shoots',
@@ -368,7 +368,7 @@ export const faqs: Faq[] = [
     topic: 'experiences',
     question: 'Can I visit the farm at Giovanni Village?',
     answer:
-      'Yes — Royalton Farms is the working organic farm inside the Giovanni Village estate, and guests can join guided farm tours, farm-to-table breakfasts, and the 4:30 AM fresh-milking experience. The farm supplies much of the produce served across the resort\'s four kitchens.',
+      'Yes — Royalton Farms is the working organic farm inside the Giovanni Village estate, and guests can join guided farm tours, farm-to-table breakfasts, and the 4:30 AM fresh-milking experience. The farm supplies much of the produce served across the resort\'s three dining venues.',
   },
   {
     id: 'swimming-pool',

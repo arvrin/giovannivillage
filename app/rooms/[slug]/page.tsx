@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Users, Maximize, ArrowLeft } from 'lucide-react';
@@ -10,6 +11,29 @@ import PageHero from '@/components/ui/PageHero';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { rooms, siteConfig } from '@/lib/data';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const room = rooms.find((r) => r.id === slug);
+  if (!room) return {};
+  const title = `${room.name}`;
+  const description = `${room.name} at Giovanni Village Resort, Bhopal. ${room.description.slice(0, 140)}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/rooms/${room.id}` },
+    openGraph: {
+      title: `${room.name} — Giovanni Village Resort`,
+      description,
+      url: `/rooms/${room.id}`,
+      images: [room.image],
+    },
+  };
+}
 
 const standardAmenities = [
   'Air Conditioning',

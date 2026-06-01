@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { Resend } from 'resend';
 import { getSupabaseAdmin } from '@/lib/supabase/server';
 import { siteConfig } from '@/lib/data';
+import { consume, getClientIp } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 
@@ -62,6 +63,30 @@ async function notifyConcierge(lead: z.infer<typeof LeadSchema> & { id?: string 
 }
 
 export async function POST(req: Request) {
+  // Rate limit: 5 submissions per minute per IP, 30 per hour per IP. Catches
+  // form spam without inconveniencing a genuine user who edits + resubmits.
+  const ip = getClientIp(req);
+  const perMin = consume(`leads:1m:${ip}`, 5, 60_000);
+  if (!perMin.ok) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please wait a moment and try again.' },
+      {
+        status: 429,
+        headers: { 'Retry-After': String(perMin.retryAfterSec ?? 60) },
+      },
+    );
+  }
+  const perHour = consume(`leads:1h:${ip}`, 30, 60 * 60_000);
+  if (!perHour.ok) {
+    return NextResponse.json(
+      { error: 'Too many requests from this address. Please try again later.' },
+      {
+        status: 429,
+        headers: { 'Retry-After': String(perHour.retryAfterSec ?? 3600) },
+      },
+    );
+  }
+
   let payload: unknown;
   try {
     payload = await req.json();

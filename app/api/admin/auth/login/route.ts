@@ -6,10 +6,23 @@ import {
   normalizePhone,
   signSession,
 } from '@/lib/admin-auth';
+import { consume, getClientIp } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 
 export async function POST(req: NextRequest) {
+  // Rate limit: 10 attempts per 10 minutes per IP. Generous enough for a real
+  // user fumbling their number on mobile, tight enough to make brute-force
+  // guessing of the whitelist impractical.
+  const ip = getClientIp(req);
+  const window = consume(`admin-login:${ip}`, 10, 10 * 60_000);
+  if (!window.ok) {
+    return NextResponse.json(
+      { error: 'Too many sign-in attempts. Please try again in a few minutes.' },
+      { status: 429, headers: { 'Retry-After': String(window.retryAfterSec ?? 600) } },
+    );
+  }
+
   let phone = '';
   try {
     const body = await req.json();

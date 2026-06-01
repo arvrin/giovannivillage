@@ -12,7 +12,7 @@ export default function AddNote({ leadId }: { leadId: string }) {
   const [body, setBody] = useState('');
   const [type, setType] = useState<LeadNoteType>('note');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [_, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {

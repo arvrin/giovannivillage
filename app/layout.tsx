@@ -3,6 +3,7 @@ import { Onest, Hurricane } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/lib/data';
 import ClientLayout from '@/components/providers/ClientLayout';
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 
 /* Retreat theme — Onest (clean modern sans, variable) for body/headings;
    Hurricane (handwritten script) for signature accent words. */
@@ -19,13 +20,56 @@ const hurricane = Hurricane({
 });
 
 export const metadata: Metadata = {
-  title: siteConfig.title,
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: '%s — Giovanni Village Resort',
+  },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   icons: {
     icon: '/icon.png',
     apple: '/icon.png',
   },
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: siteConfig.url,
+    siteName: 'Giovanni Village Resort',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: '/images/hero/hero-1.webp',
+        width: 1920,
+        height: 1080,
+        alt: 'Aerial view of Giovanni Village Resort',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ['/images/hero/hero-1.webp'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  alternates: {
+    canonical: '/',
+  },
+  authors: [{ name: 'Giovanni Village Resort' }],
+  creator: 'Giovanni Village Resort',
+  publisher: 'A Venture of Sudesh The Village Resort',
 };
 
 export const viewport: Viewport = {
@@ -59,6 +103,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
+        <GoogleAnalytics />
       </body>
     </html>
   );

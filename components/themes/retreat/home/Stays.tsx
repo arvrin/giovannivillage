@@ -41,7 +41,7 @@ const Stays = () => {
               </span>
             </div>
             <h2 className="display-italic max-w-xl text-3xl leading-[1.05] md:text-5xl">
-              Eight rooms.
+              Ten rooms.
               <br />
               <span className="font-script">Each</span> opens to the forest.
             </h2>

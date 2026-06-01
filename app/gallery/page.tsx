@@ -88,9 +88,10 @@ function GalleryView() {
       <main className="min-h-screen bg-[var(--color-background)] pb-16 pt-32 md:pt-36">
         <Container>
           <SectionHeader
+            level="h1"
             eyebrow="The estate in pictures"
             title="Frames from the estate"
-            description="Rooms, kitchens, lakes, lawns, the spa, the safari days, the films in between. Open any frame to step in — arrows or swipe to wander."
+            description="Rooms, dining venues, lakes, lawns, the spa, the safari days, the films in between. Open any frame to step in — arrows or swipe to wander."
           />
 
           {/* Filter bar */}

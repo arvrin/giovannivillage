@@ -2,14 +2,19 @@
 
 import { usePathname } from 'next/navigation';
 import { ThemeProvider } from 'next-themes';
+import { MotionConfig } from 'framer-motion';
 import PageLoader from '../ui/PageLoader';
 import BackgroundMusic from '../ui/BackgroundMusic';
 
 /**
  * Wraps the app in client-only providers.
- * Retreat is the production design. The other four themes (editorial,
- * modernist, cinematic, monograph) remain in the codebase but are no longer
- * reachable from the UI — the switcher widget is no longer mounted.
+ *
+ * - ThemeProvider is locked to retreat (the only design that ships) but stays
+ *   in the tree because a couple of components still read `useTheme()` for
+ *   conditional styling.
+ * - MotionConfig with `reducedMotion="user"` tells framer-motion to honour the
+ *   OS-level prefers-reduced-motion preference — animations collapse to
+ *   instant for users who've asked for it.
  */
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || '/';
@@ -25,9 +30,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       enableSystem={false}
       storageKey="giovanni-theme"
     >
-      <PageLoader />
-      {children}
-      {!isAdmin && <BackgroundMusic />}
+      <MotionConfig reducedMotion="user">
+        <PageLoader />
+        {children}
+        {!isAdmin && <BackgroundMusic />}
+      </MotionConfig>
     </ThemeProvider>
   );
 }

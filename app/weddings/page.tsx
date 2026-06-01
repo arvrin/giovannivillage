@@ -68,25 +68,71 @@ export default function WeddingsPage() {
             </ul>
           </div>
 
-          {/* Venues */}
-          <SectionHeader title="Six venues, twenty ceremonies" eyebrow="The spaces" />
-          <div className="mt-16 mb-24 grid md:grid-cols-2 gap-8">
-            {weddingVenues.map((v) => (
-              <ImageCard
-                key={v.id}
-                image={v.image}
-                alt={v.name}
-                aspect="video"
-                eyebrow={`${v.specs} · ${v.capacity}`}
-                title={v.name}
-                description={v.description}
-                footer={
-                  <Button variant="cta-outline" size="md" href="/contact">
-                    Enquire about {v.name}
-                  </Button>
-                }
-              />
-            ))}
+          {/* Venues — grouped by Indoor / Outdoor */}
+          <SectionHeader title="Twelve venues, twenty ceremonies" eyebrow="The spaces" />
+
+          <div className="mt-12 mb-6">
+            <p
+              className="mb-1 text-[11px] uppercase tracking-[0.3em] text-[var(--color-bronze)]"
+              style={{ fontFamily: 'var(--font-eyebrow)' }}
+            >
+              Indoor · Air-Conditioned
+            </p>
+            <h3 className="display-italic text-2xl leading-tight md:text-3xl">
+              Five pillarless halls and decks
+            </h3>
+          </div>
+          <div className="mb-20 grid md:grid-cols-2 gap-8">
+            {weddingVenues
+              .filter((v) => v.type === 'indoor')
+              .map((v) => (
+                <ImageCard
+                  key={v.id}
+                  image={v.image}
+                  alt={v.name}
+                  aspect="video"
+                  eyebrow={`${v.specs} · ${v.capacity}`}
+                  title={v.name}
+                  description={v.description}
+                  footer={
+                    <Button variant="cta-outline" size="md" href="/contact">
+                      Enquire about {v.name}
+                    </Button>
+                  }
+                />
+              ))}
+          </div>
+
+          <div className="mt-12 mb-6">
+            <p
+              className="mb-1 text-[11px] uppercase tracking-[0.3em] text-[var(--color-bronze)]"
+              style={{ fontFamily: 'var(--font-eyebrow)' }}
+            >
+              Outdoor
+            </p>
+            <h3 className="display-italic text-2xl leading-tight md:text-3xl">
+              Seven lawns, lakesides and decks
+            </h3>
+          </div>
+          <div className="mb-24 grid md:grid-cols-2 gap-8">
+            {weddingVenues
+              .filter((v) => v.type === 'outdoor')
+              .map((v) => (
+                <ImageCard
+                  key={v.id}
+                  image={v.image}
+                  alt={v.name}
+                  aspect="video"
+                  eyebrow={`${v.specs} · ${v.capacity}`}
+                  title={v.name}
+                  description={v.description}
+                  footer={
+                    <Button variant="cta-outline" size="md" href="/contact">
+                      Enquire about {v.name}
+                    </Button>
+                  }
+                />
+              ))}
           </div>
 
           {/* What we offer */}

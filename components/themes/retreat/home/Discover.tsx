@@ -100,9 +100,9 @@ const Discover = () => {
                 holds them all without losing its quiet.
               </p>
               <p>
-                Ten acres of mango groves and lily ponds, eight suites that face
-                green, four kitchens, five event spaces, and a spa built for the
-                long way home.
+                Ten acres of mango groves and lily ponds, ten suites that face
+                green, three dining venues, twelve event spaces, and a spa built
+                for the long way home.
               </p>
             </div>
 

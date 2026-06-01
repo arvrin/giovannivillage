@@ -8,7 +8,7 @@ export default function SyncNowButton() {
   const router = useRouter();
   const [state, setState] = useState<'idle' | 'running' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState<string | null>(null);
-  const [_, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const run = async () => {
     setState('running');

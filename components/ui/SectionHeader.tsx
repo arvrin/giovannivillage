@@ -14,6 +14,9 @@ interface SectionHeaderProps {
   size?: 'md' | 'lg';
   className?: string;
   eyebrowColor?: 'muted' | 'bronze' | 'white';
+  /** Use 'h1' on the first SectionHeader of a page that doesn't have a PageHero
+   *  (e.g. /gallery, /faq). Defaults to 'h2'. */
+  level?: 'h1' | 'h2';
 }
 
 const titleSize = {
@@ -46,10 +49,12 @@ const SectionHeader = ({
   size = 'lg',
   className,
   eyebrowColor = 'muted',
+  level = 'h2',
 }: SectionHeaderProps) => {
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left';
   const { theme } = useTheme();
   const isRetreat = theme === 'retreat';
+  const HeadingTag = level;
 
   return (
     <motion.div
@@ -64,7 +69,7 @@ const SectionHeader = ({
           {eyebrow}
         </Eyebrow>
       )}
-      <h2
+      <HeadingTag
         className={cn(
           isRetreat ? 'display-italic text-[var(--color-text)]' : 'text-[var(--color-text-primary)]',
           titleSize[size],
@@ -82,7 +87,7 @@ const SectionHeader = ({
         }
       >
         {isRetreat ? renderRetreatTitle(title) : title}
-      </h2>
+      </HeadingTag>
       {description && (
         <p
           className={cn(

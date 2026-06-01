@@ -54,6 +54,8 @@ export default async function LeadsPage({
       <form method="get" style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
         <input
           name="q"
+          type="search"
+          aria-label="Search leads by name"
           defaultValue={params.q || ''}
           placeholder="Search by name…"
           style={{ padding: '8px 12px', border: '1px solid var(--admin-border)', borderRadius: 8, fontSize: 13, fontFamily: 'inherit', background: 'var(--admin-surface)', minWidth: 200 }}
@@ -72,7 +74,7 @@ export default async function LeadsPage({
 
       {error && (
         <div style={{ padding: '14px 16px', borderRadius: 8, background: 'rgba(166,75,75,0.08)', color: 'var(--admin-error)', fontSize: 13, marginBottom: 16 }}>
-          Couldn't load leads — {error}. Most likely missing Supabase env vars; see <code>ADMIN-PORTAL-SETUP.md</code>.
+          Couldn&rsquo;t load leads — {error}. Most likely missing Supabase env vars.
         </div>
       )}
 

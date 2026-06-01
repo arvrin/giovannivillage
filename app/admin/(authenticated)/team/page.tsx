@@ -56,7 +56,7 @@ export default async function TeamPage() {
       </div>
 
       <p style={{ marginTop: 16, fontSize: 12, color: 'var(--admin-text-muted)' }}>
-        To invite someone: have them visit <strong>/admin/login</strong> with their email. They'll be added automatically with the <code>staff</code> role; an admin can promote them via SQL in Supabase for now (UI for role changes coming in Phase 1.5).
+        To add someone: add their 10-digit mobile number to the <code>ADMIN_PHONE_WHITELIST</code> env var on Vercel and redeploy. They&rsquo;ll then be able to sign in at <strong>/admin/login</strong>.
       </p>
     </div>
   );

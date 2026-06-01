@@ -12,8 +12,8 @@ function getFooterCopy(pathname: string): { eyebrow: string; line: React.ReactNo
   const map: Record<string, { eyebrow: string; line: React.ReactNode }> = {
     '/': { eyebrow: 'Giovanni Village', line: <>Slow stays, <span className="font-script">wild</span> mornings.</> },
     '/about': { eyebrow: 'The estate', line: <>A house that learned to <span className="font-script">listen</span>.</> },
-    '/rooms': { eyebrow: 'The stays', line: <>Eight rooms, each opening to <span className="font-script">green</span>.</> },
-    '/dining': { eyebrow: 'The kitchens', line: <>Four kitchens, <span className="font-script">one</span> long meal.</> },
+    '/rooms': { eyebrow: 'The stays', line: <>Ten rooms, each opening to <span className="font-script">green</span>.</> },
+    '/dining': { eyebrow: 'The tables', line: <>Three tables, <span className="font-script">one</span> long meal.</> },
     '/spa': { eyebrow: 'Elysium', line: <>A long way <span className="font-script">home</span>.</> },
     '/experiences': { eyebrow: 'The doings', line: <>Ways to <span className="font-script">lose</span> the day.</> },
     '/weddings': { eyebrow: 'Celebrations', line: <>The wedding that <span className="font-script">found</span> its setting.</> },
@@ -206,12 +206,17 @@ const RetreatFooter = () => {
                 }}
                 className="mt-6 flex flex-col gap-3 sm:flex-row"
               >
+                <label htmlFor="footer-newsletter-email" className="sr-only">
+                  Email address for newsletter
+                </label>
                 <input
+                  id="footer-newsletter-email"
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
+                  autoComplete="email"
                   className="flex-1 rounded-full border border-[color:var(--color-border-strong)] bg-[color:var(--color-bg)] px-5 py-3 text-sm placeholder:text-[color:var(--color-text-tertiary)] focus:border-[color:var(--color-forest)] focus:outline-none"
                   style={{ fontFamily: 'var(--font-body)' }}
                 />

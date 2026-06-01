@@ -25,13 +25,13 @@ export default function FaqPage() {
       {/* Single FAQPage schema with every Q&A from the site */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: faqJsonLd(faqs) }}
       />
 
       <main className="min-h-screen bg-[var(--color-background)] pb-16 pt-32 md:pt-36">
         <Container>
           <SectionHeader
+            level="h1"
             eyebrow="Questions, answered"
             title="Everything you might ask, in one place"
             description={`A complete reference of guest-asked questions about Giovanni Village Resort — ${faqs.length} answers across ${grouped.length} topics. Jump to a section, or browse the lot.`}

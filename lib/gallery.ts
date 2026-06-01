@@ -114,8 +114,7 @@ export const galleryItems: GalleryItem[] = [
   // ────────────────────────────────────────────────────────── Kitchens
   { id: 'kitchen-gourmet-by-the-woods', src: '/images/dining/gourmet-by-the-woods.webp', width: 1920, height: 1080, category: 'Kitchens', title: 'Gourmet By The Woods' },
   { id: 'kitchen-pihu', src: '/images/dining/pihu.webp', width: 1920, height: 1080, category: 'Kitchens', title: 'Pihu — Rooftop' },
-  { id: 'kitchen-berry-and-beans', src: '/images/dining/berry-and-beans.webp', width: 1920, height: 1080, category: 'Kitchens', title: 'Berry & Beans' },
-  { id: 'kitchen-the-den', src: '/images/dining/the-den.webp', width: 1920, height: 900, category: 'Kitchens', title: 'The Den' },
+  { id: 'kitchen-gazebo-by-the-lake', src: '/images/weddings/lakeside-deck.webp', width: 1920, height: 1080, category: 'Kitchens', title: 'Gazebo by the Lake' },
 
   // ────────────────────────────────────────────────────────── Spa
   { id: 'spa-still-life', src: '/images/spa/spa-still-life.webp', width: 1920, height: 900, category: 'Spa', title: 'Elysium Spa — Oils & Stones' },

@@ -22,6 +22,34 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  async headers() {
+    // Security headers applied to every response. CSP is intentionally
+    // skipped for now — Next.js + Framer Motion + inline styles + the
+    // Google Maps iframe on /contact would all require either nonces
+    // (complex) or 'unsafe-inline' (no real win). Revisit when there's a
+    // change that makes it worth the audit.
+    const securityHeaders = [
+      // Force HTTPS for 2 years, with subdomains. Preload-eligible.
+      { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+      // Prevent clickjacking by disallowing cross-origin frame embedding.
+      { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+      // Don't sniff content types — closes MIME-confusion vectors.
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      // Send full referrer to same-origin; only the origin for cross-origin.
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      // Disable browser features we don't use — surface-area reduction.
+      {
+        key: 'Permissions-Policy',
+        value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=()',
+      },
+    ];
+    return [
+      {
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ];
+  },
   async redirects() {
     return [
       { source: '/about-us', destination: '/about', permanent: true },

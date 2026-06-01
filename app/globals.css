@@ -294,11 +294,13 @@ html.gv-pre-loading::before {
     --forest-900: #1F2A24;
     --forest-950: #0F1A14;
 
-    /* Brass — the brand accent */
+    /* Brass — the brand accent. brass-900 is the muted-text foot of the
+       scale; it sits on cream backgrounds so it has to clear WCAG AA
+       (≥4.5:1) at small uppercase sizes. #7A634A → 4.7:1, still warm. */
     --brass-300: #E0C98C;
     --brass-500: #C9A961;
     --brass-700: #B08754;
-    --brass-900: #8B7355;
+    --brass-900: #7A634A;
 
     /* ── Layer 2: Semantic tokens (Material 3 roles) ──────────── */
     /* Surfaces */

@@ -60,6 +60,8 @@ export default async function SopsPage({
       <form method="get" style={{ marginBottom: 24 }}>
         <input
           name="q"
+          type="search"
+          aria-label="Search SOPs"
           defaultValue={q || ''}
           placeholder="Search SOPs…"
           style={{

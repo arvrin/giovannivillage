@@ -39,7 +39,7 @@ const RetreatHome = () => (
     <TheSenses />
     <AmbientInterlude
       src="/videos/twilight-path.mp4"
-      poster="/images/dining/the-den.webp"
+      poster="/images/dining/pihu.webp"
       alt="Estate path at twilight"
       eyebrow="An invitation"
       lead="Walk the estate by"

@@ -30,7 +30,7 @@ export default async function LeadDetail({
   const { id } = await params;
   const result = await loadLead(id);
   if (!result) notFound();
-  const { lead, notes, team, assigned } = result;
+  const { lead, notes, assigned } = result;
 
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto' }}>

@@ -46,8 +46,8 @@ const FRAMES = [
     titleLead: 'Telescope dinner under',
     titleAccent: 'stars',
     titleTail: '',
-    body: 'The Den lights its lanterns. A telescope finds Saturn. The forest carries on without you.',
-    img: '/images/dining/the-den.webp',
+    body: 'Pihu rolls a telescope onto the rooftop. Saturn at the soup course, the Pleiades by dessert. The forest carries on without you.',
+    img: '/images/dining/pihu.webp',
   },
 ];
 

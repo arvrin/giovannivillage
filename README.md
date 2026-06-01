@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Giovanni Village Resort
 
-## Getting Started
+Public website + lightweight admin portal for **Giovanni Village** — a luxury wildlife resort on the edge of Ratapani Tiger Reserve, Bhopal (a venture of Sudesh The Village Resort).
 
-First, run the development server:
+Sister boutique stays — Giovanni House and Giovanni Suites in Arera Colony, Bhopal — are surfaced under `/house` and `/suites` as separate single-page sites.
+
+---
+
+## Stack
+
+- **Framework** — Next.js 15 (App Router) + React 19 + Turbopack
+- **Language** — TypeScript
+- **Styling** — Tailwind CSS v4 + design tokens in `lib/design-tokens.ts`
+- **Animation** — Framer Motion
+- **Data** — Supabase (Postgres + auth tables, admin pages use the service-role client to bypass RLS)
+- **Email** — Resend (lead notifications)
+- **Integrations** — Google Sheets sync (Vercel cron), IPMS247 booking embeds
+- **Deployed on** — Vercel
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Required env vars in `.env.local`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+RESEND_API_KEY=
+GOOGLE_SERVICE_ACCOUNT_KEY=
+CRON_SECRET=
+ADMIN_AUTH_SECRET=                 # 32+ random chars (openssl rand -base64 48)
+ADMIN_PHONE_WHITELIST=             # optional, comma-separated 10-digit numbers
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project layout
 
-## Learn More
+```
+app/
+  (public site routes — homepage, rooms, dining, spa, etc.)
+  admin/                  Phone-whitelist gated admin portal
+  api/                    Public lead form + admin auth + cron endpoints
+  faq/                    Aggregated FAQ page
 
-To learn more about Next.js, take a look at the following resources:
+components/
+  layout/                 Header, Footer (production)
+  themes/retreat/         The retreat design — only theme that ships
+  ui/                     Shared UI primitives (Button, Container, FaqBlock, GalleryLightbox, …)
+  providers/              ClientLayout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+lib/
+  data.ts                 Hotel content (rooms, restaurants, weddings, activities, copy)
+  faqs.ts                 FAQ catalogue with FAQPage JSON-LD helpers
+  gallery.ts              Image + video manifest (119 items, 7 categories)
+  admin-auth.ts           HMAC-signed cookie session + phone-whitelist
+  supabase/               Server + browser Supabase clients
+  city-stays.ts           Boutique House + Suites city-stay data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+public/
+  images/                 Photography
+  videos/                 Ambient + hero clips
+  menus/                  Restaurant, bar, spa PDFs
+```
 
-## Deploy on Vercel
+## Admin portal
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Phone-whitelist login at `/admin/login`
+- HMAC-SHA256 signed `gv-admin-session` cookie, 30-day expiry
+- All admin reads use the Supabase service-role client (bypass RLS)
+- Routes:
+  - `/admin` — dashboard
+  - `/admin/leads` — list + detail
+  - `/admin/leads/sheet` — live Google-Sheets-synced sheet
+  - `/admin/sops` — operating procedures
+  - `/admin/team`
+  - `/admin/integrations/sheets` — sync status
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts
+
+```bash
+npm run dev          # dev server
+npm run build        # production build
+npm run start        # serve production build
+npm run lint         # eslint
+```
+
+## Deployment
+
+- `main` branch auto-deploys to Vercel
+- Cron: `vercel.json` runs `/api/sync/sheets` daily at 03:00 UTC
+- 301 redirects from legacy WordPress URLs are in `next.config.ts`

@@ -66,7 +66,7 @@ export default function SheetView() {
       />
 
       <p style={{ padding: '8px 24px', fontSize: 11, color: 'var(--admin-text-faint)', background: 'var(--admin-alt)' }}>
-        Your team's existing sheet. Edit here OR in Google Sheets — both work. The dashboard mirrors the sheet every 30 minutes.
+        Your team&rsquo;s existing sheet. Edit here OR in Google Sheets — both work. The dashboard mirrors the sheet every 30 minutes.
       </p>
     </div>
   );

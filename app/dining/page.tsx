@@ -10,6 +10,7 @@ import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
+import { RestaurantsSchema } from '@/components/seo/StructuredData';
 import { restaurants, siteConfig } from '@/lib/data';
 
 const highlights = [
@@ -30,6 +31,7 @@ const highlights = [
 export default function DiningPage() {
   return (
     <>
+      <RestaurantsSchema />
       <Header />
 
       <main className="min-h-screen bg-[var(--color-background)]">
@@ -37,15 +39,15 @@ export default function DiningPage() {
           image="/Gourmet-By-The-Woods.webp"
           alt="Gourmet By The Woods"
           eyebrow="The kitchens"
-          title="Four kitchens, one philosophy"
-          description="Cook from Royalton Farms inside the gates. Plate it under the trees. Farm-fresh Malwa cooking at Gourmet By The Woods; rooftop telescope dinners at Pihu; warm pastry mornings at Berry & Beans; lanterns and bistro nights at The Den."
+          title="Three tables, one philosophy"
+          description="Cook from Royalton Farms inside the gates. Plate it under the trees. Farm-fresh Malwa cooking at Gourmet By The Woods; rooftop telescope dinners at Pihu; intimate lakeside service at Gazebo by the Lake."
           video="/videos/dining-arrival.mp4"
         />
 
         <Container>
-          <IntroBlock title="Each kitchen keeps its own hour">
+          <IntroBlock title="Each table keeps its own hour">
             <p>
-              Breakfast on the lawn. Long lunch under the canopy. Coffee at four. Telescopes after eight. Four restaurants, one wandering meal that lasts the whole stay.
+              Breakfast on the lawn. Long lunch under the canopy. Coffee at four. Telescopes after eight. Three dining venues, one wandering meal that lasts the whole stay.
             </p>
           </IntroBlock>
 

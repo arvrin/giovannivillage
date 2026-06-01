@@ -59,18 +59,18 @@ export const hero = {
 
 export const about = {
   title: 'A house that learned to listen',
-  subtitle: 'Ten acres, eight suites, one long pause in the day.',
+  subtitle: 'Ten acres, ten suites, one long pause in the day.',
   content: [
     'Giovanni Village sits on the edge of Ratapani Tiger Reserve, twenty minutes outside Bhopal. Ten acres of mango groves, lily ponds, lakeside paths — and Royalton Farms, our working organic farm where most of what reaches the table is grown.',
     'Brides, naturalists, weekending families, second-honeymooners, conference delegates, the dog you brought. The estate holds them all without raising its voice.',
-    'Eight forest-view suites. Four kitchens, each with its own hour of the day. Five event spaces that disappear into the trees. A spa built for the long way home.',
+    'Ten forest-view suites. Three dining venues, each with its own hour of the day. Twelve event spaces — indoors and out, from a 9,500 sq ft banquet hall to a lakeside lawn. A spa built for the long way home.',
     'And five kilometres up the road, the reserve waits — five hundred square kilometres of teak forest, leopard, sloth bear, and one of India’s healthiest tiger populations.',
   ],
   highlights: [
     {
       icon: 'hotel',
       title: 'Forest-view suites',
-      description: 'Eight rooms, each opening to green — with plunge pools and open-to-sky baths.',
+      description: 'Ten rooms, each opening to green — with plunge pools and open-to-sky baths.',
     },
     {
       icon: 'leaf',
@@ -80,7 +80,7 @@ export const about = {
     {
       icon: 'utensils',
       title: 'Farm-to-fire cuisine',
-      description: 'Four kitchens, all cooking from Royalton Farms inside the gates — same morning, same hands.',
+      description: 'Three dining venues, all cooking from Royalton Farms inside the gates — same morning, same hands.',
     },
     {
       icon: 'spa',
@@ -275,7 +275,7 @@ export const experiences = [
     id: 'dining',
     title: 'Restaurants & Dining',
     description:
-      'Four signature venues — from fine dining at Gourmet By The Woods to rooftop romance at Pihu, café bites at Berry & Beans, and bistro evenings at The Den.',
+      'Three signature dining venues — fine dining at Gourmet By The Woods, rooftop telescope dinners at Pihu, and lakeside intimacy at Gazebo by the Lake.',
     image: '/images/dining/gourmet-by-the-woods.webp',
     activities: ['Fine dining', 'Telescopic nights', 'Farm-to-table breakfast', 'Self-service barbecue'],
   },
@@ -317,65 +317,123 @@ export const restaurants = [
     tags: ['Rooftop', 'Candle-lit', 'Live Music', 'Telescope Nights'],
   },
   {
-    id: 'berry-and-beans',
-    name: 'Berry & Beans',
-    tagline: 'Anytime cravings, sorted',
+    id: 'gazebo-by-the-lake',
+    name: 'Gazebo by the Lake',
+    tagline: "Dining at the water's edge",
     description:
-      'A bright, vibrant café — morning coffee, midday snacks, late-night dessert. Light bites, pastries and beverages in a social setting where good food meets great conversation.',
-    image: '/images/dining/berry-and-beans.webp',
-    tags: ['Café', 'Coffee', 'Pastries', 'Casual'],
-  },
-  {
-    id: 'the-den',
-    name: 'The Den',
-    tagline: 'Kick back and unwind',
-    description:
-      'Our bistro bar with an extensive list of wines, beers and spirits. Appetisers and comfort food, live sports nights and laid-back music — the perfect end to your day.',
-    image: '/images/dining/the-den.webp',
-    tags: ['Bistro Bar', 'Wines & Spirits', 'Live Sports', 'Comfort Food'],
+      'A semi-open pavilion set apart at the lakeside, lit by lanterns at dusk. Smaller than the main rooms — built for proposals, anniversaries, and unhurried dinners-for-two. The kitchen sends a tasting menu shaped to the season.',
+    image: '/images/weddings/lakeside-deck.webp',
+    tags: ['Lakeside', 'Intimate', 'Tasting Menu', 'Sunset Service'],
   },
 ];
 
 export const weddingVenues = [
-  {
-    id: 'the-aria-grand',
-    name: 'The Aria Grand',
-    description:
-      'A state-of-the-art 10,000 sqft pillarless banquet hall with a soaring 25-foot ceiling, complemented by a 50,000 sqft attached lawn and a dedicated 1,500 sqft Aria Deck. Designed to host majestic celebrations from intimate gatherings to grand productions.',
-    specs: '10,000 sqft hall · 50,000 sqft lawn · 1,500 sqft Aria Deck',
-    capacity: 'Up to 5,000 guests',
-    image: '/images/weddings/aria-grand-hall.webp',
-  },
-  {
-    id: 'sudesh-lawns',
-    name: 'Sudesh Lawns',
-    description:
-      'Two outdoor lawns nestled between dense trees — Sudesh-1 spans 14,000 sqft and seats 1,500 pax; Sudesh-2 sprawls over 51,000 sqft and seats 350. Perfect for dreamy outdoor weddings, mandaps and sangeet evenings.',
-    specs: '14,000 sqft + 51,000 sqft · two lawns',
-    capacity: 'Sudesh-1: 1,500 pax · Sudesh-2: 350 pax',
-    image: '/images/weddings/sudesh-lawns.webp',
-  },
+  // ─────────────────────────────────────────────── Indoor (Air Conditioned)
   {
     id: 'the-forum',
     name: 'The Forum',
+    type: 'indoor' as const,
     description:
-      'A 1,000 sqft multi-purpose space overlooking the pool — ideal for board meetings, conferences, brand activations and intimate functions.',
-    specs: '1,000 sqft',
+      'A 1,000 sq ft multi-purpose space overlooking the pool — ideal for board meetings, conferences, brand activations and intimate functions.',
+    specs: '1,000 sq ft · air-conditioned',
     capacity: 'Conferences & meetings',
     image: '/images/weddings/the-forum.webp',
   },
   {
+    id: 'aria-deck',
+    name: 'Aria Deck',
+    type: 'indoor' as const,
+    description:
+      'A dedicated indoor deck attached to the Aria Grand — for cocktail receptions, lounges and pre-ceremony gatherings. Capacity details on request.',
+    specs: 'Air-conditioned · attached to Aria Grand',
+    capacity: 'Capacity on request',
+    image: '/images/weddings/aria-grand-hall.webp',
+  },
+  {
+    id: 'aria-i-ii-deck',
+    name: 'Aria I + II + Deck',
+    type: 'indoor' as const,
+    description:
+      'Aria I and II combined with the Aria Deck — 3,500 sq ft of pillarless indoor space for mid-sized ceremonies and banquets.',
+    specs: '3,500 sq ft · air-conditioned · pillarless',
+    capacity: 'Capacity on request',
+    image: '/images/weddings/aria-grand-hall.webp',
+  },
+  {
+    id: 'aria-iii',
+    name: 'Aria III',
+    type: 'indoor' as const,
+    description:
+      'A 6,000 sq ft pillarless indoor venue — the central Aria for mid-to-large receptions and banquets.',
+    specs: '6,000 sq ft · air-conditioned · pillarless',
+    capacity: 'Capacity on request',
+    image: '/images/weddings/aria-grand-hall.webp',
+  },
+  {
+    id: 'aria-grand',
+    name: 'Aria Grand',
+    type: 'indoor' as const,
+    description:
+      'A state-of-the-art pillarless banquet hall with a soaring 25-foot ceiling, complemented by a 50,000 sq ft attached lawn. Designed to host majestic celebrations from intimate gatherings to grand productions.',
+    specs: '9,500 sq ft hall · 50,000 sq ft attached lawn · pillarless',
+    capacity: 'Up to 5,000 guests',
+    image: '/images/weddings/aria-grand-hall.webp',
+  },
+  // ─────────────────────────────────────────────── Outdoor
+  {
+    id: 'pihu-deck',
+    name: 'Pihu Deck',
+    type: 'outdoor' as const,
+    description:
+      'An open-air deck beneath the rooftop Pihu — for sundowner cocktails, intimate ceremonies and sangeet evenings under the sky. Capacity details on request.',
+    specs: 'Open-air rooftop · adjacent to Pihu',
+    capacity: 'Capacity on request',
+    image: '/images/dining/pihu.webp',
+  },
+  {
+    id: 'sudesh-ii',
+    name: 'Sudesh II',
+    type: 'outdoor' as const,
+    description:
+      'An outdoor lawn nestled between dense trees — perfect for dreamy outdoor weddings, mandaps and sangeet evenings.',
+    specs: '51,000 sq ft · lawn',
+    capacity: '350 pax',
+    image: '/images/weddings/sudesh-lawns.webp',
+  },
+  {
+    id: 'banquet-lawn',
+    name: 'Banquet Lawn',
+    type: 'outdoor' as const,
+    description:
+      'A wide outdoor banquet lawn ringed by trees — for sit-down dinners, mehndi mornings and reception evenings. Capacity details on request.',
+    specs: 'Open-air lawn',
+    capacity: 'Capacity on request',
+    image: '/images/weddings/sudesh-lawns.webp',
+  },
+  {
+    id: 'sudesh-i',
+    name: 'Sudesh I',
+    type: 'outdoor' as const,
+    description:
+      'An outdoor lawn nestled between dense trees — ideal for larger weddings, sangeet evenings and grand mandap setups.',
+    specs: '14,000 sq ft · lawn',
+    capacity: '1,500 pax',
+    image: '/images/weddings/sudesh-lawns.webp',
+  },
+  {
     id: 'cocktail-lawn',
     name: 'Cocktail Lawn',
+    type: 'outdoor' as const,
     description:
-      'A 9,000 sqft lawn dedicated to lively cocktail parties — stylish receptions where the beauty of nature complements every toast.',
-    specs: '9,000 sqft',
+      'A 9,000 sq ft lawn dedicated to lively cocktail parties — stylish receptions where the beauty of nature complements every toast.',
+    specs: '9,000 sq ft · open-air',
     capacity: '200 pax seated',
     image: '/images/weddings/cocktail-lawn.webp',
   },
   {
-    id: 'gourmet-lawn',
-    name: 'Gourmet Lawn',
+    id: 'gourmet-lake-side-lawn',
+    name: 'Gourmet Lake Side Lawn',
+    type: 'outdoor' as const,
     description:
       'Adjacent to Gourmet By The Woods, this curated space offers breathtaking lake views and sophisticated charm — an ideal setting for fine-dining-led celebrations.',
     specs: 'Lakeside · adjacent to Gourmet By The Woods',
@@ -383,11 +441,12 @@ export const weddingVenues = [
     image: '/images/weddings/gourmet-lawn.webp',
   },
   {
-    id: 'poolside-lawn',
-    name: 'Poolside Lawn',
+    id: 'pool-lawn',
+    name: 'Pool Lawn',
+    type: 'outdoor' as const,
     description:
-      'Set against the backdrop of lush greenery and our shimmering pool — a tranquil oasis for celebrations of every scale.',
-    specs: 'Poolside',
+      'Set against the backdrop of lush greenery and the shimmering pool — a tranquil oasis for celebrations of every scale.',
+    specs: 'Poolside · open-air',
     capacity: '100 pax',
     image: '/images/weddings/poolside-pool.webp',
   },
@@ -398,7 +457,7 @@ export const weddings = {
   description:
     'Pillarless halls, lakeside lawns, and forest clearings. From a twenty-person ceremony to a five-thousand-guest reception — one planner, one estate, every hour accounted for.',
   features: [
-    'Six distinct venues, indoors and out',
+    'Twelve distinct venues — five indoor, seven outdoor',
     'Capacity from twenty to five thousand',
     'A planner who only does your wedding',
     'Catering shaped to your family menu',

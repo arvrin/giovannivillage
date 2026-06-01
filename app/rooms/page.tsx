@@ -14,7 +14,7 @@ import { rooms, siteConfig } from '@/lib/data';
 export const metadata = {
   title: 'Rooms & Suites — Giovanni Village Resort',
   description:
-    'Choose from eight distinct rooms and suites at Giovanni Village Resort in Bhopal — from King Rooms with garden views to Royal Suites with private plunge pools.',
+    'Choose from ten distinct rooms and suites at Giovanni Village Resort in Bhopal — from King Rooms with garden views to Royal Suites with private plunge pools.',
 };
 
 export default function RoomsIndexPage() {

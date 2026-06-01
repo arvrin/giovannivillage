@@ -1,10 +1,4 @@
-'use client';
-
-import { ReactNode, useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
-import EditorialPageHero from '@/components/themes/editorial/PageHero';
-import ModernistPageHero from '@/components/themes/modernist/PageHero';
-import CinematicPageHero from '@/components/themes/cinematic/PageHero';
+import type { ReactNode } from 'react';
 import RetreatPageHero from '@/components/themes/retreat/PageHero';
 
 interface PageHeroProps {
@@ -18,26 +12,13 @@ interface PageHeroProps {
   children?: ReactNode;
   spacing?: 'none' | 'standard';
   className?: string;
-  /** Optional ordinal shown by Modernist (e.g. "01"). Other themes ignore. */
-  index?: string;
-  /** Optional autoplay video that fades in over the poster image (Retreat only). */
+  /** Optional autoplay video that fades in over the poster image. */
   video?: string;
 }
 
 /**
- * Theme dispatcher for interior page heroes. The three variants share a
- * common API but render dramatically different layouts.
+ * Interior page hero. Retreat is the only design now.
  */
-const PageHero = (props: PageHeroProps) => {
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return <RetreatPageHero {...props} />;
-  if (theme === 'editorial') return <EditorialPageHero {...props} />;
-  if (theme === 'modernist') return <ModernistPageHero {...props} />;
-  if (theme === 'cinematic') return <CinematicPageHero {...props} />;
-  return <RetreatPageHero {...props} />;
-};
+const PageHero = (props: PageHeroProps) => <RetreatPageHero {...props} />;
 
 export default PageHero;
