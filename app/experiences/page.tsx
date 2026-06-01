@@ -84,11 +84,11 @@ export default function ExperiencesPage() {
               our concierge will line up the safaris, the farm mornings, the dinners to fit.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="cta" size="lg" href={siteConfig.booking.resort}>
+              <Button variant="primary" size="lg" href={siteConfig.booking.resort}>
                 Book Your Stay
               </Button>
               <Button
-                variant="cta-outline"
+                variant="outline"
                 size="lg"
                 href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.experiences)}
                 external

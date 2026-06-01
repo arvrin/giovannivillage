@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { hero } from '@/lib/data';
@@ -82,21 +82,13 @@ const RetreatHero = () => {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/rooms"
-                className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-forest)] transition hover:bg-[color:var(--color-brass)] hover:text-white"
-                style={{ fontFamily: 'var(--font-eyebrow)' }}
-              >
+              <Button variant="light" size="lg" href="/rooms">
                 Plan a stay
                 <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
-              <Link
-                href="/weddings"
-                className="inline-flex items-center gap-3 rounded-full border border-white/40 bg-white/10 px-6 py-3.5 text-[11px] tracking-[0.28em] uppercase text-white backdrop-blur-md transition hover:bg-white/20"
-                style={{ fontFamily: 'var(--font-eyebrow)' }}
-              >
+              </Button>
+              <Button variant="light-outline" size="lg" href="/weddings">
                 Host a celebration
-              </Link>
+              </Button>
             </div>
           </motion.div>
 

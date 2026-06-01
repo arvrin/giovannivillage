@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import Button from '@/components/ui/Button';
 import { rooms } from '@/lib/data';
 
 const COLLECTIONS = [
@@ -146,13 +147,9 @@ const Stays = () => {
         </AnimatePresence>
 
         <div className="mt-12 flex justify-center">
-          <Link
-            href="/rooms"
-            className="inline-flex items-center gap-3 rounded-full border border-[color:var(--color-forest)] px-6 py-3 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-forest)] transition hover:bg-[color:var(--color-forest)] hover:text-[color:var(--color-bg)]"
-            style={{ fontFamily: 'var(--font-eyebrow)' }}
-          >
+          <Button variant="outline" size="lg" href="/rooms">
             View all stays <ArrowUpRight className="h-3.5 w-3.5" />
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

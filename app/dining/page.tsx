@@ -113,7 +113,7 @@ export default function DiningPage() {
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                variant="cta"
+                variant="primary"
                 size="lg"
                 href="/menus/giovanni-restaurant-menu-2026.pdf"
                 external
@@ -121,7 +121,7 @@ export default function DiningPage() {
                 View Restaurant Menu
               </Button>
               <Button
-                variant="cta-outline"
+                variant="outline"
                 size="lg"
                 href="/menus/giovanni-bar-menu-2026.pdf"
                 external
@@ -140,14 +140,14 @@ export default function DiningPage() {
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                variant="cta"
+                variant="primary"
                 size="lg"
                 href={`tel:${siteConfig.contact.phoneSecondary.replace(/\s/g, '')}`}
               >
                 Call F&amp;B Team
               </Button>
               <Button
-                variant="cta-outline"
+                variant="outline"
                 size="lg"
                 href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.dining)}
                 external

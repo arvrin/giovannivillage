@@ -101,7 +101,7 @@ export default function CelebrationsPage() {
                 description={v.description}
                 footer={
                   <Button
-                    variant="cta-outline"
+                    variant="outline"
                     size="md"
                     href={getWhatsAppLink(
                       siteConfig.contact.whatsapp,
@@ -140,7 +140,7 @@ export default function CelebrationsPage() {
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                variant="cta"
+                variant="primary"
                 size="lg"
                 href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.privateCelebration)}
                 external
@@ -148,7 +148,7 @@ export default function CelebrationsPage() {
                 Plan This Celebration
               </Button>
               <Button
-                variant="cta-outline"
+                variant="outline"
                 size="lg"
                 href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
               >

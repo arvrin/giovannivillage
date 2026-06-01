@@ -161,10 +161,10 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
                 <p className="text-sm text-[var(--color-text-tertiary)] mt-2 mb-8">per night, inclusive of breakfast</p>
 
                 <div className="space-y-3">
-                  <Button variant="cta" fullWidth size="lg" href={siteConfig.booking.resort}>
+                  <Button variant="primary" fullWidth size="lg" href={siteConfig.booking.resort}>
                     Reserve this suite
                   </Button>
-                  <Button variant="cta-outline" fullWidth size="lg" href={siteConfig.booking.resort}>
+                  <Button variant="outline" fullWidth size="lg" href={siteConfig.booking.resort}>
                     Check live availability
                   </Button>
                 </div>

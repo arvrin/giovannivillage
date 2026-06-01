@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -90,33 +91,27 @@ const RetreatHeader = () => {
             />
           </Link>
 
-          <Link
-            href={getWhatsAppLink(siteConfig.contact.whatsapp, 'Hello Giovanni Village, I would like to enquire about a stay or event.')}
-            target="_blank"
-            rel="noreferrer"
-            className={`hidden md:inline-flex items-center rounded-full px-5 py-2.5 text-[11px] tracking-[0.22em] uppercase transition ${
-              scrolled
-                ? 'bg-[color:var(--color-accent)] text-[color:var(--color-accent-contrast)] hover:bg-[color:var(--color-brass)] hover:text-[color:var(--color-forest)]'
-                : 'bg-white text-[color:var(--color-forest)] hover:bg-[color:var(--color-brass)] hover:text-white'
-            }`}
-            style={{ fontFamily: 'var(--font-eyebrow)' }}
-          >
-            Enquire
-          </Link>
+          <div className="hidden md:block">
+            <Button
+              variant={scrolled ? 'primary' : 'light'}
+              size="md"
+              href={getWhatsAppLink(siteConfig.contact.whatsapp, 'Hello Giovanni Village, I would like to enquire about a stay or event.')}
+              external
+            >
+              Enquire
+            </Button>
+          </div>
 
-          <Link
-            href={getWhatsAppLink(siteConfig.contact.whatsapp, 'Hello Giovanni Village, I would like to enquire about a stay or event.')}
-            target="_blank"
-            rel="noreferrer"
-            className={`inline-flex h-11 items-center rounded-full px-5 text-[10px] tracking-[0.2em] uppercase transition md:hidden ${
-              scrolled
-                ? 'bg-[color:var(--color-accent)] text-[color:var(--color-accent-contrast)]'
-                : 'bg-white text-[color:var(--color-forest)]'
-            }`}
-            style={{ fontFamily: 'var(--font-eyebrow)' }}
-          >
-            Enquire
-          </Link>
+          <div className="md:hidden">
+            <Button
+              variant={scrolled ? 'primary' : 'light'}
+              size="sm"
+              href={getWhatsAppLink(siteConfig.contact.whatsapp, 'Hello Giovanni Village, I would like to enquire about a stay or event.')}
+              external
+            >
+              Enquire
+            </Button>
+          </div>
         </div>
       </header>
 

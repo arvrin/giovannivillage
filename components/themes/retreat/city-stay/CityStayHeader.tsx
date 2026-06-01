@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import Button from '@/components/ui/Button';
 import { getWhatsAppLink } from '@/lib/utils';
 import type { CityStay } from '@/lib/city-stays';
 
@@ -52,22 +53,17 @@ const CityStayHeader = ({ stay }: { stay: CityStay }) => {
           {stay.name}
         </span>
 
-        <Link
+        <Button
+          variant={scrolled ? 'primary' : 'light'}
+          size="md"
           href={getWhatsAppLink(
             stay.whatsapp,
             `Hello ${stay.name}, I'd like to enquire about a stay.`,
           )}
-          target="_blank"
-          rel="noreferrer"
-          className={`inline-flex h-11 items-center rounded-full px-5 text-[11px] tracking-[0.22em] uppercase transition ${
-            scrolled
-              ? 'bg-[color:var(--color-accent)] text-[color:var(--color-accent-contrast)] hover:bg-[color:var(--color-brass)] hover:text-[color:var(--color-forest)]'
-              : 'bg-white text-[color:var(--color-forest)] hover:bg-[color:var(--color-brass)] hover:text-white'
-          }`}
-          style={{ fontFamily: 'var(--font-eyebrow)' }}
+          external
         >
           Enquire
-        </Link>
+        </Button>
       </div>
     </header>
   );

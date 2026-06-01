@@ -93,7 +93,7 @@ export default function SpaPage() {
             </ul>
             <div className="text-center">
               <Button
-                variant="cta"
+                variant="primary"
                 size="lg"
                 href="/menus/giovanni-spa-menu.pdf"
                 external
@@ -114,14 +114,14 @@ export default function SpaPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
-                  variant="cta"
+                  variant="primary"
                   size="lg"
                   href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
                 >
                   Call Spa Reception
                 </Button>
                 <Button
-                  variant="cta-outline"
+                  variant="outline"
                   size="lg"
                   href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.spa)}
                   external

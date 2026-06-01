@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import Button from '@/components/ui/Button';
 
 const VENUES = [
   { name: 'Cocktail', tail: 'Lawn', cap: '500', img: '/images/weddings/cocktail-lawn.webp' },
@@ -45,14 +45,12 @@ const Celebrations = () => {
               pillarless hall lit by a thousand bulbs. A dedicated planner shapes
               every detail; we handle the rest.
             </p>
-            <Link
-              href="/weddings"
-              className="mt-8 inline-flex items-center gap-3 rounded-full bg-[color:var(--color-accent)] px-6 py-3.5 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-accent-contrast)] transition hover:bg-[color:var(--color-accent-hover)]"
-              style={{ fontFamily: 'var(--font-eyebrow)' }}
-            >
-              Plan your wedding
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
+            <div className="mt-8">
+              <Button variant="primary" size="lg" href="/weddings">
+                Plan your wedding
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </Button>
+            </div>
           </div>
 
           <motion.div

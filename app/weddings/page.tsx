@@ -98,7 +98,7 @@ export default function WeddingsPage() {
                   description={v.description}
                   footer={
                     <Button
-                      variant="cta-outline"
+                      variant="outline"
                       size="md"
                       href={getWhatsAppLink(
                         siteConfig.contact.whatsapp,
@@ -138,7 +138,7 @@ export default function WeddingsPage() {
                   description={v.description}
                   footer={
                     <Button
-                      variant="cta-outline"
+                      variant="outline"
                       size="md"
                       href={getWhatsAppLink(
                         siteConfig.contact.whatsapp,
@@ -175,7 +175,7 @@ export default function WeddingsPage() {
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                variant="cta"
+                variant="primary"
                 size="lg"
                 href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.wedding)}
                 external
@@ -183,7 +183,7 @@ export default function WeddingsPage() {
                 Request a Proposal
               </Button>
               <Button
-                variant="cta-outline"
+                variant="outline"
                 size="lg"
                 href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
               >

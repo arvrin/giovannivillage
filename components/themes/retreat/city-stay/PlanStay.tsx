@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Phone, MessageCircle } from 'lucide-react';
+import Button from '@/components/ui/Button';
 import { getWhatsAppLink } from '@/lib/utils';
 import type { CityStay } from '@/lib/city-stays';
 
@@ -35,33 +35,25 @@ const PlanStay = ({ stay }: { stay: CityStay }) => {
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link
-              href={stay.bookingUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-12 items-center gap-3 rounded-full bg-[color:var(--color-accent)] px-7 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-accent-contrast)] transition hover:bg-[color:var(--color-brass)] hover:text-[color:var(--color-forest)]"
-              style={{ fontFamily: 'var(--font-eyebrow)' }}
-            >
+            <Button variant="primary" size="lg" href={stay.bookingUrl} external>
               Check live rates
               <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
-            <Link
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
               href={getWhatsAppLink(
                 stay.whatsapp,
                 `Hello ${stay.name}, I'd like to enquire about a stay.`,
               )}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-12 items-center gap-3 rounded-full border border-[color:var(--color-forest)] px-7 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-forest)] transition hover:bg-[color:var(--color-forest)] hover:text-white"
-              style={{ fontFamily: 'var(--font-eyebrow)' }}
+              external
             >
               <MessageCircle className="h-3.5 w-3.5" />
               WhatsApp us
-            </Link>
+            </Button>
             <a
               href={`tel:${stay.phone.replace(/\s/g, '')}`}
-              className="inline-flex h-12 items-center gap-3 rounded-full px-5 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-text)] transition hover:bg-[color:var(--color-bg)]"
-              style={{ fontFamily: 'var(--font-eyebrow)' }}
+              className="font-eyebrow inline-flex h-12 items-center gap-2.5 rounded-full px-5 text-[11px] uppercase tracking-[0.28em] text-[color:var(--color-text)] transition hover:bg-[color:var(--color-bg)]"
             >
               <Phone className="h-3.5 w-3.5" />
               {stay.phone}

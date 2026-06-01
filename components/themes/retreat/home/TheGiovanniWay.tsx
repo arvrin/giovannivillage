@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, Heart, Leaf, Sparkles, Utensils, Trees } from 'lucide-react';
+import { ArrowUpRight, Heart, Leaf, Sparkles, Utensils, Trees } from 'lucide-react';
+import Button from '@/components/ui/Button';
 import { siteConfig } from '@/lib/data';
 import { getWhatsAppLink } from '@/lib/utils';
 import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
@@ -48,15 +49,16 @@ const TheGiovanniWay = () => {
               <br />
               out of your getaway.
             </h2>
-            <a
-              href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.homeGetInTouch)}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-3 rounded-full bg-[color:var(--color-accent)] px-5 py-3 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-accent-contrast)] transition hover:bg-[color:var(--color-accent-hover)]"
-              style={{ fontFamily: 'var(--font-eyebrow)' }}
-            >
-              Get in touch <ArrowRight className="h-3.5 w-3.5" />
-            </a>
+            <div className="mt-6">
+              <Button
+                variant="primary"
+                size="lg"
+                href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.homeGetInTouch)}
+                external
+              >
+                Get in touch <ArrowUpRight className="h-3.5 w-3.5" />
+              </Button>
+            </div>
           </div>
         </motion.div>
 

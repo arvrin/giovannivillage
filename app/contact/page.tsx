@@ -163,7 +163,7 @@ export default function ContactPage() {
                 </div>
                 <Button
                   type="submit"
-                  variant="cta"
+                  variant="primary"
                   size="lg"
                   fullWidth
                   loading={status === 'submitting'}

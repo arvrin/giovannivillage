@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import Button from '@/components/ui/Button';
 import type { CityStay } from '@/lib/city-stays';
 
 const FromTheFamily = ({ stay }: { stay: CityStay }) => {
@@ -38,14 +38,12 @@ const FromTheFamily = ({ stay }: { stay: CityStay }) => {
             can extend their stay into town without leaving the family. Same
             hospitality, smaller footprint, in the city instead of the forest.
           </p>
-          <Link
-            href="/"
-            className="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-forest)] transition hover:bg-[color:var(--color-brass)] hover:text-white"
-            style={{ fontFamily: 'var(--font-eyebrow)' }}
-          >
-            Visit Giovanni Village
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </Link>
+          <div className="mt-8">
+            <Button variant="light" size="lg" href="/">
+              Visit Giovanni Village
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </Button>
+          </div>
         </motion.div>
 
         <motion.div

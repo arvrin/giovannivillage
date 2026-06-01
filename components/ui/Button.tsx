@@ -1,8 +1,30 @@
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
+/**
+ * Site-wide pill CTA. There is exactly one button language across Giovanni
+ * Village — refined, rounded-full, uppercase eyebrow type.
+ *
+ * Variants
+ * ────────
+ *  primary        Solid forest fill. Default headline CTA.
+ *  outline        Forest border, forest text. Secondary action.
+ *  light          White solid, forest text. Use on dark/hero backgrounds.
+ *  light-outline  Translucent white border, glass-blur, white text. Use on
+ *                 dark/hero backgrounds as a secondary to `light`.
+ *
+ * Sizes (all rounded-full pills)
+ * ──────────────────────────────
+ *  sm   h-9   for header chips, tight nav pills
+ *  md   h-11  for card-level CTAs (venues, rooms, dining venues)
+ *  lg   h-12  for page-bottom headline CTAs
+ *
+ * `fullWidth` stretches the pill to fill its container — used by the
+ * /rooms/[slug] booking column. Renders <a> when `href` is set, else <button>.
+ */
+
 type ButtonBaseProps = {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'cta' | 'cta-outline';
+  variant?: 'primary' | 'outline' | 'light' | 'light-outline';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   loading?: boolean;
@@ -31,27 +53,23 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'gv-button inline-flex items-center justify-center font-medium transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+      'gv-button font-eyebrow inline-flex items-center justify-center gap-3 rounded-full uppercase whitespace-nowrap transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 
     const variants = {
       primary:
         'bg-[var(--color-accent)] text-[var(--color-accent-contrast)] hover:bg-[var(--color-accent-hover)] focus:ring-[var(--color-accent)]',
-      secondary:
-        'bg-[var(--color-bg-alt)] text-[var(--color-text)] hover:bg-[var(--color-bg)] focus:ring-[var(--color-text)]',
       outline:
-        'border-2 border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-contrast)] focus:ring-[var(--color-accent)]',
-      ghost:
-        'text-[var(--color-text)] hover:bg-[var(--color-bg-alt)] focus:ring-[var(--color-accent)]',
-      cta:
-        'bg-[var(--color-accent)] text-[var(--color-accent-contrast)] hover:bg-[var(--color-accent-hover)] focus:ring-[var(--color-accent)]',
-      'cta-outline':
-        'border-2 border-[var(--color-text-secondary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-text-secondary)] hover:text-[var(--color-bg)] focus:ring-[var(--color-text-secondary)]',
+        'border border-[var(--color-forest,var(--color-accent))] text-[var(--color-forest,var(--color-accent))] hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-contrast)] focus:ring-[var(--color-accent)]',
+      light:
+        'bg-white text-[var(--color-forest,var(--color-accent))] hover:bg-[var(--color-brass)] hover:text-white focus:ring-white',
+      'light-outline':
+        'border border-white/40 bg-white/10 backdrop-blur-md text-white hover:bg-white/20 focus:ring-white',
     };
 
     const sizes = {
-      sm: 'text-xs sm:text-sm px-4 py-2 rounded-[var(--radius-md)] tracking-[0.08em] uppercase',
-      md: 'text-sm px-6 py-3 rounded-[var(--radius-md)] tracking-[0.1em] uppercase',
-      lg: 'text-sm md:text-base px-8 py-4 rounded-[var(--radius-md)] tracking-[0.12em] uppercase',
+      sm: 'h-9  px-4 text-[10px] tracking-[0.20em] gap-2',
+      md: 'h-11 px-5 text-[11px] tracking-[0.24em] gap-2.5',
+      lg: 'h-12 px-6 text-[11px] md:text-[12px] tracking-[0.28em]',
     };
 
     const composedClassName = cn(
@@ -66,7 +84,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const inner = loading ? (
       <div className="flex items-center gap-2">
         <svg
-          className="animate-spin h-5 w-5"
+          className="animate-spin h-4 w-4"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -85,7 +103,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
           />
         </svg>
-        <span>Loading...</span>
+        <span>Loading…</span>
       </div>
     ) : (
       children

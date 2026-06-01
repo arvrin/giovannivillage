@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Users, Maximize, ArrowRight } from 'lucide-react';
+import { Users, Maximize, ArrowUpRight } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
@@ -80,13 +80,12 @@ export default function RoomsIndexPage() {
                   <div className="flex flex-wrap gap-4 items-center">
                     <Link
                       href={`/rooms/${room.id}`}
-                      className="inline-flex items-center text-sm font-semibold uppercase tracking-wider text-[var(--color-bronze)] hover:text-[var(--color-gold)] transition-colors"
-                      style={{ letterSpacing: '0.1em' }}
+                      className="font-eyebrow inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[color:var(--color-forest)] transition hover:text-[color:var(--color-brass)]"
                     >
                       View Details
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <ArrowUpRight className="h-3.5 w-3.5" />
                     </Link>
-                    <Button variant="cta" size="md" href={siteConfig.booking.resort}>
+                    <Button variant="primary" size="md" href={siteConfig.booking.resort}>
                       Book Now
                     </Button>
                   </div>
@@ -104,13 +103,13 @@ export default function RoomsIndexPage() {
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                variant="cta"
+                variant="primary"
                 size="lg"
                 href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
               >
                 Call Concierge
               </Button>
-              <Button variant="cta-outline" size="lg" href={siteConfig.booking.resort}>
+              <Button variant="outline" size="lg" href={siteConfig.booking.resort}>
                 Check Live Availability
               </Button>
             </div>

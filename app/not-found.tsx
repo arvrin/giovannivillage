@@ -46,11 +46,11 @@ export default function NotFound() {
             footpaths cross — here are a few places to head back to.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button variant="cta" size="lg" href="/">
+            <Button variant="primary" size="lg" href="/">
               Back to the homepage
             </Button>
             <Button
-              variant="cta-outline"
+              variant="outline"
               size="lg"
               href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.notFound)}
               external

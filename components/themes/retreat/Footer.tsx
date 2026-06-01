@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Instagram, Facebook, MapPin, Phone, Mail } from 'lucide-react';
+import Button from '@/components/ui/Button';
 import { siteConfig } from '@/lib/data';
 
 /** A different closing line by route, so the footer doesn't feel boilerplate. */
@@ -228,13 +229,9 @@ const RetreatFooter = () => {
                   className="flex-1 rounded-full border border-[color:var(--color-border-strong)] bg-[color:var(--color-bg)] px-5 py-3 text-sm placeholder:text-[color:var(--color-text-tertiary)] focus:border-[color:var(--color-forest)] focus:outline-none"
                   style={{ fontFamily: 'var(--font-body)' }}
                 />
-                <button
-                  type="submit"
-                  className="rounded-full bg-[color:var(--color-accent)] px-6 py-3 text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-accent-contrast)] transition hover:bg-[color:var(--color-accent-hover)]"
-                  style={{ fontFamily: 'var(--font-eyebrow)' }}
-                >
+                <Button type="submit" variant="primary" size="md">
                   {sent ? 'Subscribed ✓' : 'Sign up'}
-                </button>
+                </Button>
               </form>
             </div>
           </div>
