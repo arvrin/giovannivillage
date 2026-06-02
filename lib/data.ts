@@ -3,13 +3,37 @@
  * Sourced from the production WordPress site (giovannivillage.com).
  */
 
+/** Resolve the canonical site URL across environments.
+ *
+ * Until the cutover from the WordPress site at giovannivillage.com, hard-coding
+ * that domain breaks Open Graph previews — social platforms fetch the OG image
+ * URL we ship, which resolves to the old WP host and 404s. To keep previews
+ * working on whichever Vercel deployment is live, we resolve at runtime:
+ *
+ *   1. NEXT_PUBLIC_SITE_URL — manual override. Set this on Vercel to pin the
+ *      production URL (e.g. the eventual giovannivillage.com after cutover, or
+ *      a staging subdomain in the meantime).
+ *   2. VERCEL_PROJECT_PRODUCTION_URL — Vercel auto-sets this to the project's
+ *      primary production domain.
+ *   3. VERCEL_URL — Vercel's per-deployment URL (used on previews/branches).
+ *   4. Local dev fallback.
+ */
+const resolveSiteUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return 'http://localhost:3000';
+};
+
 export const siteConfig = {
   name: 'Giovanni Village',
   legalName: 'Giovanni Village — A Venture of Sudesh The Village Resort',
   title: 'Giovanni Village Resort – Best Luxury Wildlife Resort in Bhopal',
   description:
     'Experience luxury at Giovanni Village, Best Luxury Wildlife Resort in Bhopal with spa, banquet halls, restaurants & forest views. Book your perfect escape today.',
-  url: 'https://giovannivillage.com',
+  url: resolveSiteUrl(),
   keywords: [
     'Best Luxury Wildlife Resort in Bhopal',
     'Boutique resort near Bhopal',

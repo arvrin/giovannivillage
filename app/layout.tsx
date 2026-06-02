@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: '/images/hero/hero-1.webp',
-        width: 1920,
-        height: 1080,
+        url: '/images/og/og-default.jpg',
+        width: 1200,
+        height: 630,
         alt: 'Aerial view of Giovanni Village Resort',
       },
     ],
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.title,
     description: siteConfig.description,
-    images: ['/images/hero/hero-1.webp'],
+    images: ['/images/og/og-default.jpg'],
   },
   robots: {
     index: true,
