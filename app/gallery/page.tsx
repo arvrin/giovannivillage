@@ -94,37 +94,50 @@ function GalleryView() {
             description="Rooms, dining venues, lakes, lawns, the spa, the safari days, the films in between. Open any frame to step in — arrows or swipe to wander."
           />
 
-          {/* Filter bar */}
-          <div className="sticky top-20 z-30 -mx-4 mt-12 mb-12 overflow-x-auto bg-[var(--color-background)]/85 px-4 py-3 backdrop-blur-md md:top-24 md:mt-16">
-            <div className="mx-auto flex w-max max-w-full justify-center gap-2 md:gap-3">
+          {/* Filter bar — editorial text links instead of pills.
+              Flow-wraps naturally (no horizontal scroll), sticky only on
+              desktop where the wrapped list stays single-row. */}
+          <nav
+            aria-label="Filter by category"
+            className="-mx-4 mt-12 mb-10 border-y border-[color:var(--color-border)]/60 px-4 py-5 md:sticky md:top-24 md:z-30 md:mt-16 md:mb-12 md:bg-[var(--color-background)]/85 md:py-6 md:backdrop-blur-md"
+          >
+            <ul className="mx-auto flex max-w-4xl flex-wrap items-baseline justify-center gap-x-6 gap-y-3 md:gap-x-9">
               {FILTERS.map((key) => {
                 const label = key === 'All' ? 'All' : CATEGORY_LABELS[key];
                 const isActive = filter === key;
                 return (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => handleFilter(key)}
-                    aria-pressed={isActive}
-                    className={`shrink-0 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all duration-300 md:px-5 md:py-2.5 md:text-xs ${
-                      isActive
-                        ? 'bg-[var(--color-bronze)] text-white shadow-sm'
-                        : 'bg-[var(--color-background-secondary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bronze)]/10'
-                    }`}
-                  >
-                    {label}
-                    <span
-                      className={`ml-2 text-[10px] tabular-nums ${
-                        isActive ? 'text-white/70' : 'text-[var(--color-text-tertiary)]'
+                  <li key={key}>
+                    <button
+                      type="button"
+                      onClick={() => handleFilter(key)}
+                      aria-pressed={isActive}
+                      className={`relative inline-flex items-baseline gap-2 pb-1.5 text-[11px] uppercase tracking-[0.28em] transition-colors duration-300 focus:outline-none focus-visible:text-[var(--color-bronze)] md:text-[12px] ${
+                        isActive
+                          ? 'text-[var(--color-bronze)]'
+                          : 'text-[var(--color-text-tertiary)] hover:text-[var(--color-text)]'
                       }`}
+                      style={{ fontFamily: 'var(--font-eyebrow)' }}
                     >
-                      {counts[key]}
-                    </span>
-                  </button>
+                      <span>{label}</span>
+                      <span
+                        className={`text-[9px] tabular-nums tracking-normal transition-opacity md:text-[10px] ${
+                          isActive ? 'opacity-90' : 'opacity-55'
+                        }`}
+                      >
+                        {counts[key]}
+                      </span>
+                      <span
+                        aria-hidden
+                        className={`absolute inset-x-0 -bottom-px h-px bg-[var(--color-bronze)] transition-opacity duration-300 ${
+                          isActive ? 'opacity-100' : 'opacity-0'
+                        }`}
+                      />
+                    </button>
+                  </li>
                 );
               })}
-            </div>
-          </div>
+            </ul>
+          </nav>
 
           {/* Grid — CSS columns with aspect-ratio holders so layout doesn't jump */}
           <div className="columns-1 gap-4 md:columns-2 md:gap-6 lg:columns-3">
