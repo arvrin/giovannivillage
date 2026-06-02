@@ -80,7 +80,11 @@ const textSvg = `
   </text>
 </svg>`;
 
-const logoLeft = Math.floor((W - logoWidth) / 2);
+// The logo's visual centroid sits ~8px right of its bounding-box centre
+// (because the GIOVANNI VILLAGE text mass is heavier than the tree icon).
+// Compensate so the optical centre — not the bbox centre — lands on W/2.
+const VISUAL_CENTROID_OFFSET = 8;
+const logoLeft = Math.floor((W - logoWidth) / 2 - VISUAL_CENTROID_OFFSET);
 
 await sharp(HERO)
   .resize(W, H, { fit: 'cover', position: 'center' })
