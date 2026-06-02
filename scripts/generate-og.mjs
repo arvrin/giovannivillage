@@ -43,9 +43,14 @@ const overlaySvg = `
   <rect width="${W}" height="${H}" fill="url(#dark)"/>
 </svg>`;
 
-// Text block — eyebrow centred 60px below the logo. The brand domain
-// sits anchored to the bottom edge.
-const textTop = Math.floor(H * 0.30 + logoHeight + 60);
+// Vertical centring: position the (logo + 60px gap + eyebrow) block so
+// its centre lands on the image's mathematical centre. Domain stays
+// anchored to the bottom edge.
+const GAP = 60;
+const eyebrowVisibleH = 22; // approximate cap-height for 22px text
+const groupH = logoHeight + GAP + eyebrowVisibleH;
+const logoTop = Math.floor(H / 2 - groupH / 2);
+const textTop = logoTop + logoHeight + GAP + eyebrowVisibleH;
 
 const textSvg = `
 <svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +80,6 @@ const textSvg = `
   </text>
 </svg>`;
 
-const logoTop = Math.floor(H * 0.30);
 const logoLeft = Math.floor((W - logoWidth) / 2);
 
 await sharp(HERO)
