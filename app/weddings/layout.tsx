@@ -1,16 +1,15 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Weddings & Events',
+  title: 'Weddings',
   description:
-    'Twelve event venues at Giovanni Village Resort — five indoor (incl. the 9,500 sq ft pillarless Aria Grand) and seven outdoor (incl. Sudesh I, Sudesh II, Cocktail Lawn, Gourmet Lake Side Lawn). Capacity from twenty guests to five thousand, with a dedicated planner.',
+    'Wedding venues at Giovanni Village Resort, Bhopal — twelve settings including five pillarless banquet halls (up to the 9,500 sq ft Aria Grand) and seven lakeside lawns, with an in-house planner, decor and catering.',
   alternates: { canonical: '/weddings' },
   openGraph: {
-    title: 'Weddings & Events — Giovanni Village Resort',
-    description:
-      'Twelve venues, twenty ceremonies. From a 20-person mandap to a 5,000-guest reception, all on one estate.',
+    title: 'Weddings & Celebrations — Giovanni Village Resort',
+    description: 'Twelve venues — pillarless halls and lakeside lawns — with planner, decor and catering, on the edge of Ratapani.',
     url: '/weddings',
-    images: ['/images/weddings/aria-grand-hall.webp'],
+    images: ['/images/og/og-default.jpg'],
   },
 };
 

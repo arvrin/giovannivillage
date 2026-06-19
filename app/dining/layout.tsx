@@ -3,14 +3,13 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Dining',
   description:
-    'Three signature dining venues at Giovanni Village Resort — Gourmet By The Woods (fine dining), Pihu (rooftop telescope dinners), Gazebo by the Lake (intimate lakeside service). Farm-to-fire cuisine from Royalton Farms inside the estate.',
+    'Three dining venues at Giovanni Village Resort, Bhopal — Gourmet By The Woods (fine dining under the forest canopy), Pihu (rooftop telescope dinners) and Gazebo by the Lake. Farm-to-table from our own Royalton organic farm.',
   alternates: { canonical: '/dining' },
   openGraph: {
-    title: 'Dining at Giovanni Village Resort',
-    description:
-      'Three tables, one philosophy: produce from Royalton Farms, plated under our trees.',
+    title: 'Dining — Giovanni Village Resort',
+    description: 'Three forest-and-lake dining venues, telescope dinners, and farm-to-table cooking from our own organic farm.',
     url: '/dining',
-    images: ['/Gourmet-By-The-Woods.webp'],
+    images: ['/images/og/og-default.jpg'],
   },
 };
 

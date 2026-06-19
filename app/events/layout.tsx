@@ -3,14 +3,13 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Meetings & Events',
   description:
-    'Corporate offsites, conferences, brand activations and board meetings at Giovanni Village Resort, Bhopal. Five indoor air-conditioned halls (incl. the 9,500 sq ft pillarless Aria Grand) and seven outdoor settings, with AV, breakaway rooms and a dedicated events team.',
+    'Corporate meetings, conferences and offsites at Giovanni Village Resort, Bhopal — twelve venues from a lakeside boardroom to banquet halls and open lawns, with stay, dining and team experiences.',
   alternates: { canonical: '/events' },
   openGraph: {
     title: 'Meetings & Events — Giovanni Village Resort',
-    description:
-      'A different rhythm from a conference centre — pillarless halls, breakaway rooms, full AV, and the estate after-hours.',
+    description: 'Twelve venues for offsites and conferences — from a lakeside boardroom to open lawns, with stay and dining.',
     url: '/events',
-    images: ['/images/weddings/the-forum.webp'],
+    images: ['/images/og/og-default.jpg'],
   },
 };
 

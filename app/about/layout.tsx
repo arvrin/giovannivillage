@@ -3,14 +3,13 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Giovanni Village Resort — a luxury wildlife retreat on the edge of Ratapani Tiger Reserve, Bhopal. Ten acres of mango groves, lily ponds and lakeside paths; Royalton Farms inside the gates; a venture of Sudesh The Village Resort.',
+    'Giovanni Village is a luxury wildlife resort on ten acres at the edge of Ratapani Tiger Reserve, twenty minutes from Bhopal — mango groves, lily ponds, a working organic farm, and forest-view suites.',
   alternates: { canonical: '/about' },
   openGraph: {
-    title: 'About Giovanni Village Resort',
-    description:
-      'A house that learned to listen. Ten acres on the edge of Ratapani Tiger Reserve, with Royalton Farms inside the estate.',
+    title: 'About Giovanni Village — Luxury Wildlife Resort in Bhopal',
+    description: 'Ten acres on the edge of Ratapani Tiger Reserve — groves, lily ponds, a working farm, and forest-view suites.',
     url: '/about',
-    images: ['/images/about/about-hero-original.webp'],
+    images: ['/images/og/og-default.jpg'],
   },
 };
 

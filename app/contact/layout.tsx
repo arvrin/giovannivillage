@@ -3,13 +3,13 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Reservations, weddings, events and general enquiries at Giovanni Village Resort, Bhopal. Call +91 90390 37300 or email reservations@giovannivillage.com.',
+    'Reach Giovanni Village Resort, Bhopal — reservations, directions and enquiries. On Kolar Road at the edge of Ratapani Tiger Reserve, twenty minutes from the city.',
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'Contact Giovanni Village Resort',
-    description: 'A line to your corner of the estate.',
+    title: 'Contact — Giovanni Village Resort',
+    description: 'Reservations, directions and enquiries for Giovanni Village, on the edge of Ratapani Tiger Reserve.',
     url: '/contact',
-    images: ['/images/about/about-hero-original.webp'],
+    images: ['/images/og/og-default.jpg'],
   },
 };
 

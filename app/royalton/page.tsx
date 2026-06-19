@@ -9,6 +9,19 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { siteConfig } from '@/lib/data';
 import { getWhatsAppLink } from '@/lib/utils';
 
+export const metadata = {
+  title: 'Royalton Farms',
+  description:
+    'Royalton Farms — the working organic farm inside Giovanni Village Resort, Bhopal. Fields, dairy, henhouse and orchards that supply the resort kitchens, with seasonal farm tours and a Junior Chef Academy.',
+  alternates: { canonical: '/royalton' },
+  openGraph: {
+    title: 'Royalton Farms — Giovanni Village Resort',
+    description: 'The working organic farm inside the estate — fields, dairy, orchards, farm tours, and farm-to-table cooking.',
+    url: '/royalton',
+    images: ['/images/og/og-default.jpg'],
+  },
+};
+
 const seasons = [
   {
     label: 'Summer',
