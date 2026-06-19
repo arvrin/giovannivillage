@@ -102,6 +102,30 @@ export function RestaurantsSchema() {
   );
 }
 
+/** Organization — the Giovanni group entity (parent of the resort + the
+ *  boutique House & Suites + Royalton Farms). Drop on the homepage. */
+export function OrganizationSchema() {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${siteConfig.url}#organization`,
+    name: 'Giovanni Village',
+    legalName: siteConfig.legalName,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}/images/logo/gvr-final-logo.webp`,
+    email: siteConfig.contact.email,
+    telephone: siteConfig.contact.phone,
+    address: baseAddress,
+    sameAs,
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: jsonLd(data) }}
+    />
+  );
+}
+
 /** Simple BreadcrumbList — pass an array of {name, href} */
 export function BreadcrumbSchema({ items }: { items: { name: string; href: string }[] }) {
   const data = {

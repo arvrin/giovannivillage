@@ -8,6 +8,7 @@ import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/blog';
+import { BreadcrumbSchema } from '@/components/seo/StructuredData';
 import { siteConfig } from '@/lib/data';
 
 export async function generateStaticParams() {
@@ -93,6 +94,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           dangerouslySetInnerHTML={{ __html: ld }}
         />
       )}
+      <BreadcrumbSchema
+        items={[
+          { name: 'Journal', href: '/blog' },
+          { name: post.frontmatter.title, href: `/blog/${slug}` },
+        ]}
+      />
 
       <main className="min-h-screen bg-[var(--color-background)] pt-32 md:pt-40">
         {/* Article header */}

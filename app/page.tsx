@@ -3,7 +3,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import RetreatHome from '@/components/themes/retreat/Home';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import { HotelSchema } from '@/components/seo/StructuredData';
+import { HotelSchema, OrganizationSchema } from '@/components/seo/StructuredData';
 
 export const metadata: Metadata = {
   // Title intentionally left undefined so the root `metadata.title.default`
@@ -21,6 +21,7 @@ export default function Home() {
   return (
     <>
       <HotelSchema />
+      <OrganizationSchema />
       <Header />
 
       <main className="overflow-hidden">
