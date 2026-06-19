@@ -27,6 +27,13 @@ const resolveSiteUrl = () => {
   return 'http://localhost:3000';
 };
 
+/**
+ * Indexing guardrail. Keep the new site OUT of search engines while it's on a
+ * Vercel preview URL (so it never competes with the still-live WordPress site).
+ * Flip NEXT_PUBLIC_INDEXABLE=true only on giovannivillage.com at cutover.
+ */
+export const INDEXABLE = process.env.NEXT_PUBLIC_INDEXABLE === 'true';
+
 export const siteConfig = {
   name: 'Giovanni Village',
   legalName: 'Giovanni Village — A Venture of Sudesh The Village Resort',

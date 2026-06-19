@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Onest, Hurricane } from 'next/font/google';
 import './globals.css';
-import { siteConfig } from '@/lib/data';
+import { siteConfig, INDEXABLE } from '@/lib/data';
 import ClientLayout from '@/components/providers/ClientLayout';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 
@@ -54,11 +54,11 @@ export const metadata: Metadata = {
     images: ['/images/og/og-default.jpg'],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: INDEXABLE,
+    follow: INDEXABLE,
     googleBot: {
-      index: true,
-      follow: true,
+      index: INDEXABLE,
+      follow: INDEXABLE,
       'max-image-preview': 'large',
       'max-snippet': -1,
       'max-video-preview': -1,
