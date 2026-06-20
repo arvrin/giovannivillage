@@ -11,7 +11,7 @@ import PageHero from '@/components/ui/PageHero';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { rooms, siteConfig } from '@/lib/data';
-import { BreadcrumbSchema } from '@/components/seo/StructuredData';
+import { BreadcrumbSchema, RoomSchema } from '@/components/seo/StructuredData';
 
 export async function generateMetadata({
   params,
@@ -66,6 +66,7 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
           { name: room.name, href: `/rooms/${room.id}` },
         ]}
       />
+      <RoomSchema room={room} />
       <Header />
 
       <main className="min-h-screen bg-[var(--color-background)]">

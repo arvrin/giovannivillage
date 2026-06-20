@@ -126,6 +126,42 @@ export function OrganizationSchema() {
   );
 }
 
+/** HotelRoom + Offer for a room detail page (price, features, part of the resort). */
+export function RoomSchema({
+  room,
+}: {
+  room: { id: string; name: string; description: string; image: string; features: string[]; price: number };
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'HotelRoom',
+    '@id': `${siteConfig.url}/rooms/${room.id}#room`,
+    name: room.name,
+    description: room.description,
+    image: `${siteConfig.url}${room.image}`,
+    url: `${siteConfig.url}/rooms/${room.id}`,
+    amenityFeature: room.features.map((name) => ({
+      '@type': 'LocationFeatureSpecification',
+      name,
+      value: true,
+    })),
+    isPartOf: { '@id': `${siteConfig.url}#hotel` },
+    offers: {
+      '@type': 'Offer',
+      price: room.price,
+      priceCurrency: 'INR',
+      availability: 'https://schema.org/InStock',
+      url: `${siteConfig.url}/rooms/${room.id}`,
+    },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: jsonLd(data) }}
+    />
+  );
+}
+
 /** Simple BreadcrumbList — pass an array of {name, href} */
 export function BreadcrumbSchema({ items }: { items: { name: string; href: string }[] }) {
   const data = {
