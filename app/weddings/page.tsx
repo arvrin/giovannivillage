@@ -218,6 +218,7 @@ export default function WeddingsPage() {
               <ImageCard
                 key={v.id}
                 image={v.image}
+                video={(v as { video?: string }).video}
                 alt={v.name}
                 aspect="video"
                 eyebrow={`${v.specs} · ${v.capacity}`}
@@ -256,6 +257,7 @@ export default function WeddingsPage() {
               <ImageCard
                 key={v.id}
                 image={v.image}
+                video={(v as { video?: string }).video}
                 alt={v.name}
                 aspect="video"
                 eyebrow={`${v.specs} · ${v.capacity}`}

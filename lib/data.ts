@@ -649,6 +649,7 @@ export const weddingVenues = [
     specs: '4,000 sq ft · air-conditioned · pillarless',
     capacity: 'Capacity on request',
     image: '/images/weddings/aria-grand-hall.webp',
+    video: '/videos/aria-i-ii-loop.mp4',
   },
   {
     id: 'aria-iii',
@@ -659,6 +660,7 @@ export const weddingVenues = [
     specs: '6,000 sq ft · air-conditioned · pillarless',
     capacity: 'Capacity on request',
     image: '/images/weddings/aria-grand-hall.webp',
+    video: '/videos/aria-iii-loop.mp4',
   },
   {
     id: 'aria-grand',
@@ -669,6 +671,7 @@ export const weddingVenues = [
     specs: '10,000 sq ft hall · 50,000 sq ft attached lawn · pillarless',
     capacity: 'Up to 2,000 guests',
     image: '/images/weddings/aria-grand-hall.webp',
+    video: '/videos/aria-grand-loop.mp4',
   },
   // ─────────────────────────────────────────────── Outdoor
   {

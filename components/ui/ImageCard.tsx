@@ -27,6 +27,8 @@ interface ImageCardProps {
   className?: string;
   /** Hover lift on the whole card. Default true. */
   hover?: boolean;
+  /** Optional looping muted background video; uses `image` as the poster. */
+  video?: string;
 }
 
 const aspectClass = {
@@ -51,6 +53,7 @@ const ImageCard = ({
   external,
   className,
   hover = true,
+  video,
 }: ImageCardProps) => {
   const inner = (
     <div className="flex h-full flex-col bg-[var(--color-bg-alt)]">
@@ -60,13 +63,27 @@ const ImageCard = ({
           imageHeight ? imageHeight : aspectClass[aspect],
         )}
       >
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-        />
+        {video ? (
+          <video
+            src={video}
+            poster={image}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={alt}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          />
+        )}
       </div>
       <div className="flex flex-1 flex-col p-7 md:p-9">
         {eyebrow && <Eyebrow color="bronze" className="mb-3">{eyebrow}</Eyebrow>}
