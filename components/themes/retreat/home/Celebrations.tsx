@@ -114,7 +114,7 @@ const Celebrations = () => {
         >
           {[
             { v: '05', l: 'Venues' },
-            { v: '5K', l: 'Max guests' },
+            { v: '2K', l: 'Max guests' },
             { v: '20+', l: 'Ceremony styles' },
             { v: '01', l: 'Dedicated planner' },
           ].map((s) => (
