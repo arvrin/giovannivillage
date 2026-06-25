@@ -7,9 +7,8 @@ import Button from '@/components/ui/Button';
 
 const VENUES = [
   { name: 'Cocktail', tail: 'Lawn', cap: '500', img: '/images/weddings/cocktail-lawn.webp' },
-  { name: 'Poolside', tail: 'Lawn', cap: '300', img: '/images/weddings/poolside-pool.webp' },
   { name: 'The Aria', tail: 'Hall', cap: '1,200', img: '/images/weddings/aria-grand-hall.webp' },
-  { name: 'Sudesh', tail: 'Lawns', cap: '5,000', img: '/images/weddings/sudesh-lawns.webp' },
+  { name: 'Sudesh', tail: 'Lawns', cap: '2,000', img: '/images/weddings/sudesh-lawns.webp' },
 ];
 
 const Celebrations = () => {

@@ -23,6 +23,7 @@ const ceremonies = [
   { title: 'Haldi', line: 'A turmeric afternoon under the mango grove. Petals from Royalton Farms.' },
   { title: 'Sangeet', line: 'A thousand bulbs in a pillarless hall, with a dance floor that the chairs lift away from.' },
   { title: 'Pheras', line: 'A lakeside mandap, four fires at dusk, the bride’s side and the groom’s side meeting on the lawn.' },
+  { title: 'Reception', line: 'The celebration after the vows — a pillarless hall or a lakeside lawn, dinner under the canopy, and a dance floor that runs late.' },
   { title: 'Vidaai', line: 'Petal showers from Royalton baskets, flamingo statues at the gate, breakfast packed for the road.' },
 ];
 
@@ -44,12 +45,12 @@ const includes = [
     body: 'Ten suites in the resort, eight more at Giovanni House and Giovanni Suites in Arera Colony. The family stays under one roof.',
   },
   {
-    eyebrow: 'Twelve venues, one estate',
-    body: 'Five pillarless indoor halls, seven lawns and lakesides. A different ceremony in a different room, all within the gates.',
+    eyebrow: 'Eleven venues, one estate',
+    body: 'Five pillarless indoor halls, six lawns and lakesides. A different ceremony in a different room, all within the gates.',
   },
   {
-    eyebrow: 'Capacity from twenty to five thousand',
-    body: 'The Aria Grand seats 5,000; the lakeside deck seats twenty. We size the team to your guest list.',
+    eyebrow: 'Capacity from twenty to two thousand',
+    body: 'The Aria Grand seats 2,000; the lakeside deck seats twenty. We size the team to your guest list.',
   },
 ];
 

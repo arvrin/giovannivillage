@@ -13,7 +13,7 @@ const FEATURES = [
   { icon: Trees, label: 'Forest at the Doorstep', body: 'Ten acres folded into the edge of Ratapani Tiger Reserve.' },
   { icon: Sparkles, label: 'Affordable Luxury', body: 'Suites with private plunge pools — without the metropolitan markup.' },
   { icon: Utensils, label: 'Farm-to-fire Cuisine', body: 'Three dining venues, all sourcing from Royalton Farms inside the estate — produce in the morning, on the plate by lunch.' },
-  { icon: Leaf, label: 'Pet-Friendly Estate', body: 'Open lawns, mango groves, and quiet trails — for the whole family.' },
+  { icon: Leaf, label: 'Wildlife at the Gate', body: 'Ratapani Tiger Reserve five minutes from the gate — naturalist-led safaris before breakfast.' },
 ];
 
 const TheGiovanniWay = () => {

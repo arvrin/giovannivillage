@@ -50,7 +50,6 @@ export function HotelSchema() {
     geo: baseGeo,
     starRating: { '@type': 'Rating', ratingValue: '5' },
     priceRange: '₹₹₹₹',
-    petsAllowed: true,
     sameAs,
     amenityFeature: [
       'Swimming Pool',
@@ -62,7 +61,6 @@ export function HotelSchema() {
       'Conference Facilities',
       'Air Conditioning',
       'Room Service',
-      'Pet Friendly',
       'Open-to-Sky Plunge Pools',
       'Private Garden Suites',
     ].map((name) => ({ '@type': 'LocationFeatureSpecification', name, value: true })),

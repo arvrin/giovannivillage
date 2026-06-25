@@ -61,7 +61,7 @@ export default function CelebrationsPage() {
         <Container>
           <IntroBlock title="Built for the celebrations between weddings">
             <p>
-              Not every milestone needs a five-thousand-guest hall. A twenty-five-person silver anniversary. A 50th birthday under the canopy. A proposal at the lakeside Gazebo with the lanterns lighting one by one.
+              Not every milestone needs a two-thousand-guest hall. A twenty-five-person silver anniversary. A 50th birthday under the canopy. A proposal at the lakeside Gazebo with the lanterns lighting one by one.
             </p>
             <p>
               We hold these the way they’re meant to be held — small, considered, and on the same estate that anchors the headline weddings, with the same kitchen and the same hands.

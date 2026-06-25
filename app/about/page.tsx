@@ -22,7 +22,7 @@ const stats = [
   { value: '10', label: 'Acres of estate' },
   { value: '20', label: 'Minutes from the city' },
   { value: '5 km', label: 'To Ratapani' },
-  { value: '5,000', label: 'Guests at one time' },
+  { value: '2,000', label: 'Guests at one time' },
 ];
 
 export default function AboutPage() {

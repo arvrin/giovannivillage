@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from 'react';
 
 const PROMISES = [
   { v: '10', l: 'Acres of estate' },
-  { v: '08', l: 'Forest-view suites' },
+  { v: '10', l: 'Room categories' },
   { v: '05', l: 'Event venues' },
-  { v: '04', l: 'Restaurants' },
+  { v: '03', l: 'Restaurants' },
 ];
 
 const Discover = () => {
@@ -96,13 +96,13 @@ const Discover = () => {
             >
               <p>
                 Brides, naturalists, weekending families, second-honeymooners,
-                conference delegates, dogs called Biscuit — Giovanni Village
-                holds them all without losing its quiet.
+                conference delegates, toddlers chasing peacocks — Giovanni
+                Village holds them all without losing its quiet.
               </p>
               <p>
-                Ten acres of mango groves and lily ponds, ten suites that face
-                green, three dining venues, twelve event spaces, and a spa built
-                for the long way home.
+                Ten acres of mango groves and lily ponds, ten room categories
+                that face green, three dining venues, eleven event spaces, and a
+                spa built for the long way home.
               </p>
             </div>
 

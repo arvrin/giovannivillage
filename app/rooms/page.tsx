@@ -98,12 +98,34 @@ export default function RoomsIndexPage() {
             ))}
           </div>
 
+          {/* Why Giovanni */}
+          <div className="mb-24">
+            <SectionHeader title="Why Giovanni" eyebrow="The estate, in four words" />
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { t: 'Kids-friendly', d: 'Open lawns to run, peacocks to chase, a working farm to visit, and rooms with space for the whole family.' },
+                { t: 'Activity-centric', d: 'Safaris, farm mornings, lake fishing, cycling and bonfires — the day fills itself if you let it.' },
+                { t: 'Luxury-centric', d: 'Open-to-sky plunge-pool suites, Patented Natural Latex bedding, butler-led service and the Elysium spa.' },
+                { t: 'Wildlife at the gate', d: 'Ratapani Tiger Reserve five minutes away — naturalist-led safaris before breakfast.' },
+              ].map((c) => (
+                <div key={c.t} className="rounded-lg bg-[var(--color-background-secondary)] p-7">
+                  <h3 className="font-heading text-xl italic mb-3" style={{ fontWeight: 500 }}>
+                    {c.t}
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]" style={{ lineHeight: 1.7 }}>
+                    {c.d}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Footer CTA */}
           <div className="bg-[var(--color-background-secondary)] rounded-lg p-12 md:p-16 text-center mb-16">
             <SectionHeader
               title="Not sure which one is yours?"
               eyebrow="Talk to a human"
-              description="Tell our concierge a little about your trip — anniversaries, allergies, the dog you’re bringing. We’ll match you to the room that fits."
+              description="Tell our concierge a little about your trip — anniversaries, allergies, the little ones along. We’ll match you to the room that fits."
             />
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button

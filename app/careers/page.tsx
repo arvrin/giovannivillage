@@ -60,7 +60,7 @@ export default function CareersPage() {
         <Container>
           <IntroBlock title="The Giovanni way of working">
             <p>
-              The estate hosts 5,000-guest weddings and 4:30 AM milking walks, conferences and proposal dinners, the bride&apos;s family and a couple on their tenth anniversary. The teams that hold this rhythm care about the details that don&apos;t get noticed — the towel folded a particular way, the bowl of warm water at check-in, the second cup of coffee that arrived before you asked.
+              The estate hosts 2,000-guest weddings and 4:30 AM milking walks, conferences and proposal dinners, the bride&apos;s family and a couple on their tenth anniversary. The teams that hold this rhythm care about the details that don&apos;t get noticed — the towel folded a particular way, the bowl of warm water at check-in, the second cup of coffee that arrived before you asked.
             </p>
             <p>
               If you like the small, careful, unfussy part of hospitality, you&apos;ll find a home here.
@@ -127,15 +127,19 @@ export default function CareersPage() {
               <Button
                 variant="outline"
                 size="lg"
-                href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
+                href={`tel:${siteConfig.contact.phoneHr.replace(/\s/g, '')}`}
               >
-                Call the resort
+                Call HR
               </Button>
             </div>
             <p className="mt-6 text-sm text-[var(--color-text-tertiary)]">
               HR:{' '}
               <a href={`mailto:${siteConfig.contact.emailHr}`} className="text-[var(--color-bronze)] hover:underline">
                 {siteConfig.contact.emailHr}
+              </a>
+              {' · '}
+              <a href={`tel:${siteConfig.contact.phoneHr.replace(/\s/g, '')}`} className="text-[var(--color-bronze)] hover:underline">
+                {siteConfig.contact.phoneHr}
               </a>
             </p>
           </div>

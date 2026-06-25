@@ -99,7 +99,11 @@ const RetreatFooter = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-[color:var(--color-brass)]" />
-                <a href={`tel:${siteConfig.contact.phone}`}>{siteConfig.contact.phone}</a>
+                <span>
+                  <a href={`tel:${siteConfig.contact.phone}`}>{siteConfig.contact.phone}</a>
+                  {' · '}
+                  <a href={`tel:${siteConfig.contact.phoneReception}`}>{siteConfig.contact.phoneReception}</a>
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 shrink-0 text-[color:var(--color-brass)]" />

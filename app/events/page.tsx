@@ -15,7 +15,7 @@ import { getWhatsAppLink } from '@/lib/utils';
 import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
 const formats = [
-  { title: 'Conferences & AGMs', line: 'Pillarless halls up to 9,500 sq ft, AV-ready, with breakaway rooms for working sessions.' },
+  { title: 'Conferences & AGMs', line: 'Pillarless halls up to 10,000 sq ft, AV-ready, with breakaway rooms for working sessions.' },
   { title: 'Corporate Offsites', line: 'Stay-and-work formats — boardroom mornings, forest afternoons, dinners under the canopy.' },
   { title: 'Brand Activations', line: 'Indoor + outdoor venues in combination, custom builds for launches and experiential moments.' },
   { title: 'Board Meetings', line: 'The Forum — a 1,000 sq ft purpose-built boardroom overlooking the pool, with intimate dining alongside.' },
@@ -50,7 +50,7 @@ export default function EventsPage() {
         <Container>
           <IntroBlock title="Built for the kind of business that gets done outdoors">
             <p>
-              Twelve venues across five indoor halls and seven outdoor settings — the same estate that hosts five-thousand-guest weddings hosts the 20-person leadership offsite, the 200-delegate conference, the half-day board meeting with a working lunch on the lawn.
+              Eleven venues across five indoor halls and six outdoor settings — the same estate that hosts two-thousand-guest weddings hosts the 20-person leadership offsite, the 200-delegate conference, the half-day board meeting with a working lunch on the lawn.
             </p>
             <p>
               We run RFPs cleanly. One events manager, one quote, one invoice. The team knows the AV vendors, the catering rhythm, and the room block dynamics so you don’t have to.
@@ -74,9 +74,9 @@ export default function EventsPage() {
 
           {/* Venues — same 12 with corporate framing */}
           <SectionHeader
-            title="Twelve venues, every business shape"
+            title="Eleven venues, every business shape"
             eyebrow="The spaces"
-            description="The same venues that hold five-thousand-guest weddings hold twenty-person boardrooms — reconfigured for theatre, classroom, U-shape or banquet seating per your brief."
+            description="The same venues that hold two-thousand-guest weddings hold twenty-person boardrooms — reconfigured for theatre, classroom, U-shape or banquet seating per your brief."
           />
 
           <div className="mt-12 mb-6">

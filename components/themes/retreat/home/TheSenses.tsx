@@ -8,25 +8,15 @@ import VideoBlock from '@/components/themes/retreat/VideoBlock';
 
 const PILLARS = [
   {
-    eyebrow: 'Weddings',
-    lead: 'A celebration the',
-    accent: 'canopy',
-    tail: 'remembers',
-    body: 'Pillarless banquet halls, lakeside lawns, and forest clearings — held under marigold archways with twelve venues across indoor and outdoor settings, and capacity from twenty to five thousand. A dedicated planner curates every detail.',
-    img: '/images/weddings/gourmet-lawn.webp',
-    href: '/weddings',
-    meta: '05 Venues · Up to 5,000 guests',
-  },
-  {
     eyebrow: 'Staycation',
     lead: 'The',
     accent: 'weekend',
     tail: 'that resets you',
-    body: 'A short drive from Bhopal, a long way from the calendar. Forest-view suites with plunge pools, breakfast on the lawn, afternoons that disappear gently. Pet-friendly across the estate.',
+    body: 'A short drive from Bhopal, a long way from the calendar. Forest-view suites with plunge pools, breakfast on the lawn, afternoons that disappear gently. Built for families, couples and the long weekend.',
     img: '/images/rooms/junior-plunge-pool.webp',
     video: '/videos/suite-reveal.mp4',
     href: '/rooms',
-    meta: '10 Suites · Pet-friendly',
+    meta: '10 Room categories · Open-to-sky pools',
   },
   {
     eyebrow: 'Cuisine',
@@ -68,6 +58,16 @@ const PILLARS = [
     img: '/images/weddings/the-forum.webp',
     href: '/weddings',
     meta: 'Indoor + Outdoor',
+  },
+  {
+    eyebrow: 'Weddings',
+    lead: 'A celebration the',
+    accent: 'canopy',
+    tail: 'remembers',
+    body: 'Pillarless banquet halls, lakeside lawns, and forest clearings — held under marigold archways with eleven venues across indoor and outdoor settings, and capacity from twenty to two thousand. A dedicated planner curates every detail.',
+    img: '/images/weddings/gourmet-lawn.webp',
+    href: '/weddings',
+    meta: '05 Venues · Up to 2,000 guests',
   },
 ];
 

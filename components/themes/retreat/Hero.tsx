@@ -47,7 +47,7 @@ const HERO_LINES: HeroLine[] = [
     script: 'marry',
     tail: 'by the lakeside.',
     description:
-      'Twelve venues across ten acres — from a pillarless 9,500 sq ft hall to a lakeside lawn with sunset pheras — and a planner who only does your wedding.',
+      'Eleven venues across ten acres — from a pillarless 10,000 sq ft hall to a lakeside lawn with sunset pheras — and a planner who only does your wedding.',
   },
   {
     lead: 'find the long way',

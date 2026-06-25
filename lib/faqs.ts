@@ -86,15 +86,7 @@ export const faqs: Faq[] = [
     topic: 'general',
     question: 'What makes Giovanni Village different from other resorts near Bhopal?',
     answer:
-      'Giovanni Village is the only luxury resort in the Bhopal region built on the edge of the Ratapani Tiger Reserve, with ten distinct forest-view suites, three dining venues, an in-house spa (Elysium), and twelve event venues — five indoor, seven outdoor — all inside a ten-acre working estate with its own organic farm (Royalton Farms). Pets are welcome across the property.',
-    featured: true,
-  },
-  {
-    id: 'pet-friendly',
-    topic: 'general',
-    question: 'Is Giovanni Village pet-friendly?',
-    answer:
-      'Yes — Giovanni Village is pet-friendly across the estate. We welcome dogs in the rooms, on the lawns, and in most public areas. Please let our reservations team know in advance so we can prepare the suite with the appropriate amenities.',
+      'Giovanni Village is the only luxury resort in the Bhopal region built on the edge of the Ratapani Tiger Reserve, with ten distinct forest-view suites, three dining venues, an in-house spa (Elysium), and eleven event venues — five indoor, six outdoor — all inside a ten-acre working estate with its own organic farm (Royalton Farms).',
     featured: true,
   },
   {
@@ -255,7 +247,7 @@ export const faqs: Faq[] = [
     topic: 'spa',
     question: 'How much does a spa treatment at Giovanni Village cost?',
     answer:
-      'Spa treatments at Elysium Spa start at ₹1,500 for a 30-minute Foot Reflexology or Facial Massage. Signature 60-minute massages range from ₹2,000 to ₹3,500, and the 90-minute couples\' Romantic Retreat is ₹6,000. The full price list is available on the spa menu.',
+      'Spa treatments at Elysium Spa start at ₹1,500 for a 30-minute Foot Reflexology or Facial Massage. Signature 60-minute massages range from ₹2,000 to ₹4,000, and the 90-minute couples\' Romantic Retreat is ₹6,000. The full price list is available on the spa menu.',
   },
   {
     id: 'spa-included',
@@ -285,7 +277,7 @@ export const faqs: Faq[] = [
     topic: 'weddings',
     question: 'What is the wedding capacity at Giovanni Village?',
     answer:
-      'Giovanni Village hosts weddings from twenty guests to five thousand guests. The Aria Grand — a 9,500 sq ft pillarless banquet hall with an attached 50,000 sq ft lawn — is the largest single venue, while smaller venues like the Cocktail Lawn (200 pax) and Pool Lawn (100 pax) handle intimate ceremonies.',
+      'Giovanni Village hosts weddings from twenty guests to two thousand guests. The Aria Grand — a 10,000 sq ft pillarless banquet hall with an attached 50,000 sq ft lawn — is the largest single venue, while smaller venues like the Cocktail Lawn (200 pax) handle intimate ceremonies.',
     featured: true,
   },
   {
@@ -293,7 +285,7 @@ export const faqs: Faq[] = [
     topic: 'weddings',
     question: 'How many wedding and event venues does Giovanni Village have?',
     answer:
-      'Giovanni Village has twelve dedicated event venues — five indoor and seven outdoor. Indoor (air-conditioned): The Forum, Aria Deck, Aria I + II + Deck (3,500 sq ft), Aria III (6,000 sq ft), and Aria Grand (9,500 sq ft pillarless hall + 50,000 sq ft attached lawn). Outdoor: Pihu Deck, Sudesh II (51,000 sq ft), Banquet Lawn, Sudesh I (14,000 sq ft), Cocktail Lawn (9,000 sq ft), Gourmet Lake Side Lawn, and Pool Lawn. Indoor and outdoor venues can be mixed across a multi-day function.',
+      'Giovanni Village has eleven dedicated event venues — five indoor and six outdoor. Indoor (air-conditioned): The Forum, Aria Deck, Aria I + II + Deck (4,000 sq ft), Aria III (6,000 sq ft), and Aria Grand (10,000 sq ft pillarless hall + 50,000 sq ft attached lawn). Outdoor: Pihu Deck, Sudesh II (51,000 sq ft), Banquet Lawn, Sudesh I (14,000 sq ft), Cocktail Lawn (9,000 sq ft), and Gourmet Lake Side Lawn. Indoor and outdoor venues can be mixed across a multi-day function.',
     featured: true,
   },
   {
@@ -301,7 +293,7 @@ export const faqs: Faq[] = [
     topic: 'weddings',
     question: 'What are the dimensions of The Aria Grand banquet hall?',
     answer:
-      'The Aria Grand at Giovanni Village is a 9,500 sq ft pillarless banquet hall with a 25-foot ceiling and a 50,000 sq ft attached lawn. It seats up to 5,000 guests across the combined indoor and outdoor footprint. The Aria Deck and the smaller Aria I + II + Deck (3,500 sq ft) and Aria III (6,000 sq ft) are also bookable indoor sub-spaces.',
+      'The Aria Grand at Giovanni Village is a 10,000 sq ft pillarless banquet hall with a 25-foot ceiling and a 50,000 sq ft attached lawn. It seats up to 2,000 guests across the combined indoor and outdoor footprint. The Aria Deck and the smaller Aria I + II + Deck (4,000 sq ft) and Aria III (6,000 sq ft) are also bookable indoor sub-spaces.',
   },
   {
     id: 'wedding-planner',

@@ -49,7 +49,10 @@ export default function DiningPage() {
         <Container>
           <IntroBlock title="Each table keeps its own hour">
             <p>
-              Breakfast on the lawn. Long lunch under the canopy. Coffee at four. Telescopes after eight. Three dining venues, one wandering meal that lasts the whole stay.
+              Breakfast on the lawn. Long lunch under the canopy. Coffee at four. Telescopes after eight. Three dining venues, one wandering meal that lasts the whole stay — with fresh vegetables cut at four in the morning and on your table the same day.
+            </p>
+            <p>
+              For an occasion of your own, a private dining area can be set on request — a quiet corner of the estate laid for a family dinner, an anniversary, or a small celebration.
             </p>
           </IntroBlock>
 

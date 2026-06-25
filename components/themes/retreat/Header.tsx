@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { siteConfig } from '@/lib/data';
 import { HOME_PAGE_BRANDS } from '@/lib/brands';
-import { getWhatsAppLink } from '@/lib/utils';
 import BrandCarousel from './BrandCarousel';
 
 interface NavLeaf { label: string; href: string }
@@ -106,27 +104,8 @@ const RetreatHeader = () => {
             />
           </Link>
 
-          <div className="hidden md:block">
-            <Button
-              variant={scrolled ? 'primary' : 'light'}
-              size="md"
-              href={getWhatsAppLink(siteConfig.contact.whatsapp, 'Hello Giovanni Village, I would like to enquire about a stay or event.')}
-              external
-            >
-              Enquire
-            </Button>
-          </div>
-
-          <div className="md:hidden">
-            <Button
-              variant={scrolled ? 'primary' : 'light'}
-              size="sm"
-              href={getWhatsAppLink(siteConfig.contact.whatsapp, 'Hello Giovanni Village, I would like to enquire about a stay or event.')}
-              external
-            >
-              Enquire
-            </Button>
-          </div>
+          {/* Spacer keeps the logo centred now that the Enquire button is removed. */}
+          <div className="h-11 w-11" aria-hidden />
         </div>
       </header>
 

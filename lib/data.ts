@@ -65,6 +65,7 @@ export const siteConfig = {
     phoneSecondary: '+91 90390 37302',
     email: 'reservations@giovannivillage.com',
     emailHr: 'hr@giovannivillage.com',
+    phoneHr: '+91 99932 18714',
     whatsapp: '+91 90390 37302',
     address: {
       street: 'Giovanni Village, 410, Village Kalapani, Kolar Road',
@@ -104,8 +105,8 @@ export const about = {
   subtitle: 'Ten acres, ten suites, one long pause in the day.',
   content: [
     'Giovanni Village sits on the edge of Ratapani Tiger Reserve, twenty minutes outside Bhopal. Ten acres of mango groves, lily ponds, lakeside paths — and Royalton Farms, our working organic farm where most of what reaches the table is grown.',
-    'Brides, naturalists, weekending families, second-honeymooners, conference delegates, the dog you brought. The estate holds them all without raising its voice.',
-    'Ten forest-view suites. Three dining venues, each with its own hour of the day. Twelve event spaces — indoors and out, from a 9,500 sq ft banquet hall to a lakeside lawn. A spa built for the long way home.',
+    'Brides, naturalists, weekending families, second-honeymooners, conference delegates, toddlers chasing peacocks. The estate holds them all without raising its voice.',
+    'Ten forest-view suites. Three dining venues, each with its own hour of the day. Eleven event spaces — indoors and out, from a 10,000 sq ft banquet hall to a lakeside lawn. A spa built for the long way home.',
     'And five kilometres up the road, the reserve waits — five hundred square kilometres of teak forest, leopard, sloth bear, and one of India’s healthiest tiger populations.',
   ],
   highlights: [
@@ -581,7 +582,7 @@ export const experiences = [
     id: 'events',
     title: 'Weddings & Events',
     description:
-      'From intimate ceremonies to grand celebrations for up to 5,000 guests — pillarless banquet halls and lakeside lawns.',
+      'From intimate ceremonies to grand celebrations for up to 2,000 guests — pillarless banquet halls and lakeside lawns.',
     image: '/images/weddings/gourmet-lawn.webp',
     activities: ['Weddings', 'Conferences', 'Concerts', 'Private parties'],
   },
@@ -644,8 +645,8 @@ export const weddingVenues = [
     name: 'Aria I + II + Deck',
     type: 'indoor' as const,
     description:
-      'Aria I and II combined with the Aria Deck — 3,500 sq ft of pillarless indoor space for mid-sized ceremonies and banquets.',
-    specs: '3,500 sq ft · air-conditioned · pillarless',
+      'Aria I and II combined with the Aria Deck — 4,000 sq ft of pillarless indoor space for mid-sized ceremonies and banquets.',
+    specs: '4,000 sq ft · air-conditioned · pillarless',
     capacity: 'Capacity on request',
     image: '/images/weddings/aria-grand-hall.webp',
   },
@@ -665,8 +666,8 @@ export const weddingVenues = [
     type: 'indoor' as const,
     description:
       'A state-of-the-art pillarless banquet hall with a soaring 25-foot ceiling, complemented by a 50,000 sq ft attached lawn. Designed to host majestic celebrations from intimate gatherings to grand productions.',
-    specs: '9,500 sq ft hall · 50,000 sq ft attached lawn · pillarless',
-    capacity: 'Up to 5,000 guests',
+    specs: '10,000 sq ft hall · 50,000 sq ft attached lawn · pillarless',
+    capacity: 'Up to 2,000 guests',
     image: '/images/weddings/aria-grand-hall.webp',
   },
   // ─────────────────────────────────────────────── Outdoor
@@ -730,25 +731,15 @@ export const weddingVenues = [
     capacity: 'Boutique celebrations',
     image: '/images/weddings/gourmet-lawn.webp',
   },
-  {
-    id: 'pool-lawn',
-    name: 'Pool Lawn',
-    type: 'outdoor' as const,
-    description:
-      'Set against the backdrop of lush greenery and the shimmering pool — a tranquil oasis for celebrations of every scale.',
-    specs: 'Poolside · open-air',
-    capacity: '100 pax',
-    image: '/images/weddings/poolside-pool.webp',
-  },
 ];
 
 export const weddings = {
   title: 'The wedding that found its setting',
   description:
-    'Pillarless halls, lakeside lawns, and forest clearings. From a twenty-person ceremony to a five-thousand-guest reception — one planner, one estate, every hour accounted for.',
+    'Pillarless halls, lakeside lawns, and forest clearings. From a twenty-person ceremony to a two-thousand-guest reception — one planner, one estate, every hour accounted for.',
   features: [
-    'Twelve distinct venues — five indoor, seven outdoor',
-    'Capacity from twenty to five thousand',
+    'Eleven distinct venues — five indoor, six outdoor',
+    'Capacity from twenty to two thousand',
     'A planner who only does your wedding',
     'Catering shaped to your family menu',
     'On-site rooms for every guest',

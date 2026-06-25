@@ -7,7 +7,7 @@ const FACTS = [
   { l: '10', u: 'Acres', d: 'Lawns, mango groves, lakeside paths' },
   { l: '20 min', u: 'From the city', d: 'Door to Kolar in half an hour' },
   { l: '5 km', u: 'To Ratapani', d: 'For the morning you choose a safari' },
-  { l: '5,000', u: 'Guests', d: 'For the wedding you’ve been planning' },
+  { l: '2,000', u: 'Guests', d: 'For the wedding you’ve been planning' },
 ];
 
 const WhereYouAre = () => {
