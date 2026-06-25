@@ -86,7 +86,7 @@ export const faqs: Faq[] = [
     topic: 'general',
     question: 'What makes Giovanni Village different from other resorts near Bhopal?',
     answer:
-      'Giovanni Village is the only luxury resort in the Bhopal region built on the edge of the Ratapani Tiger Reserve, with ten distinct forest-view suites, three dining venues, an in-house spa (Elysium), and eleven event venues — five indoor, six outdoor — all inside a ten-acre working estate with its own organic farm (Royalton Farms).',
+      'Giovanni Village is the only luxury resort in the Bhopal region built on the edge of the Ratapani Tiger Reserve, with ten distinct forest-view room categories, three dining venues, an in-house spa (Elysium), and eleven event venues — five indoor, six outdoor — all inside a ten-acre working estate with its own organic farm (Royalton Farms).',
     featured: true,
   },
   {
@@ -346,7 +346,7 @@ export const faqs: Faq[] = [
     topic: 'experiences',
     question: 'What activities are available at Giovanni Village?',
     answer:
-      'Giovanni Village offers over 20 on-site activities, including cycling, croquet, manual scooters, board games (Tambola, Carrom, Foosball, Jenga, Uno), badminton, frisbee, an open-air theatre, telescope dinners at Pihu, a self-service barbecue, a Junior Chef Academy for kids, and farm tours at the in-house Royalton Farms. The soft-touch swimming pool, lakeside fishing and morning milking experience round out the day.',
+      'Giovanni Village offers over 20 on-site activities, including cycling, croquet, manual scooters, board games (Tambola, Carrom, Foosball, Jenga, Uno), badminton, frisbee, an open-air theatre, telescope dinners at Pihu, a self-service barbecue, a Junior Chef Academy for kids, and farm tours at the in-house Royalton Farms. The soft-touch swimming pool, lakeside fishing and afternoon milking experience round out the day.',
   },
   {
     id: 'kids-activities',
@@ -360,7 +360,7 @@ export const faqs: Faq[] = [
     topic: 'experiences',
     question: 'Can I visit the farm at Giovanni Village?',
     answer:
-      'Yes — Royalton Farms is the working organic farm inside the Giovanni Village estate, and guests can join guided farm tours, farm-to-table breakfasts, and the 4:30 AM fresh-milking experience. The farm supplies much of the produce served across the resort\'s three dining venues.',
+      'Yes — Royalton Farms is the working organic farm inside the Giovanni Village estate, and guests can join guided farm tours, farm-to-table breakfasts, and the 4:30 PM fresh-milking experience. The farm supplies much of the produce served across the resort\'s three dining venues.',
   },
   {
     id: 'swimming-pool',

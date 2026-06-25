@@ -38,12 +38,12 @@ const SIGNATURES: Signature[] = [
   },
   {
     eyebrow: 'The land',
-    lead: 'The morning',
-    accent: 'before',
-    tail: 'everyone wakes',
+    lead: 'The hour',
+    accent: 'the herd',
+    tail: 'comes in',
     body:
-      'A pre-dawn walk to the farm shed. The smell of the milk, still warm. The way the cows look at you. The same milk you’ll find in your coffee an hour later.',
-    meta: '4:30 AM · Optional',
+      'A late-afternoon walk to the farm shed as the light goes gold. The smell of the milk, still warm. The way the cows look at you. The same milk, bottled fresh for tomorrow’s coffee.',
+    meta: '4:30 PM · Optional',
     img: '/images/about/landscape-1.webp',
   },
   {

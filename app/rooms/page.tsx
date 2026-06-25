@@ -14,7 +14,7 @@ import { rooms, siteConfig } from '@/lib/data';
 export const metadata = {
   title: 'Rooms & Suites',
   description:
-    'Eight distinct rooms and suites at Giovanni Village Resort, Bhopal — from 430ft² King Rooms with garden views to the 1,100ft² Royal Suite with a private open-to-sky plunge pool and 2,000ft² lawn. Patented Natural Latex bedding, farm-to-table breakfast.',
+    'Ten distinct room categories across 40+ rooms at Giovanni Village Resort, Bhopal — from 430ft² King Rooms with garden views to the 1,100ft² Royal Suite with a private open-to-sky plunge pool and 2,000ft² lawn. Patented Natural Latex bedding, farm-to-table breakfast.',
   alternates: { canonical: '/rooms' },
   openGraph: {
     title: 'Rooms & Suites — Giovanni Village Resort',

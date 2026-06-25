@@ -41,7 +41,7 @@ const HERO_LINES: HeroLine[] = [
     script: 'forest',
     tail: '.',
     description:
-      'Ten suites at the edge of Ratapani Tiger Reserve — five hundred square kilometres of teak forest just past the gate, and a naturalist who knows where the leopards drink.',
+      'Ten room categories at the edge of Ratapani Tiger Reserve — five hundred square kilometres of teak forest just past the gate, and a naturalist who knows where the leopards drink.',
   },
   {
     script: 'marry',

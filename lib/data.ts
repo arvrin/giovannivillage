@@ -102,18 +102,18 @@ export const hero = {
 
 export const about = {
   title: 'A house that learned to listen',
-  subtitle: 'Ten acres, ten suites, one long pause in the day.',
+  subtitle: 'Ten acres, ten room categories, one long pause in the day.',
   content: [
     'Giovanni Village sits on the edge of Ratapani Tiger Reserve, twenty minutes outside Bhopal. Ten acres of mango groves, lily ponds, lakeside paths — and Royalton Farms, our working organic farm where most of what reaches the table is grown.',
     'Brides, naturalists, weekending families, second-honeymooners, conference delegates, toddlers chasing peacocks. The estate holds them all without raising its voice.',
-    'Ten forest-view suites. Three dining venues, each with its own hour of the day. Eleven event spaces — indoors and out, from a 10,000 sq ft banquet hall to a lakeside lawn. A spa built for the long way home.',
+    'Ten forest-view room categories. Three dining venues, each with its own hour of the day. Eleven event spaces — indoors and out, from a 10,000 sq ft banquet hall to a lakeside lawn. A spa built for the long way home.',
     'And five kilometres up the road, the reserve waits — five hundred square kilometres of teak forest, leopard, sloth bear, and one of India’s healthiest tiger populations.',
   ],
   highlights: [
     {
       icon: 'hotel',
       title: 'Forest-view suites',
-      description: 'Ten rooms, each opening to green — with plunge pools and open-to-sky baths.',
+      description: 'Ten room categories, each opening to green — with plunge pools and open-to-sky baths.',
     },
     {
       icon: 'leaf',
@@ -890,8 +890,8 @@ export const activities = [
   },
   {
     id: 'fresh-milking',
-    title: 'Morning Glory: Fresh Milking Process',
-    description: 'Witness and participate in the fresh milking of cows at 4:30 AM — a truly unique experience.',
+    title: 'Golden Hour: Fresh Milking',
+    description: 'Witness and participate in the fresh milking of cows at 4:30 PM — a truly unique experience.',
     category: 'Nature',
     image: '/images/experiences/icons/icon-20.webp',
   },

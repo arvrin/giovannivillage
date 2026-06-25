@@ -42,7 +42,7 @@ const includes = [
   },
   {
     eyebrow: 'On-site rooms for every guest',
-    body: 'Ten suites in the resort, eight more at Giovanni House and Giovanni Suites in Arera Colony. The family stays under one roof.',
+    body: 'Rooms across ten categories in the resort, plus eight more at Giovanni House and Giovanni Suites in Arera Colony. The family stays under one roof.',
   },
   {
     eyebrow: 'Eleven venues, one estate',

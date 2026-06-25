@@ -13,7 +13,7 @@ function getFooterCopy(pathname: string): { eyebrow: string; line: React.ReactNo
   const map: Record<string, { eyebrow: string; line: React.ReactNode }> = {
     '/': { eyebrow: 'Giovanni Village', line: <>Slow stays, <span className="font-script">wild</span> mornings.</> },
     '/about': { eyebrow: 'The estate', line: <>A house that learned to <span className="font-script">listen</span>.</> },
-    '/rooms': { eyebrow: 'The stays', line: <>Ten rooms, each opening to <span className="font-script">green</span>.</> },
+    '/rooms': { eyebrow: 'The stays', line: <>Ten room categories, each opening to <span className="font-script">green</span>.</> },
     '/dining': { eyebrow: 'The tables', line: <>Three tables, <span className="font-script">one</span> long meal.</> },
     '/spa': { eyebrow: 'Elysium', line: <>A long way <span className="font-script">home</span>.</> },
     '/experiences': { eyebrow: 'The doings', line: <>Ways to <span className="font-script">lose</span> the day.</> },

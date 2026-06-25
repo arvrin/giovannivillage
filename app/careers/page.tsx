@@ -60,7 +60,7 @@ export default function CareersPage() {
         <Container>
           <IntroBlock title="The Giovanni way of working">
             <p>
-              The estate hosts 2,000-guest weddings and 4:30 AM milking walks, conferences and proposal dinners, the bride&apos;s family and a couple on their tenth anniversary. The teams that hold this rhythm care about the details that don&apos;t get noticed — the towel folded a particular way, the bowl of warm water at check-in, the second cup of coffee that arrived before you asked.
+              The estate hosts 2,000-guest weddings and 4:30 PM milking walks, conferences and proposal dinners, the bride&apos;s family and a couple on their tenth anniversary. The teams that hold this rhythm care about the details that don&apos;t get noticed — the towel folded a particular way, the bowl of warm water at check-in, the second cup of coffee that arrived before you asked.
             </p>
             <p>
               If you like the small, careful, unfussy part of hospitality, you&apos;ll find a home here.

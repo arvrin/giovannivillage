@@ -43,7 +43,7 @@ const seasons = [
 const fields = [
   { label: 'The kitchen garden', body: 'Herbs, salad leaves, chillies, the tomatoes that finish on the vine. Picked at sunrise; on the plate by lunch.' },
   { label: 'The mango grove', body: 'Older trees that the family planted before the resort. Alphonso, Dasheri, Langra. Cared for slowly, harvested by hand.' },
-  { label: 'The dairy & henhouse', body: 'A small herd, a careful flock. The 4:30 AM milking is real work; guests who join it walk back with a flask still warm from the cow.' },
+  { label: 'The dairy & henhouse', body: 'A small herd, a careful flock. The 4:30 PM milking is real work; guests who join it walk back with a flask still warm from the cow.' },
   { label: 'The orchard & beehives', body: 'Lemon and guava trees, two beehives that the gardener moves twice a year. Honey gets bottled for the kitchen, never sold.' },
 ];
 
@@ -73,7 +73,7 @@ export default function RoyaltonPage() {
               Giovanni Village estate. It is not a feature — it is the reason
               breakfast looks the way it does. The vegetables walk in from the
               field the same morning; the eggs are gathered by hand at six;
-              the milk is bottled fresh by the time the coffee is ready.
+              the milk, drawn at the afternoon milking, is bottled fresh and chilled for the morning coffee.
             </p>
             <p>
               We don&apos;t pretend the menu is the same year-round. The farm
@@ -159,8 +159,8 @@ export default function RoyaltonPage() {
           <div className="mt-12 mb-24 grid md:grid-cols-3 gap-6">
             {[
               {
-                title: 'The 4:30 AM milking',
-                body: 'Walk to the dairy shed before dawn. Help if you want. The same milk reaches your coffee an hour later.',
+                title: 'The 4:30 PM milking',
+                body: 'Walk to the dairy shed in the late afternoon, as the light goes gold. Help if you want. The same milk is bottled fresh and waiting in your coffee by morning.',
               },
               {
                 title: 'The farm tour',
