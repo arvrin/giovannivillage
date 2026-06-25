@@ -51,6 +51,9 @@ export default function SpaPage() {
               Ancient practice meets the body that needs it now. Ayurveda, deep tissue, breath work — each ritual designed to land you somewhere lower, quieter than where you began.
             </p>
             <p>
+              We treat wellness as a long game, not a quick fix. The longer rituals are built for recovery and deep sleep — the things that compound over a lifetime — so Elysium is as much about longevity as it is about a single quiet afternoon.
+            </p>
+            <p>
               Our therapists know the difference between a treatment and a tonic. You sleep like a child afterward.
             </p>
           </IntroBlock>

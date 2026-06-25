@@ -17,14 +17,16 @@ export default function TermsPage() {
       <h2>Check-in & Check-out</h2>
       <ul>
         <li>Check-in time: 14:00 hrs</li>
-        <li>Check-out time: 11:00 hrs</li>
+        <li>Check-out time: 12:00 noon</li>
       </ul>
 
-      <h2>House Rules</h2>
+      <h2>Resort Policies</h2>
       <ul>
         <li>Outside liquor is not permissible.</li>
-        <li>Pets are not allowed except for service animals.</li>
-        <li>Outside food and speakers are not allowed in the premises.</li>
+        <li>Outside food is not allowed on the premises.</li>
+        <li>Pets are not allowed in the rooms.</li>
+        <li>Smoking is prohibited in all indoor areas.</li>
+        <li>Please respect the tranquility of other guests.</li>
       </ul>
 
       <h2>Security Deposit</h2>

@@ -109,7 +109,7 @@ export default function CelebrationsPage() {
                     )}
                     external
                   >
-                    Enquire about {v.name}
+                    Enquire
                   </Button>
                 }
               />

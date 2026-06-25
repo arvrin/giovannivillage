@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -23,6 +23,7 @@ const BrandCarousel = ({
 }: BrandCarouselProps) => {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
     if (paused || brands.length <= 1) return;
@@ -35,13 +36,29 @@ const BrandCarousel = ({
   if (brands.length === 0) return null;
   const b = brands[active];
 
+  const go = (dir: number) =>
+    setActive((i) => (i + dir + brands.length) % brands.length);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setPaused(true);
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    touchStartX.current = null;
+    setPaused(false);
+  };
+
   return (
     <div
-      className="relative"
+      className="relative touch-pan-y select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
       <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.04]">
         <AnimatePresence mode="wait">

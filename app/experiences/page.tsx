@@ -8,7 +8,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import ExperiencesEditorial from './ExperiencesEditorial';
-import { siteConfig } from '@/lib/data';
+import { siteConfig, activities } from '@/lib/data';
 import { getWhatsAppLink } from '@/lib/utils';
 import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
@@ -62,6 +62,28 @@ export default function ExperiencesPage() {
                   className="object-cover hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 640px) 100vw, 33vw"
                 />
+              </div>
+            ))}
+          </div>
+
+          {/* Every experience — icon panel */}
+          <SectionHeader
+            title="Twenty ways to spend the day"
+            eyebrow="Every experience"
+            className="mt-8"
+          />
+          <div className="mt-12 mb-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {activities.map((a) => (
+              <div
+                key={a.id}
+                className="flex flex-col items-center gap-3 rounded-[var(--radius-md)] bg-[var(--color-background-secondary)] p-5 text-center"
+              >
+                <div className="relative h-14 w-14 shrink-0">
+                  <Image src={a.image} alt={a.title} fill className="object-contain" sizes="56px" />
+                </div>
+                <p className="text-sm font-medium text-[var(--color-text)]" style={{ lineHeight: 1.4 }}>
+                  {a.title}
+                </p>
               </div>
             ))}
           </div>
