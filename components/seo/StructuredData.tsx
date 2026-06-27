@@ -1,4 +1,4 @@
-import { siteConfig, restaurants } from '@/lib/data';
+import { siteConfig, restaurants, type Venue } from '@/lib/data';
 
 /**
  * JSON-LD structured-data fragments. Renders inert <script> tags that
@@ -170,6 +170,49 @@ export function BreadcrumbSchema({ items }: { items: { name: string; href: strin
       position: i + 1,
       name: item.name,
       item: `${siteConfig.url}${item.href}`,
+    })),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: jsonLd(data) }}
+    />
+  );
+}
+
+/** EventVenue for a single venue detail page — part of the resort. */
+export function VenueSchema({ venue }: { venue: Venue }) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'EventVenue',
+    '@id': `${siteConfig.url}/venues/${venue.id}#venue`,
+    name: venue.name,
+    description: venue.description,
+    image: `${siteConfig.url}${venue.image}`,
+    url: `${siteConfig.url}/venues/${venue.id}`,
+    address: baseAddress,
+    geo: baseGeo,
+    containedInPlace: { '@id': `${siteConfig.url}#hotel` },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: jsonLd(data) }}
+    />
+  );
+}
+
+/** ItemList of every venue — drop on the /venues hub. */
+export function VenuesListSchema({ venues }: { venues: Venue[] }) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Venues at Giovanni Village Resort',
+    itemListElement: venues.map((v, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: v.name,
+      url: `${siteConfig.url}/venues/${v.id}`,
     })),
   };
   return (

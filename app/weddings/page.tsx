@@ -10,7 +10,7 @@ import Button from '@/components/ui/Button';
 import PageHero from '@/components/ui/PageHero';
 import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
-import ImageCard from '@/components/ui/ImageCard';
+import VenueGrid from '@/components/ui/VenueGrid';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import WeddingMomentVideo from '@/components/themes/retreat/WeddingMomentVideo';
@@ -213,33 +213,7 @@ export default function WeddingsPage() {
               Four more pillarless halls and decks
             </h3>
           </div>
-          <div className="mb-20 grid md:grid-cols-2 gap-8">
-            {indoorRest.map((v) => (
-              <ImageCard
-                key={v.id}
-                image={v.image}
-                video={(v as { video?: string }).video}
-                alt={v.name}
-                aspect="video"
-                eyebrow={`${v.specs} · ${v.capacity}`}
-                title={v.name}
-                description={v.description}
-                footer={
-                  <Button
-                    variant="outline"
-                    size="md"
-                    href={getWhatsAppLink(
-                      siteConfig.contact.whatsapp,
-                      WHATSAPP_MESSAGES.weddingVenue(v.name),
-                    )}
-                    external
-                  >
-                    Enquire about {v.name}
-                  </Button>
-                }
-              />
-            ))}
-          </div>
+          <VenueGrid venues={indoorRest} intent="wedding" className="mb-20" />
 
           <div className="mt-12 mb-6">
             <p
@@ -252,32 +226,11 @@ export default function WeddingsPage() {
               Seven lawns, lakesides and decks
             </h3>
           </div>
-          <div className="mb-24 grid md:grid-cols-2 gap-8">
-            {outdoor.map((v) => (
-              <ImageCard
-                key={v.id}
-                image={v.image}
-                video={(v as { video?: string }).video}
-                alt={v.name}
-                aspect="video"
-                eyebrow={`${v.specs} · ${v.capacity}`}
-                title={v.name}
-                description={v.description}
-                footer={
-                  <Button
-                    variant="outline"
-                    size="md"
-                    href={getWhatsAppLink(
-                      siteConfig.contact.whatsapp,
-                      WHATSAPP_MESSAGES.weddingVenue(v.name),
-                    )}
-                    external
-                  >
-                    Enquire about {v.name}
-                  </Button>
-                }
-              />
-            ))}
+          <VenueGrid venues={outdoor} intent="wedding" className="mb-10" />
+          <div className="mb-24 text-center">
+            <Button variant="outline" size="md" href="/venues">
+              Explore all venues
+            </Button>
           </div>
 
           {/* What's included — reframed with Giovanni-specific anchors */}

@@ -618,12 +618,31 @@ export const restaurants = [
   },
 ];
 
-export const weddingVenues = [
+export type VenueUseCase = 'wedding' | 'corporate' | 'intimate';
+
+export interface Venue {
+  id: string;
+  name: string;
+  type: 'indoor' | 'outdoor';
+  /** Which intent pages surface this venue (weddings / meetings / celebrations). */
+  useCases: VenueUseCase[];
+  description: string;
+  /** Free-text spec line. Phase B: structure into a numeric area + features[]. */
+  specs: string;
+  /** Free-text capacity line. Phase B: structure into seated/floating numbers. */
+  capacity: string;
+  image: string;
+  /** Optional looping muted video; ImageCard uses `image` as the poster. */
+  video?: string;
+}
+
+export const venues: Venue[] = [
   // ─────────────────────────────────────────────── Indoor (Air Conditioned)
   {
     id: 'the-forum',
     name: 'The Forum',
     type: 'indoor' as const,
+    useCases: ['wedding', 'corporate', 'intimate'],
     description:
       'A 1,000 sq ft multi-purpose space overlooking the pool — ideal for board meetings, conferences, brand activations and intimate functions.',
     specs: '1,000 sq ft · air-conditioned',
@@ -634,6 +653,7 @@ export const weddingVenues = [
     id: 'aria-deck',
     name: 'Aria Deck',
     type: 'indoor' as const,
+    useCases: ['wedding', 'corporate', 'intimate'],
     description:
       'A dedicated indoor deck attached to the Aria Grand — for cocktail receptions, lounges and pre-ceremony gatherings. Capacity details on request.',
     specs: 'Air-conditioned · attached to Aria Grand',
@@ -644,6 +664,7 @@ export const weddingVenues = [
     id: 'aria-i-ii-deck',
     name: 'Aria I + II + Deck',
     type: 'indoor' as const,
+    useCases: ['wedding', 'corporate'],
     description:
       'Aria I and II combined with the Aria Deck — 4,000 sq ft of pillarless indoor space for mid-sized ceremonies and banquets.',
     specs: '4,000 sq ft · air-conditioned · pillarless',
@@ -655,6 +676,7 @@ export const weddingVenues = [
     id: 'aria-iii',
     name: 'Aria III',
     type: 'indoor' as const,
+    useCases: ['wedding', 'corporate'],
     description:
       'A 6,000 sq ft pillarless indoor venue — the central Aria for mid-to-large receptions and banquets.',
     specs: '6,000 sq ft · air-conditioned · pillarless',
@@ -666,6 +688,7 @@ export const weddingVenues = [
     id: 'aria-grand',
     name: 'Aria Grand',
     type: 'indoor' as const,
+    useCases: ['wedding', 'corporate'],
     description:
       'A state-of-the-art pillarless banquet hall with a soaring 25-foot ceiling, complemented by a 50,000 sq ft attached lawn. Designed to host majestic celebrations from intimate gatherings to grand productions.',
     specs: '10,000 sq ft hall · 50,000 sq ft attached lawn · pillarless',
@@ -678,6 +701,7 @@ export const weddingVenues = [
     id: 'pihu-deck',
     name: 'Pihu Deck',
     type: 'outdoor' as const,
+    useCases: ['wedding', 'corporate', 'intimate'],
     description:
       'An open-air deck beneath the rooftop Pihu — for sundowner cocktails, intimate ceremonies and sangeet evenings under the sky. Capacity details on request.',
     specs: 'Open-air rooftop · adjacent to Pihu',
@@ -688,6 +712,7 @@ export const weddingVenues = [
     id: 'sudesh-ii',
     name: 'Sudesh II',
     type: 'outdoor' as const,
+    useCases: ['wedding', 'corporate'],
     description:
       'An outdoor lawn nestled between dense trees — perfect for dreamy outdoor weddings, mandaps and sangeet evenings.',
     specs: '51,000 sq ft · lawn',
@@ -698,6 +723,7 @@ export const weddingVenues = [
     id: 'banquet-lawn',
     name: 'Banquet Lawn',
     type: 'outdoor' as const,
+    useCases: ['wedding', 'corporate'],
     description:
       'A wide outdoor banquet lawn ringed by trees — for sit-down dinners, mehndi mornings and reception evenings. Capacity details on request.',
     specs: 'Open-air lawn',
@@ -708,6 +734,7 @@ export const weddingVenues = [
     id: 'sudesh-i',
     name: 'Sudesh I',
     type: 'outdoor' as const,
+    useCases: ['wedding', 'corporate'],
     description:
       'An outdoor lawn nestled between dense trees — ideal for larger weddings, sangeet evenings and grand mandap setups.',
     specs: '14,000 sq ft · lawn',
@@ -718,6 +745,7 @@ export const weddingVenues = [
     id: 'cocktail-lawn',
     name: 'Cocktail Lawn',
     type: 'outdoor' as const,
+    useCases: ['wedding', 'corporate', 'intimate'],
     description:
       'A 9,000 sq ft lawn dedicated to lively cocktail parties — stylish receptions where the beauty of nature complements every toast.',
     specs: '9,000 sq ft · open-air',
@@ -728,6 +756,7 @@ export const weddingVenues = [
     id: 'gourmet-lake-side-lawn',
     name: 'Gourmet Lake Side Lawn',
     type: 'outdoor' as const,
+    useCases: ['wedding', 'corporate', 'intimate'],
     description:
       'Adjacent to Gourmet By The Woods, this curated space offers breathtaking lake views and sophisticated charm — an ideal setting for fine-dining-led celebrations.',
     specs: 'Lakeside · adjacent to Gourmet By The Woods',
@@ -735,6 +764,9 @@ export const weddingVenues = [
     image: '/images/weddings/gourmet-lawn.webp',
   },
 ];
+
+/** @deprecated Use `venues`. Kept as an alias during the venue refactor. */
+export const weddingVenues = venues;
 
 export const weddings = {
   title: 'The wedding that found its setting',

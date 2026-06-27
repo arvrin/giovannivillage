@@ -7,7 +7,7 @@ import Button from '@/components/ui/Button';
 import PageHero from '@/components/ui/PageHero';
 import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
-import ImageCard from '@/components/ui/ImageCard';
+import VenueGrid from '@/components/ui/VenueGrid';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import { weddingVenues, siteConfig } from '@/lib/data';
@@ -21,16 +21,6 @@ const occasions = [
   { title: 'Intimate Gatherings', line: 'Baby showers, griha pravesh, family reunions, retirement dinners. Small numbers, considered details.' },
 ];
 
-// Subset of venues that work for intimate, smaller-scale celebrations.
-const INTIMATE_VENUE_IDS = new Set([
-  'cocktail-lawn',
-  'gourmet-lake-side-lawn',
-  'pool-lawn',
-  'pihu-deck',
-  'aria-deck',
-  'the-forum',
-]);
-
 const included = [
   'Bespoke menu shaped to the occasion and the season',
   'Decor consultation — flowers, lanterns, table styling, signage',
@@ -42,7 +32,7 @@ const included = [
 ];
 
 export default function CelebrationsPage() {
-  const venues = weddingVenues.filter((v) => INTIMATE_VENUE_IDS.has(v.id));
+  const venues = weddingVenues.filter((v) => v.useCases.includes('intimate'));
 
   return (
     <>
@@ -85,35 +75,15 @@ export default function CelebrationsPage() {
 
           {/* Venues — filtered for intimate scale */}
           <SectionHeader
-            title="Six settings for an intimate evening"
+            title="Five settings for an intimate evening"
             eyebrow="The spaces"
             description="A subset of the estate's venues, chosen for their fit at the 10–200 guest scale. For larger formats — see the Weddings or Meetings & Events pages."
           />
-          <div className="mt-12 mb-24 grid md:grid-cols-2 gap-8">
-            {venues.map((v) => (
-              <ImageCard
-                key={v.id}
-                image={v.image}
-                alt={v.name}
-                aspect="video"
-                eyebrow={`${v.specs} · ${v.capacity}`}
-                title={v.name}
-                description={v.description}
-                footer={
-                  <Button
-                    variant="outline"
-                    size="md"
-                    href={getWhatsAppLink(
-                      siteConfig.contact.whatsapp,
-                      WHATSAPP_MESSAGES.privateVenue(v.name),
-                    )}
-                    external
-                  >
-                    Enquire
-                  </Button>
-                }
-              />
-            ))}
+          <VenueGrid venues={venues} intent="intimate" className="mt-12 mb-10" />
+          <div className="mb-24 text-center">
+            <Button variant="outline" size="md" href="/venues">
+              Explore all venues
+            </Button>
           </div>
 
           {/* What's included */}

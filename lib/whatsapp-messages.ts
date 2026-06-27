@@ -51,6 +51,10 @@ export const WHATSAPP_MESSAGES = {
   privateVenue: (venue: string) =>
     `Hi Giovanni Village, I'd like to enquire about hosting a private celebration at ${venue}.`,
 
+  /** /venues/[id] detail page — intent-agnostic enquiry, venue name interpolated */
+  venueEnquiry: (venue: string) =>
+    `Hi Giovanni Village, I'd like to enquire about ${venue} — availability, capacity and what's included.`,
+
   /** /rooms — Talk to a human about a stay */
   roomsConcierge:
     "Hi Giovanni Village, I'd like to talk to the concierge about a stay.",

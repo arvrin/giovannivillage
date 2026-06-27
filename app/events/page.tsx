@@ -7,7 +7,7 @@ import Button from '@/components/ui/Button';
 import PageHero from '@/components/ui/PageHero';
 import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
-import ImageCard from '@/components/ui/ImageCard';
+import VenueGrid from '@/components/ui/VenueGrid';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import { weddingVenues, siteConfig } from '@/lib/data';
@@ -88,35 +88,11 @@ export default function EventsPage() {
             </p>
             <h3 className="display-italic text-2xl leading-tight md:text-3xl">Five pillarless halls and decks</h3>
           </div>
-          <div className="mb-20 grid md:grid-cols-2 gap-8">
-            {weddingVenues
-              .filter((v) => v.type === 'indoor')
-              .map((v) => (
-                <ImageCard
-                  key={v.id}
-                  image={v.image}
-                  video={(v as { video?: string }).video}
-                  alt={v.name}
-                  aspect="video"
-                  eyebrow={`${v.specs} · ${v.capacity}`}
-                  title={v.name}
-                  description={v.description}
-                  footer={
-                    <Button
-                      variant="outline"
-                      size="md"
-                      href={getWhatsAppLink(
-                        siteConfig.contact.whatsapp,
-                        WHATSAPP_MESSAGES.corporateVenue(v.name),
-                      )}
-                      external
-                    >
-                      Enquire about {v.name}
-                    </Button>
-                  }
-                />
-              ))}
-          </div>
+          <VenueGrid
+            venues={weddingVenues.filter((v) => v.type === 'indoor')}
+            intent="corporate"
+            className="mb-20"
+          />
 
           <div className="mt-12 mb-6">
             <p
@@ -127,34 +103,15 @@ export default function EventsPage() {
             </p>
             <h3 className="display-italic text-2xl leading-tight md:text-3xl">Seven lawns, lakesides and decks</h3>
           </div>
-          <div className="mb-24 grid md:grid-cols-2 gap-8">
-            {weddingVenues
-              .filter((v) => v.type === 'outdoor')
-              .map((v) => (
-                <ImageCard
-                  key={v.id}
-                  image={v.image}
-                  video={(v as { video?: string }).video}
-                  alt={v.name}
-                  aspect="video"
-                  eyebrow={`${v.specs} · ${v.capacity}`}
-                  title={v.name}
-                  description={v.description}
-                  footer={
-                    <Button
-                      variant="outline"
-                      size="md"
-                      href={getWhatsAppLink(
-                        siteConfig.contact.whatsapp,
-                        WHATSAPP_MESSAGES.corporateVenue(v.name),
-                      )}
-                      external
-                    >
-                      Enquire about {v.name}
-                    </Button>
-                  }
-                />
-              ))}
+          <VenueGrid
+            venues={weddingVenues.filter((v) => v.type === 'outdoor')}
+            intent="corporate"
+            className="mb-10"
+          />
+          <div className="mb-24 text-center">
+            <Button variant="outline" size="md" href="/venues">
+              Explore all venues
+            </Button>
           </div>
 
           {/* What's included */}

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { siteConfig, rooms } from '@/lib/data';
+import { siteConfig, rooms, venues } from '@/lib/data';
 import { getAllPosts, getAllTags } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/weddings`, lastModified, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${base}/events`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${base}/celebrations`, lastModified, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${base}/venues`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${base}/gallery`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/blog`, lastModified, changeFrequency: 'weekly', priority: 0.85 },
     { url: `${base}/faq`, lastModified, changeFrequency: 'monthly', priority: 0.75 },
@@ -39,6 +40,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  // Dynamic venue-detail routes, one per venue.
+  const venueRoutes: MetadataRoute.Sitemap = venues.map((v) => ({
+    url: `${base}/venues/${v.id}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
   // Blog posts + tag pages — pulled from MDX content directory.
   const posts = getAllPosts();
   const blogPostRoutes: MetadataRoute.Sitemap = posts.map((p) => ({
@@ -54,5 +63,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...staticRoutes, ...roomRoutes, ...blogPostRoutes, ...blogTagRoutes];
+  return [...staticRoutes, ...roomRoutes, ...venueRoutes, ...blogPostRoutes, ...blogTagRoutes];
 }
