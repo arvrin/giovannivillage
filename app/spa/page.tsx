@@ -124,7 +124,7 @@ export default function SpaPage() {
                   Call Spa Reception
                 </Button>
                 <Button
-                  variant="outline"
+                  variant="light-outline"
                   size="lg"
                   href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.spa)}
                   external

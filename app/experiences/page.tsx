@@ -108,7 +108,7 @@ export default function ExperiencesPage() {
                 Book Your Stay
               </Button>
               <Button
-                variant="outline"
+                variant="light-outline"
                 size="lg"
                 href={getWhatsAppLink(siteConfig.contact.whatsapp, WHATSAPP_MESSAGES.experiences)}
                 external
