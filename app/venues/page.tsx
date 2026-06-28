@@ -73,7 +73,7 @@ export default function VenuesIndexPage() {
               Indoor · Air-Conditioned
             </p>
             <h2 className="display-italic text-2xl leading-tight md:text-3xl">
-              Five pillarless halls and decks
+              Halls and meeting rooms
             </h2>
           </div>
           <div className="mb-20">

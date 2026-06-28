@@ -8,6 +8,7 @@ export const metadata = {
     title: 'Cancellation & Refund Policy — Giovanni Village Resort',
     description: 'Cancellation windows, deposits, and non-arrival rules.',
     url: '/cancellation',
+    images: ['/images/og/og-default.jpg'],
   },
 };
 

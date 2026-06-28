@@ -59,11 +59,10 @@ export const BRANDS: Brand[] = [
     description:
       'Eight king suites in the leafiest pocket of Arera Colony — perfect for the short business trip or the night before a wedding.',
     location: 'E-4, Arera Colony, Bhopal',
-    // Now its own standalone site. Interim Vercel URL until the custom domain
-    // (house.giovanniboutique.com) DNS is live.
-    href: 'https://gvboutique.vercel.app',
+    // Now its own standalone site on its custom domain.
+    href: 'https://house.giovanniboutique.com',
     external: true,
-    image: '/images/city-stays/house/hero.webp',
+    image: '/images/city-stays/house/cover.webp',
   },
   {
     id: 'giovanni-suites',
@@ -72,11 +71,10 @@ export const BRANDS: Brand[] = [
     description:
       'Four rooms named for the trees and colours of central India — Amaltas, Gulmohar, Razz, Rangrez. Long weekends, family visits, wedding-guest stays.',
     location: 'E-8, Arera Colony, Bhopal',
-    // Now its own standalone site. Interim Vercel URL until the custom domain
-    // (suites.giovanniboutique.com) DNS is live.
-    href: 'https://giovanni-suites.vercel.app',
+    // Now its own standalone site on its custom domain.
+    href: 'https://suites.giovanniboutique.com',
     external: true,
-    image: '/images/city-stays/suites/hero.webp',
+    image: '/images/city-stays/suites/cover.webp',
   },
   {
     id: 'giovanni-boutique',

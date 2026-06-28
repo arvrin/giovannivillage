@@ -74,8 +74,8 @@ const planSteps = [
 
 export default function WeddingsPage() {
   const ariaGrand = weddingVenues.find((v) => v.id === 'aria-grand');
-  const indoorRest = weddingVenues.filter((v) => v.type === 'indoor' && v.id !== 'aria-grand');
-  const outdoor = weddingVenues.filter((v) => v.type === 'outdoor');
+  const indoorRest = weddingVenues.filter((v) => v.type === 'indoor' && v.id !== 'aria-grand' && v.useCases.includes('wedding'));
+  const outdoor = weddingVenues.filter((v) => v.type === 'outdoor' && v.useCases.includes('wedding'));
 
   return (
     <>
@@ -128,6 +128,36 @@ export default function WeddingsPage() {
               ))}
             </ul>
           </div>
+
+          {/* Real decor from past weddings on the estate */}
+          <div className="mb-24">
+            <p
+              className="mb-6 text-[11px] tracking-[0.36em] uppercase text-[var(--color-text-tertiary)]"
+              style={{ fontFamily: 'var(--font-eyebrow)' }}
+            >
+              The estate, dressed
+            </p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {[
+                { src: '/images/weddings/wedding-decor-2.webp', alt: 'A marigold haldi setup on the estate lawn' },
+                { src: '/images/weddings/wedding-decor-1.webp', alt: 'A pink sangeet stage with a floral backdrop' },
+                { src: '/images/weddings/wedding-decor-3.webp', alt: 'A flamingo-and-floral welcome entrance on the lawn' },
+              ].map((p) => (
+                <div
+                  key={p.src}
+                  className="relative aspect-[4/3] overflow-hidden rounded-md"
+                >
+                  <Image
+                    src={p.src}
+                    alt={p.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </Container>
 
         {/* Real wedding video — the proof piece */}
@@ -159,13 +189,27 @@ export default function WeddingsPage() {
               </p>
               <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg lg:col-span-7">
-                  <Image
-                    src={ariaGrand.image}
-                    alt={ariaGrand.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 60vw"
-                    className="object-cover"
-                  />
+                  {ariaGrand.video ? (
+                    <video
+                      src={ariaGrand.video}
+                      poster={ariaGrand.image}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      aria-label={ariaGrand.name}
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={ariaGrand.image}
+                      alt={ariaGrand.name}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      className="object-cover"
+                    />
+                  )}
                 </div>
                 <div className="lg:col-span-5">
                   <h2 className="display-italic text-3xl leading-[1.05] md:text-5xl">
@@ -201,19 +245,23 @@ export default function WeddingsPage() {
             </motion.section>
           )}
 
-          {/* Other indoor venues — tighter grid */}
-          <div className="mt-24 mb-6">
-            <p
-              className="mb-1 text-[11px] uppercase tracking-[0.3em] text-[var(--color-bronze)]"
-              style={{ fontFamily: 'var(--font-eyebrow)' }}
-            >
-              Indoor · Air-Conditioned
-            </p>
-            <h3 className="display-italic text-2xl leading-tight md:text-3xl">
-              Four more pillarless halls and decks
-            </h3>
-          </div>
-          <VenueGrid venues={indoorRest} intent="wedding" className="mb-20" />
+          {/* Other indoor venues — hidden when Aria Grand is the only indoor wedding space */}
+          {indoorRest.length > 0 && (
+            <>
+              <div className="mt-24 mb-6">
+                <p
+                  className="mb-1 text-[11px] uppercase tracking-[0.3em] text-[var(--color-bronze)]"
+                  style={{ fontFamily: 'var(--font-eyebrow)' }}
+                >
+                  Indoor · Air-Conditioned
+                </p>
+                <h3 className="display-italic text-2xl leading-tight md:text-3xl">
+                  More pillarless halls and decks
+                </h3>
+              </div>
+              <VenueGrid venues={indoorRest} intent="wedding" className="mb-20" />
+            </>
+          )}
 
           <div className="mt-12 mb-6">
             <p
@@ -223,7 +271,7 @@ export default function WeddingsPage() {
               Outdoor
             </p>
             <h3 className="display-italic text-2xl leading-tight md:text-3xl">
-              Seven lawns, lakesides and decks
+              Six lawns, lakesides and decks
             </h3>
           </div>
           <VenueGrid venues={outdoor} intent="wedding" className="mb-10" />

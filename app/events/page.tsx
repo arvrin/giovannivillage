@@ -74,9 +74,9 @@ export default function EventsPage() {
 
           {/* Venues — same 12 with corporate framing */}
           <SectionHeader
-            title="Eleven venues, every business shape"
+            title="Spaces for every business shape"
             eyebrow="The spaces"
-            description="The same venues that hold two-thousand-guest weddings hold twenty-person boardrooms — reconfigured for theatre, classroom, U-shape or banquet seating per your brief."
+            description="The venues that hold two-thousand-guest weddings also hold twenty-person boardrooms — reconfigured for theatre, classroom, U-shape or banquet seating per your brief."
           />
 
           <div className="mt-12 mb-6">
@@ -86,10 +86,10 @@ export default function EventsPage() {
             >
               Indoor · Air-Conditioned
             </p>
-            <h3 className="display-italic text-2xl leading-tight md:text-3xl">Five pillarless halls and decks</h3>
+            <h3 className="display-italic text-2xl leading-tight md:text-3xl">Halls and meeting rooms</h3>
           </div>
           <VenueGrid
-            venues={weddingVenues.filter((v) => v.type === 'indoor')}
+            venues={weddingVenues.filter((v) => v.type === 'indoor' && v.useCases.includes('corporate'))}
             intent="corporate"
             className="mb-20"
           />
@@ -101,10 +101,10 @@ export default function EventsPage() {
             >
               Outdoor
             </p>
-            <h3 className="display-italic text-2xl leading-tight md:text-3xl">Seven lawns, lakesides and decks</h3>
+            <h3 className="display-italic text-2xl leading-tight md:text-3xl">Lawns and lakesides</h3>
           </div>
           <VenueGrid
-            venues={weddingVenues.filter((v) => v.type === 'outdoor')}
+            venues={weddingVenues.filter((v) => v.type === 'outdoor' && v.useCases.includes('corporate'))}
             intent="corporate"
             className="mb-10"
           />

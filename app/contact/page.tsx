@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -59,6 +59,10 @@ export default function ContactPage() {
   });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'sent' | 'error'>('idle');
   const [error, setError] = useState<string | null>(null);
+  // Spam guards: a honeypot field bots tend to fill, and the time the form
+  // first rendered so the server can reject implausibly fast submissions.
+  const [honeypot, setHoneypot] = useState('');
+  const renderedAt = useRef<number>(Date.now());
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,6 +79,8 @@ export default function ContactPage() {
           message: formData.message,
           interest: 'other',
           source: 'website',
+          company: honeypot,
+          rendered_at: renderedAt.current,
         }),
       });
       if (!res.ok) {
@@ -118,13 +124,27 @@ export default function ContactPage() {
                 Send us a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot — hidden from humans, off-screen and out of the tab
+                    order. Bots that fill every field will trip it server-side. */}
+                <div aria-hidden className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden" style={{ position: 'absolute' }}>
+                  <label htmlFor="company">Company (leave this empty)</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">Full Name *</label>
                   <input
                     type="text"
                     id="name"
                     required
-                    className="w-full px-1 py-3 border-b-2 border-[var(--color-text-tertiary)]/30 bg-transparent focus:border-[var(--color-bronze)] outline-none transition-colors"
+                    className="w-full px-3 py-3 sm:px-1 border-b-2 border-[var(--color-text-tertiary)]/30 bg-transparent focus:border-[var(--color-bronze)] outline-none transition-colors"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
@@ -135,7 +155,7 @@ export default function ContactPage() {
                     type="email"
                     id="email"
                     required
-                    className="w-full px-1 py-3 border-b-2 border-[var(--color-text-tertiary)]/30 bg-transparent focus:border-[var(--color-bronze)] outline-none transition-colors"
+                    className="w-full px-3 py-3 sm:px-1 border-b-2 border-[var(--color-text-tertiary)]/30 bg-transparent focus:border-[var(--color-bronze)] outline-none transition-colors"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
@@ -145,7 +165,7 @@ export default function ContactPage() {
                   <input
                     type="tel"
                     id="phone"
-                    className="w-full px-1 py-3 border-b-2 border-[var(--color-text-tertiary)]/30 bg-transparent focus:border-[var(--color-bronze)] outline-none transition-colors"
+                    className="w-full px-3 py-3 sm:px-1 border-b-2 border-[var(--color-text-tertiary)]/30 bg-transparent focus:border-[var(--color-bronze)] outline-none transition-colors"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   />
@@ -156,7 +176,7 @@ export default function ContactPage() {
                     id="message"
                     required
                     rows={5}
-                    className="w-full px-1 py-3 border-b-2 border-[var(--color-text-tertiary)]/30 bg-transparent focus:border-[var(--color-bronze)] outline-none transition-colors resize-none"
+                    className="w-full px-3 py-3 sm:px-1 border-b-2 border-[var(--color-text-tertiary)]/30 bg-transparent focus:border-[var(--color-bronze)] outline-none transition-colors resize-none"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />

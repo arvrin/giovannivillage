@@ -132,9 +132,9 @@ export default function AboutPage() {
           <SectionHeader title="Frames from the estate" eyebrow="A glimpse" />
           <div className="mt-16 mb-24 md:mb-32 grid md:grid-cols-3 gap-8">
             {[
-              { src: '/images/about/landscape-1.webp', alt: 'Nature Views' },
-              { src: '/images/about/landscape-2.webp', alt: 'Garden Landscape' },
-              { src: '/images/about/landscape-3.webp', alt: 'Resort Grounds' },
+              { src: '/images/about/landscape-1.webp', alt: 'Mango groves across the estate' },
+              { src: '/images/about/landscape-2.webp', alt: 'Lily ponds on the resort grounds' },
+              { src: '/images/about/landscape-3.webp', alt: 'Lakeside path through the resort grounds' },
             ].map((img) => (
               <div key={img.src} className="relative aspect-[4/3] rounded-lg overflow-hidden group">
                 <Image

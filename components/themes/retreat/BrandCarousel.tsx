@@ -23,7 +23,7 @@ const BrandCarousel = ({
 }: BrandCarouselProps) => {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const touchStartX = useRef<number | null>(null);
+  const pointerStartX = useRef<number | null>(null);
 
   useEffect(() => {
     if (paused || brands.length <= 1) return;
@@ -38,27 +38,29 @@ const BrandCarousel = ({
 
   const go = (dir: number) =>
     setActive((i) => (i + dir + brands.length) % brands.length);
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
+  // Pointer-based drag — works with both mouse (desktop) and touch (mobile).
+  const onPointerDown = (e: React.PointerEvent) => {
+    pointerStartX.current = e.clientX;
     setPaused(true);
   };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
+  const endDrag = (e: React.PointerEvent) => {
+    if (pointerStartX.current === null) return;
+    const dx = e.clientX - pointerStartX.current;
     if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
-    touchStartX.current = null;
+    pointerStartX.current = null;
     setPaused(false);
   };
 
   return (
     <div
-      className="relative touch-pan-y select-none"
+      className="relative cursor-grab touch-pan-y select-none active:cursor-grabbing"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
+      onPointerDown={onPointerDown}
+      onPointerUp={endDrag}
+      onPointerLeave={endDrag}
     >
       <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.04]">
         <AnimatePresence mode="wait">

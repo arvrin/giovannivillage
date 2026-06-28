@@ -8,6 +8,7 @@ export const metadata = {
     title: 'Disclaimer — Giovanni Village Resort',
     description: 'Disclaimer for Giovanni Village Resort, Bhopal.',
     url: '/disclaimer',
+    images: ['/images/og/og-default.jpg'],
   },
 };
 

@@ -59,7 +59,7 @@ const Discover = () => {
           >
             <Image
               src="/images/weddings/cocktail-lawn.webp"
-              alt="Giovanni estate"
+              alt="Estate lawn set for an evening cocktail celebration"
               fill
               sizes="(max-width:768px) 100vw, 800px"
               priority={false}

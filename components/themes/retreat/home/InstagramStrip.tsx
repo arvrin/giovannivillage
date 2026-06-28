@@ -5,13 +5,13 @@ import { motion } from 'framer-motion';
 import { Instagram } from 'lucide-react';
 import { siteConfig } from '@/lib/data';
 
-const TILES = [
-  '/images/rooms/king-pool-garden.webp',
-  '/images/dining/gourmet-by-the-woods.webp',
-  '/images/about/landscape-1.webp',
-  '/images/rooms/royal-suite.webp',
-  '/images/about/landscape-3.webp',
-  '/images/dining/pihu.webp',
+const TILES: { src: string; alt: string }[] = [
+  { src: '/images/rooms/king-pool-garden.webp', alt: 'King Room opening to a private pool and garden' },
+  { src: '/images/dining/gourmet-by-the-woods.webp', alt: 'Gourmet By The Woods restaurant at Giovanni Village' },
+  { src: '/images/about/landscape-1.webp', alt: 'Mango groves across the estate' },
+  { src: '/images/rooms/royal-suite.webp', alt: 'Royal Suite with a private plunge pool' },
+  { src: '/images/about/landscape-3.webp', alt: 'Lakeside path through the resort grounds' },
+  { src: '/images/dining/pihu.webp', alt: 'Pihu rooftop restaurant at dusk' },
 ];
 
 const InstagramStrip = () => {
@@ -46,9 +46,9 @@ const InstagramStrip = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-2 md:grid-cols-6 md:gap-3">
-          {TILES.map((src, i) => (
+          {TILES.map((tile, i) => (
             <motion.a
-              key={src + i}
+              key={tile.src + i}
               href={siteConfig.social.instagram}
               target="_blank"
               rel="noreferrer"
@@ -59,8 +59,8 @@ const InstagramStrip = () => {
               className="group relative aspect-square overflow-hidden rounded-md"
             >
               <Image
-                src={src}
-                alt="Instagram tile"
+                src={tile.src}
+                alt={tile.alt}
                 fill
                 sizes="(max-width:768px) 50vw, 200px"
                 className="object-cover transition duration-700 group-hover:scale-110"

@@ -135,7 +135,7 @@ const RetreatHero = () => {
             className="max-w-3xl text-white"
             style={{ textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}
           >
-            <h1 className="display-italic text-[clamp(2.5rem,6.5vw,5.5rem)] leading-[1.08] text-white">
+            <h1 className="display-italic text-[clamp(2rem,7vw,5.5rem)] leading-[1.08] text-white">
               A place to{' '}
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span

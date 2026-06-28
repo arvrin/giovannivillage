@@ -75,7 +75,7 @@ export default function CelebrationsPage() {
 
           {/* Venues — filtered for intimate scale */}
           <SectionHeader
-            title="Five settings for an intimate evening"
+            title="Four settings for an intimate evening"
             eyebrow="The spaces"
             description="A subset of the estate's venues, chosen for their fit at the 10–200 guest scale. For larger formats — see the Weddings or Meetings & Events pages."
           />

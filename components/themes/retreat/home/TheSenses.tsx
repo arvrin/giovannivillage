@@ -14,6 +14,7 @@ const PILLARS = [
     tail: 'that resets you',
     body: 'A short drive from Bhopal, a long way from the calendar. Forest-view suites with plunge pools, breakfast on the lawn, afternoons that disappear gently. Built for families, couples and the long weekend.',
     img: '/images/rooms/junior-plunge-pool.webp',
+    alt: 'A Junior Suite plunge pool open to the sky',
     video: '/videos/suite-reveal.mp4',
     href: '/rooms',
     meta: '10 Room categories · Open-to-sky pools',
@@ -25,6 +26,7 @@ const PILLARS = [
     tail: 'philosophy',
     body: 'Gourmet By The Woods plates fine dining under the canopy, with produce from Royalton Farms. Pihu does rooftop telescope dinners. Gazebo by the Lake does intimate, sunset-service evenings at the water’s edge.',
     img: '/images/dining/gourmet-by-the-woods.webp',
+    alt: 'Fine dining under the canopy at Gourmet By The Woods',
     video: '/videos/dining-arrival.mp4',
     href: '/dining',
     meta: '03 Dining venues · Royalton Farms',
@@ -36,6 +38,7 @@ const PILLARS = [
     tail: '',
     body: 'A spa built for surrender — long rituals of forest oils and warm stone. Yoga on the lawn. Meditation in the grove. The day ends quieter than it began.',
     img: '/n1.webp',
+    alt: 'A spa ritual at Elysium Spa',
     href: '/spa',
     meta: 'Elysium Spa · Open daily',
   },
@@ -46,6 +49,7 @@ const PILLARS = [
     tail: ', when you want it',
     body: 'Naturalist-led safaris into Ratapani — five hundred square kilometres of teak forest, leopard, sloth bear and one of India’s healthiest tiger populations. Five minutes from the gate.',
     img: '/images/experiences/wildlife/tiger-face.webp',
+    alt: 'A Bengal tiger in Ratapani Tiger Reserve',
     href: '/experiences',
     meta: 'Ratapani Tiger Reserve · 5 km',
   },
@@ -56,6 +60,7 @@ const PILLARS = [
     tail: '',
     body: 'Corporate offsites, intimate launches, milestone birthdays. Pillarless halls with daylight, lakeside cocktail lawns, and a kitchen that quietly handles a thousand plates.',
     img: '/images/weddings/the-forum.webp',
+    alt: 'The Forum, a pillarless banquet hall set for an event',
     href: '/weddings',
     meta: 'Indoor + Outdoor',
   },
@@ -66,6 +71,7 @@ const PILLARS = [
     tail: 'remembers',
     body: 'Pillarless banquet halls, lakeside lawns, and forest clearings — held under marigold archways with eleven venues across indoor and outdoor settings, and capacity from twenty to two thousand. A dedicated planner curates every detail.',
     img: '/images/weddings/gourmet-lawn.webp',
+    alt: 'A floral mandap on the lily-pond deck set for a lakeside ceremony',
     href: '/weddings',
     meta: '05 Venues · Up to 2,000 guests',
   },
@@ -120,13 +126,13 @@ const TheSenses = () => {
                     <VideoBlock
                       src={p.video}
                       poster={p.img}
-                      alt={`${p.lead} ${p.accent} ${p.tail}`}
+                      alt={p.alt}
                       className="transition duration-[1400ms] group-hover:scale-[1.04]"
                     />
                   ) : (
                     <Image
                       src={p.img}
-                      alt={`${p.lead} ${p.accent} ${p.tail}`}
+                      alt={p.alt}
                       fill
                       sizes="(max-width:768px) 100vw, 50vw"
                       priority={i < 2}

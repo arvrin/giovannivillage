@@ -296,11 +296,15 @@ html.gv-pre-loading::before {
 
     /* Brass — the brand accent. brass-900 is the muted-text foot of the
        scale; it sits on cream backgrounds so it has to clear WCAG AA
-       (≥4.5:1) at small uppercase sizes. #7A634A → 4.7:1, still warm. */
+       (≥4.5:1) at small uppercase sizes. #745D43 → 4.84:1 on champagne-200,
+       still warm. brass-800 is the script-accent tone: dark enough to clear
+       3:1 for large display text on near-white, while brass-500 stays the
+       bright CTA gold. */
     --brass-300: #E0C98C;
     --brass-500: #C9A961;
     --brass-700: #B08754;
-    --brass-900: #7A634A;
+    --brass-800: #A67C42;
+    --brass-900: #745D43;
 
     /* ── Layer 2: Semantic tokens (Material 3 roles) ──────────── */
     /* Surfaces */
@@ -321,7 +325,7 @@ html.gv-pre-loading::before {
     --color-accent:          var(--brass-500);     /* primary */
     --color-accent-hover:    var(--brass-700);     /* primary-hover */
     --color-accent-contrast: var(--forest-900);    /* on-primary */
-    --color-brass:           var(--brass-500);     /* script-accent */
+    --color-brass:           var(--brass-800);     /* script-accent — AA-safe on light surfaces */
     --color-forest:          var(--forest-900);    /* secondary */
 
     /* Borders / overlays */

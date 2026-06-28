@@ -8,6 +8,7 @@ export const metadata = {
     title: 'Terms & Conditions — Giovanni Village Resort',
     description: 'Resort policies, check-in / check-out times and house rules.',
     url: '/terms',
+    images: ['/images/og/og-default.jpg'],
   },
 };
 

@@ -76,18 +76,20 @@ const WhereYouAre = () => {
                 >
                   {f.u}
                 </dt>
-                <dd
-                  className="mt-2 display-italic text-3xl md:text-4xl"
-                  style={{ fontWeight: 400 }}
-                >
-                  {f.l}
+                <dd className="mt-2">
+                  <span
+                    className="display-italic text-3xl md:text-4xl"
+                    style={{ fontWeight: 400 }}
+                  >
+                    {f.l}
+                  </span>
+                  <span
+                    className="mt-2 block text-[12px] leading-snug text-white/65"
+                    style={{ fontFamily: 'var(--font-body)' }}
+                  >
+                    {f.d}
+                  </span>
                 </dd>
-                <p
-                  className="mt-2 text-[12px] leading-snug text-white/65"
-                  style={{ fontFamily: 'var(--font-body)' }}
-                >
-                  {f.d}
-                </p>
               </div>
             ))}
           </motion.dl>

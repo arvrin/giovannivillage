@@ -9,6 +9,7 @@ const VENUES = [
   { name: 'Cocktail', tail: 'Lawn', cap: '500', img: '/images/weddings/cocktail-lawn.webp' },
   { name: 'The Aria', tail: 'Hall', cap: '1,200', img: '/images/weddings/aria-grand-hall.webp' },
   { name: 'Sudesh', tail: 'Lawns', cap: '2,000', img: '/images/weddings/sudesh-lawns.webp' },
+  { name: 'Gourmet', tail: 'Lakeside', cap: '300', img: '/images/weddings/gourmet-lawn.webp' },
 ];
 
 const Celebrations = () => {
@@ -51,22 +52,6 @@ const Celebrations = () => {
               </Button>
             </div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.9 }}
-            className="relative hidden h-44 w-52 shrink-0 overflow-hidden rounded-md md:block"
-          >
-            <Image
-              src="/images/weddings/gourmet-lawn.webp"
-              alt="Wedding setup at Giovanni"
-              fill
-              sizes="220px"
-              className="object-cover"
-            />
-          </motion.div>
         </motion.div>
 
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">

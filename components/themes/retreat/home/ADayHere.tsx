@@ -12,6 +12,7 @@ const FRAMES = [
     titleTail: 'deck',
     body: 'First light through the teaks. Mist on the lawn. The kettle whistles before the world wakes.',
     img: '/images/rooms/junior-deck-garden.webp',
+    alt: 'A Junior Suite private deck opening onto the garden at dawn',
   },
   {
     time: '10:30',
@@ -21,6 +22,7 @@ const FRAMES = [
     titleTail: 'through the estate',
     body: 'Mango plantations, lily ponds, lawns set for tea. The naturalist points out a hornbill on the way.',
     img: '/images/weddings/cocktail-lawn.webp',
+    alt: 'An estate lawn set for an evening cocktail gathering',
   },
   {
     time: '13:30',
@@ -30,6 +32,7 @@ const FRAMES = [
     titleTail: 'By The Woods',
     body: 'Farm-fresh Malwa cooking, produce walked in from Royalton this morning. A bottle of something cold. Light filtering through the canopy.',
     img: '/images/dining/gourmet-by-the-woods.webp',
+    alt: 'Lunch under the canopy at Gourmet By The Woods',
   },
   {
     time: '17:00',
@@ -39,6 +42,7 @@ const FRAMES = [
     titleTail: 'on the lawn',
     body: 'Pheras at sunset by the lake. Marigold runners, lit aisles, vows beneath an old tamarind tree.',
     img: '/images/weddings/gourmet-lawn.webp',
+    alt: 'A floral mandap on the lily-pond deck set for a lakeside ceremony',
   },
   {
     time: '20:30',
@@ -48,6 +52,7 @@ const FRAMES = [
     titleTail: '',
     body: 'Pihu rolls a telescope onto the rooftop. Saturn at the soup course, the Pleiades by dessert. The forest carries on without you.',
     img: '/images/dining/pihu.webp',
+    alt: 'Pihu rooftop restaurant set for a telescope dinner under the stars',
   },
 ];
 
@@ -92,7 +97,7 @@ const ADayHere = () => {
                 <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
                   <Image
                     src={f.img}
-                    alt={`${f.titleLead} ${f.titleAccent} ${f.titleTail}`}
+                    alt={f.alt}
                     fill
                     sizes="480px"
                     priority={i < 2}

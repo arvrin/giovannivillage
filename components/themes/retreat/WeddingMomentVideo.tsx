@@ -108,6 +108,7 @@ const WeddingMomentVideo = ({
             loop
             playsInline
             preload="metadata"
+            aria-label={title ? `Wedding film — ${title}` : 'Real wedding film at Giovanni Village'}
             className="absolute inset-0 h-full w-full object-cover"
           />
           {/* Subtle bottom gradient for control legibility */}

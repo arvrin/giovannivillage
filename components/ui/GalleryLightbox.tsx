@@ -163,6 +163,7 @@ export default function GalleryLightbox({ items, index, onClose, onNavigate }: P
               controls
               autoPlay
               playsInline
+              aria-label={current.title}
               className="max-h-full max-w-full rounded-lg shadow-2xl"
             />
           ) : (

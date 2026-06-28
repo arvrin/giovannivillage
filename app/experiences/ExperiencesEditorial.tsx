@@ -11,6 +11,7 @@ interface Signature {
   body: string;
   meta: string;
   img: string;
+  alt: string;
 }
 
 /**
@@ -29,6 +30,7 @@ const SIGNATURES: Signature[] = [
       'Ratapani holds one of India’s healthiest tiger populations — plus leopard, sloth bear, and 200-plus bird species. Naturalist-led safaris leave before the world wakes and return in time for breakfast.',
     meta: 'Pre-book · 6–8 AM & 1–3 PM slots',
     img: '/images/experiences/safari-jeep.webp',
+    alt: 'A naturalist-led safari jeep in Ratapani Tiger Reserve at dawn',
   },
   {
     eyebrow: 'Farm-to-table',
@@ -38,17 +40,30 @@ const SIGNATURES: Signature[] = [
     body:
       'Eggs from the henhouse, an hour ago. Hand-pulled coffee. Warm baked things from our oven. Set at Royalton Farms inside the estate, where the milk arrives before you do.',
     meta: 'Royalton Farms · Daily',
-    img: '/images/experiences/farm-produce.webp',
+    img: '/images/royalton/farm-5.webp',
+    alt: 'Fresh produce growing in the fields at Royalton Farms',
   },
   {
     eyebrow: 'Cuisine',
-    lead: 'A',
-    accent: 'telescope',
-    tail: 'between courses',
+    lead: 'A table at the',
+    accent: 'water’s',
+    tail: 'edge',
     body:
-      'Saturn at the soup course, the Pleiades by dessert. Pihu’s rooftop, a working telescope, and a tasting menu under a sky that hasn’t met a city light.',
-    meta: 'Weekend evenings · Pre-book',
-    img: '/images/dining/pihu.webp',
+      'Set by the lily pond as the light fails — the water catching the last of the sky, lanterns coming up one by one, and a dinner in no hurry to end.',
+    meta: 'Lakeside · Evenings',
+    img: '/images/dining/lakeside-dinner.webp',
+    alt: 'A lantern-lit dinner table set beside the lily pond at dusk',
+  },
+  {
+    eyebrow: 'On the water',
+    lead: 'Catch your own',
+    accent: 'dinner',
+    tail: '',
+    body:
+      'Borrow a rod, drop a line off the lily-pond deck. Whatever the lake gives up, the kitchen cooks the way you like it — a lunch you reeled in yourself.',
+    meta: 'Lakeside · Daytime',
+    img: '/images/experiences/lakeside-fishing.webp',
+    alt: 'Fishing from the lily-pond deck at Giovanni Village',
   },
 ];
 
@@ -80,11 +95,11 @@ export default function ExperiencesEditorial() {
             style={{ fontFamily: 'var(--font-body)' }}
           >
             Most of what you can do here is in the strip above — small, hand-built,
-            yours to choose between. These three are the ones we’d plan a day around.
+            yours to choose between. These four are the ones we’d plan a day around.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-x-10 gap-y-14 md:grid-cols-3 md:gap-x-8">
+        <div className="grid grid-cols-1 gap-x-10 gap-y-14 md:grid-cols-2 md:gap-x-8 lg:grid-cols-4">
           {SIGNATURES.map((s, i) => (
             <motion.article
               key={s.eyebrow + s.accent}
@@ -97,7 +112,7 @@ export default function ExperiencesEditorial() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
                 <Image
                   src={s.img}
-                  alt={`${s.lead} ${s.accent} ${s.tail}`}
+                  alt={s.alt}
                   fill
                   sizes="(max-width:768px) 100vw, 33vw"
                   priority={i < 2}

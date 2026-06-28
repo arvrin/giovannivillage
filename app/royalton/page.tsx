@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
@@ -54,7 +55,7 @@ export default function RoyaltonPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/images/experiences/farm-produce.webp"
+          image="/images/royalton/farm-2.webp"
           alt="Royalton Farms — the organic farm inside Giovanni Village"
           eyebrow="Royalton Farms"
           title={
@@ -82,6 +83,29 @@ export default function RoyaltonPage() {
               year, it is honest.
             </p>
           </IntroBlock>
+
+          {/* The farm, in pictures */}
+          <div className="mt-16 grid grid-cols-2 gap-3 md:gap-4">
+            {[
+              { src: '/images/royalton/farm-1.webp', alt: 'Organic cabbages growing at Royalton Farms' },
+              { src: '/images/royalton/farm-3.webp', alt: 'Guests walking the fields at Royalton Farms' },
+              { src: '/images/royalton/farm-4.webp', alt: 'Beds of vegetables at Royalton Farms' },
+              { src: '/images/royalton/farm-6.webp', alt: 'A morning out on Royalton Farms' },
+            ].map((p) => (
+              <div
+                key={p.src}
+                className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-md)]"
+              >
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 40vw"
+                />
+              </div>
+            ))}
+          </div>
 
           {/* What the farm is */}
           <SectionHeader

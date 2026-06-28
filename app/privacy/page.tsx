@@ -8,6 +8,7 @@ export const metadata = {
     title: 'Privacy Policy — Giovanni Village Resort',
     description: 'How Giovanni Village handles guest data.',
     url: '/privacy',
+    images: ['/images/og/og-default.jpg'],
   },
 };
 

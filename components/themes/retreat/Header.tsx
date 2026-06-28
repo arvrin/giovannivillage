@@ -162,7 +162,7 @@ const RetreatHeader = () => {
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.7, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
                 className="flex items-center justify-between"
               >
                 <p
@@ -188,7 +188,7 @@ const RetreatHeader = () => {
                 <nav className="md:col-span-7 md:h-full md:overflow-y-auto md:py-8 md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
                   <div className="space-y-8 md:space-y-10">
                     {NAV_SECTIONS.map((section, sIdx) => {
-                      const sectionDelay = 0.85 + sIdx * 0.18;
+                      const sectionDelay = 0.22 + sIdx * 0.1;
                       return (
                         <motion.div
                           key={section.eyebrow}
@@ -229,7 +229,7 @@ const RetreatHeader = () => {
                   initial={{ opacity: 0, x: 24 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 12 }}
-                  transition={{ duration: 0.9, delay: 1.15, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   className="md:col-span-5 md:self-center"
                 >
                   <p
@@ -249,7 +249,7 @@ const RetreatHeader = () => {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.7, delay: 1.35, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.7, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col gap-2 text-sm opacity-80 md:flex-row md:items-center md:justify-between"
                 style={{ fontFamily: 'var(--font-body)' }}
               >

@@ -11,6 +11,7 @@ const ITEMS = [
     tail: '',
     body: 'Sink in after a long day. Look up. The night-jar will call back through the leaves.',
     img: '/images/rooms/_galleries/junior-plunge-pool/02.webp',
+    alt: 'A private plunge pool open to the sky in a Junior Suite',
   },
   {
     n: '02',
@@ -19,6 +20,7 @@ const ITEMS = [
     tail: 'at sunset',
     body: 'Marigold runners, a tamarind tree for an aisle, vows set against the deepening gold of evening.',
     img: '/images/weddings/gourmet-lawn.webp',
+    alt: 'A floral mandap on the lily-pond deck set for a lakeside ceremony',
   },
   {
     n: '03',
@@ -26,7 +28,8 @@ const ITEMS = [
     accent: 'lawn',
     tail: '',
     body: 'Eggs from our hens, hand-pulled coffee, the smell of warm cardamom drifting from the kitchen.',
-    img: '/images/rooms/_galleries/royal-suite/04.webp',
+    img: '/images/dining/breakfast-lawn.webp',
+    alt: 'Breakfast laid out on the lawn at Giovanni Village',
   },
   {
     n: '04',
@@ -35,6 +38,7 @@ const ITEMS = [
     tail: 'its time',
     body: 'Forest oils, warm stone, the unhurried hands at Elysium. You will sleep like a child.',
     img: '/n1.webp',
+    alt: 'An unhurried massage at Elysium Spa',
   },
 ];
 
@@ -84,7 +88,7 @@ const QuietPleasures = () => {
                 >
                   <Image
                     src={item.img}
-                    alt={`${item.lead} ${item.accent} ${item.tail}`}
+                    alt={item.alt}
                     fill
                     sizes="(max-width:768px) 100vw, 50vw"
                     className="object-cover"

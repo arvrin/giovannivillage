@@ -20,9 +20,9 @@ interface PageHeroProps {
 }
 
 const heightClass = {
-  sm: 'h-[62vh] min-h-[440px]',
-  md: 'h-[72vh] min-h-[520px] md:h-[78vh]',
-  lg: 'h-[78vh] min-h-[580px] md:h-[86vh]',
+  sm: 'h-[62vh] min-h-[380px] md:min-h-[440px]',
+  md: 'h-[72vh] min-h-[440px] md:h-[78vh] md:min-h-[520px]',
+  lg: 'h-[78vh] min-h-[480px] md:h-[86vh] md:min-h-[580px]',
 };
 
 /**
@@ -130,7 +130,7 @@ const RetreatPageHero = ({
               </div>
             )}
             <h1
-              className="display-italic text-white text-[clamp(2.6rem,6.5vw,5.5rem)] leading-[1.02]"
+              className="display-italic text-white text-[clamp(2.1rem,7vw,5.5rem)] leading-[1.02]"
               style={{ textShadow: '0 2px 28px rgba(0,0,0,0.55)' }}
             >
               {renderTitle(title)}

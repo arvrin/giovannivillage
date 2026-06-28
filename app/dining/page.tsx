@@ -10,6 +10,7 @@ import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
+import DiningImageSwitcher from '@/components/themes/retreat/DiningImageSwitcher';
 import { RestaurantsSchema } from '@/components/seo/StructuredData';
 import { restaurants, siteConfig } from '@/lib/data';
 import { getWhatsAppLink } from '@/lib/utils';
@@ -29,6 +30,21 @@ const highlights = [
     description: 'Self-service grills under the trees — for the nights you want to cook your own dinner.',
   },
 ];
+
+// Venues with two photos to cross-fade between in their dining card.
+const SWITCH_IMAGES: Record<string, string[]> = {
+  'gourmet-by-the-woods': [
+    '/images/dining/gourmet-1.webp',
+    '/images/dining/gourmet-2.webp',
+    '/images/dining/gourmet-3.webp',
+  ],
+  pihu: [
+    '/images/dining/pihu-rooftop.webp',
+    '/images/dining/gourmet-by-the-woods.webp',
+    '/images/dining/pihu-aerial.webp',
+  ],
+  'gazebo-by-the-lake': ['/images/dining/gazebo-by-the-lake.webp', '/images/weddings/lakeside-deck.webp'],
+};
 
 export default function DiningPage() {
   return (
@@ -64,15 +80,19 @@ export default function DiningPage() {
                   idx % 2 === 1 ? 'lg:[&>div:first-child]:order-2' : ''
                 }`}
               >
-                <div className="relative aspect-[4/3] lg:aspect-[5/4] rounded-lg overflow-hidden">
-                  <Image
-                    src={r.image}
-                    alt={r.name}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
+                {SWITCH_IMAGES[r.id] ? (
+                  <DiningImageSwitcher images={SWITCH_IMAGES[r.id]} alt={r.name} />
+                ) : (
+                  <div className="relative aspect-[4/3] lg:aspect-[5/4] rounded-lg overflow-hidden">
+                    <Image
+                      src={r.image}
+                      alt={r.name}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                )}
                 <div>
                   <p
                     className="text-xs font-semibold uppercase tracking-widest text-[var(--color-bronze)] mb-4"
@@ -107,14 +127,16 @@ export default function DiningPage() {
             </div>
           </div>
 
-          {/* Menus */}
-          <div className="text-center max-w-3xl mx-auto mb-24">
-            <SectionHeader
-              title="Browse the menus"
-              eyebrow="What's on the table"
-              description="Our 2026 collection of restaurant dishes and bar pours — open the PDFs to browse the full lists."
-            />
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          {/* Menus & Reservations — one heading, all CTAs */}
+          <div className="pb-16">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionHeader
+                title="Come to the table"
+                eyebrow="Menus & Reservations"
+                description="Browse the 2026 restaurant and bar menus, or save yourself a seat — special menus, anniversaries and allergies, all handled before you arrive."
+              />
+            </div>
+            <div className="mt-10 flex flex-wrap gap-4 justify-center">
               <Button
                 variant="primary"
                 size="lg"
@@ -131,17 +153,6 @@ export default function DiningPage() {
               >
                 View Bar &amp; Beverages
               </Button>
-            </div>
-          </div>
-
-          {/* Reservations */}
-          <div className="text-center max-w-3xl mx-auto pb-16">
-            <SectionHeader
-              title="Save us a seat"
-              eyebrow="Reservations"
-              description="Phone the F&B team or drop us a line. Special menus, anniversaries, allergies — we take care of it ahead of you arriving."
-            />
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 variant="primary"
                 size="lg"
@@ -158,7 +169,7 @@ export default function DiningPage() {
                 Send a Message
               </Button>
             </div>
-            <p className="mt-6 text-sm text-[var(--color-text-tertiary)]">
+            <p className="mt-6 text-center text-sm text-[var(--color-text-tertiary)]">
               F&amp;B:{' '}
               <a href={`tel:${siteConfig.contact.phoneSecondary}`} className="text-[var(--color-bronze)] hover:underline">
                 {siteConfig.contact.phoneSecondary}

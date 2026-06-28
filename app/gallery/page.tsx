@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Play } from 'lucide-react';
@@ -37,6 +37,7 @@ function GalleryView() {
     FILTERS.includes(initialCat) ? initialCat : 'All',
   );
   const [openId, setOpenId] = useState<string | null>(initialId);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const filtered = useMemo(
     () => (filter === 'All' ? galleryItems : galleryItems.filter((i) => i.category === filter)),
@@ -63,6 +64,13 @@ function GalleryView() {
   const handleFilter = useCallback((next: FilterKey) => {
     setFilter(next);
     setOpenId(null);
+    // Bring the grid back into view (just below the sticky filter bar) so the
+    // new set starts at the top, instead of leaving the user scrolled away.
+    // Anchor on the grid, not the sticky nav (whose rect reflects its stuck pos).
+    if (gridRef.current) {
+      const y = gridRef.current.getBoundingClientRect().top + window.scrollY - 150;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+    }
   }, []);
 
   const handleNavigate = useCallback(
@@ -99,9 +107,9 @@ function GalleryView() {
               desktop where the wrapped list stays single-row. */}
           <nav
             aria-label="Filter by category"
-            className="-mx-4 mt-12 mb-10 border-y border-[color:var(--color-border)]/60 px-4 py-5 md:sticky md:top-24 md:z-30 md:mt-16 md:mb-12 md:bg-[var(--color-background)]/85 md:py-6 md:backdrop-blur-md"
+            className="-mx-4 mt-12 mb-10 border-y border-[color:var(--color-border)]/60 px-4 py-5 md:sticky md:top-20 md:z-30 md:mt-16 md:mb-12 md:bg-[var(--color-background)] md:py-6 md:shadow-[0_6px_16px_-10px_rgba(0,0,0,0.25)]"
           >
-            <ul className="mx-auto flex max-w-4xl flex-wrap items-baseline justify-center gap-x-6 gap-y-3 md:gap-x-9">
+            <ul className="mx-auto flex max-w-4xl flex-wrap items-baseline justify-center gap-x-4 gap-y-3 sm:gap-x-6 md:gap-x-9">
               {FILTERS.map((key) => {
                 const label = key === 'All' ? 'All' : CATEGORY_LABELS[key];
                 const isActive = filter === key;
@@ -140,7 +148,7 @@ function GalleryView() {
           </nav>
 
           {/* Grid — CSS columns with aspect-ratio holders so layout doesn't jump */}
-          <div className="columns-1 gap-4 md:columns-2 md:gap-6 lg:columns-3">
+          <div ref={gridRef} className="columns-1 gap-4 md:columns-2 md:gap-6 lg:columns-3">
             {filtered.map((item, i) => {
               const aspect = `${item.width} / ${item.height}`;
               const showVideoChip = item.type === 'video';

@@ -11,7 +11,7 @@ const SideRail = () => {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-y-0 left-3 z-30 hidden w-[60px] md:flex md:flex-col md:items-center md:justify-between md:py-32"
+      className="pointer-events-none fixed inset-y-0 left-[max(0.75rem,env(safe-area-inset-left))] z-30 hidden w-[60px] md:flex md:flex-col md:items-center md:justify-between md:py-32"
     >
       <div className="pointer-events-auto flex flex-col items-center gap-3">
         <span

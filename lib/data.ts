@@ -595,7 +595,7 @@ export const restaurants = [
     tagline: 'A culinary adventure in the heart of nature',
     description:
       'Nestled amidst tranquillity, Gourmet By The Woods is our fine dining destination. A menu crafted by world-renowned chefs makes every dish a gastronomic delight.',
-    image: '/images/dining/gourmet-by-the-woods.webp',
+    image: '/images/dining/gourmet-1.webp',
     tags: ['Fine Dining', 'Multi-Course', 'Forest Setting'],
   },
   {
@@ -604,7 +604,7 @@ export const restaurants = [
     tagline: 'Dine under the stars',
     description:
       'Perched on our rooftop, Pihu offers an intimate setting with panoramic views, live music on weekends, telescopic nights and a diverse menu of international and local cuisines.',
-    image: '/images/dining/pihu.webp',
+    image: '/images/dining/pihu-rooftop.webp',
     tags: ['Rooftop', 'Candle-lit', 'Live Music', 'Telescope Nights'],
   },
   {
@@ -613,7 +613,7 @@ export const restaurants = [
     tagline: "Dining at the water's edge",
     description:
       'A semi-open pavilion set apart at the lakeside, lit by lanterns at dusk. Smaller than the main rooms — built for proposals, anniversaries, and unhurried dinners-for-two. The kitchen sends a tasting menu shaped to the season.',
-    image: '/images/weddings/lakeside-deck.webp',
+    image: '/images/dining/gazebo-by-the-lake.webp',
     tags: ['Lakeside', 'Intimate', 'Tasting Menu', 'Sunset Service'],
   },
 ];
@@ -642,7 +642,7 @@ export const venues: Venue[] = [
     id: 'the-forum',
     name: 'The Forum',
     type: 'indoor' as const,
-    useCases: ['wedding', 'corporate', 'intimate'],
+    useCases: ['corporate', 'intimate'],
     description:
       'A 1,000 sq ft multi-purpose space overlooking the pool — ideal for board meetings, conferences, brand activations and intimate functions.',
     specs: '1,000 sq ft · air-conditioned',
@@ -650,69 +650,45 @@ export const venues: Venue[] = [
     image: '/images/weddings/the-forum.webp',
   },
   {
-    id: 'aria-deck',
-    name: 'Aria Deck',
-    type: 'indoor' as const,
-    useCases: ['wedding', 'corporate', 'intimate'],
-    description:
-      'A dedicated indoor deck attached to the Aria Grand — for cocktail receptions, lounges and pre-ceremony gatherings. Capacity details on request.',
-    specs: 'Air-conditioned · attached to Aria Grand',
-    capacity: 'Capacity on request',
-    image: '/images/weddings/aria-grand-hall.webp',
-  },
-  {
-    id: 'aria-i-ii-deck',
-    name: 'Aria I + II + Deck',
-    type: 'indoor' as const,
-    useCases: ['wedding', 'corporate'],
-    description:
-      'Aria I and II combined with the Aria Deck — 4,000 sq ft of pillarless indoor space for mid-sized ceremonies and banquets.',
-    specs: '4,000 sq ft · air-conditioned · pillarless',
-    capacity: 'Capacity on request',
-    image: '/images/weddings/aria-grand-hall.webp',
-    video: '/videos/aria-i-ii-loop.mp4',
-  },
-  {
-    id: 'aria-iii',
-    name: 'Aria III',
-    type: 'indoor' as const,
-    useCases: ['wedding', 'corporate'],
-    description:
-      'A 6,000 sq ft pillarless indoor venue — the central Aria for mid-to-large receptions and banquets.',
-    specs: '6,000 sq ft · air-conditioned · pillarless',
-    capacity: 'Capacity on request',
-    image: '/images/weddings/aria-grand-hall.webp',
-    video: '/videos/aria-iii-loop.mp4',
-  },
-  {
     id: 'aria-grand',
     name: 'Aria Grand',
     type: 'indoor' as const,
     useCases: ['wedding', 'corporate'],
     description:
-      'A state-of-the-art pillarless banquet hall with a soaring 25-foot ceiling, complemented by a 50,000 sq ft attached lawn. Designed to host majestic celebrations from intimate gatherings to grand productions.',
-    specs: '10,000 sq ft hall · 50,000 sq ft attached lawn · pillarless',
-    capacity: 'Up to 2,000 guests',
+      'A modular pillarless banquet hall with a soaring 25-foot ceiling. It partitions into smaller sections — Aria I, II and III, from 4,000 to 6,000 sq ft, with an attached indoor deck — for mid-sized ceremonies and meetings, or opens fully to a 10,000 sq ft hall with a 50,000 sq ft attached lawn for grand productions.',
+    specs: 'Pillarless · 4,000–10,000 sq ft + 50,000 sq ft lawn',
+    capacity: 'Intimate functions to 2,000 guests',
     image: '/images/weddings/aria-grand-hall.webp',
     video: '/videos/aria-grand-loop.mp4',
   },
   // ─────────────────────────────────────────────── Outdoor
   {
+    id: 'gourmet-lake-side-lawn',
+    name: 'Gourmet Lake Side Lawn',
+    type: 'outdoor' as const,
+    useCases: ['wedding', 'intimate'],
+    description:
+      'Adjacent to Gourmet By The Woods, this curated space offers breathtaking lake views and sophisticated charm — an ideal setting for fine-dining-led celebrations.',
+    specs: 'Lakeside · adjacent to Gourmet By The Woods',
+    capacity: 'Boutique celebrations',
+    image: '/images/weddings/gourmet-lawn.webp',
+  },
+  {
     id: 'pihu-deck',
     name: 'Pihu Deck',
     type: 'outdoor' as const,
-    useCases: ['wedding', 'corporate', 'intimate'],
+    useCases: ['wedding', 'intimate'],
     description:
       'An open-air deck beneath the rooftop Pihu — for sundowner cocktails, intimate ceremonies and sangeet evenings under the sky. Capacity details on request.',
     specs: 'Open-air rooftop · adjacent to Pihu',
     capacity: 'Capacity on request',
-    image: '/images/dining/pihu.webp',
+    image: '/images/dining/pihu-rooftop.webp',
   },
   {
     id: 'sudesh-ii',
     name: 'Sudesh II',
     type: 'outdoor' as const,
-    useCases: ['wedding', 'corporate'],
+    useCases: ['wedding'],
     description:
       'An outdoor lawn nestled between dense trees — perfect for dreamy outdoor weddings, mandaps and sangeet evenings.',
     specs: '51,000 sq ft · lawn',
@@ -728,13 +704,13 @@ export const venues: Venue[] = [
       'A wide outdoor banquet lawn ringed by trees — for sit-down dinners, mehndi mornings and reception evenings. Capacity details on request.',
     specs: 'Open-air lawn',
     capacity: 'Capacity on request',
-    image: '/images/weddings/sudesh-lawns.webp',
+    image: '/images/weddings/banquet-lawn.webp',
   },
   {
     id: 'sudesh-i',
     name: 'Sudesh I',
     type: 'outdoor' as const,
-    useCases: ['wedding', 'corporate'],
+    useCases: ['wedding'],
     description:
       'An outdoor lawn nestled between dense trees — ideal for larger weddings, sangeet evenings and grand mandap setups.',
     specs: '14,000 sq ft · lawn',
@@ -750,18 +726,7 @@ export const venues: Venue[] = [
       'A 9,000 sq ft lawn dedicated to lively cocktail parties — stylish receptions where the beauty of nature complements every toast.',
     specs: '9,000 sq ft · open-air',
     capacity: '200 pax seated',
-    image: '/images/weddings/cocktail-lawn.webp',
-  },
-  {
-    id: 'gourmet-lake-side-lawn',
-    name: 'Gourmet Lake Side Lawn',
-    type: 'outdoor' as const,
-    useCases: ['wedding', 'corporate', 'intimate'],
-    description:
-      'Adjacent to Gourmet By The Woods, this curated space offers breathtaking lake views and sophisticated charm — an ideal setting for fine-dining-led celebrations.',
-    specs: 'Lakeside · adjacent to Gourmet By The Woods',
-    capacity: 'Boutique celebrations',
-    image: '/images/weddings/gourmet-lawn.webp',
+    image: '/images/weddings/cocktail-lawn-night.webp',
   },
 ];
 
@@ -787,33 +752,25 @@ export const weddings = {
 // numerical order as the live /resort-experiences/ page.
 export const activities = [
   {
-    id: 'ratapani-safari',
-    title: 'Wild & Wonderful: Ratapani Safari',
-    description:
-      'Visit Ratapani Sanctuary for a safari experience like no other — home to the most naturally breeding tigers in India. Pre-booking required. Morning slot 6:00 – 8:00 AM, afternoon slot 1:00 – 3:00 PM.',
-    category: 'Wildlife',
-    image: '/images/experiences/icons/icon-1.webp',
-  },
-  {
     id: 'croquet',
     title: 'Old School Cool: Croquet',
     description: 'Engage in a game of Croquet — a classic pastime with a Giovanni twist.',
     category: 'Outdoor',
-    image: '/images/experiences/icons/icon-2.webp',
+    image: '/images/experiences/icons/icon-1.webp',
   },
   {
     id: 'manual-scooters',
     title: 'Retro Rides: Manual Scooters',
     description: 'Kick, push, coast — the simple pleasure of a manual scooter ride around the resort.',
     category: 'Outdoor',
-    image: '/images/experiences/icons/icon-3.webp',
+    image: '/images/experiences/icons/icon-2.webp',
   },
   {
     id: 'modern-kanche',
     title: 'Next-Gen Marbles: Modern Kanche',
     description: 'Experience the timeless game of Kanche, modernised for today’s generation.',
     category: 'Indoor',
-    image: '/images/experiences/icons/icon-4.webp',
+    image: '/images/experiences/icons/icon-3.webp',
   },
   {
     id: 'board-games',
@@ -821,42 +778,42 @@ export const activities = [
     description:
       'Ludo, Snakes and Ladders, Tambola, Scrabble, Jenga, Tic-Tac-Toe, Carrom, Uno, Modern Kanche, Foosball.',
     category: 'Indoor',
-    image: '/images/experiences/icons/icon-5.webp',
+    image: '/images/experiences/icons/icon-4.webp',
   },
   {
     id: 'badminton-tennikoit',
     title: 'Badminton & Tennikoit',
     description: 'Rackets swish and Tennikoit rings soar — echo the village’s spirited athleticism.',
     category: 'Sport',
-    image: '/images/experiences/icons/icon-6.webp',
+    image: '/images/experiences/icons/icon-5.webp',
   },
   {
     id: 'cycling',
     title: 'Ride & Glide: Cycling',
     description: 'Explore the resort on two wheels — perfect for a romantic ride or a family adventure.',
     category: 'Outdoor',
-    image: '/images/experiences/icons/icon-7.webp',
+    image: '/images/experiences/icons/icon-6.webp',
   },
   {
     id: 'soft-touch-pool',
     title: 'Soft-Touch Swimming Pool',
     description: 'A tranquil oasis amidst the resort — perfect for a long dip or sunset float.',
     category: 'Wellness',
-    image: '/images/experiences/icons/icon-8.webp',
+    image: '/images/experiences/icons/icon-7.webp',
   },
   {
     id: 'frisbee',
     title: 'Flying High: Frisbee',
     description: 'Get your adrenaline pumping with a good old game of Frisbee on the lawns.',
     category: 'Sport',
-    image: '/images/experiences/icons/icon-9.webp',
+    image: '/images/experiences/icons/icon-8.webp',
   },
   {
     id: 'telescope-dinner',
     title: 'Dining with the Stars: Telescope Dinner at Pihu',
     description: 'Indulge in fine dining as you stargaze through telescopes at our rooftop restaurant.',
     category: 'Dining',
-    image: '/images/experiences/icons/icon-10.webp',
+    image: '/images/experiences/icons/icon-9.webp',
   },
   {
     id: 'lake-side-leisure',
@@ -864,14 +821,14 @@ export const activities = [
     description:
       'Sit back, relax — and maybe even catch your next meal at our lake. Our chefs will cook the fish to your liking.',
     category: 'Dining',
-    image: '/images/experiences/icons/icon-11.webp',
+    image: '/images/experiences/icons/icon-10.webp',
   },
   {
     id: 'farm-breakfast',
     title: 'Farm Fresh Feast: Breakfast at Royalton Farms',
     description: 'An authentic farm-to-table meal, served right at our organic farm within the resort premises.',
     category: 'Dining',
-    image: '/images/experiences/icons/icon-12.webp',
+    image: '/images/experiences/icons/icon-11.webp',
   },
   {
     id: 'elysium-spa',
@@ -879,70 +836,70 @@ export const activities = [
     description:
       'Holistic treatments, yoga, meditation and wellness retreats in a sanctuary set among landscaped gardens.',
     category: 'Wellness',
-    image: '/images/experiences/icons/icon-13.webp',
+    image: '/images/experiences/icons/icon-12.webp',
   },
   {
     id: 'open-air-theatre',
     title: 'Starry Nights: Open-Air Theatre',
     description: 'Enjoy your favourite films under the stars — with comfy love seats and freshly-popped popcorn.',
     category: 'Entertainment',
-    image: '/images/experiences/icons/icon-14.webp',
+    image: '/images/experiences/icons/icon-13.webp',
   },
   {
     id: 'factory-visit',
     title: 'Behind the Magic: Giovanni Factory Visit',
     description: 'Take a guided tour of our factory and get a sneak-peek into how Giovanni luxury is crafted.',
     category: 'Heritage',
-    image: '/images/experiences/icons/icon-15.webp',
+    image: '/images/experiences/icons/icon-14.webp',
   },
   {
     id: 'self-bbq',
     title: 'Grill & Chill: Self-Service Barbecue',
     description: 'Show off your grilling skills or simply enjoy the experience at our self-barbecue stations.',
     category: 'Dining',
-    image: '/images/experiences/icons/icon-16.webp',
+    image: '/images/experiences/icons/icon-15.webp',
   },
   {
     id: 'farm-tour',
     title: 'Fields of Gold: Royalton Farms Tour',
     description: 'Walk through Royalton Farms — the working organic farm inside the estate — and meet the people who grow what reaches your plate.',
     category: 'Nature',
-    image: '/images/experiences/icons/icon-17.webp',
+    image: '/images/experiences/icons/icon-16.webp',
   },
   {
     id: 'jhoolas',
     title: 'Swing High: Jhoolas',
     description: 'Multiple swings dotted around the resort — travel down memory lane.',
     category: 'Outdoor',
-    image: '/images/experiences/icons/icon-18.webp',
+    image: '/images/experiences/icons/icon-17.webp',
   },
   {
     id: 'lakeside-fishing',
     title: 'Lake-Side Leisure: Fishing',
     description: 'Sit back, relax, and maybe even catch your next meal at our beautiful lake.',
     category: 'Outdoor',
-    image: '/images/experiences/icons/icon-19.webp',
+    image: '/images/experiences/icons/icon-18.webp',
   },
   {
     id: 'fresh-milking',
     title: 'Golden Hour: Fresh Milking',
     description: 'Witness and participate in the fresh milking of cows at 4:30 PM — a truly unique experience.',
     category: 'Nature',
-    image: '/images/experiences/icons/icon-20.webp',
+    image: '/images/experiences/icons/icon-19.webp',
   },
   {
     id: 'sunbathing',
     title: 'Soak Up the Sun: Sunbathing',
     description: 'Experience the joy of a perfect tan as you lounge in our sunbathing area.',
     category: 'Wellness',
-    image: '/images/experiences/icons/icon-sunbathing.webp',
+    image: '/images/experiences/icons/icon-20.webp',
   },
   {
     id: 'junior-chef',
     title: 'Junior Chef Academy',
     description: 'Let children unleash their culinary skills in an exclusive setting under expert supervision.',
     category: 'Family',
-    image: '/images/experiences/icons/junior-chef.webp',
+    image: '/images/experiences/icons/icon-sunbathing.webp',
   },
 ];
 

@@ -47,24 +47,53 @@ export default function ExperiencesPage() {
           <SectionHeader
             title="The reserve at the gate"
             eyebrow="Ratapani · five minutes away"
-            description="Five hundred square kilometres of teak forest. One of India’s healthiest tiger populations. A naturalist who knows where the leopards drink."
+            description="Five hundred square kilometres of teak forest. One of India’s healthiest tiger populations. Our naturalist-led jeeps leave from the gate before the world wakes."
           />
-          <div className="mt-12 mb-20 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-            {[
-              { src: '/images/experiences/wildlife/tiger-log.webp', alt: 'Tiger resting on log' },
-              { src: '/images/experiences/wildlife/safari-elephants.webp', alt: 'Safari elephants' },
-              { src: '/images/experiences/wildlife/tiger-face.webp', alt: 'Tiger face' },
-            ].map((p) => (
-              <div key={p.src} className="relative aspect-[3/4] overflow-hidden rounded-[var(--radius-md)]">
-                <Image
-                  src={p.src}
-                  alt={p.alt}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 640px) 100vw, 33vw"
-                />
-              </div>
-            ))}
+          <div className="mt-12 mb-20 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:items-center md:gap-5">
+            {/* Tiger walking — left (landscape photo framed to the tall card) */}
+            <div className="relative order-2 aspect-[3/4] overflow-hidden rounded-[var(--radius-md)] sm:order-1">
+              <Image
+                src="/images/experiences/wildlife/tiger-walking.webp"
+                alt="A Bengal tiger walking through the grassland near Ratapani"
+                fill
+                className="object-cover object-[60%_50%] transition-transform duration-700 hover:scale-105"
+                sizes="(max-width: 1024px) 50vw, 28vw"
+              />
+            </div>
+
+            {/* Safari video — the centerpiece, taller than the stills */}
+            <div className="relative order-1 col-span-2 aspect-[9/16] overflow-hidden rounded-[var(--radius-md)] shadow-[var(--shadow-lg)] sm:order-2 sm:col-span-1">
+              <video
+                src="/videos/jungle-safari.mp4"
+                poster="/videos/jungle-safari-poster.webp"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="A jungle safari drive through Ratapani Tiger Reserve"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+              <span
+                className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-black/40 px-3 py-1.5 text-[10px] uppercase tracking-[0.26em] text-white backdrop-blur-sm"
+                style={{ fontFamily: 'var(--font-eyebrow)' }}
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-brass)]" />
+                Live from the reserve
+              </span>
+            </div>
+
+            {/* Giovanni safari jeep — right */}
+            <div className="relative order-3 aspect-[3/4] overflow-hidden rounded-[var(--radius-md)]">
+              <Image
+                src="/images/experiences/wildlife/giovanni-safari-jeep.webp"
+                alt="Guests on a Giovanni Village safari jeep at Ratapani"
+                fill
+                className="object-cover transition-transform duration-700 hover:scale-105"
+                sizes="(max-width: 1024px) 50vw, 28vw"
+              />
+            </div>
           </div>
 
           {/* Every experience — animated, swipeable icon marquee */}
