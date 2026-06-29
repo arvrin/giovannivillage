@@ -36,7 +36,12 @@ const BackgroundMusic = () => {
   const fadeRafRef = useRef<number | null>(null);
   // Has the audio reached audible playback at least once?
   const audibleRef = useRef(false);
+  // Live mirror of `userMuted` so the long-lived handlers (gesture / visibility
+  // / pageshow), which close over mount-time state, always see the current
+  // preference. Without this, muting mid-session can't stop the retry paths.
+  const userMutedRef = useRef(false);
   const gestureCleanupRef = useRef<(() => void) | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [mounted, setMounted] = useState(false);
   const [userMuted, setUserMuted] = useState(false);
   const [audible, setAudible] = useState(false);
@@ -72,6 +77,7 @@ const BackgroundMusic = () => {
     const stored = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null;
     const startMuted = stored === 'off';
     setUserMuted(startMuted);
+    userMutedRef.current = startMuted;
 
     const audio = new Audio(SRC);
     audio.loop = true;
@@ -94,7 +100,7 @@ const BackgroundMusic = () => {
     // Try unmuted first; fall back to muted; arm gesture for unmute.
     const tryUnmutedPlay = async () => {
       const a = audioRef.current;
-      if (!a || audibleRef.current) return;
+      if (!a || audibleRef.current || userMutedRef.current) return;
       a.muted = false;
       a.volume = 0;
       try {
@@ -112,7 +118,7 @@ const BackgroundMusic = () => {
 
     const tryMutedPlay = async () => {
       const a = audioRef.current;
-      if (!a || audibleRef.current) return;
+      if (!a || audibleRef.current || userMutedRef.current) return;
       a.muted = true;
       // Pre-warm target volume so unmute is instant.
       a.volume = TARGET_VOLUME;
@@ -127,9 +133,13 @@ const BackgroundMusic = () => {
       }
     };
 
-    const onFirstGesture = () => {
+    const onFirstGesture = (e: Event) => {
+      // Never let the mute toggle's own click double as the "start sound"
+      // gesture. These listeners are capture-phase on window, so without this
+      // the click that mutes would also restart audio (a race the toggle lost).
+      if (e.target instanceof Node && buttonRef.current?.contains(e.target)) return;
       const a = audioRef.current;
-      if (!a || audibleRef.current) {
+      if (!a || audibleRef.current || userMutedRef.current) {
         cleanupGesture();
         return;
       }
@@ -181,12 +191,12 @@ const BackgroundMusic = () => {
     // Some browsers grant activation after the tab gets focus / bfcache
     // restore. Retry on these.
     const onVisible = () => {
-      if (document.visibilityState === 'visible' && !audibleRef.current) {
+      if (document.visibilityState === 'visible' && !audibleRef.current && !userMutedRef.current) {
         tryUnmutedPlay();
       }
     };
     const onPageShow = () => {
-      if (!audibleRef.current) tryUnmutedPlay();
+      if (!audibleRef.current && !userMutedRef.current) tryUnmutedPlay();
     };
     document.addEventListener('visibilitychange', onVisible);
     window.addEventListener('pageshow', onPageShow);
@@ -209,6 +219,7 @@ const BackgroundMusic = () => {
     if (userMuted) {
       // Unmuting after a previous explicit mute.
       setUserMuted(false);
+      userMutedRef.current = false;
       localStorage.setItem(STORAGE_KEY, 'on');
       audio.muted = false;
       audio.volume = 0;
@@ -221,9 +232,13 @@ const BackgroundMusic = () => {
         })
         .catch(() => {});
     } else {
-      // Muting — fade to silence then pause.
+      // Muting — record intent, tear down any armed auto-start listeners so a
+      // later gesture / tab-refocus / bfcache restore can't wake it, then fade
+      // to silence and pause.
       setUserMuted(true);
+      userMutedRef.current = true;
       localStorage.setItem(STORAGE_KEY, 'off');
+      gestureCleanupRef.current?.();
       fadeTo(0, 800, () => {
         audio.pause();
         audibleRef.current = false;
@@ -240,6 +255,7 @@ const BackgroundMusic = () => {
 
   return (
     <button
+      ref={buttonRef}
       onClick={toggle}
       aria-label={showAsMuted ? 'Turn on ambient sound' : 'Mute ambient sound'}
       title={showAsMuted ? 'Sound on' : 'Sound off'}
