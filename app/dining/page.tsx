@@ -36,11 +36,10 @@ const SWITCH_IMAGES: Record<string, string[]> = {
   'gourmet-by-the-woods': [
     '/images/dining/gourmet-1.webp',
     '/images/dining/gourmet-2.webp',
-    '/images/dining/gourmet-3.webp',
   ],
   pihu: [
     '/images/dining/pihu-rooftop.webp',
-    '/images/dining/gourmet-by-the-woods.webp',
+    '/images/dining/pihu.webp',
     '/images/dining/pihu-aerial.webp',
   ],
   'gazebo-by-the-lake': ['/images/dining/gazebo-by-the-lake.webp', '/images/weddings/lakeside-deck.webp'],

@@ -64,7 +64,7 @@ export default function RoyaltonPage() {
               <span className="font-script">show</span>.
             </>
           }
-          description="Inside the gates of Giovanni Village — ten acres of fields, dairy, henhouse and orchards that quietly supply every kitchen on the estate."
+          description="Inside the gates of Giovanni Village — 23 acres of fields, dairy, henhouse and orchards that quietly supply every kitchen on the estate."
         />
 
         <Container>

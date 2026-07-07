@@ -63,7 +63,7 @@ export const faqs: Faq[] = [
     topic: 'general',
     question: 'Where is Giovanni Village Resort located?',
     answer:
-      'Giovanni Village Resort is located at 410, Village Kalapani, Kolar Road, Bhopal, Madhya Pradesh — about a 20-minute drive from central Bhopal, on the edge of the Ratapani Tiger Reserve. The estate spans ten acres of mango groves, lily ponds and lakeside paths.',
+      'Giovanni Village Resort is located at 410, Village Kalapani, Kolar Road, Bhopal, Madhya Pradesh — about a 20-minute drive from central Bhopal, on the edge of the Ratapani Tiger Reserve. The estate spans 23 acres of mango groves, lily ponds and lakeside paths.',
     featured: true,
   },
   {
@@ -86,7 +86,7 @@ export const faqs: Faq[] = [
     topic: 'general',
     question: 'What makes Giovanni Village different from other resorts near Bhopal?',
     answer:
-      'Giovanni Village is the only luxury resort in the Bhopal region built on the edge of the Ratapani Tiger Reserve, with ten distinct forest-view room categories, three dining venues, an in-house spa (Elysium), and eleven event venues — five indoor, six outdoor — all inside a ten-acre working estate with its own organic farm (Royalton Farms).',
+      'Giovanni Village is the only luxury resort in the Bhopal region built on the edge of the Ratapani Tiger Reserve, with ten distinct forest-view room categories, three dining venues, an in-house spa (Elysium), and eleven event venues — five indoor, six outdoor — all inside a 23-acre working estate with its own organic farm (Royalton Farms).',
     featured: true,
   },
   {

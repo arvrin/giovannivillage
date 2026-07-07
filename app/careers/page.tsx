@@ -29,7 +29,7 @@ const departments = [
   { label: 'Spa & Wellness', body: 'Therapists, Ayurvedic practitioners, yoga instructors. The hands behind Elysium.' },
   { label: 'Housekeeping', body: 'Suites, public areas, banquet turnover. The team that makes the soft welcomes possible.' },
   { label: 'Events & Banquets', body: 'Planners, banquet captains, AV technicians. The team that holds the weddings, the conferences, the milestones.' },
-  { label: 'Maintenance & Gardens', body: 'Engineering, horticulture, the soft-touch pool team. The infrastructure of a ten-acre estate.' },
+  { label: 'Maintenance & Gardens', body: 'Engineering, horticulture, the soft-touch pool team. The infrastructure of a 23-acre estate.' },
   { label: 'Sales & Reservations', body: 'Inbound enquiries, corporate accounts, wedding RFPs, OTA management.' },
 ];
 
@@ -132,13 +132,13 @@ export default function CareersPage() {
                 Call HR
               </Button>
             </div>
-            <p className="mt-6 text-sm text-[var(--color-text-tertiary)]">
-              HR:{' '}
-              <a href={`mailto:${siteConfig.contact.emailHr}`} className="text-[var(--color-bronze)] hover:underline">
+            <p className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[var(--color-text-tertiary)]">
+              <span>HR:</span>
+              <a href={`mailto:${siteConfig.contact.emailHr}`} className="whitespace-nowrap text-[var(--color-bronze)] hover:underline">
                 {siteConfig.contact.emailHr}
               </a>
-              {' · '}
-              <a href={`tel:${siteConfig.contact.phoneHr.replace(/\s/g, '')}`} className="text-[var(--color-bronze)] hover:underline">
+              <span aria-hidden>·</span>
+              <a href={`tel:${siteConfig.contact.phoneHr.replace(/\s/g, '')}`} className="whitespace-nowrap text-[var(--color-bronze)] hover:underline">
                 {siteConfig.contact.phoneHr}
               </a>
             </p>

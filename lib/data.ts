@@ -102,9 +102,9 @@ export const hero = {
 
 export const about = {
   title: 'A house that learned to listen',
-  subtitle: 'Ten acres, ten room categories, one long pause in the day.',
+  subtitle: 'Twenty-three acres, ten room categories, one long pause in the day.',
   content: [
-    'Giovanni Village sits on the edge of Ratapani Tiger Reserve, twenty minutes outside Bhopal. Ten acres of mango groves, lily ponds, lakeside paths — and Royalton Farms, our working organic farm where most of what reaches the table is grown.',
+    'Giovanni Village sits on the edge of Ratapani Tiger Reserve, twenty minutes outside Bhopal. Twenty-three acres of mango groves, lily ponds, lakeside paths — and Royalton Farms, our working organic farm where most of what reaches the table is grown.',
     'Brides, naturalists, weekending families, second-honeymooners, conference delegates, toddlers chasing peacocks. The estate holds them all without raising its voice.',
     'Ten forest-view room categories. Three dining venues, each with its own hour of the day. Eleven event spaces — indoors and out, from a 10,000 sq ft banquet hall to a lakeside lawn. A spa built for the long way home.',
     'And five kilometres up the road, the reserve waits — five hundred square kilometres of teak forest, leopard, sloth bear, and one of India’s healthiest tiger populations.',
@@ -221,7 +221,7 @@ export const rooms: Room[] = [
     rich: {
       subtitle: 'A king room that opens onto its own lawn',
       intro:
-        'The same 430ft² of soft, organic interior as our pool-garden king — Patented Natural Latex on an Extra Large King, large-format windows, and a quietly elegant work desk — but here the doors open onto a 300ft² private walled lawn. A slice of the estate that is only yours for the stay.',
+        'The same 430ft² of soft, organic interior as our pool-garden king — Patented Natural Latex on an Extra Large King, large-format windows, and a quietly elegant work desk — but here the doors open onto a 300ft² private open lawn. A slice of the estate that is only yours for the stay.',
       sections: [
         {
           heading: 'The private lawn',
@@ -296,8 +296,8 @@ export const rooms: Room[] = [
     id: 'junior-suite-deck-private-garden',
     name: 'Junior Suite with Deck and Private Garden',
     description:
-      '540ft² interior + 300ft² private walled garden — 840ft² of indoor-outdoor estate, in total seclusion. The most prestigious of our Junior Suites.',
-    features: ['Private Walled Garden', '840 sqft Total', 'Extra Large King', 'Natural Latex Mattress'],
+      '540ft² interior + 300ft² private open garden — 840ft² of indoor-outdoor estate, in total seclusion. The most prestigious of our Junior Suites.',
+    features: ['Private Open Garden', '840 sqft Total', 'Extra Large King', 'Natural Latex Mattress'],
     capacity: '2 adults, 1 child',
     area: '540 sqft + 300 sqft private garden',
     image: '/images/rooms/junior-deck-private.webp',
@@ -314,7 +314,7 @@ export const rooms: Room[] = [
     rich: {
       subtitle: 'An ultra-exclusive sanctuary of earth and elegance',
       intro:
-        'Privacy redefined. The Junior Suite Private Garden is a masterclass in uber-luxury — a 540ft² designer interior merged with your own 300ft² private walled garden. This is not simply a room with a view; it is a sprawling 840ft² indoor-outdoor estate where you can reconnect with nature in total seclusion.',
+        'Privacy redefined. The Junior Suite Private Garden is a masterclass in uber-luxury — a 540ft² designer interior merged with your own 300ft² private open garden. This is not simply a room with a view; it is a sprawling 840ft² indoor-outdoor estate where you can reconnect with nature in total seclusion.',
       sections: [
         {
           heading: 'Your private botanical oasis',

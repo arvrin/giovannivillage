@@ -108,6 +108,37 @@ export default function ExperiencesPage() {
           <ExperienceMarquee items={activities} />
         </div>
 
+        {/* All experiences at a glance — static grid so the full count is visible on one screen */}
+        <Container>
+          <div className="mb-16">
+            <p
+              className="mb-6 text-center text-sm uppercase text-[var(--color-text-tertiary)]"
+              style={{ letterSpacing: '0.15em' }}
+            >
+              All {activities.length} experiences, at a glance
+            </p>
+            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {activities.map((a) => (
+                <li
+                  key={a.id}
+                  className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-3"
+                >
+                  <Image
+                    src={a.image}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 shrink-0 object-contain"
+                  />
+                  <span className="text-sm text-[var(--color-text)]" style={{ lineHeight: 1.3 }}>
+                    {a.title}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+
         <ExperiencesEditorial />
 
         {/* CTA */}
