@@ -84,7 +84,7 @@ export default function SpaPage() {
           </div>
 
           {/* Spa menu PDF */}
-          <SectionHeader title="The full menu" eyebrow="Browse the whole list" description="Six chapters of therapies — from Giovanni Signature Massages to Ayurvedic rituals and Couple Spa packages. Open the menu to see every treatment, duration and price." />
+          <SectionHeader title="The full menu" eyebrow="Browse the whole list" description="Six chapters of therapies — from Giovanni Signature Massages to Ayurvedic rituals and Couple Spa packages. Open the menu to see every treatment and duration." />
           <div className="mt-12 mb-24 max-w-3xl mx-auto">
             <ul className="grid sm:grid-cols-2 gap-3 mb-10">
               {spaMenuCategories.map((cat) => (
@@ -94,32 +94,6 @@ export default function SpaPage() {
                 </li>
               ))}
             </ul>
-
-            {/* Indicative rates — so prices are visible on the page, not only in the PDF/FAQ */}
-            <div className="mb-10 rounded-lg border border-[var(--color-bronze)]/15 bg-[var(--color-background-secondary)] p-6 sm:p-8">
-              <p className="mb-5 text-xs font-medium uppercase text-[var(--color-text-tertiary)]" style={{ letterSpacing: '0.15em' }}>
-                Indicative rates
-              </p>
-              <dl className="space-y-3">
-                {[
-                  { label: 'Express treatments · 30 min', price: 'from ₹1,500' },
-                  { label: 'Giovanni Signature massages · 60 min', price: '₹2,000 – ₹4,000' },
-                  { label: "Couple's Romantic Retreat · 90 min", price: '₹6,000' },
-                ].map((row, i, arr) => (
-                  <div
-                    key={row.label}
-                    className={`flex items-baseline justify-between gap-4 ${i < arr.length - 1 ? 'border-b border-[var(--color-bronze)]/10 pb-3' : ''}`}
-                  >
-                    <dt className="text-sm text-[var(--color-text-secondary)] sm:text-base">{row.label}</dt>
-                    <dd className="whitespace-nowrap font-medium text-[var(--color-bronze)]">{row.price}</dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="mt-5 text-xs text-[var(--color-text-tertiary)]" style={{ lineHeight: 1.7 }}>
-                The full price list — every treatment and duration — is in the spa menu. Taxes as applicable.
-              </p>
-            </div>
-
             <div className="text-center">
               <Button
                 variant="primary"

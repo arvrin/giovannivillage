@@ -247,7 +247,7 @@ export const faqs: Faq[] = [
     topic: 'spa',
     question: 'How much does a spa treatment at Giovanni Village cost?',
     answer:
-      'Spa treatments at Elysium Spa start at ₹1,500 for a 30-minute Foot Reflexology or Facial Massage. Signature 60-minute massages range from ₹2,000 to ₹4,000, and the 90-minute couples\' Romantic Retreat is ₹6,000. The full price list is available on the spa menu.',
+      'Elysium Spa offers treatments across six chapters — from 30-minute express therapies to 90-minute signature rituals and couples\' packages. Current rates are shared by the wellness team at spa reception, or on WhatsApp when you book; the full treatment list is on the spa menu.',
   },
   {
     id: 'spa-included',
@@ -261,7 +261,7 @@ export const faqs: Faq[] = [
     topic: 'spa',
     question: 'Does Giovanni Village offer couples\' spa treatments?',
     answer:
-      'Yes — the Romantic Retreat at Elysium Spa is a 90-minute side-by-side couples\' massage with your choice of oils, priced at ₹6,000. It can be booked through the spa reception or as part of an anniversary or honeymoon package.',
+      'Yes — the Romantic Retreat at Elysium Spa is a 90-minute side-by-side couples\' massage with your choice of oils. It can be booked through the spa reception or as part of an anniversary or honeymoon package.',
   },
   {
     id: 'spa-booking',
