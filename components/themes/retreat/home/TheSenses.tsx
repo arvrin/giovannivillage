@@ -73,7 +73,7 @@ const PILLARS = [
     img: '/images/weddings/gourmet-lawn.webp',
     alt: 'A floral mandap on the lily-pond deck set for a lakeside ceremony',
     href: '/weddings',
-    meta: '05 Venues · Up to 2,000 guests',
+    meta: 'A venue for every ceremony · Up to 2,000 guests',
   },
 ];
 
@@ -105,7 +105,7 @@ const TheSenses = () => {
             style={{ fontFamily: 'var(--font-body)' }}
           >
             Giovanni was built to hold many lives gently — the wedding planner’s,
-            the bride’s, the toddler chasing a peacock across the lawn, the
+            the bride’s, the child chasing a peacock across the lawn, the
             couple slipping into a plunge pool after a forest drive.
           </p>
         </motion.div>
@@ -159,7 +159,7 @@ const TheSenses = () => {
                     <h3 className="display-italic text-2xl leading-[1.15] md:text-[2rem]">
                       {p.lead}{' '}
                       <span className="font-script">{p.accent}</span>
-                      {p.tail ? ` ${p.tail}` : ''}
+                      {p.tail ? (/^[,.;:!?]/.test(p.tail) ? p.tail : ` ${p.tail}`) : ''}
                     </h3>
                     <p
                       className="mt-3 max-w-lg text-[15px] leading-[1.85] text-[color:var(--color-text-secondary)]"

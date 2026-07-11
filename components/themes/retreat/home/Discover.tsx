@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 const PROMISES = [
   { v: '23', l: 'Acres of estate' },
   { v: '10', l: 'Room categories' },
-  { v: '05', l: 'Event venues' },
+  { v: '20+', l: 'Ceremonies, one estate' },
   { v: '03', l: 'Restaurants' },
 ];
 
@@ -96,11 +96,11 @@ const Discover = () => {
             >
               <p>
                 Brides, naturalists, weekending families, second-honeymooners,
-                conference delegates, toddlers chasing peacocks — Giovanni
+                conference delegates, children chasing peacocks — Giovanni
                 Village holds them all without losing its quiet.
               </p>
               <p>
-                Ten acres of mango groves and lily ponds, ten room categories
+                Twenty-three acres of mango groves and lily ponds, ten room categories
                 that face green, three dining venues, eleven event spaces, and a
                 spa built for the long way home.
               </p>

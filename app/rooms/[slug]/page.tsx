@@ -236,7 +236,7 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
 
             {/* Booking sidebar */}
             <aside>
-              <div className="sticky top-28 bg-[var(--color-background-secondary)] p-8 rounded-lg">
+              <div className="lg:sticky lg:top-28 bg-[var(--color-background-secondary)] p-8 rounded-lg">
                 <p
                   className="text-[10px] tracking-[0.32em] uppercase text-[var(--color-text-tertiary)] mb-3"
                   style={{ fontFamily: 'var(--font-eyebrow)' }}

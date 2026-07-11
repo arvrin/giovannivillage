@@ -242,7 +242,7 @@ const RetreatFooter = () => {
         </motion.div>
 
         <p
-          className="mt-16 text-center text-[10px] tracking-[0.4em] uppercase text-[color:var(--color-text-tertiary)]"
+          className="mt-16 text-center text-[10px] tracking-[0.25em] md:tracking-[0.4em] uppercase text-[color:var(--color-text-tertiary)]"
           style={{ fontFamily: 'var(--font-eyebrow)' }}
         >
           © {new Date().getFullYear()} Giovanni Village · A Venture of Sudesh The Village Resort

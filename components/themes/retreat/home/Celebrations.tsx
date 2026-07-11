@@ -40,7 +40,7 @@ const Celebrations = () => {
               className="mt-6 max-w-xl text-[15px] leading-[1.85] text-[color:var(--color-text-secondary)] md:text-base"
               style={{ fontFamily: 'var(--font-body)' }}
             >
-              Five venues, twenty distinct ceremonies. Mehndi by the lily pond,
+              A venue for every ceremony. Mehndi by the lily pond,
               haldi under marigold canopies, pheras on the lawn, sangeet in a
               pillarless hall lit by a thousand bulbs. A dedicated planner shapes
               every detail; we handle the rest.
@@ -98,7 +98,7 @@ const Celebrations = () => {
           style={{ fontFamily: 'var(--font-eyebrow)' }}
         >
           {[
-            { v: '05', l: 'Venues' },
+            { v: 'All', l: 'Ceremonies, one estate' },
             { v: '2K', l: 'Max guests' },
             { v: '20+', l: 'Ceremony styles' },
             { v: '01', l: 'Dedicated planner' },

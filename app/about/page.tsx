@@ -46,7 +46,7 @@ export default function AboutPage() {
         <Container>
           {/* Editorial: image + content */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-24 md:mb-32">
-            <div className="relative h-[500px] lg:h-[680px] rounded-lg overflow-hidden">
+            <div className="relative h-[340px] sm:h-[440px] lg:h-[680px] rounded-lg overflow-hidden">
               <Image
                 src="/images/about/landscape-1.webp"
                 alt="Giovanni Village Resort"

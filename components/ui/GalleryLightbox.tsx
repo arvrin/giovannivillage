@@ -151,7 +151,7 @@ export default function GalleryLightbox({ items, index, onClose, onNavigate }: P
 
       {/* Media */}
       <div
-        className="relative flex h-full max-h-[92vh] w-full max-w-[92vw] flex-col items-center justify-center px-4"
+        className="relative flex h-full max-h-[88svh] md:max-h-[92vh] w-full max-w-[92vw] flex-col items-center justify-center px-4"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative flex w-full flex-1 items-center justify-center">

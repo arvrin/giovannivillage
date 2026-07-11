@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
@@ -163,7 +164,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             className="prose-blog mx-auto mt-16 max-w-3xl pb-16 text-[var(--color-text)]"
             style={{ fontFamily: 'var(--font-body)' }}
           >
-            <MDXRemote source={post.content} />
+            <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
           </article>
         </Container>
 

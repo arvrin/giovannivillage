@@ -117,7 +117,7 @@ export default function ContactPage() {
         />
 
         <Container>
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 mb-24">
+          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-20 mb-24">
             {/* Form */}
             <div>
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-8" style={{ letterSpacing: '-0.02em', lineHeight: 1.1 }}>
@@ -224,7 +224,7 @@ export default function ContactPage() {
           </div>
 
           {/* Map */}
-          <div className="w-full h-[500px] md:h-[600px] bg-[var(--color-background-secondary)] rounded-lg overflow-hidden shadow-sm mb-16">
+          <div className="w-full h-[320px] sm:h-[420px] md:h-[600px] bg-[var(--color-background-secondary)] rounded-lg overflow-hidden shadow-sm mb-16">
             <iframe
               title="Giovanni Village location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.004096023367!2d77.3991207!3d23.096945899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c45a04317e2f1%3A0xbb8110e5e4959a11!2sGiovanni%20Village!5e0!3m2!1sen!2sin!4v1779886809904!5m2!1sen!2sin"

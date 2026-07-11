@@ -75,7 +75,7 @@ function FaqRow({ faq }: { faq: Faq }) {
           aria-expanded={open}
           aria-controls={panelId}
           onClick={() => setOpen((v) => !v)}
-          className="flex w-full items-start justify-between gap-6 py-5 text-left transition-colors hover:text-[var(--color-bronze)] focus:outline-none focus-visible:text-[var(--color-bronze)]"
+          className="flex w-full items-start justify-between gap-3 md:gap-6 py-5 text-left transition-colors hover:text-[var(--color-bronze)] focus:outline-none focus-visible:text-[var(--color-bronze)]"
         >
           <span
             className="font-heading text-base leading-snug md:text-lg"
