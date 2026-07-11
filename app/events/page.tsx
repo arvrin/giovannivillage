@@ -15,10 +15,10 @@ import { getWhatsAppLink } from '@/lib/utils';
 import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
 
 const formats = [
-  { title: 'Conferences & AGMs', line: 'Pillarless halls up to 10,000 sq ft, AV-ready, with breakaway rooms for working sessions.' },
+  { title: 'Conferences & AGMs', line: 'Pillarless, AV-ready halls with breakaway rooms for working sessions.' },
   { title: 'Corporate Offsites', line: 'Stay-and-work formats — boardroom mornings, forest afternoons, dinners under the canopy.' },
   { title: 'Brand Activations', line: 'Indoor + outdoor venues in combination, custom builds for launches and experiential moments.' },
-  { title: 'Board Meetings', line: 'The Forum — a 1,000 sq ft purpose-built boardroom overlooking the pool, with intimate dining alongside.' },
+  { title: 'Board Meetings', line: 'The Forum — a purpose-built boardroom overlooking the pool, with intimate dining alongside.' },
 ];
 
 const included = [

@@ -19,7 +19,7 @@ export const metadata = {
   openGraph: {
     title: 'Rooms & Suites — Giovanni Village Resort',
     description:
-      'Eight rooms and suites, from King Rooms to the Royal Suite with a private plunge pool. Each one opens to the forest.',
+      'Ten room categories, from King Rooms to the Royal Suite with a private plunge pool. Each one opens to the forest.',
     url: '/rooms',
     images: ['/r1.webp'],
   },

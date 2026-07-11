@@ -200,7 +200,7 @@ export const faqs: Faq[] = [
     topic: 'dining',
     question: 'What kinds of cuisine are served at Giovanni Village?',
     answer:
-      'The kitchens at Giovanni Village serve North Indian, South Indian, Indo-Chinese, Pan-Asian, Italian and Mediterranean cuisines, with a strong Malwa and Bhopali regional focus on the indulgent end. Standout dishes include Chef Sabharwal\'s Mutton Roganjosh, Rajasthani Laal Maas, Bhopali Murgh Rizala and the signature Shahi Gulab Jamun.',
+      'The kitchens at Giovanni Village serve North Indian, South Indian, Indo-Chinese, Pan-Asian, Italian and Mediterranean cuisines, with a strong Malwa and Bhopali regional focus on the indulgent end. Standout dishes include Chef Sabharwal\'s Kashmiri Rogan Josh, Rajasthani Laal Maas, Bhopali Murgh Rizala and the signature Shahi Gulab Jamun.',
   },
   {
     id: 'vegetarian-vegan',
