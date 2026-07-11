@@ -98,7 +98,7 @@ export default function WeddingsPage() {
             </p>
           </IntroBlock>
 
-          {/* Ceremonies — wedding-specific (replaces confused event-types row) */}
+          {/* Ceremonies — vertical list beside a portrait film of the estate dressed */}
           <div className="mt-20 mb-24">
             <p
               className="mb-6 text-[11px] tracking-[0.36em] uppercase text-[var(--color-text-tertiary)]"
@@ -106,27 +106,47 @@ export default function WeddingsPage() {
             >
               Ceremonies
             </p>
-            <ul className="grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2 max-w-5xl">
-              {ceremonies.map(({ title, line }) => (
-                <li key={title} className="flex gap-6 items-baseline">
-                  <span
-                    aria-hidden
-                    className="h-px w-8 flex-shrink-0 bg-[var(--color-border-strong)] translate-y-3"
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-16">
+              {/* The film — sticky beside the list on desktop, above it on mobile */}
+              <div className="lg:sticky lg:top-28 lg:self-start">
+                <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] overflow-hidden rounded-lg">
+                  <video
+                    src="/videos/wedding-ceremonies.mp4"
+                    poster="/videos/wedding-ceremonies-poster.webp"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label="A wedding on the Giovanni Village estate"
+                    className="absolute inset-0 h-full w-full object-cover"
                   />
-                  <div>
-                    <h3 className="display-italic text-2xl md:text-3xl mb-2 text-[var(--color-text)]">
-                      {title}
-                    </h3>
-                    <p
-                      className="text-[15px] leading-[1.75] text-[var(--color-text-secondary)]"
-                      style={{ fontFamily: 'var(--font-body)' }}
-                    >
-                      {line}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                </div>
+              </div>
+
+              {/* The ceremonies, stacked */}
+              <ul className="flex flex-col gap-10">
+                {ceremonies.map(({ title, line }) => (
+                  <li key={title} className="flex gap-6 items-baseline">
+                    <span
+                      aria-hidden
+                      className="h-px w-8 flex-shrink-0 bg-[var(--color-border-strong)] translate-y-3"
+                    />
+                    <div>
+                      <h3 className="display-italic text-2xl md:text-3xl mb-2 text-[var(--color-text)]">
+                        {title}
+                      </h3>
+                      <p
+                        className="text-[15px] leading-[1.75] text-[var(--color-text-secondary)]"
+                        style={{ fontFamily: 'var(--font-body)' }}
+                      >
+                        {line}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Real decor from past weddings on the estate */}
