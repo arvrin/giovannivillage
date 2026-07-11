@@ -10,6 +10,7 @@ import PageHero from '@/components/ui/PageHero';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { about } from '@/lib/data';
+import EstateFrames from './EstateFrames';
 
 const iconMap = {
   hotel: Hotel,
@@ -212,25 +213,9 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Image gallery */}
+          {/* Image gallery — rotating frames, no image repeated across frames */}
           <SectionHeader title="Frames from the estate" eyebrow="A glimpse" />
-          <div className="mt-16 mb-24 md:mb-32 grid md:grid-cols-3 gap-8">
-            {[
-              { src: '/images/about/landscape-1.webp', alt: 'Mango groves across the estate' },
-              { src: '/images/about/landscape-2.webp', alt: 'Lily ponds on the resort grounds' },
-              { src: '/images/about/landscape-3.webp', alt: 'Lakeside path through the resort grounds' },
-            ].map((img) => (
-              <div key={img.src} className="relative aspect-[4/3] rounded-lg overflow-hidden group">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-            ))}
-          </div>
+          <EstateFrames />
 
           {/* Promise */}
           <div className="text-center max-w-3xl mx-auto pb-16">
