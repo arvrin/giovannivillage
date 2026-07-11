@@ -10,7 +10,7 @@ import Button from '@/components/ui/Button';
 import PageHero from '@/components/ui/PageHero';
 import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
-import VenueGrid, { VenueCard } from '@/components/ui/VenueGrid';
+import VenueGrid from '@/components/ui/VenueGrid';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import WeddingMomentVideo from '@/components/themes/retreat/WeddingMomentVideo';
@@ -76,9 +76,6 @@ export default function WeddingsPage() {
   const ariaGrand = weddingVenues.find((v) => v.id === 'aria-grand');
   const indoorRest = weddingVenues.filter((v) => v.type === 'indoor' && v.id !== 'aria-grand' && v.useCases.includes('wedding'));
   const outdoor = weddingVenues.filter((v) => v.type === 'outdoor' && v.useCases.includes('wedding'));
-  // The strongest outdoor photograph leads full-width; the rest pair up below.
-  const outdoorFeatured = outdoor.find((v) => v.id === 'pihu-deck');
-  const outdoorRest = outdoor.filter((v) => v.id !== 'pihu-deck');
 
   return (
     <>
@@ -262,13 +259,7 @@ export default function WeddingsPage() {
               Six lawns, lakesides and decks
             </h3>
           </div>
-          {/* One featured outdoor venue breaks the grid rhythm, then the rest in pairs. */}
-          {outdoorFeatured && (
-            <div className="mb-8">
-              <VenueCard venue={outdoorFeatured} intent="wedding" />
-            </div>
-          )}
-          <VenueGrid venues={outdoorRest} intent="wedding" className="mb-6" />
+          <VenueGrid venues={outdoor} intent="wedding" className="mb-6" />
           <div className="mb-24 text-center">
             <Button variant="outline" size="md" href="/venues">
               Explore all venues
