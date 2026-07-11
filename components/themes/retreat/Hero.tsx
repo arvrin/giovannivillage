@@ -27,7 +27,7 @@ const HERO_LINES: HeroLine[] = [
     script: 'remember',
     tail: 'what slow feels like.',
     description:
-      'An uber-luxury estate folded into ten acres of forest — for the wedding of a lifetime, a weekend that resets you, or a safari you came for and a sunset you stayed for.',
+      'A luxury estate folded into twenty-three acres of forest — for the wedding of a lifetime, a weekend that resets you, or a safari you came for and a sunset you stayed for.',
   },
   {
     lead: 'remember what',
@@ -47,7 +47,7 @@ const HERO_LINES: HeroLine[] = [
     script: 'marry',
     tail: 'by the lakeside.',
     description:
-      'Eleven venues across ten acres — from a pillarless 10,000 sq ft hall to a lakeside lawn with sunset pheras — and a planner who only does your wedding.',
+      'Eleven venues across twenty-three acres — from a pillarless 10,000 sq ft hall to a lakeside lawn with sunset pheras — and a planner who only does your wedding.',
   },
   {
     lead: 'find the long way',

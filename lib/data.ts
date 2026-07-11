@@ -105,7 +105,7 @@ export const about = {
   subtitle: 'Twenty-three acres, ten room categories, one long pause in the day.',
   content: [
     'Giovanni Village sits on the edge of Ratapani Tiger Reserve, twenty minutes outside Bhopal. Twenty-three acres of mango groves, lily ponds, lakeside paths — and Royalton Farms, our working organic farm where most of what reaches the table is grown.',
-    'Brides, naturalists, weekending families, second-honeymooners, conference delegates, toddlers chasing peacocks. The estate holds them all without raising its voice.',
+    'Brides, naturalists, weekending families, second-honeymooners, conference delegates, children chasing peacocks. The estate holds them all without raising its voice.',
     'Ten forest-view room categories. Three dining venues, each with its own hour of the day. Eleven event spaces — indoors and out, from a 10,000 sq ft banquet hall to a lakeside lawn. A spa built for the long way home.',
     'And five kilometres up the road, the reserve waits — five hundred square kilometres of teak forest, leopard, sloth bear, and one of India’s healthiest tiger populations.',
   ],
@@ -200,7 +200,7 @@ export const rooms: Room[] = [
     ],
     price: 9999,
     rich: {
-      subtitle: 'Where organic tranquility meets uber-luxury',
+      subtitle: 'Where organic tranquillity meets quiet luxury',
       intro:
         'A residence designed not just for stay, but for restoration. Spanning 430ft², this sanctuary replaces corporate rigidity with a soft, organic aesthetic. Bathed in natural light, the room offers a rare dual perspective — the rhythmic serenity of the pool view and the lush, grounding presence of our garden view. Every element has been curated to resonate with a lifestyle of mindful opulence.',
       sections: [
@@ -336,10 +336,10 @@ export const rooms: Room[] = [
     rich: {
       subtitle: 'An ultra-exclusive sanctuary of earth and elegance',
       intro:
-        'Privacy redefined. The Junior Suite Private Garden is a masterclass in uber-luxury — a 540ft² designer interior merged with your own 300ft² private open garden. This is not simply a room with a view; it is a sprawling 840ft² indoor-outdoor estate where you can reconnect with nature in total seclusion.',
+        'Privacy redefined. The Junior Suite Private Garden pairs a 540ft² designer interior with your own 300ft² private open garden. This is not simply a room with a view; it is a sprawling 840ft² indoor-outdoor estate where you can reconnect with nature in total seclusion.',
       sections: [
         {
-          heading: 'Your private botanical oasis',
+          heading: 'Your private garden',
           body: 'A 300ft² manicured sanctuary exclusively for your use. Whether for a private morning meditation or an evening under the stars, this lush outdoor living space offers a level of intimacy rarely found in high-end hospitality.',
         },
         {
@@ -385,7 +385,7 @@ export const rooms: Room[] = [
     ],
     price: 13999,
     rich: {
-      subtitle: 'Where celestial wonder meets organic opulence',
+      subtitle: 'An open-to-sky bath beneath the stars',
       intro:
         'A 530ft² sanctuary where the boundaries between modern indulgence and the rhythmic pulse of nature dissolve. Soft ambient lighting, handcrafted wooden details, a profound sense of calm that slows time to a whisper.',
       sections: [
@@ -489,7 +489,7 @@ export const rooms: Room[] = [
     ],
     price: 14999,
     rich: {
-      subtitle: 'A private aquatic retreat beneath the heavens',
+      subtitle: 'A private plunge pool, open to the sky',
       intro:
         'A 530ft² haven where organic architecture meets high-concept luxury. Designed for the discerning traveller who seeks a deep, visceral connection with the elements. Defined by handcrafted wooden details and bathed in soft, natural light, this sanctuary slows the pace of life the moment you cross the threshold.',
       sections: [
@@ -544,7 +544,7 @@ export const rooms: Room[] = [
     rich: {
       subtitle: 'The crown jewel of Giovanni Village',
       intro:
-        'Our most prestigious offering. 1,100ft² of interior elegance cocooned within a sprawling private estate — the definitive expression of uber-luxury. Crafted for those who demand absolute silence, vast space, and a soul-soothing connection to the earth, the Royal Suite is less a room and more a private sanctuary.',
+        'Our most prestigious offering. 1,100ft² of interior elegance set within a sprawling private estate — the definitive expression of quiet luxury. Crafted for those who want absolute silence, vast space, and an unbroken connection to the earth, the Royal Suite is less a room and more a private sanctuary.',
       sections: [
         {
           heading: 'The aquatic & botanical estate',
@@ -614,9 +614,9 @@ export const restaurants = [
   {
     id: 'gourmet-by-the-woods',
     name: 'Gourmet By The Woods',
-    tagline: 'A culinary adventure in the heart of nature',
+    tagline: 'Farm-to-table under the forest canopy',
     description:
-      'Nestled amidst tranquillity, Gourmet By The Woods is our fine dining destination. A menu crafted by world-renowned chefs makes every dish a gastronomic delight.',
+      'Gourmet By The Woods sits under the forest canopy — our fine dining room. The menu draws from Royalton Farms and classical training; each dish reflects the morning\u2019s harvest and the season.',
     image: '/images/dining/gourmet-1.webp',
     tags: ['Fine Dining', 'Multi-Course', 'Forest Setting'],
   },
@@ -784,28 +784,28 @@ export const weddings = {
 export const activities = [
   {
     id: 'croquet',
-    title: 'Old School Cool: Croquet',
+    title: 'Croquet on the Lawn',
     description: 'Engage in a game of Croquet — a classic pastime with a Giovanni twist.',
     category: 'Outdoor',
     image: '/images/experiences/icons/icon-1.webp',
   },
   {
     id: 'manual-scooters',
-    title: 'Retro Rides: Manual Scooters',
+    title: 'Scooters Around the Estate',
     description: 'Kick, push, coast — the simple pleasure of a manual scooter ride around the resort.',
     category: 'Outdoor',
     image: '/images/experiences/icons/icon-2.webp',
   },
   {
     id: 'modern-kanche',
-    title: 'Next-Gen Marbles: Modern Kanche',
+    title: 'Modern Kanche',
     description: 'Experience the timeless game of Kanche, modernised for today’s generation.',
     category: 'Indoor',
     image: '/images/experiences/icons/icon-3.webp',
   },
   {
     id: 'board-games',
-    title: 'Board of Fun: Board Games',
+    title: 'The Board Games Library',
     description:
       'Ludo, Snakes and Ladders, Tambola, Scrabble, Jenga, Tic-Tac-Toe, Carrom, Uno, Modern Kanche, Foosball.',
     category: 'Indoor',
@@ -820,7 +820,7 @@ export const activities = [
   },
   {
     id: 'cycling',
-    title: 'Ride & Glide: Cycling',
+    title: 'Cycling Through the Estate',
     description: 'Explore the resort on two wheels — perfect for a romantic ride or a family adventure.',
     category: 'Outdoor',
     image: '/images/experiences/icons/icon-6.webp',
@@ -828,13 +828,13 @@ export const activities = [
   {
     id: 'soft-touch-pool',
     title: 'Soft-Touch Swimming Pool',
-    description: 'A tranquil oasis amidst the resort — perfect for a long dip or sunset float.',
+    description: 'Set among the gardens — perfect for a long dip or a sunset float.',
     category: 'Wellness',
     image: '/images/experiences/icons/icon-7.webp',
   },
   {
     id: 'frisbee',
-    title: 'Flying High: Frisbee',
+    title: 'Frisbee on the Lawns',
     description: 'Get your adrenaline pumping with a good old game of Frisbee on the lawns.',
     category: 'Sport',
     image: '/images/experiences/icons/icon-8.webp',
@@ -847,14 +847,6 @@ export const activities = [
     image: '/images/experiences/icons/icon-9.webp',
   },
   {
-    id: 'lake-side-leisure',
-    title: 'Lake-Side Leisure: Catch Your Meal',
-    description:
-      'Sit back, relax — and maybe even catch your next meal at our lake. Our chefs will cook the fish to your liking.',
-    category: 'Dining',
-    image: '/images/experiences/icons/icon-10.webp',
-  },
-  {
     id: 'farm-breakfast',
     title: 'Farm Fresh Feast: Breakfast at Royalton Farms',
     description: 'An authentic farm-to-table meal, served right at our organic farm within the resort premises.',
@@ -865,7 +857,7 @@ export const activities = [
     id: 'elysium-spa',
     title: 'Elysium Spa: Path to Serenity',
     description:
-      'Holistic treatments, yoga, meditation and wellness retreats in a sanctuary set among landscaped gardens.',
+      'Holistic therapies, yoga and meditation among the gardens — rituals built for recovery and deep sleep, the tonic rather than the quick fix.',
     category: 'Wellness',
     image: '/images/experiences/icons/icon-12.webp',
   },
@@ -885,7 +877,7 @@ export const activities = [
   },
   {
     id: 'self-bbq',
-    title: 'Grill & Chill: Self-Service Barbecue',
+    title: 'Self-Service Barbecue',
     description: 'Show off your grilling skills or simply enjoy the experience at our self-barbecue stations.',
     category: 'Dining',
     image: '/images/experiences/icons/icon-15.webp',
@@ -899,15 +891,15 @@ export const activities = [
   },
   {
     id: 'jhoolas',
-    title: 'Swing High: Jhoolas',
+    title: 'Jhoolas Under the Trees',
     description: 'Multiple swings dotted around the resort — travel down memory lane.',
     category: 'Outdoor',
     image: '/images/experiences/icons/icon-17.webp',
   },
   {
     id: 'lakeside-fishing',
-    title: 'Lake-Side Leisure: Fishing',
-    description: 'Sit back, relax, and maybe even catch your next meal at our beautiful lake.',
+    title: 'Lakeside Fishing',
+    description: 'An unhurried afternoon with a rod on the lily-pond deck — and if you catch something, the kitchen will cook it to your liking.',
     category: 'Outdoor',
     image: '/images/experiences/icons/icon-18.webp',
   },
@@ -920,7 +912,7 @@ export const activities = [
   },
   {
     id: 'sunbathing',
-    title: 'Soak Up the Sun: Sunbathing',
+    title: 'Sunbathing by the Pool',
     description: 'Experience the joy of a perfect tan as you lounge in our sunbathing area.',
     category: 'Wellness',
     image: '/images/experiences/icons/icon-20.webp',
@@ -966,7 +958,7 @@ export const testimonials = [
 
 export const footer = {
   about:
-    'Giovanni Village — A Venture of Sudesh The Village Resort. An uber-luxury wildlife resort in Bhopal offering an unparalleled blend of nature, comfort and world-class hospitality.',
+    'Giovanni Village — A Venture of Sudesh The Village Resort. A luxury wildlife resort on 23 acres at the edge of Ratapani Tiger Reserve — forest-view suites, farm-to-table dining from Royalton Farms, and a spa built for slowness.',
   quickLinks: [
     { label: 'About Us', href: '/about' },
     { label: 'Rooms & Suites', href: '/rooms' },

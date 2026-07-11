@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const FACTS = [
-  { l: '10', u: 'Acres', d: 'Lawns, mango groves, lakeside paths' },
+  { l: '23', u: 'Acres', d: 'Lawns, mango groves, lakeside paths' },
   { l: '20 min', u: 'From the city', d: 'Door to Kolar in half an hour' },
   { l: '5 km', u: 'To Ratapani', d: 'For the morning you choose a safari' },
   { l: '2,000', u: 'Guests', d: 'For the wedding you’ve been planning' },
@@ -54,7 +54,7 @@ const WhereYouAre = () => {
               className="mt-8 max-w-xl text-base leading-[1.85] text-white/90 md:text-lg"
               style={{ fontFamily: 'var(--font-body)' }}
             >
-              Giovanni Village sits on ten quiet acres at the boundary of the
+              Giovanni Village sits on twenty-three quiet acres at the boundary of the
               Ratapani Reserve — close enough to Bhopal for a quick weekend, far
               enough that the air changes the moment you arrive. Built for long
               stays, larger-than-life weddings, and everything between.

@@ -6,6 +6,7 @@ import { Hotel, Leaf, Utensils, Flower2 } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
+import Button from '@/components/ui/Button';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
@@ -224,6 +225,14 @@ export default function AboutPage() {
               eyebrow="What it actually feels like"
               description="The food on the lawn at breakfast — grown a few steps away at Royalton Farms. The night-jar at the plunge pool. A planner who remembers your aunt’s name. Long days, softer evenings, and the small hospitality that hides the work behind it. Because here, slow is the new luxury — and nature is the ultimate medicine."
             />
+            <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+              <Button variant="primary" size="lg" href="/rooms">
+                Plan a Stay
+              </Button>
+              <Button variant="outline" size="lg" href="/contact">
+                Talk to the Concierge
+              </Button>
+            </div>
           </div>
         </Container>
       </main>

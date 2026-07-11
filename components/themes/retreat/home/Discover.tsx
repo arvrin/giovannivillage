@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
 const PROMISES = [
-  { v: '10', l: 'Acres of estate' },
+  { v: '23', l: 'Acres of estate' },
   { v: '10', l: 'Room categories' },
   { v: '05', l: 'Event venues' },
   { v: '03', l: 'Restaurants' },

@@ -63,7 +63,7 @@ const planSteps = [
   {
     icon: Users,
     label: 'Walk the venues',
-    body: 'Drive up for a free one-night stay so you can see the lawns, taste the kitchen, and meet the planner before signing.',
+    body: 'Drive up for a free one-night stay so you can see the lawns, taste the kitchen, and meet the planner before you decide.',
   },
   {
     icon: Sparkles,
@@ -92,7 +92,7 @@ export default function WeddingsPage() {
         />
 
         <Container>
-          <IntroBlock title="Twenty ceremonies, one estate">
+          <IntroBlock title="Every ceremony, one estate">
             <p>
               Mehndi by the lily pond. Haldi under marigold archways. Pheras at the lake at sunset. Sangeet in a thousand-bulb hall. The estate stages each function in the venue it deserves, and the planner makes the day disappear into yours.
             </p>

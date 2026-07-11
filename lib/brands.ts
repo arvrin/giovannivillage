@@ -37,7 +37,7 @@ export const BRANDS: Brand[] = [
     name: 'Giovanni Village',
     tagline: 'Luxury Wildlife Resort',
     description:
-      'Twenty-three acres on the edge of Ratapani Tiger Reserve — forest-view suites, plunge pools, and the wedding of a lifetime.',
+      'Twenty-three acres on the edge of Ratapani Tiger Reserve — forest-view suites, plunge pools, and the space to celebrate.',
     location: 'Ratapani, Bhopal',
     href: '/',
     image: '/images/hero/hero-1.webp',
