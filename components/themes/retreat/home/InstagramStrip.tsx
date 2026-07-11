@@ -11,7 +11,7 @@ const TILES: { src: string; alt: string }[] = [
   { src: '/images/about/landscape-1.webp', alt: 'Mango groves across the estate' },
   { src: '/images/rooms/royal-suite.webp', alt: 'Royal Suite with a private plunge pool' },
   { src: '/images/about/landscape-3.webp', alt: 'Lakeside path through the resort grounds' },
-  { src: '/images/dining/pihu.webp', alt: 'Pihu rooftop restaurant at dusk' },
+  { src: '/images/dining/pihu-aerial.webp', alt: 'Pihu rooftop restaurant from above' },
 ];
 
 const InstagramStrip = () => {

@@ -44,7 +44,6 @@ const SWITCH_IMAGES: Record<string, string[]> = {
   ],
   pihu: [
     '/images/dining/pihu-rooftop.webp',
-    '/images/dining/pihu.webp',
     '/images/dining/pihu-aerial.webp',
   ],
   'gazebo-by-the-lake': ['/images/dining/gazebo-by-the-lake.webp', '/images/weddings/lakeside-deck.webp'],

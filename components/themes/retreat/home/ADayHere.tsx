@@ -47,12 +47,12 @@ const FRAMES = [
   {
     time: '20:30',
     label: 'Night',
-    titleLead: 'Telescope dinner under',
+    titleLead: 'A film under the',
     titleAccent: 'stars',
     titleTail: '',
-    body: 'Pihu rolls a telescope onto the rooftop. Saturn at the soup course, the Pleiades by dessert. The forest carries on without you.',
-    img: '/images/dining/pihu.webp',
-    alt: 'Pihu rooftop restaurant set for a telescope dinner under the stars',
+    body: 'The open-air theatre flickers on — loungers drawn around the fire, blankets out, something classic on the screen. The forest carries on without you.',
+    img: '/images/experiences/open-air-theatre.webp',
+    alt: 'The open-air theatre at night — loungers around a fire pit before the screen',
   },
 ];
 
