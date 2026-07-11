@@ -41,7 +41,7 @@ export function HotelSchema() {
     url: siteConfig.url,
     image: [
       `${siteConfig.url}/images/hero/hero-1.webp`,
-      `${siteConfig.url}/images/about/about-hero-original.webp`,
+      `${siteConfig.url}/images/about/landscape-2.webp`,
     ],
     logo: `${siteConfig.url}/images/logo/gvr-final-logo.webp`,
     telephone: siteConfig.contact.phone,

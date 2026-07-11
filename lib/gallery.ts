@@ -10,7 +10,6 @@ export const galleryItems: GalleryItem[] = [
   { id: 'estate-mango-groves', src: '/images/about/landscape-1.webp', width: 1920, height: 1080, category: 'Estate', title: 'Mango groves', priority: true },
   { id: 'estate-lily-ponds', src: '/images/about/landscape-2.webp', width: 1920, height: 1080, category: 'Estate', title: 'Lily ponds', priority: true },
   { id: 'estate-lakeside-path', src: '/images/about/landscape-3.webp', width: 1920, height: 1080, category: 'Estate', title: 'Lakeside path' },
-  { id: 'estate-gates', src: '/images/about/about-hero-original.webp', width: 1440, height: 960, category: 'Estate', title: 'The Giovanni gates' },
   { id: 'estate-golden-hour', src: '/images/hero/landscape-2.webp', width: 1920, height: 1080, category: 'Estate', title: 'Golden hour over the groves' },
   { id: 'estate-first-light', src: '/images/hero/landscape-3.webp', width: 1920, height: 1080, category: 'Estate', title: 'Forest at first light' },
   { id: 'estate-at-rest', src: '/images/hero/recent.webp', width: 1280, height: 720, category: 'Estate', title: 'The estate at rest' },

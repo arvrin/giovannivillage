@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: 'Careers — Giovanni Village Resort',
     description: 'Make this estate your everyday.',
     url: '/careers',
-    images: ['/images/about/about-hero-original.webp'],
+    images: ['/images/hero/landscape-2.webp'],
   },
 };
 
@@ -49,7 +49,7 @@ export default function CareersPage() {
 
       <main className="min-h-screen bg-[var(--color-background)]">
         <PageHero
-          image="/images/about/about-hero-original.webp"
+          image="/images/hero/landscape-2.webp"
           alt="Work at Giovanni Village Resort"
           eyebrow="Work with us"
           title="Make this estate your everyday"
