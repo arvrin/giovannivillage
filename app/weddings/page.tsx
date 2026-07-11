@@ -10,7 +10,7 @@ import Button from '@/components/ui/Button';
 import PageHero from '@/components/ui/PageHero';
 import IntroBlock from '@/components/ui/IntroBlock';
 import SectionHeader from '@/components/ui/SectionHeader';
-import VenueGrid from '@/components/ui/VenueGrid';
+import VenueGrid, { VenueCard } from '@/components/ui/VenueGrid';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import WeddingMomentVideo from '@/components/themes/retreat/WeddingMomentVideo';
@@ -76,6 +76,9 @@ export default function WeddingsPage() {
   const ariaGrand = weddingVenues.find((v) => v.id === 'aria-grand');
   const indoorRest = weddingVenues.filter((v) => v.type === 'indoor' && v.id !== 'aria-grand' && v.useCases.includes('wedding'));
   const outdoor = weddingVenues.filter((v) => v.type === 'outdoor' && v.useCases.includes('wedding'));
+  // The strongest outdoor photograph leads full-width; the rest pair up below.
+  const outdoorFeatured = outdoor.find((v) => v.id === 'pihu-deck');
+  const outdoorRest = outdoor.filter((v) => v.id !== 'pihu-deck');
 
   return (
     <>
@@ -109,7 +112,7 @@ export default function WeddingsPage() {
             <div className="grid gap-10 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-16">
               {/* The film — sticky beside the list on desktop, above it on mobile */}
               <div className="lg:sticky lg:top-28 lg:self-start">
-                <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] overflow-hidden rounded-lg">
+                <div className="relative mx-auto aspect-[9/16] w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[420px] overflow-hidden rounded-lg">
                   <video
                     src="/videos/wedding-ceremonies.mp4"
                     poster="/videos/wedding-ceremonies-poster.webp"
@@ -124,15 +127,21 @@ export default function WeddingsPage() {
                 </div>
               </div>
 
-              {/* The ceremonies, stacked */}
+              {/* The ceremonies, stacked — numbered as the arc of the wedding day */}
               <ul className="flex flex-col gap-10">
-                {ceremonies.map(({ title, line }) => (
+                {ceremonies.map(({ title, line }, i) => (
                   <li key={title} className="flex gap-6 items-baseline">
                     <span
                       aria-hidden
                       className="h-px w-8 flex-shrink-0 bg-[var(--color-border-strong)] translate-y-3"
                     />
                     <div>
+                      <p
+                        className="mb-1 text-[10px] tracking-[0.3em] uppercase text-[var(--color-text-tertiary)]"
+                        style={{ fontFamily: 'var(--font-eyebrow)' }}
+                      >
+                        0{i + 1}
+                      </p>
                       <h3 className="display-italic text-2xl md:text-3xl mb-2 text-[var(--color-text)]">
                         {title}
                       </h3>
@@ -148,47 +157,6 @@ export default function WeddingsPage() {
               </ul>
             </div>
           </div>
-
-          {/* Real decor from past weddings on the estate */}
-          <div className="mb-24">
-            <p
-              className="mb-6 text-[11px] tracking-[0.36em] uppercase text-[var(--color-text-tertiary)]"
-              style={{ fontFamily: 'var(--font-eyebrow)' }}
-            >
-              The estate, dressed
-            </p>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {[
-                { src: '/images/weddings/wedding-decor-2.webp', alt: 'A marigold haldi setup on the estate lawn' },
-                { src: '/images/weddings/wedding-decor-1.webp', alt: 'A pink sangeet stage with a floral backdrop' },
-                { src: '/images/weddings/wedding-decor-3.webp', alt: 'A flamingo-and-floral welcome entrance on the lawn' },
-              ].map((p) => (
-                <div
-                  key={p.src}
-                  className="relative aspect-[4/3] overflow-hidden rounded-md"
-                >
-                  <Image
-                    src={p.src}
-                    alt={p.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-
-        {/* Real wedding video — the proof piece */}
-        <Container>
-          <WeddingMomentVideo
-            src="/videos/weddings-real-feature.mp4"
-            poster="/images/weddings/real-wedding-poster.webp"
-            eyebrow="Behind a Giovanni wedding"
-            title="Marigold petals, live tandoors, branded buffets."
-            caption="A celebration the team held earlier this year — pom-pom-arch aisles, petals from Royalton Farms baskets, a floral mandap under the canopy, and a Giovanni Village branded buffet with live tandoor and juice stations. Audio on if you want the ambient music."
-          />
         </Container>
 
         <Container>
@@ -283,7 +251,7 @@ export default function WeddingsPage() {
             </>
           )}
 
-          <div className="mt-12 mb-6">
+          <div className="mt-24 mb-6">
             <p
               className="mb-1 text-[11px] uppercase tracking-[0.3em] text-[var(--color-bronze)]"
               style={{ fontFamily: 'var(--font-eyebrow)' }}
@@ -294,11 +262,55 @@ export default function WeddingsPage() {
               Six lawns, lakesides and decks
             </h3>
           </div>
-          <VenueGrid venues={outdoor} intent="wedding" className="mb-10" />
+          {/* One featured outdoor venue breaks the grid rhythm, then the rest in pairs. */}
+          {outdoorFeatured && (
+            <div className="mb-8">
+              <VenueCard venue={outdoorFeatured} intent="wedding" />
+            </div>
+          )}
+          <VenueGrid venues={outdoorRest} intent="wedding" className="mb-6" />
           <div className="mb-24 text-center">
             <Button variant="outline" size="md" href="/venues">
               Explore all venues
             </Button>
+          </div>
+
+          {/* Proof block — the real-wedding film with its supporting frames,
+              placed after the venues to re-warm the reader before the ask. */}
+          <WeddingMomentVideo
+            src="/videos/weddings-real-feature.mp4"
+            poster="/images/weddings/real-wedding-poster.webp"
+            eyebrow="Behind a Giovanni wedding"
+            title="Marigold petals, live tandoors, branded buffets."
+            caption="A celebration the team held earlier this year — pom-pom-arch aisles, petals from Royalton Farms baskets, a floral mandap under the canopy, and a Giovanni Village branded buffet with live tandoor and juice stations. Audio on if you want the ambient music."
+          />
+          <div className="mt-4 mb-24">
+            <p
+              className="mb-6 text-[11px] tracking-[0.36em] uppercase text-[var(--color-text-tertiary)]"
+              style={{ fontFamily: 'var(--font-eyebrow)' }}
+            >
+              The estate, dressed
+            </p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {[
+                { src: '/images/weddings/wedding-decor-2.webp', alt: 'A marigold haldi setup on the estate lawn' },
+                { src: '/images/weddings/wedding-decor-1.webp', alt: 'A pink sangeet stage with a floral backdrop' },
+                { src: '/images/weddings/wedding-decor-3.webp', alt: 'A flamingo-and-floral welcome entrance on the lawn' },
+              ].map((p) => (
+                <div
+                  key={p.src}
+                  className="relative aspect-[4/3] overflow-hidden rounded-md"
+                >
+                  <Image
+                    src={p.src}
+                    alt={p.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* What's included — reframed with Giovanni-specific anchors */}
