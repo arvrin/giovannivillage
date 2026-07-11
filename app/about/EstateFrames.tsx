@@ -23,8 +23,8 @@ const POOL: { src: string; alt: string }[] = [
   { src: '/images/weddings/pihu-deck.webp', alt: 'An evening on the Pihu Deck by the pond' },
 ];
 
-const INTERVAL_MS = 3800;
-const FADE_S = 1.1;
+const INTERVAL_MS = 2200;
+const FADE_S = 0.7;
 
 const EstateFrames = () => {
   // Indices into POOL for the three frames.
