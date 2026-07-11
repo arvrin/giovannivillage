@@ -34,8 +34,13 @@ const highlights = [
 // Venues with two photos to cross-fade between in their dining card.
 const SWITCH_IMAGES: Record<string, string[]> = {
   'gourmet-by-the-woods': [
-    '/images/dining/gourmet-1.webp',
-    '/images/dining/gourmet-2.webp',
+    '/images/dining/gourmet-signage.webp',
+    '/images/dining/gourmet-room-2026.webp',
+    '/images/dining/gourmet-garden.webp',
+  ],
+  'private-dining-room': [
+    '/images/dining/private-dining-room.webp',
+    '/images/dining/gourmet-neon-nook.webp',
   ],
   pihu: [
     '/images/dining/pihu-rooftop.webp',

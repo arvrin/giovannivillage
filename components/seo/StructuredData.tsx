@@ -77,7 +77,9 @@ export function HotelSchema() {
 export function RestaurantsSchema() {
   const data = {
     '@context': 'https://schema.org',
-    '@graph': restaurants.map((r) => ({
+    // The Private Dining Room is a bookable space inside Gourmet By The Woods,
+    // not a standalone restaurant — keep it out of the Restaurant graph.
+    '@graph': restaurants.filter((r) => r.id !== 'private-dining-room').map((r) => ({
       '@type': 'Restaurant',
       '@id': `${siteConfig.url}/dining#${r.id}`,
       name: r.name,

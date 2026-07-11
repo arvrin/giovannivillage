@@ -96,7 +96,11 @@ export const galleryItems: GalleryItem[] = [
 
   // ────────────────────────────────────────────────────────── Kitchens
   { id: 'kitchen-gourmet-by-the-woods', src: '/images/dining/gourmet-1.webp', width: 1440, height: 1920, category: 'Kitchens', title: 'Gourmet By The Woods' },
-  { id: 'kitchen-gourmet-room', src: '/images/dining/gourmet-3.webp', width: 1440, height: 1920, category: 'Kitchens', title: 'Gourmet By The Woods — the room' },
+  { id: 'kitchen-gourmet-room', src: '/images/dining/gourmet-room-2026.webp', width: 1600, height: 1067, category: 'Kitchens', title: 'Gourmet By The Woods — the room' },
+  { id: 'kitchen-gourmet-signage', src: '/images/dining/gourmet-signage.webp', width: 1280, height: 853, category: 'Kitchens', title: 'Gourmet By The Woods — the courtyard' },
+  { id: 'kitchen-gourmet-buffet', src: '/images/dining/gourmet-buffet.webp', width: 1280, height: 576, category: 'Kitchens', title: 'The morning buffet at Gourmet' },
+  { id: 'kitchen-gourmet-neon-nook', src: '/images/dining/gourmet-neon-nook.webp', width: 1280, height: 853, category: 'Kitchens', title: 'Let’s drink, let’s eat, let’s talk' },
+  { id: 'kitchen-private-dining-room', src: '/images/dining/private-dining-room.webp', width: 1600, height: 1067, category: 'Kitchens', title: 'The Private Dining Room' },
   { id: 'kitchen-pihu', src: '/images/dining/pihu-rooftop.webp', width: 1280, height: 720, category: 'Kitchens', title: 'Pihu — Rooftop' },
   { id: 'kitchen-gazebo-by-the-lake', src: '/images/dining/gazebo-by-the-lake.webp', width: 1920, height: 1081, category: 'Kitchens', title: 'Gazebo by the Lake' },
   { id: 'breakfast-spread', src: '/images/dining/breakfast-spread.webp', width: 1600, height: 1068, category: 'Kitchens', title: 'The breakfast spread' },

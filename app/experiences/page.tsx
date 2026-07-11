@@ -8,7 +8,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import FaqBlock from '@/components/ui/FaqBlock';
 import ExperiencesEditorial from './ExperiencesEditorial';
-import ExperienceMarquee from './ExperienceMarquee';
+import ExperienceGrid from './ExperienceGrid';
 import { siteConfig, activities } from '@/lib/data';
 import { getWhatsAppLink } from '@/lib/utils';
 import { WHATSAPP_MESSAGES } from '@/lib/whatsapp-messages';
@@ -96,46 +96,15 @@ export default function ExperiencesPage() {
             </div>
           </div>
 
-          {/* Every experience — animated, swipeable icon marquee */}
+          {/* Every experience — the full list, visible at a glance */}
           <SectionHeader
             title="Twenty ways to spend the day"
             eyebrow="Every experience"
+            description={`All ${activities.length} of them — from croquet mornings to telescope nights. No sign-up sheets, no schedule. Wander over when the mood takes you.`}
             className="mt-8"
           />
-        </Container>
-
-        <div className="mt-10 mb-8 md:mt-12">
-          <ExperienceMarquee items={activities} />
-        </div>
-
-        {/* All experiences at a glance — static grid so the full count is visible on one screen */}
-        <Container>
-          <div className="mb-16">
-            <p
-              className="mb-6 text-center text-sm uppercase text-[var(--color-text-tertiary)]"
-              style={{ letterSpacing: '0.15em' }}
-            >
-              All {activities.length} experiences, at a glance
-            </p>
-            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {activities.map((a) => (
-                <li
-                  key={a.id}
-                  className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-3"
-                >
-                  <Image
-                    src={a.image}
-                    alt=""
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 shrink-0 object-contain"
-                  />
-                  <span className="text-sm text-[var(--color-text)]" style={{ lineHeight: 1.3 }}>
-                    {a.title}
-                  </span>
-                </li>
-              ))}
-            </ul>
+          <div className="mt-14 mb-24 md:mb-32">
+            <ExperienceGrid items={activities} />
           </div>
         </Container>
 

@@ -109,6 +109,28 @@ export const about = {
     'Ten forest-view room categories. Three dining venues, each with its own hour of the day. Eleven event spaces — indoors and out, from a 10,000 sq ft banquet hall to a lakeside lawn. A spa built for the long way home.',
     'And five kilometres up the road, the reserve waits — five hundred square kilometres of teak forest, leopard, sloth bear, and one of India’s healthiest tiger populations.',
   ],
+  /** The Legend — narrative section on the about page. */
+  legend: [
+    'There are places you visit, and then there are places that quietly rearrange you. Giovanni is the second kind — the secret you keep, the story you tell your closest people long after you have come home.',
+    'The philosophy is simple: slow is the new luxury. The estate keeps the jungle’s hours, not the city’s. Days stretch. Your pulse follows. Nothing here is in a hurry — and after a day or two, neither are you.',
+  ],
+  /** The Grand Mantra of Oneness — rendered as a designed manifesto block. */
+  mantra: {
+    eyebrow: 'The grand mantra of oneness',
+    lead: 'We are not built of stone; we are built of heartbeat.',
+    lines: [
+      'We are the fifty-year-old trees standing against time, and the sixteen lakh litres of monsoon rain our private lake holds to feed the land all year.',
+      'We are the wild chorus of the jungle at dawn, and the langurs leaping through the canopy above you.',
+      'We are twenty-three acres of organic farmland, harvested by hand while the mist still holds — oranges, cheeku, limes and eight heirloom varieties of mango hanging within reach of your balcony.',
+      'We are the guardians of this soil, and the neighbours of Ratapani’s oldest keepers, the Gond.',
+    ],
+    close: 'We do not serve luxury. We offer a return to life.',
+  },
+  /** The Gond heritage section. */
+  gond: [
+    'Long before the estate, this forest belonged to the Gond — among central India’s oldest peoples, and Ratapani’s original keepers. They do not simply live beside the forest; they speak its language: which root heals, which leaf calms, what the jungle is saying an hour before rain.',
+    'Their sacred line-art tells the story of the cosmos in pattern and pigment, and their plant knowledge shapes the rituals at Elysium — the oils, the unhurried hands. Ask about earthing while you are here: the old practice of walking barefoot on living soil, letting the ground take the day’s static out of you. It sounds simple. It is. That is rather the point.',
+  ],
   highlights: [
     {
       icon: 'hotel',
@@ -123,7 +145,7 @@ export const about = {
     {
       icon: 'utensils',
       title: 'Farm-to-fire cuisine',
-      description: 'Three dining venues, all cooking with produce from Royalton Farms inside the gates — same morning, same hands.',
+      description: 'Three dining venues cooking with produce from Royalton Farms inside the gates — and eight heirloom varieties of mango within reach of your balcony.',
     },
     {
       icon: 'spa',
@@ -615,6 +637,15 @@ export const restaurants = [
       'A semi-open pavilion set apart at the lakeside, lit by lanterns at dusk. Smaller than the main rooms — built for proposals, anniversaries, and unhurried dinners-for-two. The kitchen sends a tasting menu shaped to the season.',
     image: '/images/dining/gazebo-by-the-lake.webp',
     tags: ['Lakeside', 'Intimate', 'Tasting Menu', 'Sunset Service'],
+  },
+  {
+    id: 'private-dining-room',
+    name: 'The Private Dining Room',
+    tagline: 'A table behind glass',
+    description:
+      'A glassed-in room of its own beside Gourmet By The Woods — for anniversary dinners, family celebrations, and the conversations that need a closed door. The kitchen serves the same farm-to-table menu; the room does the rest. Available on request.',
+    image: '/images/dining/private-dining-room.webp',
+    tags: ['Private', 'Celebrations', 'Farm-to-Table', 'By Request'],
   },
 ];
 

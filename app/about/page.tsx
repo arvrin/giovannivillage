@@ -19,8 +19,10 @@ const iconMap = {
 };
 
 const stats = [
-  { value: '10', label: 'Acres of estate' },
-  { value: '20', label: 'Minutes from the city' },
+  { value: '23', label: 'Acres of estate' },
+  { value: '50-yr', label: 'Old trees standing guard' },
+  { value: '16 lakh', label: 'Litres of rain, harvested' },
+  { value: '8', label: 'Heirloom mango varieties' },
   { value: '5 km', label: 'To Ratapani' },
   { value: '2,000', label: 'Guests at one time' },
 ];
@@ -65,6 +67,88 @@ export default function AboutPage() {
             </div>
           </div>
 
+          {/* The Legend */}
+          <div className="mx-auto mb-24 max-w-3xl text-center md:mb-32">
+            <SectionHeader
+              title="The story you tell forever"
+              eyebrow="The legend of Giovanni"
+            />
+            <div className="mt-10 space-y-6">
+              {about.legend.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-lg md:text-xl text-[var(--color-text-secondary)]"
+                  style={{ lineHeight: 1.8 }}
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </Container>
+
+        {/* The Grand Mantra of Oneness — full-bleed manifesto */}
+        <div className="mb-24 bg-[var(--color-charcoal)] py-20 text-white md:mb-32 md:py-28">
+          <Container>
+            <div className="mx-auto max-w-3xl text-center">
+              <p
+                className="mb-8 text-[11px] uppercase tracking-[0.36em] text-white/50"
+                style={{ fontFamily: 'var(--font-eyebrow)' }}
+              >
+                {about.mantra.eyebrow}
+              </p>
+              <p
+                className="display-italic mb-12 text-3xl leading-[1.15] md:text-5xl md:leading-[1.1]"
+              >
+                We are not built of <span className="font-script">stone</span>;
+                <br />
+                we are built of <span className="font-script">heartbeat</span>.
+              </p>
+              <div className="space-y-7">
+                {about.mantra.lines.map((line, index) => (
+                  <motion.p
+                    key={index}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.7, delay: index * 0.06 }}
+                    className="text-base text-white/80 md:text-lg"
+                    style={{ lineHeight: 1.85 }}
+                  >
+                    {line}
+                  </motion.p>
+                ))}
+              </div>
+              <p
+                className="display-italic mt-14 text-2xl text-[var(--color-gold,#C9A961)] md:text-3xl"
+                style={{ lineHeight: 1.2 }}
+              >
+                {about.mantra.close}
+              </p>
+            </div>
+          </Container>
+        </div>
+
+        <Container>
+          {/* The Gond */}
+          <div className="mx-auto mb-24 max-w-3xl md:mb-32">
+            <SectionHeader
+              title="The keepers of this forest"
+              eyebrow="The Gond"
+            />
+            <div className="mt-10 space-y-6">
+              {about.gond.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-lg text-[var(--color-text-secondary)] md:text-xl"
+                  style={{ lineHeight: 1.8 }}
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+
           {/* Highlights */}
           <SectionHeader title="Four hours of the estate" eyebrow="A day, told four ways" />
           <div className="mt-16 mb-24 md:mb-32 grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
@@ -101,7 +185,7 @@ export default function AboutPage() {
             >
               The estate at a glance
             </p>
-            <div className="grid grid-cols-2 gap-y-10 text-center md:grid-cols-4 md:gap-y-0 md:divide-x md:divide-[var(--color-border)]">
+            <div className="grid grid-cols-2 gap-y-10 text-center md:grid-cols-3 md:gap-y-12 md:[&>*:not(:nth-child(3n+1))]:border-l md:[&>*]:border-[var(--color-border)]">
               {stats.map((s, i) => (
                 <motion.div
                   key={s.label}
@@ -153,7 +237,7 @@ export default function AboutPage() {
             <SectionHeader
               title="The reason people return"
               eyebrow="What it actually feels like"
-              description="The food on the lawn at breakfast — grown a few steps away at Royalton Farms. The night-jar at the plunge pool. A planner who remembers your aunt’s name. Long days, softer evenings, and the small hospitality that hides the work behind it."
+              description="The food on the lawn at breakfast — grown a few steps away at Royalton Farms. The night-jar at the plunge pool. A planner who remembers your aunt’s name. Long days, softer evenings, and the small hospitality that hides the work behind it. Because here, slow is the new luxury — and nature is the ultimate medicine."
             />
           </div>
         </Container>
