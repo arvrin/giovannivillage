@@ -644,10 +644,10 @@ export const venues: Venue[] = [
     type: 'indoor' as const,
     useCases: ['corporate', 'intimate'],
     description:
-      'A 1,000 sq ft multi-purpose space overlooking the pool — ideal for board meetings, conferences, brand activations and intimate functions.',
-    specs: '1,000 sq ft · air-conditioned',
+      'A multi-purpose space overlooking the pool — ideal for board meetings, conferences, brand activations and intimate functions.',
+    specs: 'Air-conditioned · poolside',
     capacity: 'Conferences & meetings',
-    image: '/images/weddings/the-forum.webp',
+    image: '/images/weddings/the-forum-table.webp',
   },
   {
     id: 'aria-grand',
@@ -655,8 +655,8 @@ export const venues: Venue[] = [
     type: 'indoor' as const,
     useCases: ['wedding', 'corporate'],
     description:
-      'A modular pillarless banquet hall with a soaring 25-foot ceiling. It partitions into smaller sections — Aria I, II and III, from 4,000 to 6,000 sq ft, with an attached indoor deck — for mid-sized ceremonies and meetings, or opens fully to a 10,000 sq ft hall with a 50,000 sq ft attached lawn for grand productions.',
-    specs: 'Pillarless · 4,000–10,000 sq ft + 50,000 sq ft lawn',
+      'A modular pillarless banquet hall with a soaring 25-foot ceiling. It partitions into smaller sections — Aria I, II and III, with an attached indoor deck — for mid-sized ceremonies and meetings, or opens fully into the grand hall with its vast attached lawn for grand productions.',
+    specs: 'Pillarless hall · attached lawn',
     capacity: 'Intimate functions to 2,000 guests',
     image: '/images/weddings/aria-grand-hall.webp',
     video: '/videos/aria-grand-loop.mp4',
@@ -682,7 +682,7 @@ export const venues: Venue[] = [
       'An open-air deck beneath the rooftop Pihu — for sundowner cocktails, intimate ceremonies and sangeet evenings under the sky. Capacity details on request.',
     specs: 'Open-air rooftop · adjacent to Pihu',
     capacity: 'Capacity on request',
-    image: '/images/dining/pihu-rooftop.webp',
+    image: '/images/weddings/pihu-deck.webp',
   },
   {
     id: 'sudesh-ii',
@@ -691,7 +691,7 @@ export const venues: Venue[] = [
     useCases: ['wedding'],
     description:
       'An outdoor lawn nestled between dense trees — perfect for dreamy outdoor weddings, mandaps and sangeet evenings.',
-    specs: '51,000 sq ft · lawn',
+    specs: 'Open-air lawn',
     capacity: '350 pax',
     image: '/images/weddings/sudesh-lawns.webp',
   },
@@ -704,7 +704,7 @@ export const venues: Venue[] = [
       'A wide outdoor banquet lawn ringed by trees — for sit-down dinners, mehndi mornings and reception evenings. Capacity details on request.',
     specs: 'Open-air lawn',
     capacity: 'Capacity on request',
-    image: '/images/weddings/banquet-lawn.webp',
+    image: '/images/weddings/banquet-lawn-night.webp',
   },
   {
     id: 'sudesh-i',
@@ -713,9 +713,9 @@ export const venues: Venue[] = [
     useCases: ['wedding'],
     description:
       'An outdoor lawn nestled between dense trees — ideal for larger weddings, sangeet evenings and grand mandap setups.',
-    specs: '14,000 sq ft · lawn',
+    specs: 'Open-air lawn',
     capacity: '1,500 pax',
-    image: '/images/weddings/sudesh-lawns.webp',
+    image: '/images/weddings/sudesh-i.webp',
   },
   {
     id: 'cocktail-lawn',
@@ -723,10 +723,10 @@ export const venues: Venue[] = [
     type: 'outdoor' as const,
     useCases: ['wedding', 'corporate', 'intimate'],
     description:
-      'A 9,000 sq ft lawn dedicated to lively cocktail parties — stylish receptions where the beauty of nature complements every toast.',
-    specs: '9,000 sq ft · open-air',
+      'A lawn dedicated to lively cocktail parties — stylish receptions where the beauty of nature complements every toast.',
+    specs: 'Open-air lawn',
     capacity: '200 pax seated',
-    image: '/images/weddings/cocktail-lawn-night.webp',
+    image: '/images/weddings/cocktail-lawn-dinner.webp',
   },
 ];
 

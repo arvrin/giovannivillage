@@ -22,6 +22,7 @@ export const galleryItems: GalleryItem[] = [
   { id: 'estate-royalton-field', src: '/images/royalton/farm-2.webp', width: 1600, height: 1200, category: 'Estate', title: 'Royalton Farms — the fields' },
   { id: 'estate-royalton-harvest-2', src: '/images/royalton/farm-1.webp', width: 1600, height: 1200, category: 'Estate', title: 'Royalton Farms — the harvest' },
   { id: 'estate-lakeside-fishing', src: '/images/experiences/lakeside-fishing.webp', width: 1032, height: 1280, category: 'Estate', title: 'Fishing by the lily pond' },
+  { id: 'estate-open-air-theatre', src: '/images/experiences/open-air-theatre.webp', width: 1280, height: 853, category: 'Estate', title: 'The open-air theatre, after dark' },
 
   // ────────────────────────────────────────────────────────── Rooms — hero shots
   { id: 'room-king-pool-garden', src: '/images/rooms/king-pool-garden.webp', width: 800, height: 534, category: 'Rooms', title: 'King Room — Pool & Garden', priority: true },
@@ -111,6 +112,11 @@ export const galleryItems: GalleryItem[] = [
   { id: 'spa-lounge', src: '/images/spa/spa-lounge.webp', width: 2000, height: 1336, category: 'Spa', title: 'The wellness lounge' },
 
   // ────────────────────────────────────────────────────────── Weddings & Events
+  { id: 'wedding-banquet-lawn-night', src: '/images/weddings/banquet-lawn-night.webp', width: 1280, height: 1280, category: 'Weddings', title: 'Banquet Lawn, dressed for dinner' },
+  { id: 'wedding-pihu-deck-evening', src: '/images/weddings/pihu-deck.webp', width: 1280, height: 1279, category: 'Weddings', title: 'An evening on the Pihu Deck' },
+  { id: 'wedding-cocktail-lawn-dinner', src: '/images/weddings/cocktail-lawn-dinner.webp', width: 1080, height: 1080, category: 'Weddings', title: 'Dinner on the Cocktail Lawn' },
+  { id: 'wedding-forum-table', src: '/images/weddings/the-forum-table.webp', width: 900, height: 1600, category: 'Weddings', title: 'The Forum, set for a private dinner' },
+  { id: 'wedding-sudesh-i-lawn', src: '/images/weddings/sudesh-i.webp', width: 1040, height: 780, category: 'Weddings', title: 'Sudesh I — the open lawn' },
   { id: 'wedding-decor-sangeet', src: '/images/weddings/wedding-decor-1.webp', width: 1600, height: 901, category: 'Weddings', title: 'A pink sangeet stage' },
   { id: 'wedding-decor-haldi', src: '/images/weddings/wedding-decor-2.webp', width: 1600, height: 901, category: 'Weddings', title: 'Marigold haldi on the lawn' },
   { id: 'wedding-decor-entrance', src: '/images/weddings/wedding-decor-3.webp', width: 1600, height: 901, category: 'Weddings', title: 'A floral welcome entrance' },
