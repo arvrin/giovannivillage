@@ -282,11 +282,12 @@ export default function WeddingsPage() {
             >
               The estate, dressed
             </p>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 { src: '/images/weddings/wedding-decor-2.webp', alt: 'A marigold haldi setup on the estate lawn' },
                 { src: '/images/weddings/wedding-decor-1.webp', alt: 'A pink sangeet stage with a floral backdrop' },
                 { src: '/images/weddings/wedding-decor-3.webp', alt: 'A flamingo-and-floral welcome entrance on the lawn' },
+                { src: '/images/weddings/estate-dressed-bar-night.webp', alt: 'A neon-lit themed cocktail bar dressed with safari decor on the estate at night' },
               ].map((p) => (
                 <div
                   key={p.src}
@@ -297,7 +298,7 @@ export default function WeddingsPage() {
                     alt={p.alt}
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 </div>
               ))}
