@@ -79,7 +79,14 @@ export const faqs: Faq[] = [
     topic: 'general',
     question: 'What is the nearest airport and railway station to Giovanni Village?',
     answer:
-      'The nearest airport to Giovanni Village is Raja Bhoj International Airport (BHO) in Bhopal, and the nearest railway stations are Bhopal Junction (BPL) and Habibganj (now Rani Kamlapati, RKMP). Our reservations team can arrange airport pick-ups and transfers on request.',
+      'The nearest airport is Raja Bhoj International Airport (BHO), Bhopal — about 21 km / 40 minutes from the estate, with roughly 20 daily departures and direct flights from Delhi, Mumbai, Bengaluru, Hyderabad, Pune, Ahmedabad and Indore. The closest major railway station is Rani Kamlapati (RKMP), about 10–12 km away on the city’s south side — it receives the Vande Bharat (~7.5 hrs) and Shatabdi from Delhi. Bhopal Junction (BPL), on the Delhi–Mumbai trunk line, is about 20 minutes further. Our reservations team arranges pick-ups and transfers from all three on request.',
+  },
+  {
+    id: 'how-to-reach-by-road',
+    topic: 'general',
+    question: 'How do I reach Giovanni Village by road?',
+    answer:
+      'Giovanni Village sits on Kolar Road at Village Kalapani, on Bhopal’s southern edge. By road: Indore is about 195 km (3.5–4 hrs) via the NH-46/NH-52 corridor, Jabalpur about 315 km (5.5–6.5 hrs), and Nagpur about 350 km (6.5–7.5 hrs) via NH-44/NH-46 through Betul — the Nagpur approach arrives on the resort’s side of the city, so there is no Bhopal traffic to cross. If a morning safari is planned, we recommend arriving the evening before.',
   },
   {
     id: 'what-makes-giovanni-different',

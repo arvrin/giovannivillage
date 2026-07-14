@@ -20,14 +20,28 @@ import matter from 'gray-matter';
 
 const POSTS_DIR = path.join(process.cwd(), 'content', 'blog');
 
+export interface PostFaq {
+  q: string;
+  a: string;
+}
+
 export interface PostFrontmatter {
   title: string;
   description: string;
   date: string;
+  /** Last substantive revision — feeds dateModified in BlogPosting JSON-LD. */
+  updated?: string;
   tags: string[];
   cover?: string;
   author?: string;
   draft?: boolean;
+  /**
+   * Optional FAQ pairs mirroring an FAQ section in the post body — emitted
+   * as FAQPage JSON-LD on the post page for rich-snippet eligibility.
+   * Keep answers in sync with the body copy; Google requires the schema
+   * content to be visible on the page.
+   */
+  faq?: PostFaq[];
 }
 
 export interface Post {
@@ -56,10 +70,18 @@ function readOne(file: string): Post | null {
     title: String(data.title ?? slug),
     description: String(data.description ?? ''),
     date: String(data.date ?? ''),
+    updated: data.updated ? String(data.updated) : undefined,
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     cover: data.cover ? String(data.cover) : undefined,
     author: data.author ? String(data.author) : 'Giovanni Village Team',
     draft: data.draft === true,
+    faq: Array.isArray(data.faq)
+      ? data.faq
+          .filter((f: unknown): f is { q: unknown; a: unknown } =>
+            typeof f === 'object' && f !== null && 'q' in f && 'a' in f,
+          )
+          .map((f) => ({ q: String(f.q), a: String(f.a) }))
+      : undefined,
   };
   return { slug, frontmatter, content };
 }

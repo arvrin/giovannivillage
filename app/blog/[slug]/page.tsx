@@ -59,7 +59,7 @@ function jsonLd(post: ReturnType<typeof getPostBySlug>): string | null {
       ? `${siteConfig.url}${post.frontmatter.cover}`
       : undefined,
     datePublished: post.frontmatter.date,
-    dateModified: post.frontmatter.date,
+    dateModified: post.frontmatter.updated ?? post.frontmatter.date,
     author: {
       '@type': 'Organization',
       name: post.frontmatter.author ?? 'Giovanni Village Resort',
@@ -77,6 +77,22 @@ function jsonLd(post: ReturnType<typeof getPostBySlug>): string | null {
   });
 }
 
+/** FAQPage JSON-LD when the post declares `faq` frontmatter (mirrors an FAQ
+ * section in the body — Google requires the schema content to be on-page). */
+function faqJsonLd(post: ReturnType<typeof getPostBySlug>): string | null {
+  const faq = post?.frontmatter.faq;
+  if (!faq || faq.length === 0) return null;
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  });
+}
+
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
@@ -84,6 +100,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   const related = getRelatedPosts(slug, 3);
   const ld = jsonLd(post);
+  const faqLd = faqJsonLd(post);
 
   return (
     <>
@@ -93,6 +110,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: ld }}
+        />
+      )}
+      {faqLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: faqLd }}
         />
       )}
       <BreadcrumbSchema
