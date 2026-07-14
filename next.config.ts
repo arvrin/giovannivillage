@@ -51,18 +51,55 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
+    // 301s from the old WordPress URLs (giovannivillage.com) to the new routes,
+    // so search rankings and inbound links survive the cutover. Sourced from
+    // the WP export's published pages + nav menu. Next normalises trailing
+    // slashes, so `/about-us/` matches `/about-us` here.
     return [
+      // ── Top-level content pages ─────────────────────────────────────────
+      { source: '/home', destination: '/', permanent: true },
       { source: '/about-us', destination: '/about', permanent: true },
       { source: '/our-rooms', destination: '/rooms', permanent: true },
       { source: '/accommodations', destination: '/rooms', permanent: true },
+      { source: '/accommodations-2', destination: '/rooms', permanent: true },
       { source: '/restaurant', destination: '/dining', permanent: true },
-      { source: '/business-and-events', destination: '/weddings', permanent: true },
+      // "Business and Events" was the old MICE/corporate page → new meetings page.
+      { source: '/business-and-events', destination: '/events', permanent: true },
       { source: '/resort-experiences', destination: '/experiences', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
       { source: '/get-in-touch', destination: '/contact', permanent: true },
       { source: '/privacy-policy', destination: '/privacy', permanent: true },
       { source: '/terms-conditions', destination: '/terms', permanent: true },
       { source: '/return-refund-policy', destination: '/cancellation', permanent: true },
+
+      // ── Named venue / dining / spa pages (had their own URLs + rankings) ─
+      { source: '/aria', destination: '/venues/aria-grand', permanent: true },
+      { source: '/the-forum', destination: '/venues/the-forum', permanent: true },
+      { source: '/sudesh-lawns', destination: '/venues', permanent: true },
+      { source: '/elysium-the-spa', destination: '/spa', permanent: true },
+      { source: '/jungle-safari', destination: '/blog/ratapani-tiger-reserve-guide', permanent: true },
+      { source: '/pihu', destination: '/dining', permanent: true },
+      { source: '/gourmet-by-the-woods', destination: '/dining', permanent: true },
+      { source: '/berry-and-beans', destination: '/dining', permanent: true },
+      { source: '/the-den', destination: '/dining', permanent: true },
+
+      // ── Per-room slug remaps (old WP room slugs → new room ids) ──────────
+      { source: '/rooms/king-room-pool-view-garden-view', destination: '/rooms/king-room-pool-garden', permanent: true },
+      { source: '/rooms/king-room-with-private-garden', destination: '/rooms/king-room-private-garden', permanent: true },
+      { source: '/rooms/junior-suite-with-private-garden', destination: '/rooms/junior-suite-deck-private-garden', permanent: true },
+      { source: '/rooms/junior-suite-with-private-balcony-and-garden-view', destination: '/rooms/junior-suite-deck-garden', permanent: true },
+      { source: '/rooms/royal-suite-with-plunge-pool-and-private-garden', destination: '/rooms/royal-suite-plunge-pool', permanent: true },
+      { source: '/rooms/presidential-suite-with-plunge-pool-and-private-garden', destination: '/rooms/royal-suite-plunge-pool', permanent: true },
+      { source: '/rooms/master-suite-with-lake-view', destination: '/rooms/master-suite-bath-tub', permanent: true },
+      { source: '/rooms/master-suite-with-plunge-pool', destination: '/rooms/master-suite-bath-tub', permanent: true },
+
+      // ── Old WooCommerce / booking-engine pages → booking-intent route ────
+      { source: '/booking', destination: '/rooms', permanent: true },
+      { source: '/search-availability', destination: '/rooms', permanent: true },
+      { source: '/search-availability-2', destination: '/rooms', permanent: true },
+      { source: '/shop', destination: '/rooms', permanent: true },
+      { source: '/cart', destination: '/rooms', permanent: true },
+      { source: '/checkout', destination: '/rooms', permanent: true },
     ];
   },
 };
