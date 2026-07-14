@@ -4,7 +4,6 @@ import './globals.css';
 import { siteConfig, INDEXABLE } from '@/lib/data';
 import ClientLayout from '@/components/providers/ClientLayout';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
-import Script from 'next/script';
 
 /* Retreat theme — Onest (clean modern sans, variable) for body/headings;
    Hurricane (handwritten script) for signature accent words. */
@@ -105,13 +104,6 @@ export default function RootLayout({
       <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
         <GoogleAnalytics />
-        <Script
-          id="agentworks-review-widget"
-          src="https://agentworks-production.up.railway.app/api/v1/widget/review.js"
-          data-review-key="ppk_9t4c8uera6Rv31qw3k-jt21LG-IPP95B"
-          data-api-url="https://agentworks-production.up.railway.app/api/v1"
-          strategy="beforeInteractive"
-        />
       </body>
     </html>
   );
