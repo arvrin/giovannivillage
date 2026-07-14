@@ -19,6 +19,12 @@ GH_USER="arvrin"                 # the GitHub account with write access to the c
 SNAPSHOT_MSG="Giovanni Village — resort website"
 TMP_BRANCH="client-export-$$"
 
+# The snapshot commit must be AUTHORED as the client identity — Vercel's git
+# integration on the client account blocks deployments whose commit author
+# isn't a recognized member of that account.
+CLIENT_GIT_NAME="Giovannixfm"
+CLIENT_GIT_EMAIL="giovannixfmwebdev@gmail.com"
+
 # Files that live in our repo but must NEVER ship to the client snapshot.
 EXCLUDE=(
   ".design-audit.md"          # internal UI/UX QA report
@@ -57,7 +63,9 @@ git checkout --orphan "$TMP_BRANCH" >/dev/null 2>&1
 for f in "${EXCLUDE[@]}"; do
   git rm --cached --quiet "$f" >/dev/null 2>&1 || true
 done
-git commit -q -m "$SNAPSHOT_MSG"
+GIT_AUTHOR_NAME="$CLIENT_GIT_NAME" GIT_AUTHOR_EMAIL="$CLIENT_GIT_EMAIL" \
+GIT_COMMITTER_NAME="$CLIENT_GIT_NAME" GIT_COMMITTER_EMAIL="$CLIENT_GIT_EMAIL" \
+  git commit -q -m "$SNAPSHOT_MSG"
 
 echo "→ Pushing clean snapshot to $CLIENT_URL (main)…"
 git push -f "$CLIENT_REMOTE" "$TMP_BRANCH:main"
