@@ -5,6 +5,7 @@ import {
   isPhoneAllowed,
   normalizePhone,
   signSession,
+  verifyAccessCode,
 } from '@/lib/admin-auth';
 import { consume, getClientIp } from '@/lib/rate-limit';
 
@@ -24,9 +25,11 @@ export async function POST(req: NextRequest) {
   }
 
   let phone = '';
+  let code = '';
   try {
     const body = await req.json();
     phone = typeof body?.phone === 'string' ? body.phone : '';
+    code = typeof body?.code === 'string' ? body.code : '';
   } catch {
     return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
   }
@@ -36,10 +39,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Enter a 10-digit Indian mobile number.' }, { status: 400 });
   }
 
-  if (!isPhoneAllowed(normalized)) {
-    // Same response shape as a successful POST but always 401 — don't leak
-    // whether the number exists in the whitelist via timing.
-    return NextResponse.json({ error: 'This number is not authorised for the admin portal.' }, { status: 401 });
+  // Two factors, checked together: an allow-listed phone AND the shared access
+  // code. Both are evaluated before responding, and a single generic error is
+  // returned either way, so the response never reveals which factor failed
+  // (a phone number is not a secret — the access code is the real gate).
+  const phoneOk = isPhoneAllowed(normalized);
+  const codeOk = await verifyAccessCode(code);
+  if (!phoneOk || !codeOk) {
+    return NextResponse.json(
+      { error: 'Invalid mobile number or access code.' },
+      { status: 401 },
+    );
   }
 
   let token: string;

@@ -1,29 +1,33 @@
 /**
- * Lightweight admin auth — phone-whitelist + HMAC-signed cookie.
+ * Lightweight admin auth — two-factor (phone allowlist + access code),
+ * HMAC-signed cookie.
  *
  * Why this exists: we used to gate /admin via Supabase magic-link auth,
  * but email links kept getting consumed by mail-scanner previews. For
- * a single-operator admin portal that's overkill anyway, so we replaced
- * it with a phone-number allowlist signed into an HttpOnly cookie.
+ * a single-operator admin portal that's overkill, so we replaced it with
+ * a phone allowlist signed into an HttpOnly cookie.
+ *
+ * SECURITY MODEL — a phone number is NOT a secret (it's guessable, and
+ * this code is in a public repo), so the allowlist alone is not an
+ * authentication factor. Login therefore requires BOTH an allow-listed
+ * phone AND the shared secret access code (`ADMIN_ACCESS_CODE`). Both
+ * are configured only via env; there is intentionally NO hardcoded
+ * fallback — if either env var is unset, login fails closed.
  *
  * Edge-runtime safe: uses Web Crypto (`crypto.subtle`) rather than the
  * Node `crypto` module so the same helper runs in middleware.
  *
  * Env vars (set in Vercel → Project → Environment Variables):
  *   ADMIN_AUTH_SECRET        Required. ≥32 random bytes (base64 / hex).
- *                            Used to HMAC the session cookie.
- *   ADMIN_PHONE_WHITELIST    Optional. Comma-separated list of phone
- *                            numbers (in 10-digit Indian form, no
- *                            country code). Overrides the default.
- *
- * If the whitelist env var is empty, we fall back to the seed list
- * below so the deploy is usable out of the box.
+ *                            HMACs the session cookie.
+ *   ADMIN_ACCESS_CODE        Required. ≥8-char shared secret — the second
+ *                            factor at login. Without it, nobody can sign in.
+ *   ADMIN_PHONE_WHITELIST    Required. Comma-separated phone numbers in
+ *                            10-digit Indian form. Empty ⇒ nobody allowed.
  */
 
 export const SESSION_COOKIE = 'gv-admin-session';
 export const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 30; // 30 days
-
-const DEFAULT_WHITELIST = ['9176084110'];
 
 /** Strip everything that isn't a digit and collapse to the 10-digit Indian form. */
 export function normalizePhone(input: string): string {
@@ -35,10 +39,10 @@ export function normalizePhone(input: string): string {
   return digits;
 }
 
-/** Read the whitelist from env (preferred) or fall back to the seed list. */
+/** Read the allowlist from env. No fallback — empty env means nobody is allowed. */
 export function getWhitelist(): string[] {
   const raw = process.env.ADMIN_PHONE_WHITELIST?.trim();
-  if (!raw) return DEFAULT_WHITELIST;
+  if (!raw) return [];
   return raw
     .split(',')
     .map((p) => normalizePhone(p))
@@ -60,6 +64,43 @@ function base64UrlEncode(bytes: ArrayBuffer | Uint8Array): string {
   let bin = '';
   for (let i = 0; i < arr.length; i++) bin += String.fromCharCode(arr[i]);
   return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+/**
+ * Constant-time string equality. HMACs both inputs under a fresh random key
+ * and compares the fixed-length digests, so neither the compare duration nor
+ * the digest length leaks anything about the secret. Edge-safe (Web Crypto).
+ */
+async function timingSafeEqual(a: string, b: string): Promise<boolean> {
+  const rand = crypto.getRandomValues(new Uint8Array(32));
+  const key = await crypto.subtle.importKey(
+    'raw',
+    rand,
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign'],
+  );
+  const [da, db] = await Promise.all([
+    crypto.subtle.sign('HMAC', key, enc.encode(a)),
+    crypto.subtle.sign('HMAC', key, enc.encode(b)),
+  ]);
+  const va = new Uint8Array(da);
+  const vb = new Uint8Array(db);
+  let diff = 0;
+  for (let i = 0; i < va.length; i++) diff |= va[i] ^ vb[i];
+  return diff === 0;
+}
+
+/**
+ * Verify the second-factor access code against `ADMIN_ACCESS_CODE`.
+ * Fails closed: returns false if the env var is missing/too short or the
+ * supplied code is empty. Comparison is constant-time.
+ */
+export async function verifyAccessCode(input: string | undefined): Promise<boolean> {
+  const expected = process.env.ADMIN_ACCESS_CODE;
+  if (!expected || expected.length < 8) return false;
+  if (!input) return false;
+  return timingSafeEqual(input, expected);
 }
 
 async function importKey(secret: string): Promise<CryptoKey> {

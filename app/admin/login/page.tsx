@@ -15,6 +15,7 @@ function AdminLoginInner() {
   const search = useSearchParams();
   const next = search.get('next') || '/admin';
   const [phone, setPhone] = useState('');
+  const [code, setCode] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
   const [error, setError] = useState<string | null>(null);
 
@@ -26,7 +27,7 @@ function AdminLoginInner() {
       const res = await fetch('/api/admin/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone }),
+        body: JSON.stringify({ phone, code }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
@@ -73,7 +74,7 @@ function AdminLoginInner() {
         </p>
         <h1 style={{ fontSize: 26, fontWeight: 600, marginBottom: 8 }}>Sign in</h1>
         <p style={{ color: 'var(--admin-text-muted)', marginBottom: 28, fontSize: 14 }}>
-          Enter your mobile number to enter the portal. Only allow-listed numbers can sign in.
+          Enter your allow-listed mobile number and the admin access code to sign in.
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -99,6 +100,45 @@ function AdminLoginInner() {
             value={phone}
             onChange={(e) => {
               setPhone(e.target.value);
+              if (status === 'error') {
+                setStatus('idle');
+                setError(null);
+              }
+            }}
+            disabled={status === 'sending'}
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid var(--admin-border)',
+              borderRadius: 8,
+              fontSize: 14,
+              fontFamily: 'inherit',
+              background: 'var(--admin-bg)',
+              outline: 'none',
+            }}
+          />
+
+          <label
+            htmlFor="code"
+            style={{
+              display: 'block',
+              fontSize: 12,
+              fontWeight: 500,
+              margin: '16px 0 6px',
+              color: 'var(--admin-text-muted)',
+            }}
+          >
+            Access code
+          </label>
+          <input
+            id="code"
+            type="password"
+            autoComplete="current-password"
+            required
+            placeholder="••••••••"
+            value={code}
+            onChange={(e) => {
+              setCode(e.target.value);
               if (status === 'error') {
                 setStatus('idle');
                 setError(null);
