@@ -101,6 +101,11 @@ export default function RootLayout({
     <html lang="en" className={fontVars} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: preLoaderScript }} />
+        {/* Observatory monitoring pixel */}
+        <script
+          src="https://observatory.goodmantech.co/api/pixel/proj_giovanni-village_mqrucjhq"
+          async
+        />
       </head>
       <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
