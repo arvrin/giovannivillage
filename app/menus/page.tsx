@@ -35,7 +35,7 @@ const menus = [
     tagline: 'Cocktails, wines & pours',
     note: 'Rooftop, lakeside & lounge',
     file: '/menus/giovanni-bar-menu-2026.pdf',
-    image: '/images/dining/the-den.webp',
+    image: '/images/weddings/estate-dressed-bar-night.webp',
   },
   {
     name: 'Banquet',
@@ -70,7 +70,7 @@ export default function MenusPage() {
 
         <Container>
           <div className="mx-auto max-w-4xl py-14 md:py-20">
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-3 sm:gap-5">
               {menus.map((m) => (
                 <a
                   key={m.file}
@@ -84,27 +84,30 @@ export default function MenusPage() {
                       src={m.image}
                       alt={m.name}
                       fill
-                      sizes="(max-width: 640px) 100vw, 50vw"
+                      sizes="(max-width: 640px) 50vw, 50vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
                   </div>
 
-                  <div className="absolute inset-x-0 bottom-0 p-6">
+                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-6">
                     <p
-                      className="text-[10px] uppercase tracking-[0.28em] text-white/70"
+                      className="text-[8px] uppercase tracking-[0.22em] text-white/70 sm:text-[10px] sm:tracking-[0.28em]"
                       style={{ fontFamily: 'var(--font-eyebrow)' }}
                     >
                       {m.note}
                     </p>
-                    <h2 className="display-italic mt-1 text-2xl text-white md:text-3xl">
+                    <h2 className="display-italic mt-0.5 text-lg leading-tight text-white sm:mt-1 sm:text-2xl md:text-3xl">
                       {m.name}
                     </h2>
-                    <div className="mt-2 flex items-center justify-between">
-                      <span className="text-sm text-white/85" style={{ lineHeight: 1.5 }}>
+                    <div className="mt-1.5 flex items-center justify-between gap-2 sm:mt-2">
+                      <span
+                        className="hidden text-sm text-white/85 sm:inline"
+                        style={{ lineHeight: 1.5 }}
+                      >
                         {m.tagline}
                       </span>
-                      <span className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-bronze)]">
+                      <span className="whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-[var(--color-bronze)] sm:tracking-[0.2em]">
                         View · PDF →
                       </span>
                     </div>
