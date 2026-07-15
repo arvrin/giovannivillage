@@ -88,8 +88,9 @@ const fontVars = [onest.variable, hurricane.variable].join(' ');
 /* Inline script — runs synchronously before <body> parses. If this is a
    first-visit session, marks <html> so the CSS in globals.css can hide page
    content until the React loader takes over. Prevents the hero from
-   flashing before the splash. */
-const preLoaderScript = `(function(){try{if(sessionStorage.getItem('gv-loaded')!=='1'){document.documentElement.classList.add('gv-pre-loading');}}catch(e){}})();`;
+   flashing before the splash. Skipped on /menus (the QR landing page loads
+   instantly with no splash). */
+const preLoaderScript = `(function(){try{if(sessionStorage.getItem('gv-loaded')!=='1'&&location.pathname.indexOf('/menus')!==0){document.documentElement.classList.add('gv-pre-loading');}}catch(e){}})();`;
 
 export default function RootLayout({
   children,

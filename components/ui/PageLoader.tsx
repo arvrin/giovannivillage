@@ -17,7 +17,7 @@ import RetreatLoader from '@/components/themes/retreat/Loader';
 const FIRST_VISIT_MIN_MS = 1400;
 const FIRST_VISIT_HOLD_MS = 250;
 
-const PageLoader = () => {
+const PageLoader = ({ disabled = false }: { disabled?: boolean }) => {
   const [active, setActive] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -26,6 +26,20 @@ const PageLoader = () => {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+
+    // Splash suppressed for this route (e.g. the /menus QR landing). Clear any
+    // pre-hydration shade, mark the session loaded so no splash appears later,
+    // and let dependent UI proceed — but never show the overlay.
+    if (disabled) {
+      document.documentElement.classList.remove('gv-pre-loading');
+      try {
+        sessionStorage.setItem('gv-loaded', '1');
+      } catch {
+        /* ignore */
+      }
+      window.dispatchEvent(new Event('gv-loader-done'));
+      return;
+    }
 
     // Returning visitor — no splash this session. Signal "loader done"
     // immediately so dependent UI (background music) can proceed.
@@ -76,7 +90,7 @@ const PageLoader = () => {
       if (animTimerRef.current) window.clearTimeout(animTimerRef.current);
       window.removeEventListener('load', finish);
     };
-  }, []);
+  }, [disabled]);
 
   return (
     <AnimatePresence>

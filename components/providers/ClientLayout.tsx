@@ -20,6 +20,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const pathname = usePathname() || '/';
   // No ambient music inside the admin portal — it's a work tool.
   const isAdmin = pathname.startsWith('/admin');
+  // Skip the splash on the QR menu page — it should open instantly.
+  const skipLoader = pathname.startsWith('/menus');
 
   return (
     <ThemeProvider
@@ -31,7 +33,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       storageKey="giovanni-theme"
     >
       <MotionConfig reducedMotion="user">
-        <PageLoader />
+        <PageLoader disabled={skipLoader} />
         {children}
         {!isAdmin && <BackgroundMusic />}
       </MotionConfig>
