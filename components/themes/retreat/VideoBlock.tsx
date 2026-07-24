@@ -82,9 +82,11 @@ const VideoBlock = ({
           opacity: ready ? 0 : 1,
         }}
       />
+      {/* No `poster` attr: browsers fetch it raw (full-size, unoptimized)
+          the moment the element renders, even with preload="none". The
+          next/image overlay above already plays that role. */}
       <video
         ref={videoRef}
-        poster={poster}
         muted
         loop
         playsInline

@@ -108,9 +108,10 @@ const RetreatHero = () => {
           sizes="100vw"
           className={`object-cover transition-opacity duration-1000 ${videoReady ? 'opacity-0' : 'opacity-100'}`}
         />
+        {/* No `poster` attr — it re-downloads the hero image raw (428KB,
+            unoptimized) next to the next/image version above. */}
         <video
           ref={videoRef}
-          poster={hero.images[0]}
           muted
           loop
           playsInline

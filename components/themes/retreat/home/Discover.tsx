@@ -23,11 +23,24 @@ const Discover = () => {
       v.muted = true;
       v.play().catch(() => {});
     };
-    if ('requestIdleCallback' in window) {
-      (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(start);
-    } else {
-      setTimeout(start, 200);
+    // This film is ~2.7MB and the section sits below the fold — fetch it
+    // only once the visitor scrolls near, never on page open (it used to
+    // be 40% of the homepage's cold-load payload).
+    if (typeof IntersectionObserver === 'undefined') {
+      const t = setTimeout(start, 4000);
+      return () => clearTimeout(t);
     }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          start();
+          io.disconnect();
+        }
+      },
+      { rootMargin: '400px 0px' },
+    );
+    io.observe(v);
+    return () => io.disconnect();
   }, []);
 
   return (
@@ -65,9 +78,10 @@ const Discover = () => {
               priority={false}
               className={`object-cover transition-opacity duration-1000 ${loaded ? 'opacity-0' : 'opacity-100'}`}
             />
+            {/* No `poster` attr — the next/image above covers until loaded;
+                poster would re-download the image raw (263KB). */}
             <video
               ref={videoRef}
-              poster="/images/weddings/cocktail-lawn.webp"
               muted
               loop
               playsInline

@@ -81,7 +81,10 @@ const BackgroundMusic = () => {
 
     const audio = new Audio(SRC);
     audio.loop = true;
-    audio.preload = 'auto';
+    // 'none': the ~1MB track is only fetched when play() actually runs —
+    // never as a parallel download competing with the hero video and LCP
+    // imagery on a cold load.
+    audio.preload = 'none';
     audio.crossOrigin = 'anonymous';
     // Setting a property on HTMLMediaElement helps some browsers (iOS Safari)
     // treat this as an in-page media element rather than a download.
@@ -185,8 +188,16 @@ const BackgroundMusic = () => {
       gestureCleanupRef.current?.();
     };
 
-    // ── Kick off (in parallel with PageLoader; do NOT wait for it) ──────
-    tryUnmutedPlay();
+    // ── Kick off once the page has finished loading. PageLoader holds its
+    //    curtain until window 'load'; starting the fetch here keeps the
+    //    track out of that critical path entirely (it used to contend with
+    //    the hero video and LCP images for bandwidth).
+    const kickoff = () => tryUnmutedPlay();
+    if (document.readyState === 'complete') {
+      kickoff();
+    } else {
+      window.addEventListener('load', kickoff, { once: true });
+    }
 
     // Some browsers grant activation after the tab gets focus / bfcache
     // restore. Retry on these.
@@ -202,6 +213,7 @@ const BackgroundMusic = () => {
     window.addEventListener('pageshow', onPageShow);
 
     return () => {
+      window.removeEventListener('load', kickoff);
       document.removeEventListener('visibilitychange', onVisible);
       window.removeEventListener('pageshow', onPageShow);
       cleanupGesture();

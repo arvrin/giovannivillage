@@ -48,10 +48,11 @@ const CityStayHero = ({ stay }: { stay: CityStay }) => {
             stay.heroVideo && videoReady ? 'opacity-0' : 'opacity-100'
           }`}
         />
+        {/* No `poster` attr — the next/image above covers until videoReady,
+            and poster would re-download the hero raw/unoptimized. */}
         {stay.heroVideo && (
           <video
             ref={videoRef}
-            poster={stay.hero}
             muted
             loop
             playsInline
