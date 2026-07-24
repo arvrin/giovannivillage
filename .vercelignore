@@ -1,0 +1,3 @@
+# Raw client media parked in public/ (WhatsApp dumps, unprocessed content).
+# Not referenced by the site and 1.3GB+ — exceeds Vercel's upload limits.
+public/Newcontent
