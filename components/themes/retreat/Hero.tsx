@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { hero } from '@/lib/data';
 
@@ -22,7 +22,18 @@ interface HeroLine {
   description: string;
 }
 
+/* Ordering note (performance, not editorial): the FIRST line must carry the
+   longest description of the set. Each rotation re-creates the <p> as a new
+   DOM node, and a later, larger paint would become a new LCP candidate —
+   with the largest line first, LCP settles at the initial paint. */
 const HERO_LINES: HeroLine[] = [
+  {
+    lead: 'fall asleep to the',
+    script: 'forest',
+    tail: '.',
+    description:
+      'Ten room categories at the edge of Ratapani Tiger Reserve — five hundred square kilometres of teak forest just past the gate, and a naturalist who knows where the leopards drink.',
+  },
   {
     script: 'remember',
     tail: 'what slow feels like.',
@@ -35,13 +46,6 @@ const HERO_LINES: HeroLine[] = [
     tail: 'tastes like.',
     description:
       'Royalton Farms is inside our gates. The vegetables walk in by sunrise, the milk arrives still warm, and the kitchens cook from whatever the land gave today.',
-  },
-  {
-    lead: 'fall asleep to the',
-    script: 'forest',
-    tail: '.',
-    description:
-      'Ten room categories at the edge of Ratapani Tiger Reserve — five hundred square kilometres of teak forest just past the gate, and a naturalist who knows where the leopards drink.',
   },
   {
     script: 'marry',
@@ -81,13 +85,27 @@ const RetreatHero = () => {
     }
   }, []);
 
-  // Rotate the hero line + description.
+  // Rotation fades the SAME two DOM nodes out, swaps their text, and fades
+  // back in. Never re-create these elements (the old AnimatePresence-keyed
+  // swap did): each freshly-mounted headline/description registers as a NEW
+  // largest-contentful-paint candidate, so in lab conditions (no user input,
+  // which is what freezes LCP) every rotation pushed the page's LCP later.
+  const [faded, setFaded] = useState(false);
+
   useEffect(() => {
     if (HERO_LINES.length <= 1) return;
-    const id = setInterval(() => {
-      setActiveLine((i) => (i + 1) % HERO_LINES.length);
+    let swapTimer: number | undefined;
+    const id = window.setInterval(() => {
+      setFaded(true);
+      swapTimer = window.setTimeout(() => {
+        setActiveLine((i) => (i + 1) % HERO_LINES.length);
+        setFaded(false);
+      }, 500);
     }, ROTATION_INTERVAL);
-    return () => clearInterval(id);
+    return () => {
+      window.clearInterval(id);
+      if (swapTimer) window.clearTimeout(swapTimer);
+    };
   }, []);
 
   const line = HERO_LINES[activeLine];
@@ -129,46 +147,36 @@ const RetreatHero = () => {
         <div />{/* spacer — no location stamp; the imagery and headline carry the room */}
 
         <div className="flex flex-col items-start gap-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="max-w-3xl text-white"
+          {/* CSS entrance (.gv-hero-enter), not framer-motion: this block is
+              the LCP element, and a motion.div holds it at opacity:0 until
+              React hydrates — ~3s of pure render delay on mobile. */}
+          <div
+            className="gv-hero-enter max-w-3xl text-white"
             style={{ textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}
           >
             <h1 className="display-italic text-[clamp(2rem,7vw,5.5rem)] leading-[1.08] text-white">
               A place to{' '}
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={activeLine}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block align-baseline"
-                >
-                  {line.lead ? <>{line.lead} </> : null}
-                  <span className="font-script">{line.script}</span>
-                  {line.tail.startsWith('.') ? line.tail : ` ${line.tail}`}
-                </motion.span>
-              </AnimatePresence>
+              <motion.span
+                animate={{ opacity: faded ? 0 : 1, y: faded ? -8 : 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="inline-block align-baseline"
+              >
+                {line.lead ? <>{line.lead} </> : null}
+                <span className="font-script">{line.script}</span>
+                {line.tail.startsWith('.') ? line.tail : ` ${line.tail}`}
+              </motion.span>
             </h1>
             {/* Min-h reserves the largest description's height so the CTAs below
                 don't shift when the line swaps. */}
             <div className="mt-6 min-h-[6.5rem] max-w-md md:min-h-[7.5rem]">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.p
-                  key={activeLine}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[15px] leading-[1.85] text-white/90 md:text-base"
-                  style={{ fontFamily: 'var(--font-body)' }}
-                >
-                  {line.description}
-                </motion.p>
-              </AnimatePresence>
+              <motion.p
+                animate={{ opacity: faded ? 0 : 1, y: faded ? -6 : 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[15px] leading-[1.85] text-white/90 md:text-base"
+                style={{ fontFamily: 'var(--font-body)' }}
+              >
+                {line.description}
+              </motion.p>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -180,7 +188,7 @@ const RetreatHero = () => {
                 Host a celebration
               </Button>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>

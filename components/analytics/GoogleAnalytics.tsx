@@ -5,7 +5,9 @@ import Script from 'next/script';
  *
  * Loads only if `NEXT_PUBLIC_GA_ID` env var is set (e.g. `G-XXXXXXXXXX`).
  * That makes it a no-op during local development unless you opt in. The
- * `afterInteractive` strategy means the script doesn't block first paint.
+ * `lazyOnload` strategy fetches gtag (163KB) after window 'load' + idle so it
+ * never competes with the hero media or holds up the first-visit loader —
+ * every visit is still recorded, just tagged a moment later.
  *
  * If/when you add a cookie-consent banner, gate the second <Script> on the
  * user's consent state — Google's lib will swallow events until then.
@@ -18,9 +20,9 @@ export default function GoogleAnalytics() {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="ga4-init" strategy="afterInteractive">
+      <Script id="ga4-init" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

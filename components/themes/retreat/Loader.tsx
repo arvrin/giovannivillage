@@ -12,15 +12,13 @@ interface LoaderProps {
  */
 const RetreatLoader = ({ progress }: LoaderProps) => {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[color:var(--color-bg)]">
-      <motion.img
-        src="/images/logo/gvr-final-logo.webp"
-        alt="Giovanni Village"
-        className="h-24 md:h-32 w-auto"
-        initial={{ opacity: 0, scale: 0.92 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.1, ease: [0.215, 0.61, 0.355, 1] }}
-      />
+    /* Transparent: the static pre-hydration splash (layout.tsx) owns the
+       ivory backdrop AND the logo for the loader's whole lifetime — a second
+       React-rendered logo would register as a late LCP candidate. This
+       overlay only adds the greeting and progress bar on top; the spacer
+       below reserves the logo's slot so the flex geometry matches. */
+    <div className="absolute inset-0 flex flex-col items-center justify-center">
+      <div className="h-24 md:h-32" aria-hidden />
 
       <motion.div
         initial={{ opacity: 0, y: 10 }}

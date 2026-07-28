@@ -101,6 +101,14 @@ export default function RootLayout({
     <html lang="en" className={fontVars} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: preLoaderScript }} />
+        {/* The splash logo is the LCP element on first visits — preload it so
+            it never queues behind other assets. 15KB, cached thereafter. */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/logo/gvr-final-logo.webp"
+          fetchPriority="high"
+        />
         {/* Observatory monitoring pixel */}
         <script
           src="https://observatory.goodmantech.co/api/pixel/proj_giovanni-village_mqrucjhq"
@@ -108,6 +116,31 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        {/* The first-visit splash, in its entirety — static HTML + CSS only
+            (styles in globals.css). It paints with the page's very first
+            paint (the logo is the LCP element) and dismisses itself via a
+            fixed-clock compositor animation, so a hydration-busy main thread
+            can never extend it. PageLoader.tsx only does session bookkeeping. */}
+        <div id="gv-static-splash" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/logo/gvr-final-logo.webp"
+            alt=""
+            className="h-24 w-auto md:h-32"
+            width={220}
+            height={70}
+            fetchPriority="high"
+          />
+          <div className="mt-10 flex flex-col items-center">
+            <span className="gv-splash-eyebrow">A soft welcome</span>
+            <p className="gv-splash-line">
+              to <span className="gv-splash-script">Giovanni</span> Village
+            </p>
+          </div>
+          <div className="gv-splash-track">
+            <div className="gv-splash-bar" />
+          </div>
+        </div>
         <ClientLayout>{children}</ClientLayout>
         <GoogleAnalytics />
       </body>

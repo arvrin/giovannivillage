@@ -5,13 +5,100 @@
    parses. This rule pins a full-screen ivory shade over everything so
    the hero can't flash before the React loader mounts. The React
    loader removes the class as soon as it's active. */
+/* The splash dismisses ITSELF on the compositor: a fixed-clock CSS fade,
+   with no JS in the loop. On slow devices hydration can peg the main
+   thread for many seconds — timers and React effects starve, and anything
+   they gate (like an overlay's exit, and with it the page's LCP) slips by
+   the same amount. The animation ends in visibility:hidden, so even the
+   class cleanup in PageLoader.tsx is cosmetic. */
+@keyframes gv-splash-away {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 html.gv-pre-loading::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: #F8F6F1;
-  z-index: 99;
+  background: #FDFBF7;
+  z-index: 98;
   pointer-events: none;
+  animation: gv-splash-away 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 1.6s both;
+}
+
+/* The static splash (app/layout.tsx) — the ENTIRE first-visit loader:
+   logo, greeting, progress line. Pure HTML/CSS, themed via the pre-theme
+   fallback variables (no .retreat-scoped classes work pre-hydration). */
+#gv-static-splash {
+  display: none;
+}
+html.gv-pre-loading #gv-static-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #FDFBF7;
+  pointer-events: none;
+  animation: gv-splash-away 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 1.6s both;
+}
+#gv-static-splash .gv-splash-eyebrow {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #7A634A;
+}
+#gv-static-splash .gv-splash-line {
+  margin-top: 0.75rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #1F2A24;
+}
+@media (min-width: 768px) {
+  #gv-static-splash .gv-splash-line {
+    font-size: 2rem;
+  }
+}
+#gv-static-splash .gv-splash-script {
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 1.4em;
+  font-size-adjust: 0.5;
+  color: #C9A961;
+}
+/* Progress line — fills over the splash's 1.6s hold. */
+@keyframes gv-splash-bar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+#gv-static-splash .gv-splash-track {
+  margin-top: 3rem;
+  height: 1px;
+  width: 12rem;
+  overflow: hidden;
+  background: rgba(31, 42, 36, 0.18);
+}
+@media (min-width: 768px) {
+  #gv-static-splash .gv-splash-track {
+    width: 16rem;
+  }
+}
+#gv-static-splash .gv-splash-bar {
+  height: 100%;
+  background: #C9A961;
+  animation: gv-splash-bar 1.6s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
 
 @layer base {
@@ -592,6 +679,12 @@ html.retreat .font-script {
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
+}
+/* Hero copy entrance — CSS instead of framer-motion so the headline (the
+   page's LCP element) paints at first render without waiting for React
+   hydration. Timing matches the old motion.div (1s, 0.4s delay). */
+.gv-hero-enter {
+  animation: slideUp 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s both;
 }
 @keyframes slideInLeft {
   from { opacity: 0; transform: translateX(-30px); }
