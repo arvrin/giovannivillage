@@ -135,7 +135,6 @@ const TheSenses = () => {
                       alt={p.alt}
                       fill
                       sizes="(max-width:768px) 100vw, 50vw"
-                      priority={i < 2}
                       className="object-cover transition duration-[1400ms] group-hover:scale-[1.04]"
                     />
                   )}

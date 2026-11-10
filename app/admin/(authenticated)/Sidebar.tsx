@@ -101,6 +101,7 @@ export default function Sidebar({ userName, userRole }: SidebarProps) {
           width={collapsed ? 36 : 156}
           height={collapsed ? 36 : 50}
           priority
+          unoptimized
           style={{
             height: collapsed ? 32 : 36,
             width: 'auto',

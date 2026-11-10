@@ -8,16 +8,18 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'giovannivillage.com',
-        pathname: '/wp-content/uploads/**',
-      },
-    ],
-    formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Tuned to stay inside Vercel Hobby's image-transformation quota: each
+    // (src, width, format) combo is a billable transform, re-counted whenever
+    // the cached variant expires.
+    // - WebP only: sources are already .webp; AVIF doubled the variant count.
+    // - deviceSizes: no layout needs >1920 (largest sources are ~2048px).
+    // - imageSizes: only fill-image tiles (25–50vw) land on 256/384; fixed-size
+    //   icons/logos are rendered `unoptimized`.
+    // - 31-day cache so variants aren't re-transformed every 60s (default).
+    formats: ['image/webp'],
+    deviceSizes: [640, 828, 1080, 1200, 1920],
+    imageSizes: [256, 384],
+    minimumCacheTTL: 2678400,
   },
   compress: true,
   poweredByHeader: false,

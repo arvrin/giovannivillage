@@ -41,6 +41,9 @@ const ExperienceGrid = ({ items }: { items: Activity[] }) => {
                 alt=""
                 width={40}
                 height={40}
+                // 512px/~5KB icons — serve as-is; optimizing only multiplied
+                // Vercel image transformations (2 widths x N formats per icon).
+                unoptimized
                 className="h-10 w-10 object-contain"
               />
             </div>

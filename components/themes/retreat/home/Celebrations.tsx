@@ -70,7 +70,6 @@ const Celebrations = () => {
                   alt={v.name}
                   fill
                   sizes="320px"
-                  priority={i < 2}
                   className="object-cover transition duration-[1400ms] group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent" />

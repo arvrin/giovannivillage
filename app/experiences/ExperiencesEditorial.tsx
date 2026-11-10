@@ -115,7 +115,6 @@ export default function ExperiencesEditorial() {
                   alt={s.alt}
                   fill
                   sizes="(max-width:768px) 100vw, 33vw"
-                  priority={i < 2}
                   className="object-cover transition duration-[1400ms] group-hover:scale-[1.04]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/30" />

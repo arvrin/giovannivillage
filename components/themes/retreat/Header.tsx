@@ -97,6 +97,7 @@ const RetreatHeader = () => {
               width={220}
               height={70}
               priority
+              unoptimized
               className={`object-contain transition-all duration-500 ${
                 scrolled ? 'h-9 md:h-10' : 'h-11 md:h-14'
               }`}
@@ -137,6 +138,9 @@ const RetreatHeader = () => {
                 fill
                 priority
                 sizes="100vw"
+                // Source is only 1080px/26KB under a dark overlay — every
+                // optimized width >1080 was an identical (but billed) transform.
+                unoptimized
                 className="object-cover"
               />
             </motion.div>

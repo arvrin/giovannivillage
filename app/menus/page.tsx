@@ -84,7 +84,7 @@ export default function MenusPage() {
                       src={m.image}
                       alt={m.name}
                       fill
-                      sizes="(max-width: 640px) 50vw, 50vw"
+                      sizes="(max-width: 896px) 50vw, 440px"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
