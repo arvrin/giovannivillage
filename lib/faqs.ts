@@ -115,7 +115,7 @@ export const faqs: Faq[] = [
     topic: 'general',
     question: 'What other properties are part of the Giovanni family?',
     answer:
-      'Beyond Giovanni Village Resort, the Giovanni family includes two boutique city stays in Bhopal — Giovanni House and Giovanni Suites in Arera Colony — for guests who prefer to be closer to the city. All properties are operated by the same hospitality group, A Venture of Sudesh The Village Resort.',
+      'Beyond Giovanni Village Resort, the Giovanni family includes two boutique city stays in Bhopal — Giovanni House and Giovanni Suites in Arera Colony — for guests who prefer to be closer to the city. All properties are operated by the same Giovanni hospitality group.',
   },
 
   // ─────────────────────────────────────────────────────────── Rooms

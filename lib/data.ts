@@ -71,13 +71,24 @@ export const siteConfig = {
       street: 'Giovanni Village, 410, Village Kalapani, Kolar Road',
       city: 'Bhopal',
       state: 'Madhya Pradesh',
+      postalCode: '462042',
       country: 'India',
-      coordinates: { lat: 23.2599, lng: 77.4126 },
+      // Exact pin from the Google Business Profile (matches Booking.com's pin).
+      coordinates: { lat: 23.0969459, lng: 77.3991207 },
     },
   },
   social: {
     facebook: 'https://www.facebook.com/GiovanniVillage',
     instagram: 'https://www.instagram.com/giovannivillage',
+  },
+  // Third-party listings of the same property — emitted as schema.org
+  // `sameAs` so Google / AI engines merge them into one entity.
+  listings: {
+    googleMaps: 'https://www.google.com/maps?cid=13511098936656763409',
+    tripadvisor:
+      'https://www.tripadvisor.in/Hotel_Review-g27745102-d27739304-Reviews-Giovanni_Village_Resort-Kalapani_Bhopal_District_Madhya_Pradesh.html',
+    makemytrip: 'https://www.makemytrip.com/hotels/giovanni_village_resort-details-bhopal.html',
+    booking: 'https://www.booking.com/hotel/in/giovanni-village-resort.html',
   },
   booking: {
     resort: 'https://live.ipms247.com/booking/roomlist-giovannivillageresortspa-be',
@@ -958,7 +969,7 @@ export const testimonials = [
 
 export const footer = {
   about:
-    'Giovanni Village — A Venture of Sudesh The Village Resort. A luxury wildlife resort on 23 acres at the edge of Ratapani Tiger Reserve — forest-view suites, farm-to-table dining from Royalton Farms, and a spa built for slowness.',
+    'Giovanni Village — a luxury family and wildlife resort on 23 acres at the edge of Ratapani Tiger Reserve — forest-view suites, farm-to-table dining from Royalton Farms, and a spa built for slowness.',
   quickLinks: [
     { label: 'About Us', href: '/about' },
     { label: 'Rooms & Suites', href: '/rooms' },

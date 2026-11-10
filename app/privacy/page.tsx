@@ -68,7 +68,7 @@ export default function PrivacyPage() {
         </li>
         <li>
           <strong>Website</strong> refers to Giovanni Village, accessible from{' '}
-          <a href="https://giovannivillage.com">https://giovannivillage.com</a>.
+          <a href="https://www.giovannivillage.com">https://www.giovannivillage.com</a>.
         </li>
         <li>
           <strong>You</strong> means the individual accessing or using the Service, or the company or other legal

@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   },
   authors: [{ name: 'Giovanni Village Resort' }],
   creator: 'Giovanni Village Resort',
-  publisher: 'A Venture of Sudesh The Village Resort',
+  publisher: 'Giovanni Village',
 };
 
 export const viewport: Viewport = {

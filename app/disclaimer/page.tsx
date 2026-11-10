@@ -17,7 +17,7 @@ export default function DisclaimerPage() {
     <LegalLayout title="Disclaimer">
       <h2>Disclaimer for Giovanni Village — A Venture of Sudesh The Village Resort</h2>
       <p>
-        All the information on this website — <a href="https://giovannivillage.com">https://giovannivillage.com</a> —
+        All the information on this website — <a href="https://www.giovannivillage.com">https://www.giovannivillage.com</a> —
         is published in good faith and for general information purposes only. Giovanni Village — A Venture of Sudesh
         The Village Resort does not make any warranties about the completeness, reliability and accuracy of this
         information.

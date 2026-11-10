@@ -1,4 +1,4 @@
-import { siteConfig, restaurants, type Venue } from '@/lib/data';
+import { siteConfig, restaurants, activities, type Venue } from '@/lib/data';
 
 /**
  * JSON-LD structured-data fragments. Renders inert <script> tags that
@@ -11,6 +11,7 @@ const baseAddress = {
   streetAddress: siteConfig.contact.address.street,
   addressLocality: siteConfig.contact.address.city,
   addressRegion: siteConfig.contact.address.state,
+  postalCode: siteConfig.contact.address.postalCode,
   addressCountry: 'IN',
 };
 
@@ -23,6 +24,7 @@ const baseGeo = {
 const sameAs = [
   siteConfig.social.facebook,
   siteConfig.social.instagram,
+  ...Object.values(siteConfig.listings),
 ];
 
 function jsonLd(data: object) {
@@ -36,8 +38,12 @@ export function HotelSchema() {
     '@type': ['Hotel', 'LocalBusiness'],
     '@id': `${siteConfig.url}#hotel`,
     name: 'Giovanni Village Resort',
-    alternateName: siteConfig.legalName,
-    description: siteConfig.description,
+    alternateName: 'Giovanni Village',
+    description:
+      'Luxury family and wildlife resort on 23 acres at Kalapani, Kolar Road, Bhopal, on the edge of Ratapani Tiger Reserve. Forest-view suites with private plunge pools, a soft-touch swimming pool, Elysium Spa, farm-to-table dining from the on-site Royalton Farms, and 20 on-site activities for kids and families — Junior Chef Academy, cycling, open-air theatre, lakeside fishing, cow milking, board games and more.',
+    hasMap: siteConfig.listings.googleMaps,
+    checkinTime: '14:00',
+    checkoutTime: '11:00',
     url: siteConfig.url,
     image: [
       `${siteConfig.url}/images/hero/hero-1.webp`,
@@ -63,6 +69,12 @@ export function HotelSchema() {
       'Room Service',
       'Open-to-Sky Plunge Pools',
       'Private Garden Suites',
+      'Kid-friendly',
+      'Family Rooms',
+      // Plain activity names (drop editorial prefixes like "Golden Hour: ").
+      ...activities.map((a) =>
+        a.title.startsWith('Elysium Spa') ? 'Elysium Spa' : (a.title.split(': ').pop() as string),
+      ),
     ].map((name) => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
   };
   return (
@@ -110,7 +122,6 @@ export function OrganizationSchema() {
     '@type': 'Organization',
     '@id': `${siteConfig.url}#organization`,
     name: 'Giovanni Village',
-    legalName: siteConfig.legalName,
     url: siteConfig.url,
     logo: `${siteConfig.url}/images/logo/gvr-final-logo.webp`,
     email: siteConfig.contact.email,

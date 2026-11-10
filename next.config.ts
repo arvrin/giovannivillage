@@ -100,6 +100,14 @@ const nextConfig: NextConfig = {
       { source: '/shop', destination: '/rooms', permanent: true },
       { source: '/cart', destination: '/rooms', permanent: true },
       { source: '/checkout', destination: '/rooms', permanent: true },
+
+      // ── Legacy URLs still surfacing in Search Console as 404 (Nov 2026) ──
+      { source: '/4064-2', destination: '/', permanent: true },
+      { source: '/rooms-and-suites', destination: '/rooms', permanent: true },
+      { source: '/blog/bhimbetka-ruins-guide', destination: '/blog/bhimbetka-rock-shelters-guide', permanent: true },
+      { source: '/blog/family-resorts-in-bhopal', destination: '/blog/family-resorts-near-bhopal', permanent: true },
+      { source: '/blog/things-to-do-bhopal-weekend', destination: '/blog/things-to-do-in-bhopal-weekend', permanent: true },
+      { source: '/blog/bhopal-weekend', destination: '/blog/weekend-getaways-from-bhopal', permanent: true },
     ];
   },
 };
